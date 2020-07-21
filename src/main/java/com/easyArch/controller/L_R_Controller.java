@@ -1,6 +1,7 @@
 package com.easyArch.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.easyArch.entity.G_User;
 import com.easyArch.mapper.G_UserDao;
 import com.easyArch.mapper.P_UserDao;
@@ -23,12 +24,12 @@ public class L_R_Controller {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "p_login",method = RequestMethod.POST)
-    public String p_login(@RequestBody P_User user){
-        System.out.println("xxxxx");
+    @RequestMapping(value = "p_login",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    public String p_login(@RequestBody String user){
         if (user != null) {
-            String username_1 = user.getUsername();
-            String password_1 = user.getPassword();
+            P_User p_user = JSONObject.parseObject(user, P_User.class);
+            String username_1 = p_user.getUsername();
+            String password_1 = p_user.getPassword();
             System.out.println(password_1);
             System.out.println(username_1);
             P_User user1 = p_userDao.isUser(username_1);
@@ -46,12 +47,13 @@ public class L_R_Controller {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "g_login",method = RequestMethod.POST)
-    public String g_login(@RequestBody G_User user){
+    @RequestMapping(value = "g_login",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    public String g_login(@RequestBody String user){
         System.out.println("xxxxx");
         if (user != null) {
-            String username_1 = user.getUsername();
-            String password_1 = user.getPassword();
+            G_User g_user = JSONObject.parseObject(user, G_User.class);
+            String username_1 = g_user.getUsername();
+            String password_1 = g_user.getPassword();
             System.out.println(password_1);
             System.out.println(username_1);
             G_User user1 = g_userDao.isUser(username_1);
@@ -73,7 +75,7 @@ public class L_R_Controller {
             System.out.println(password_1);
             try{
                 if(p_userDao.isUser(username_1).getUsername()!=null) {
-                    return JSON.toJSONString("f");
+                    return JSON.toJSONString("F");
                 }
             }catch (NullPointerException e){
                 p_userDao.insert(username_1,password_1,user.getAddress());
@@ -93,7 +95,7 @@ public class L_R_Controller {
             System.out.println(username_1);
             try{
                 if(g_userDao.isUser(username_1).getUsername()!=null) {
-                    return JSON.toJSONString("f");
+                    return JSON.toJSONString("F");
                 }
             }catch (NullPointerException e){
                 g_userDao.insert(username_1,password_1,user.getAddress());
