@@ -56,9 +56,7 @@ public class ActiveDown_Controller {
      */
 
     @ResponseBody
-    @RequestMapping(value = "selectAllNumber"
-            ,produces = "application/json;charset=utf-8"
-            ,method = RequestMethod.POST)
+    @RequestMapping(value = "selectAllNumber",produces = "application/json;charset=utf-8",method = RequestMethod.POST)
     public String selectAllNumber(@RequestBody P_User p_user){
         if(p_user!=null){
             String username=p_user.getUsername();
