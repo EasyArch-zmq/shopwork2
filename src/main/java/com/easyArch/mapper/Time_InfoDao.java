@@ -12,5 +12,5 @@ public interface Time_InfoDao {
      * @param mytime
      * @param yangan
      */
-    void insertInfo(String boxid,String mytime,String yangan);
+    void insertInfo(String boxid,String mytime,Integer yangan);
 }

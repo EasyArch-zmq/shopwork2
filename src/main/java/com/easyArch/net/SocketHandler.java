@@ -34,7 +34,7 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
         //获取日期
         String mytime=df.format(new Date());
         String boxid=strings[0];
-        String yangan=strings[1];
+        Integer yangan=new Integer(strings[1]);
         timeInfoDao.insertInfo(boxid,mytime,yangan);
     }
     @Override

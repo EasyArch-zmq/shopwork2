@@ -66,3 +66,5 @@ INFO:项目启动了
 INFO:项目启动了
 2020-07-26 14:46:06 下午 [Thread: main][ Class:com.easyArch.Application >> Method: com.easyArch.Application.main(Application.java:29) ]
 INFO:项目启动了
+2020-07-26 23:03:07 下午 [Thread: main][ Class:com.easyArch.Application >> Method: com.easyArch.Application.main(Application.java:29) ]
+INFO:项目启动了
