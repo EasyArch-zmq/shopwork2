@@ -1,25 +1,41 @@
 package com.easyArch.net;
 
+import com.easyArch.mapper.Time_InfoDao;
+import com.easyArch.util.ControllerUtil;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Component
 @Configuration
 @ChannelHandler.Sharable
 public class SocketHandler extends SimpleChannelInboundHandler<String> {
     private static final Logger LOGGER= LoggerFactory.getLogger(SocketHandler.class);
-    //@Autowired
+    ControllerUtil util=new ControllerUtil();
+    @Autowired
+    Time_InfoDao timeInfoDao;
     //这里就是连数据要的dao要注入
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String o) {
         LOGGER.info("收的数据"+o);
+        String []strings=util.getInfo(o);
+        //设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //获取日期
+        String mytime=df.format(new Date());
+        String boxid=strings[0];
+        String yangan=strings[1];
+        timeInfoDao.insertInfo(boxid,mytime,yangan);
     }
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
