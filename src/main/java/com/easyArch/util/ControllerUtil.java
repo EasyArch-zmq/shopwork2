@@ -1,5 +1,7 @@
 package com.easyArch.util;
 
+import com.easyArch.entity.DateAndNumber;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -20,6 +22,51 @@ public class ControllerUtil {
         String []str;
         str=date.split(" ");
         return str;
+    }
+    public String[] slipDate3(String str3){
+        String []str;
+        str=str3.split(":");
+        return str;
+    }
+    public List<DateAndNumber> filter(List<DateAndNumber> list,String time){
+        List<DateAndNumber>list1=new ArrayList<>();
+        Integer timeT=new Integer(time);
+        Integer temp=0;
+        Integer i=0;
+        System.out.println(list);
+        for (DateAndNumber dateAndNumber:list){
+            Integer temInt=new Integer(dateAndNumber.getTime());
+//            System.out.println("当前时间是："+temInt);
+            for ( i= temp; i < temInt; i += 2) {
+                DateAndNumber dateAndNumberTem = new DateAndNumber();
+                if (i < 10) {
+                    dateAndNumberTem.setTime("0" + i);
+                } else {
+                    dateAndNumberTem.setTime(i.toString());
+                }
+                dateAndNumberTem.setNum(0);
+//                System.out.println("新加数据："+dateAndNumberTem);
+                list1.add(dateAndNumberTem);
+            }
+            temp=temInt;
+            list1.add(dateAndNumber);
+            temp+=2;
+            }
+        Integer j=0;
+        for (j=temp;j<=timeT;j+=2){
+            DateAndNumber dateAndNumberTem2;
+            dateAndNumberTem2 = new DateAndNumber();
+            if (j < 10) {
+                dateAndNumberTem2.setTime("0" + j);
+            } else {
+                dateAndNumberTem2.setTime(j.toString());
+            }
+            dateAndNumberTem2.setNum(0);
+//            System.out.println("新加数据："+dateAndNumberTem2);
+            list1.add(dateAndNumberTem2);
+        }
+
+        return list1;
     }
 
 

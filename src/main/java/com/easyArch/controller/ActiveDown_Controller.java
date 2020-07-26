@@ -27,29 +27,48 @@ public class ActiveDown_Controller {
     DateNumberDao dateNumberDao;
 
     /**
-     * 返回地址下拉框数据
+     * 返回地址下拉框数据之省
      * @return
      */
-    @RequestMapping(value = "address",method = RequestMethod.POST)
-    public List<String> seleceAddress(){
-        cont+=1;
-        if(cont==1){
-            System.out.println(cont);
-            return addressDao.province();
-        }
-        if (cont==2){
-            System.out.println(cont);
-            return addressDao.city();
-        }
-        if (cont==3){
-            System.out.println(cont);
-            return addressDao.county();
-        }
-        else {
-            System.out.println(cont);
-            return addressDao.specificAddress();
-        }
+    @ResponseBody
+    @RequestMapping(value = "ProvinceAddress",method = RequestMethod.POST)
+    public List<String> selecePAddress() {
+        return addressDao.province();
     }
+
+
+    /**
+     * 返回地址下拉框数据之市
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "CityAddress",method = RequestMethod.POST)
+public List<String> seleceCAddress(){
+        return addressDao.city();
+        }
+
+    /**
+     * 返回地址下拉框数据之县
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "CountyAddress",method = RequestMethod.POST)
+public List<String> seleceCoAddress() {
+    return addressDao.county();
+
+}
+    /**
+     * 返回地址下拉框数据之具体地址提示
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "SpecificAddress",method = RequestMethod.POST)
+    public List<String> seleceSAddress() {
+        return addressDao.specificAddress();
+
+    }
+
+
 
     /**
      *返回用户地址，具体地址，总人数，green,red

@@ -46,20 +46,22 @@ public class SelectDateNumber_Controller {
                         String str2 = year2 + "-" + month2 + "-" + day2;
                         //查询一天里
                         if (str1.equals(str2)) {
-                            Integer day11 = new Integer(day1);
-                            day11 = day11 + 1;
-                            str2 = year2 + "-" + month2 + "-" + day11;
+                            str1=str1+" 00:00:00";
+                            str2=str2+" 23:59:29";
                             if (str.length == 1) {
                                 list = dateNumberDao.selectTwoHour1(str[0], str1, str2);
-                                return JSON.toJSONString(list);
+                                List<DateAndNumber>resList=util.filter(list,"23");
+                                return JSON.toJSONString(resList);
                             }
                             if (str.length == 2) {
                                 list = dateNumberDao.selectTwoHour2(str[0],str[1], str1, str2);
-                                return JSON.toJSONString(list);
+                                List<DateAndNumber>resList=util.filter(list,"23");
+                                return JSON.toJSONString(resList);
                             }
                             if (str.length == 3) {
                                 list = dateNumberDao.selectTwoHour3(str[0], str[1],str[2],str1, str2);
-                                return JSON.toJSONString(list);
+                                List<DateAndNumber>resList=util.filter(list,"23");
+                                return JSON.toJSONString(resList);
                             }
 
                         }
