@@ -19,8 +19,10 @@ import java.util.Date;
 @Configuration
 @ChannelHandler.Sharable
 public class SocketHandler extends SimpleChannelInboundHandler<String> {
+
     private static final Logger logger= LoggerFactory.getLogger(SocketHandler.class);
     //@Autowired
+
     private static final Logger LOGGER= LoggerFactory.getLogger(SocketHandler.class);
     ControllerUtil util=new ControllerUtil();
     @Autowired
