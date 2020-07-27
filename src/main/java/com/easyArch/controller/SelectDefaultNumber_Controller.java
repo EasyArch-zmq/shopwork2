@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -47,22 +48,23 @@ public class SelectDefaultNumber_Controller {
                 BoxidAndDataList boxidAndDataList = new BoxidAndDataList();
                 boxidAndDataList.setBoxid(listAddress.getBoxid());
                 //设置日期格式
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 //获取日期
-                String date1=df.format(new Date());
-                String [] str2=util.slipDate(date1);
-               // Integer day11 = new Integer(str2[2]);
-              //  day11=day11+1;
-               // String date2=str2[0]+"-"+str2[1]+"-"+day11;
-                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),"2020-07-19", "2020-07-20");
-                boxidAndDataList.setList(list);
+                String date2=df.format(new Date());
+                String [] str2=util.slipDate2(date2);
+                String date1=str2[0]+" 00:00:00";
+                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),"2020-07-19 00:00:00", "2020-07-19 23:30:00");
+//                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),date1,date2);
+                String[] strings;
+                strings = util.slipDate3(str2[1]);
+                List<DateAndNumber>resList=util.filter(list,strings[0]);
+                boxidAndDataList.setList(resList);
                 list_data.add(boxidAndDataList);
                 continue;
 
             }
             return JSON.toJSONString(list_data);
         }
-
         return JSON.toJSONString("f");
     }
 }

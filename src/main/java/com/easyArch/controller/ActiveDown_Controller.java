@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 public class ActiveDown_Controller {
-    private static int cont;
     ControllerUtil util=new ControllerUtil();
     @Autowired
     AddressDao addressDao;
@@ -27,29 +26,53 @@ public class ActiveDown_Controller {
     DateNumberDao dateNumberDao;
 
     /**
-     * 返回地址下拉框数据
+     * 返回地址下拉框数据之省
      * @return
      */
-    @RequestMapping(value = "address",method = RequestMethod.POST)
-    public List<String> seleceAddress(){
-        cont+=1;
-        if(cont==1){
-            System.out.println(cont);
-            return addressDao.province();
-        }
-        if (cont==2){
-            System.out.println(cont);
-            return addressDao.city();
-        }
-        if (cont==3){
-            System.out.println(cont);
-            return addressDao.county();
-        }
-        else {
-            System.out.println(cont);
-            return addressDao.specificAddress();
-        }
+    @ResponseBody
+    @RequestMapping(value = "ProvinceAddress",method = RequestMethod.POST)
+    public List<String> selecePAddress() {
+        return addressDao.province();
     }
+
+
+    /**
+     * 返回地址下拉框数据之市
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "CityAddress",method = RequestMethod.POST)
+public List<String> seleceCAddress(@RequestBody Address address){
+        String Province=address.getProvince();
+        return addressDao.city(Province);
+        }
+
+    /**
+     * 返回地址下拉框数据之县
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "CountyAddress",method = RequestMethod.POST)
+public List<String> seleceCoAddress(@RequestBody Address address) {
+        String Province=address.getProvince();
+        String City=address.getCity();
+    return addressDao.county(Province,City);
+
+}
+    /**
+     * 返回地址下拉框数据之具体地址提示
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "SpecificAddress",method = RequestMethod.POST)
+    public List<String> seleceSAddress(@RequestBody Address address) {
+        String Province=address.getProvince();
+        String City=address.getCity();
+        String County=address.getCounty();
+        return addressDao.specificAddress(Province,City,County);
+    }
+
+
 
     /**
      *返回用户地址，具体地址，总人数，green,red
@@ -76,7 +99,9 @@ public class ActiveDown_Controller {
                 //盒子的对应收集到的人数
                 Integer num=dateNumberDao.selectDateNumber(listAddress.getBoxid());
                 AddressAndNumber addressAndNumber=new AddressAndNumber();
-                addressAndNumber.setAddress(listAddress.getSpecificadress());
+                String str1=listAddress.getSpecificadress();
+                String[] strings=str1.split(str[3]);
+                addressAndNumber.setAddress(strings[1]);
                 addressAndNumber.setNumber(num);
                 list.add(addressAndNumber);
             }

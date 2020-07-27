@@ -7,13 +7,14 @@
        select distinct province from address_info
     </select>
     <select id="city" resultType="java.lang.String">
-       select distinct city from address_info
+       select distinct city from address_info where province=#{province}
     </select>
     <select id="county" resultType="java.lang.String">
-       select distinct county from address_info
+       select distinct county from address_info where (province=#{province} and city=#{city})
     </select>
     <select id="specificAddress" resultType="java.lang.String">
-       select distinct specificadress from address_info
+       select distinct specificadress from address_info where
+       (province=#{province} and city=#{city} and county=#{county} )
     </select>
 
 

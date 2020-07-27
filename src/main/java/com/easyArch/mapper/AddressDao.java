@@ -21,25 +21,20 @@ public interface AddressDao {
      *  市
      * @return
      */
-    List<String>city();
+    List<String>city(String province );
 
     /**
      *  县
      * @return
      */
-    List<String>county();
+    List<String>county(String province,String city);
 
     /**
      * 具体
      * @return
      */
-    List<String>specificAddress();
+    List<String>specificAddress(String province,String city,String county);
 
     List<BoxidAndAddress> selectBoxids(@Param("specificadress") String specificadress);
 
-    List<String>provinceId(String province);
-
-    List<String>cityId(String province,String city);
-
-    List<String>countyId(String province,String city,String county);
 }

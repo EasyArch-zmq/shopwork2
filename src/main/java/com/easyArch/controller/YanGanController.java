@@ -27,18 +27,14 @@ public class YanGanController {
         ControllerUtil util=new ControllerUtil();
         String userDdress=SelectDefaultNumber_Controller.userDdress;
         String[]str=util.slipAddress(userDdress);
+        List<YanGan> list=null;
         //设置日期格式
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //获取日期
         String date2=df.format(new Date());
-        System.out.println(date2);
-        String [] str2=util.slipDate(date2);
-        String[]str3=util.slipDate2(str2[2]);
-         Integer day22 = new Integer(str3[0]);
-          day22=day22-1;
-
-         String date1=str2[0]+"-"+str2[1]+"-"+day22+" 00:00:00";
-        List<YanGan> list=yanGanDao.yanGanList(str[3],date1,date2);
+        String [] str2=util.slipDate2(date2);
+        String date1=str2[0]+" 00:00:00";
+        list= yanGanDao.yanGanList(str[3], date1, date2);
         return JSON.toJSONString(list);
     }
 
