@@ -1,9 +1,11 @@
 /home/zmq/shopwork/src/main/java/com/easyArch/net/Server.java
+/home/zmq/shopwork/src/main/java/com/easyArch/entity/Address.java
 /home/zmq/shopwork/src/main/java/com/easyArch/entity/DateAndNumber.java
 /home/zmq/shopwork/src/main/java/com/easyArch/controller/TiaoController.java
 /home/zmq/shopwork/src/main/java/com/easyArch/entity/G_User.java
 /home/zmq/shopwork/src/main/java/com/easyArch/mapper/YanGanDao.java
 /home/zmq/shopwork/src/main/java/com/easyArch/net/SocketHandler.java
+/home/zmq/shopwork/src/main/java/com/easyArch/controller/Test.java
 /home/zmq/shopwork/src/main/java/com/easyArch/entity/BoxidAndAddress.java
 /home/zmq/shopwork/src/main/java/com/easyArch/entity/NumberInfo.java
 /home/zmq/shopwork/src/main/java/com/easyArch/controller/SelectDefaultNumber_Controller.java
@@ -11,6 +13,7 @@
 /home/zmq/shopwork/src/main/java/com/easyArch/entity/AllNumber.java
 /home/zmq/shopwork/src/main/java/com/easyArch/mapper/ColorDao.java
 /home/zmq/shopwork/src/main/java/com/easyArch/entity/AddressAndNumber.java
+/home/zmq/shopwork/src/main/java/com/easyArch/entity/Temp.java
 /home/zmq/shopwork/src/main/java/com/easyArch/controller/ColorInsertController.java
 /home/zmq/shopwork/src/main/java/com/easyArch/entity/Color.java
 /home/zmq/shopwork/src/main/java/com/easyArch/mapper/G_UserDao.java
@@ -18,6 +21,7 @@
 /home/zmq/shopwork/src/main/java/com/easyArch/util/ControllerUtil.java
 /home/zmq/shopwork/src/main/java/com/easyArch/mapper/AddressDao.java
 /home/zmq/shopwork/src/main/java/com/easyArch/controller/SelectDateNumber_Controller.java
+/home/zmq/shopwork/src/main/java/com/easyArch/mapper/Time_InfoDao.java
 /home/zmq/shopwork/src/main/java/com/easyArch/entity/DateAndAddress.java
 /home/zmq/shopwork/src/main/java/com/easyArch/mapper/DateNumberDao.java
 /home/zmq/shopwork/src/main/java/com/easyArch/mapper/P_UserDao.java
