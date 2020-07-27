@@ -99,7 +99,9 @@ public List<String> seleceCoAddress(@RequestBody Address address) {
                 //盒子的对应收集到的人数
                 Integer num=dateNumberDao.selectDateNumber(listAddress.getBoxid());
                 AddressAndNumber addressAndNumber=new AddressAndNumber();
-                addressAndNumber.setAddress(listAddress.getSpecificadress());
+                String str1=listAddress.getSpecificadress();
+                String[] strings=str1.split(str[3]);
+                addressAndNumber.setAddress(strings[1]);
                 addressAndNumber.setNumber(num);
                 list.add(addressAndNumber);
             }
