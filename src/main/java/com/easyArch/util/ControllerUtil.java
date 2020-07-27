@@ -145,6 +145,12 @@ public class ControllerUtil {
             System.out.println(matcher.group());
             i++;
         }
+
+        String string1="大沽南路天津职业师范大学";
+        String string2="大沽南路天津职业师范大学A楼三层";
+        String[]strings=string2.split(string1);
+        System.out.println(strings[0]);
+
 //        System.out.println(i);
 
 
