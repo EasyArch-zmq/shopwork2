@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 public class ActiveDown_Controller {
-    private static int cont;
     ControllerUtil util=new ControllerUtil();
     @Autowired
     AddressDao addressDao;
@@ -43,8 +42,9 @@ public class ActiveDown_Controller {
      */
     @ResponseBody
     @RequestMapping(value = "CityAddress",method = RequestMethod.POST)
-public List<String> seleceCAddress(){
-        return addressDao.city();
+public List<String> seleceCAddress(@RequestBody Address address){
+        String Province=address.getProvince();
+        return addressDao.city(Province);
         }
 
     /**
@@ -53,8 +53,10 @@ public List<String> seleceCAddress(){
      */
     @ResponseBody
     @RequestMapping(value = "CountyAddress",method = RequestMethod.POST)
-public List<String> seleceCoAddress() {
-    return addressDao.county();
+public List<String> seleceCoAddress(@RequestBody Address address) {
+        String Province=address.getProvince();
+        String City=address.getCity();
+    return addressDao.county(Province,City);
 
 }
     /**
@@ -63,9 +65,11 @@ public List<String> seleceCoAddress() {
      */
     @ResponseBody
     @RequestMapping(value = "SpecificAddress",method = RequestMethod.POST)
-    public List<String> seleceSAddress() {
-        return addressDao.specificAddress();
-
+    public List<String> seleceSAddress(@RequestBody Address address) {
+        String Province=address.getProvince();
+        String City=address.getCity();
+        String County=address.getCounty();
+        return addressDao.specificAddress(Province,City,County);
     }
 
 
