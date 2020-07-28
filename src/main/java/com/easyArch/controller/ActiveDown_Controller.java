@@ -91,21 +91,25 @@ public List<String> seleceCoAddress(@RequestBody Address address) {
             //数据之一：用户地址
             String userAddress=p_userDao.selectUserAddress(username);
             String []str=util.slipAddress(userAddress);
+            String province=str[0];
+            String city=str[1];
+            String county=str[2];
+            String specificAddress=str[3];
             //返回boxid和具体地址
-            List<BoxidAndAddress>boxidsList=addressDao
-                    .selectBoxids(str[3]);
+            List<BoxidAndAddress> boxidsList = addressDao
+                    .selectBoxids(specificAddress,province,city,county);
             for(BoxidAndAddress listAddress:boxidsList){
 
                 //盒子的对应收集到的人数
                 Integer num=dateNumberDao.selectDateNumber(listAddress.getBoxid());
                 AddressAndNumber addressAndNumber=new AddressAndNumber();
                 String str1=listAddress.getSpecificadress();
-                String[] strings=str1.split(str[3]);
+                String[] strings=str1.split(specificAddress);
                 addressAndNumber.setAddress(strings[1]);
                 addressAndNumber.setNumber(num);
                 list.add(addressAndNumber);
             }
-            allNumber.setUserAddress(str[3]);
+            allNumber.setUserAddress(specificAddress);
             allNumber.setColor(color);
             allNumber.setList(list);
             return JSON.toJSONString(allNumber);

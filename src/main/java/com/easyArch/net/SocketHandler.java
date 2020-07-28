@@ -29,7 +29,6 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String o) {
         //这里就是要接的字符串o 你要自己解析split()一下
-
         LOGGER.info("收的数据"+o);
         String []strings=util.getInfo(o);
         //设置日期格式

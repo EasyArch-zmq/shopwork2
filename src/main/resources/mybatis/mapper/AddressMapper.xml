@@ -24,7 +24,8 @@
     </resultMap>
     <select id="selectBoxids" resultType="com.easyArch.entity.BoxidAndAddress">
        select boxid,specificadress from address_info where specificadress
-       like #{specificadress}"%"
+       like #{specificadress}"%" and (province=#{province}
+       and city=#{city} and county=#{county})
     </select>
 
 </mapper>

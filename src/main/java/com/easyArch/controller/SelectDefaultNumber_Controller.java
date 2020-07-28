@@ -42,8 +42,12 @@ public class SelectDefaultNumber_Controller {
             System.out.println(g_address);
             userDdress=g_address;
             String[] str = util.slipAddress(g_address);
+            String province=str[0];
+            String city=str[1];
+            String county=str[2];
+            String specificAddress=str[3];
             List<BoxidAndAddress> boxidsList = addressDao
-                    .selectBoxids(str[3]);
+                    .selectBoxids(specificAddress,province,city,county);
             for (BoxidAndAddress listAddress : boxidsList) {
                 BoxidAndDataList boxidAndDataList = new BoxidAndDataList();
                 boxidAndDataList.setBoxid(listAddress.getBoxid());
