@@ -13,9 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 @Component
@@ -35,6 +34,9 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
 
         LOGGER.info("收的数据"+o);
         String []strings=util.getInfo(o);
+        String[] split = o.split("\\(");
+        byte[] bytes = HexUtils.fromHexString(split[0]);
+        LOGGER.info("解析的数据："+ Arrays.toString(bytes) +"\t"+split[1]);
         //设置日期格式
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //获取日期
