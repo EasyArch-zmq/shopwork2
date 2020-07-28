@@ -1,0 +1,113 @@
+body{
+    margin: 0;padding: 0;
+}
+
+.everyWeekDay .weekday,.everyDay .days {
+    /*解决span不支持width属性*/
+    display: -moz-inline-box;
+    display: inline-block;
+    margin: 5px 0 0 20px;
+    text-align: center;
+    width: 20px;
+    border: 1px solid #F7F7F7;
+    cursor: pointer;}
+
+.marginTop{margin-top: 5px;}
+
+.selectStyle{
+    padding-left: 10px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    margin: 0 10px 0 10px;
+    width: 60px;
+    border-color: #0FB9EF;
+    color: #0FB9EF;}
+
+select{
+    height: 30px;
+    width: 123px;
+    margin: 5px;
+}
+#wrapper{
+    width: 40%;
+    margin: 50px;
+}
+
+.row{
+    /* display: inline-block;
+    overflow: hidden;
+    margin: 0 0 0 0; */
+    position: absolute;
+    right: 0%;
+    top: 52%;
+}
+
+.input-group input{
+    width: 68px
+}
+
+#container{
+    overflow: hidden;
+}
+
+#form{
+    /*float: left;*/
+    /*width: 100%;*/
+}
+
+#search-smoke{
+    margin-bottom: 15px;
+}
+#revise{
+    margin-bottom: 15px;
+    margin-left: 25px;
+}
+#sear{
+    margin-left: 300px;
+}
+.dialog{
+    margin: 40px 0;
+    width:295px;
+    height:200px;
+    text-align: center;
+    border: solid 1px #c5c5cb;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #e0e0e7;
+    background-color: #ededf4;
+    display:none
+}
+.title{
+    margin: 30px auto;
+}
+.arrea{
+    margin-top: 20px;
+}
+.redbt{
+    background-color: red;
+    width: 35px;
+    height: 20px;
+    /*position:absolute;*/
+    float: left;
+    margin-left: 10px;
+}
+
+#txt_calendar{
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color: #cfcfcf;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    padding-left: 10px;
+    outline:none;
+}
+#uu{
+    position: absolute;
+    left: 80px;
+    right: 50px;
+    top: 250px;
+}

@@ -120,6 +120,19 @@ public class ControllerUtil {
         return list1;
     }
 
+    public static String bytesToHexString(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < bytes.length; i++) {
+            String hex = Integer.toHexString(0xFF & bytes[i]);
+            if (hex.length() == 1) {
+                sb.append('0');
+            }
+            sb.append(hex);
+        }
+        return sb.toString();
+    }
+
+
 
     /**
      * 解析客户端传来的数据，拿到boxid和yangan的值
