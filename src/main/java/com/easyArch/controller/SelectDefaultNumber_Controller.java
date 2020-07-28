@@ -61,7 +61,7 @@ public class SelectDefaultNumber_Controller {
 //                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),date1,date2);
                 String[] strings;
                 strings = util.slipDate3(str2[1]);
-                List<DateAndNumber>resList=util.filter(list,strings[0]);
+                List<DateAndNumber>resList=util.filterTowHour(list,strings[0]);
                 boxidAndDataList.setList(resList);
                 list_data.add(boxidAndDataList);
                 continue;

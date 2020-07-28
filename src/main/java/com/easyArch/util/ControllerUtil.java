@@ -1,6 +1,7 @@
 package com.easyArch.util;
 
 import com.easyArch.entity.DateAndNumber;
+import com.easyArch.entity.YanGan;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -40,7 +41,7 @@ public class ControllerUtil {
      * @param time
      * @return
      */
-    public List<DateAndNumber> filter(List<DateAndNumber> list, String time) {
+    public List<DateAndNumber> filterTowHour(List<DateAndNumber> list, String time) {
         List<DateAndNumber> list1 = new ArrayList<>();
         Integer timeT = new Integer(time);
         Integer temp = 0;
@@ -80,6 +81,45 @@ public class ControllerUtil {
 
         return list1;
     }
+
+    public List<YanGan>filterOneHour(List<YanGan> list,String time){
+        List<YanGan> list1 = new ArrayList<>();
+        Integer timeT = new Integer(time);
+        Integer temp = 0;
+        Integer i;
+        System.out.println(list);
+        for (YanGan yanGan : list) {
+            Integer temInt = new Integer(yanGan.getTime());
+            for (i = temp; i < temInt; i ++) {
+                YanGan yanGan1 = new YanGan();
+                if (i < 10) {
+                    yanGan1.setTime("0" + i);
+                } else {
+                    yanGan1.setTime(i.toString());
+                }
+                yanGan1.setYanGan(0);
+                list1.add(yanGan1);
+            }
+            temp = temInt;
+            list1.add(yanGan);
+            temp ++;
+        }
+        Integer j;
+        for (j = temp; j <=timeT; j ++) {
+            YanGan yanGan2;
+            yanGan2 = new YanGan();
+            if (j < 10) {
+                yanGan2.setTime("0" + j);
+            } else {
+                yanGan2.setTime(j.toString());
+            }
+            yanGan2.setYanGan(0);
+            list1.add(yanGan2);
+        }
+
+        return list1;
+    }
+
 
     /**
      * 解析客户端传来的数据，拿到boxid和yangan的值

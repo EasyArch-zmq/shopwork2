@@ -99,9 +99,8 @@ public List<String> seleceCoAddress(@RequestBody Address address) {
             List<BoxidAndAddress> boxidsList = addressDao
                     .selectBoxids(specificAddress,province,city,county);
             for(BoxidAndAddress listAddress:boxidsList){
-
                 //盒子的对应收集到的人数
-                Integer num=dateNumberDao.selectDateNumber(listAddress.getBoxid());
+                Integer num=dateNumberDao.selectAllNumber(listAddress.getBoxid());
                 AddressAndNumber addressAndNumber=new AddressAndNumber();
                 String str1=listAddress.getSpecificadress();
                 String[] strings=str1.split(specificAddress);
