@@ -57,7 +57,7 @@ public class SelectDefaultNumber_Controller {
                 String date2=df.format(new Date());
                 String [] str2=util.slipDate2(date2);
                 String date1=str2[0]+" 00:00:00";
-                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),"2020-07-19 00:00:00", "2020-07-19 23:30:00");
+                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),"2020-07-28 00:00:00", "2020-07-28 23:30:00");
 //                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),date1,date2);
                 String[] strings;
                 strings = util.slipDate3(str2[1]);
