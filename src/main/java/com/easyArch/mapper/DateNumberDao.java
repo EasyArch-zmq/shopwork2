@@ -10,11 +10,11 @@ import java.util.List;
 @Repository
 public interface DateNumberDao {
     /**
-     * 根据boxid查询人数
+     * 根据boxid查询总人数
      * @param boxid
      * @return
      */
-    Integer selectDateNumber(String boxid);
+    Integer selectAllNumber(String boxid);
 
     /**
      * 每两小时查询

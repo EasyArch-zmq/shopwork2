@@ -26,7 +26,16 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
     Time_InfoDao timeInfoDao;
     //这里就是连数据要的dao要注入
 
-    @Override
+
+//    @Override
+//    protected void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
+//
+//        LOGGER.info("传入的数据是："+ControllerUtil.bytesToHexString(msg));
+//        System.out.println(ControllerUtil.bytesToHexString(msg));
+//
+//    }
+
+        @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String o) {
         //这里就是要接的字符串o 你要自己解析split()一下
         String substring = o.substring(0, 12);
@@ -35,6 +44,13 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
         byte[] bytes = HexUtil.hexStringToBytes(str);
         String s = new String(bytes, StandardCharsets.UTF_8);
         LOGGER.info("收的数据"+substring+s);
+
+        LOGGER.info("收的数据:"+o);
+        String []strings=util.getInfo(o);
+        String[] split = o.split("\\(");
+        byte[] bytes = HexUtils.fromHexString(split[0]);
+        LOGGER.info("解析的数据："+ Arrays.toString(bytes) +"\t"+split[1]);
+
         //设置日期格式
 //        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //获取日期

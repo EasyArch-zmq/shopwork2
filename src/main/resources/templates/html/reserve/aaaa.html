@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索框输入文字自动提示</title>
+    <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css">
+    <style type="text/css">
+    </style>
+</head>
+<body>
+<body>
+<input type="text" class="form-control" name="fromCity" id="tags" />
+<input type="hidden" class="form-control" name="from_city" id="from_city" />
+</body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js" ></script>
+<script>
+    $(function () {
+        var cities = [{
+                thrC: "SHA",
+                initial: "sh",
+                en: "shanghai",
+                zh_CN: "上海"
+            }, {
+                thrC: "BJS",
+                initial: "bj",
+                en: "beijing",
+                zh_CN: "北京"
+            }, {
+                thrC: "LON",
+                initial: "ld",
+                en: "london",
+                zh_CN: "伦敦"
+            }, {
+                thrC: "PAR",
+                initial: "bl",
+                en: "paris",
+                zh_CN: "巴黎"
+            }, {
+                thrC: "NYC",
+                initial: "ny",
+                en: "new york",
+                zh_CN: "纽约"
+            }, {
+                thrC: "LAX",
+                initial: "lsj",
+                en: "los angeles",
+                zh_CN: "洛杉矶"
+            }, ],
+            dialg = $('#dialog');
+        $("#tags").autocomplete({
+            autoFocuus: true,
+            source: function (req, res) {
+                var city = req.term,
+                    result = [];
+                if (city) {
+                    var searchResult = $.map((city ? $.grep(cities, function (value) {
+                        return value.initial.toString().indexOf(city) == 0 || value.en.indexOf(
+                            city) == 0 || value.zh_CN.indexOf(city) == 0 || value.thrC
+                            .indexOf(city) == 0;
+                    }) : cities), function (value) {
+                        return {
+                            label: value.zh_CN + "(" + value.thrC + ")",
+                            tc: value.thrC
+                        };
+                    });
+                    result = result.concat($.makeArray(searchResult));
+                }
+                res(result);
+            },
+            select: function (event, ui) {
+                $('#from_city').val(ui.item.tc);
+            }
+        });
+    });   
+</script>
+</body>
+</html>

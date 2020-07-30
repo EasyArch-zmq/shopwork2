@@ -42,8 +42,12 @@ public class SelectDefaultNumber_Controller {
             System.out.println(g_address);
             userDdress=g_address;
             String[] str = util.slipAddress(g_address);
+            String province=str[0];
+            String city=str[1];
+            String county=str[2];
+            String specificAddress=str[3];
             List<BoxidAndAddress> boxidsList = addressDao
-                    .selectBoxids(str[3]);
+                    .selectBoxids(specificAddress,province,city,county);
             for (BoxidAndAddress listAddress : boxidsList) {
                 BoxidAndDataList boxidAndDataList = new BoxidAndDataList();
                 boxidAndDataList.setBoxid(listAddress.getBoxid());
@@ -53,11 +57,11 @@ public class SelectDefaultNumber_Controller {
                 String date2=df.format(new Date());
                 String [] str2=util.slipDate2(date2);
                 String date1=str2[0]+" 00:00:00";
-                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),"2020-07-19 00:00:00", "2020-07-19 23:30:00");
+                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),"2020-07-28 00:00:00", "2020-07-28 23:30:00");
 //                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),date1,date2);
                 String[] strings;
                 strings = util.slipDate3(str2[1]);
-                List<DateAndNumber>resList=util.filter(list,strings[0]);
+                List<DateAndNumber>resList=util.filterTowHour(list,strings[0]);
                 boxidAndDataList.setList(resList);
                 list_data.add(boxidAndDataList);
                 continue;

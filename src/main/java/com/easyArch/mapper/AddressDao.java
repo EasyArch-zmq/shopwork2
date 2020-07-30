@@ -35,6 +35,6 @@ public interface AddressDao {
      */
     List<String>specificAddress(String province,String city,String county);
 
-    List<BoxidAndAddress> selectBoxids(@Param("specificadress") String specificadress);
+    List<BoxidAndAddress> selectBoxids(@Param("specificadress") String specificadress,String province,String city,String county);
 
 }

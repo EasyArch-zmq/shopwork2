@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- meta data -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link
+		href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext"
+		rel="stylesheet">
+
+	<title>普通用户注册</title>
+
+	<link rel="stylesheet" href="../../../assets/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="../../../assets/css/animate.css">
+
+	<link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="../../../assets/css/bootsnav.css">
+
+	<link rel="stylesheet" href="../../../assets/css/style.css">
+
+	<link rel="stylesheet" href="../../../assets/css/responsive.css">
+
+	<link rel="stylesheet" type="text/css" href="../../css/city.css">
+
+
+</head>
+
+<body>
+	<section class="signin popup-in">
+		<div class="container">
+			<div class="sign-content popup-in-content">
+				<div class="popup-in-txt">
+					<h2>普通用户注册</h2>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="signin-form">
+								<form action="signin.html">
+									<div class="form-group">
+										<label for="p_username">用户名</label>
+										<input type="email" class="form-control" id="p_username" placeholder="用户名">
+									</div>
+									<!--/.form-group -->
+									<div class="form-group">
+										<label for="p_password">密码</label>
+										<input type="password" class="form-control" id="p_password" placeholder="密码">
+									</div>
+									<!--/.form-group -->
+
+									<div class="form-group">
+										<div class="city">
+											地区 <select name="" id="province">
+											<option>请选择</option>
+										</select>
+											<select name="" id="city">
+												<option>请选择</option>
+											</select>
+											<select name="" id="country">
+												<option>请选择</option>
+											</select>
+											<div class="form-group">
+												<p>
+												<input  id="address" class="form-control"  placeholder="详细地址">
+												</p>
+											</div>
+									<!--/.form-group -->
+
+								</form>
+								<!--/form -->
+							</div>
+							<!--/.signin-form -->
+						</div>
+						<!--/.col -->
+					</div>
+					<!--/.row -->
+
+					<div class="row">
+						<div class="col-sm-12">
+
+						</div>
+						<!--/.col -->
+					</div>
+					<!--/.row -->
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="signin-footer">
+								<button type="button" class="btn signin_btn">
+									注册
+								</button>
+							</div>
+							<!--/.signin-footer -->
+						</div>
+						<!--/.col-->
+					</div>
+					<!--/.row -->
+				</div><!-- .popup-in-txt -->
+			</div>
+			<!--/.sign-content -->
+		</div>
+		<!--/.container -->
+
+	</section>
+	<!--/.signin -->
+
+	<!-- signin end -->
+
+	<!--footer copyright start -->
+	<footer class="footer-copyright">
+		<div id="scroll-Top">
+			<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top"
+				title="" data-original-title="Back to Top" aria-hidden="true"></i>
+		</div>
+		<!--/.scroll-Top-->
+
+	</footer>
+	<!--/.hm-footer-copyright-->
+	<!--footer copyright  end -->
+
+
+	<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+	<script src="../../../assets/js/jquery.js"></script>
+
+	<!--modernizr.min.js-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+	<!--bootstrap.min.js-->
+	<script src="../../../assets/js/bootstrap.min.js"></script>
+
+	<!-- bootsnav js -->
+	<script src="../../../assets/js/bootsnav.js"></script>
+
+	<!-- jquery.sticky.js -->
+	<script src="../../../assets/js/jquery.sticky.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+	<!--Custom JS-->
+	<script src="../../../assets/js/custom.js"></script>
+<!--	<script src="../../js/address.js"></script>-->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js" ></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js" ></script>
+
+</body>
+
+<script>
+	const BASE_URL = 'http://121.199.21.197:63391'
+	$(document).ready(() => {
+		$('.signin_btn').click(() => {
+			let username = $('#p_username').val()
+			let password = $('#p_password').val()
+			var pro=$("#province").val();
+			var city=$("#city").val();
+			var country=$("#country").val();
+			var address=$("#address").val();
+			let addressall = pro+","+city+","+country+","+address;
+			console.log(username)
+			$.ajax({
+				url:`${BASE_URL}`+'/p_register',
+				method: 'post',
+				data:'{"username":"'+username+'","password":"'+password+'","address":"'+addressall+'"}',
+				contentType: "application/json",
+				success: (res) => {
+					if (res==='"T"')
+					{	alert("注册成功!")
+
+						window.location.href="p_Login.html";
+						}
+					else  alert("注册失败！用户名存在，需要重新输入!")
+					console.log(res )
+				}
+			})
+		})
+		$.ajax({
+			url: `${BASE_URL}` + '/ProvinceAddress',
+			method: 'post',
+			contentType: "application/json",
+			success: function (res) {
+				console.log(res[0])
+				console.log(res.length)
+				let pro, options;
+				for(let i=0; i<res.length; i++)
+				{  pro =$("#province");
+					options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+				pro.append(options);
+			}
+		})
+		$('#province').change(function(){
+			var opt=$("#province").val();
+			console.log(opt)
+			// var d=[{Province:opt}]
+			$.ajax({
+				url: `${BASE_URL}` + '/CityAddress',
+				// data: d,
+				data: '{ "province": "'+opt+'"}',
+				method: 'post',
+				contentType: "application/json",
+				success: function (res) {
+					console.log(res);
+					let pro, options;
+					for(let i=0; i<res.length; i++)
+					{  pro =$("#city");
+						options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+					pro.append(options);
+				}
+			})
+		});
+		$("#city").change(function(){
+			var city=$("#city").val();
+			var pro=$("#province").val();
+			$.ajax({
+				url: `${BASE_URL}` + '/CountyAddress',
+				data:'{"province":"'+pro+'","city":"'+city+'"}',
+				method: 'post',
+				contentType: "application/json",
+				success: function (res) {
+					console.log(res)
+					let pro, options;
+					for(let i=0; i<res.length; i++)
+					{  pro =$("#country");
+						options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+					pro.append(options);
+				}
+			})
+		});
+		$("#country").change(function(){
+			var city=$("#city").val();
+			var pro=$("#province").val();
+			var coun=$("#country").val();
+			$.ajax({
+				url: `${BASE_URL}` + '/SpecificAddress',
+				data:'{"province":"'+pro+'","city":"'+city+'","county":"'+coun+'"}',
+				method: 'post',
+				contentType: "application/json",
+				success: function (res) {
+					console.log(res)
+					$("#address").autocomplete({
+						source: res,
+						messages: {
+							// noResults:"按上下键进行选择",
+						}
+					});
+				}
+			})
+		});
+	})
+</script>
+
+
+</html>

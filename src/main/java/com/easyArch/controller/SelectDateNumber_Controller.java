@@ -50,17 +50,17 @@ public class SelectDateNumber_Controller {
                             str2=str2+" 23:59:29";
                             if (str.length == 1) {
                                 list = dateNumberDao.selectTwoHour1(str[0], str1, str2);
-                                List<DateAndNumber>resList=util.filter(list,"23");
+                                List<DateAndNumber>resList=util.filterTowHour(list,"23");
                                 return JSON.toJSONString(resList);
                             }
                             if (str.length == 2) {
                                 list = dateNumberDao.selectTwoHour2(str[0],str[1], str1, str2);
-                                List<DateAndNumber>resList=util.filter(list,"23");
+                                List<DateAndNumber>resList=util.filterTowHour(list,"23");
                                 return JSON.toJSONString(resList);
                             }
                             if (str.length == 3) {
                                 list = dateNumberDao.selectTwoHour3(str[0], str[1],str[2],str1, str2);
-                                List<DateAndNumber>resList=util.filter(list,"23");
+                                List<DateAndNumber>resList=util.filterTowHour(list,"23");
                                 return JSON.toJSONString(resList);
                             }
 

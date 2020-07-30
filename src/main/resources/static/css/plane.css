@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.image{
+    margin-left: 500px;
+    float: left;
+    /*width: 50%;*/
+    /*height: 95%;*/
+    /*background-color: #4cae4c;*/
+    /*position: absolute;*/
+    /*left: 20px;*/
+}
+img{
+    border:1px solid #9899a2;
+    /*width: 95%;*/
+    /*height: 95%;*/
+    /*margin: 20px auto;*/
+}
+.btn{
+    width: 28px;
+    height: 16px;
+    background-color: #c9302c;
+    position: absolute;
+}
