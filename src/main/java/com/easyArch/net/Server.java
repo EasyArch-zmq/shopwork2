@@ -24,7 +24,7 @@ public class Server {
                 NioEventLoopGroup boss = new NioEventLoopGroup();
                 NioEventLoopGroup work = new NioEventLoopGroup();
                 ServerBootstrap bootstrap = new ServerBootstrap();
-                bootstrap.group(boss, work).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 1024).option(ChannelOption.TCP_NODELAY, true).option(ChannelOption.SO_KEEPALIVE, true).childHandler(socketChannelInitializer);
+                bootstrap.group(boss, work).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 1024).option(ChannelOption.SO_KEEPALIVE, true).childHandler(socketChannelInitializer);
 
                 ChannelFuture future = bootstrap.bind(port).sync();
                 LOGGER.info("服务器启动");
