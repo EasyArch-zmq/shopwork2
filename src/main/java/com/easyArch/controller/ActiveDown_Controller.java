@@ -32,6 +32,7 @@ public class ActiveDown_Controller {
     @ResponseBody
     @RequestMapping(value = "ProvinceAddress",method = RequestMethod.POST)
     public List<String> selecePAddress() {
+        System.out.println("ProvinceAddress!");
         return addressDao.province();
     }
 

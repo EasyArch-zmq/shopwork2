@@ -7,6 +7,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import org.apache.tomcat.util.buf.HexUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 @Component
 @Configuration
@@ -48,8 +50,8 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
         LOGGER.info("收的数据:"+o);
         String []strings=util.getInfo(o);
         String[] split = o.split("\\(");
-        byte[] bytes = HexUtils.fromHexString(split[0]);
-        LOGGER.info("解析的数据："+ Arrays.toString(bytes) +"\t"+split[1]);
+        byte[] bytess = HexUtils.fromHexString(split[0]);
+        LOGGER.info("解析的数据："+ Arrays.toString(bytess) +"\t"+split[1]);
 
         //设置日期格式
 //        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

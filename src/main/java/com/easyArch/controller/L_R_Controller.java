@@ -73,13 +73,14 @@ public class L_R_Controller {
             String username_1 = user.getUsername();
             String password_1 = user.getPassword();
             System.out.println(password_1);
-            try{
-                if(p_userDao.isUser(username_1).getUsername()!=null) {
-                    return JSON.toJSONString("F");
-                }
-            }catch (NullPointerException e){
-                p_userDao.insert(username_1,password_1,user.getAddress());
-            }
+//            try{
+//                if(p_userDao.isUser(username_1).getUsername()!=null) {
+//                    return JSON.toJSONString("F");
+//                }
+//            }catch (NullPointerException e){
+//
+//            }
+            p_userDao.insert(username_1,password_1,user.getAddress());
 
         }
         return JSON.toJSONString("T");
@@ -93,14 +94,15 @@ public class L_R_Controller {
             String password_1 = user.getPassword();
             System.out.println(password_1);
             System.out.println(username_1);
-            try{
-                if(g_userDao.isUser(username_1).getUsername()!=null) {
-                    return JSON.toJSONString("F");
-                }
-            }catch (NullPointerException e){
-                g_userDao.insert(username_1,password_1,user.getAddress());
-            }
+//            try{
+//                if(g_userDao.isUser(username_1).getUsername()!=null) {
+//                    return JSON.toJSONString("F");
+//                }
+//            }catch (NullPointerException e){
+//
+//            }
 
+            g_userDao.insert(username_1,password_1,user.getAddress());
         }
         return JSON.toJSONString("T");
 

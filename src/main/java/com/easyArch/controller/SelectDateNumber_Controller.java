@@ -1,13 +1,12 @@
 package com.easyArch.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.easyArch.entity.BoxidAndAddress;
-import com.easyArch.entity.BoxidAndDataList;
-import com.easyArch.entity.DateAndAddress;
-import com.easyArch.entity.DateAndNumber;
+import com.easyArch.Application;
+import com.easyArch.entity.*;
 import com.easyArch.mapper.AddressDao;
 import com.easyArch.mapper.DateNumberDao;
 import com.easyArch.util.ControllerUtil;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +15,7 @@ import java.util.List;
 
 @RestController
 public class SelectDateNumber_Controller {
+    private static final Logger logger=Logger.getLogger(Application.class);
     @Autowired
     DateNumberDao dateNumberDao;
     @Autowired
@@ -26,6 +26,8 @@ public class SelectDateNumber_Controller {
             , produces = "application/json;charset=utf-8"
             , method = RequestMethod.POST)
     public String selectDateNumber(@RequestBody DateAndAddress dateAndAddress) {
+        logger.info("selectDateNumber!!!!!");
+        System.out.println("selectDateNumber!!!!!");
         ControllerUtil util = new ControllerUtil();
         if (dateAndAddress != null) {
             List<DateAndNumber> list;
@@ -35,9 +37,17 @@ public class SelectDateNumber_Controller {
             String year2 = dateAndAddress.getYear2();
             String month2 = dateAndAddress.getMonth2();
             String day2 = dateAndAddress.getDay2();
+            System.out.println("year1:"+year1);
+            System.out.println("month1:"+month1);
+            System.out.println("day1:"+day1);
+            System.out.println("year2:"+year2);
+            System.out.println("month2:"+month2);
+            System.out.println("day2:"+day2);
 
             String address = dateAndAddress.getAddress();
             String[] str = util.slipAddress(address);
+
+            System.out.println("address: "+address);
 
             if (year1 != null && year2 != null) {
                 if (month1 != null && month2 != null) {
@@ -49,6 +59,7 @@ public class SelectDateNumber_Controller {
                             str1=str1+" 00:00:00";
                             str2=str2+" 23:59:29";
                             if (str.length == 1) {
+                                System.out.println(str[0]);
                                 list = dateNumberDao.selectTwoHour1(str[0], str1, str2);
                                 List<DateAndNumber>resList=util.filterTowHour(list,"23");
                                 return JSON.toJSONString(resList);
@@ -59,6 +70,7 @@ public class SelectDateNumber_Controller {
                                 return JSON.toJSONString(resList);
                             }
                             if (str.length == 3) {
+                                System.out.println("xxxxxxxxxxxxxxx");
                                 list = dateNumberDao.selectTwoHour3(str[0], str[1],str[2],str1, str2);
                                 List<DateAndNumber>resList=util.filterTowHour(list,"23");
                                 return JSON.toJSONString(resList);

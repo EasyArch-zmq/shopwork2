@@ -13,7 +13,7 @@ import static java.util.regex.Pattern.*;
 public class ControllerUtil {
     public String[] slipAddress(String userAddress) {
         String[] str;
-        str = userAddress.split("，");
+        str = userAddress.split(",");
         return str;
     }
 

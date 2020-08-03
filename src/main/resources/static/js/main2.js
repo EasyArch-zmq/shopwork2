@@ -42,7 +42,7 @@ window.onload=function(){
             console.log("请求成功")
             // alert("sds")
             console.log(res)
-            console.log(res[0].time)
+            console.log(res.length)
             for(let i=0;i<res.length;i++) {
                 ytime.push(res[i].time);
             }
@@ -60,14 +60,14 @@ var SettingOption = (Xdata, Ydata) => {
     return {
         // 标题
         title: {
-            text: '烟雾浓度图',
+            text: 'xx区烟雾浓度图',
             left: 'center',
         },
         tooltip: {
             trigger: 'axis',
             axisPointer: {
-                type: 'cross'
-            }
+                type: 'cross',
+                            }
         },
 
         // x轴
@@ -78,11 +78,14 @@ var SettingOption = (Xdata, Ydata) => {
         },
         yAxis: {
             name: '烟雾浓度(立方米)',
-            axisLine: {
-                lineStyle: {
-                    color: '#d14a61'
-                }
+           },
+        label: {
+            show: true,
+            position: 'top',
+            lineStyle: {
+                color: '#d14a61',
             },
+            formatter:yanval    //在柱状图的顶部显示出某个东西和这个东西的百分比值12
         },
         // 数据
         series: [{

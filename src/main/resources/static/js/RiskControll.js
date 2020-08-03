@@ -3,10 +3,46 @@ const BASE_URL = 'http://121.199.21.197:63391'
 var people=[];
 var time=[];
 var resd;
+var numtitle="1号风险防控图";
 let startVal,endVal;
+// var list = [
+//     {
+//         num: 6,
+//         time: "2002-3-8"
+//     },
+//     {
+//         num: 10,
+//         time: "2005-9-18"
+//     },
+//     {
+//         num: 9,
+//         time: "04"
+//     },
+//     {
+//         num: 5,
+//         time: "06"
+//     },
+//     {
+//         num: 12,
+//         time: "08"
+//     },
+//     {
+//         num: 8,
+//         time: "10"
+//     },
+//     {
+//         num: 18,
+//         time: "12"
+//     }]
+// for(var i=0;i<list.length;i++) {
+//     time.push(list[i].time);
+// }
+// for(var i=0;i<list.length;i++) {
+//     people.push(list[i].num);
+// }
 window.onload=function() {
     // let username = $('#username').val();
-    let username =window.localStorage.getItem('username')
+    let username =window.localStorage.getItem('g_username')
     console.log(username)
 
     // let username = "ocbbc";
@@ -25,19 +61,21 @@ window.onload=function() {
                 people.push(res[0].list[i].num);
             }
             let option = SettingOption(time,people)
+            numtitle="一号风险防控图"
             myChart.setOption(option)
-            for (var i = 0; i < res.length; i++) {
-                var bt =document.createElement("button");
-                bt.className="redbt";
-                bt.id="redbt"+i;
-                bt.style.marginTop=i*40;
-                bt.style.marginLeft=i*40;
-                // bt.onclick=a(0);
-                $('#uu').append(bt)
-            }
-            for (let i = 0; i < resd.length; i++) {
-                a(i)
-            }
+            //自动生成的按钮
+            // for (var i = 0; i < res.length; i++) {
+            //     var bt =document.createElement("button");
+            //     bt.className="redbt";
+            //     bt.id="redbt"+i;
+            //     bt.style.marginTop=i*40;
+            //     bt.style.marginLeft=i*40;
+            //     // bt.onclick=a(0);
+            //     $('#uu').append(bt)
+            // }
+            // for (let i = 0; i < resd.length; i++) {
+            //     a(i)
+            // }
         }
     })
     $.ajax({
@@ -121,48 +159,14 @@ window.onload=function() {
 }
 
 
-//
-// var list = [
-//     {
-//         num: 1,
-//         time: "00"
-//     },
-//     {
-//         num: 2,
-//         time: "02"
-//     },
-//     {
-//         num: 2,
-//         time: "04"
-//     },
-//     {
-//         num: 2,
-//         time: "06"
-//     },
-//     {
-//         num: 2,
-//         time: "08"
-//     },
-//     {
-//         num: 2,
-//         time: "10"
-//     },
-//     {
-//         num: 13,
-//         time: "12"
-//     }]
-// for(var i=0;i<list.length;i++) {
-//     time.push(list[i].time);
-// }
-// for(var i=0;i<list.length;i++) {
-//     people.push(list[i].num);
-// }
+
+
 
 var SettingOption = (Xdata, Ydata) => {
     return {
         // 标题
         title: {
-            text: '风险防控图',
+            text: numtitle,
             left: 'center',
         },
         tooltip: {
@@ -191,6 +195,11 @@ var SettingOption = (Xdata, Ydata) => {
                 }
             },
         },
+        label: {
+            show: true,
+            position: 'top',
+            formatter: people//在柱状图的顶部显示出某个东西和这个东西的百分比值12
+        },
         // 数据
         series: [{
             type: 'bar',
@@ -201,7 +210,7 @@ var SettingOption = (Xdata, Ydata) => {
                     //每根柱子颜色设置
                     color: function(params) {
                         let colorList = [
-                            "#91eeee",
+                            "#67d3ce",
                             "#42d3e7",
                             "#5ca8db",
                             "#2394b1",
@@ -251,14 +260,15 @@ $('#search').click(() => {
     $.ajax({
         url: `${BASE_URL}` + '/selecDataNumber',
         method: 'post',
+        data:data,
         contentType: "application/json",
         success: function (res) {
-            console.log(res)
-            for (let i = 0; i < res[0].list.length; i++) {
-                time.push(res[0].list[i].time);
+            console.log(res.length)
+            for (let i = 0; i < res.length; i++) {
+                time.push(res[i].time);
             }
-            for (let i = 0; i < res[0].list.length; i++) {
-                people.push(res[0].list[i].num);
+            for (let i = 0; i < res.length; i++) {
+                people.push(res[i].num);
             }
             let option = SettingOption(time,people)
             myChart.setOption(option)
@@ -269,7 +279,7 @@ $('#search').click(() => {
 
 //点击查看烟感数据
 $('#search-smoke').click(() => {
-    window.location = 'smoke.html'
+    window.location = '/smoke'
 })
 
 //点击活跃度范围设置弹窗
@@ -282,30 +292,9 @@ $("#keep").click(function(){
 })
 
 
-//设置范围值
-function  fanwei() {
-
-    let red=document.getElementById("name1").value;
-    let green=document.getElementById("name").value;
-    $.ajax({
-        url: `${BASE_URL}`+"/insertColorValue",
-        method:'post',
-        data:'{"red":"'+red+'","green":"'+green+'"}',
-        contentType:"application/json",
-        success: (res) => {
-            // console.log("ssssssssssokla")
-            // alert("ok")
-            document.getElementById('state').innerHTML = "保存成功！";
-            // $('#state').hidden
-        }
-    })
-
-    console.log('{"red":"'+red+'","green":"'+green+'"}');
-}
-
 function a(c){
-$(document).on("click", "#redbt"+c, function(){
-    // 这里的this指向触发点击事件的p元素(Element)
+    var u=c+1;
+    numtitle=u+"号风险防控图"
     time=[];
     for (let i = 0; i < resd[c].list.length; i++) {
         time.push(resd[c].list[i].time);
@@ -316,4 +305,5 @@ $(document).on("click", "#redbt"+c, function(){
     }
     let option = SettingOption(time,people)
     myChart.setOption(option)
-});}
+
+}

@@ -1,5 +1,6 @@
 body{
     margin: 0;padding: 0;
+    background: #F5F5F5;
 }
 
 .everyWeekDay .weekday,.everyDay .days {
@@ -29,22 +30,23 @@ body{
 
 select{
     height: 30px;
-    width: 123px;
+    width: 500px;
     margin: 5px;
+    float: left;
 }
 #wrapper{
     width: 40%;
     margin: 50px;
 }
 
-.row{
-    /* display: inline-block;
-    overflow: hidden;
-    margin: 0 0 0 0; */
-    position: absolute;
-    right: 0%;
-    top: 52%;
-}
+/*.row{*/
+/*    !* display: inline-block;*/
+/*    overflow: hidden;*/
+/*    margin: 0 0 0 0; *!*/
+/*    position: absolute;*/
+/*    right: 0%;*/
+/*    top: 52%;*/
+/*}*/
 
 .input-group input{
     width: 68px
