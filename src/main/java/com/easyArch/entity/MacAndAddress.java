@@ -3,7 +3,7 @@ package com.easyArch.entity;
 import lombok.Data;
 
 @Data
-public class BoxidAndAddress {
-    private String boxid;
+public class MacAndAddress {
+    private String mac_address;
     private String specificadress;
 }

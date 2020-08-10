@@ -1,10 +1,10 @@
 package com.easyArch.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.easyArch.entity.BoxidAndAddress;
-import com.easyArch.entity.BoxidAndDataList;
+import com.easyArch.entity.MacAndDataList;
 import com.easyArch.entity.DateAndNumber;
 import com.easyArch.entity.G_User;
+import com.easyArch.entity.MacAndAddress;
 import com.easyArch.mapper.AddressDao;
 import com.easyArch.mapper.DateNumberDao;
 import com.easyArch.mapper.G_UserDao;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -35,35 +34,35 @@ public class SelectDefaultNumber_Controller {
         if(g_user!=null){
             ControllerUtil util = new ControllerUtil();
             List<DateAndNumber> list;
-            List<BoxidAndDataList>list_data=new ArrayList<>();
+            List<MacAndDataList>list_data=new ArrayList<>();
             String g_name=g_user.getUsername();
             System.out.println("vvvvv"+g_name);
             String g_address=g_userDao.selectG_UserAddress(g_name);
             System.out.println(g_address);
             userDdress=g_address;
-            String[] str = util.slipAddress(g_address);
+            String[] str = ControllerUtil.slipAddress(g_address);
             String province=str[0];
             String city=str[1];
             String county=str[2];
             String specificAddress=str[3];
-            List<BoxidAndAddress> boxidsList = addressDao
-                    .selectBoxids(specificAddress,province,city,county);
-            for (BoxidAndAddress listAddress : boxidsList) {
-                BoxidAndDataList boxidAndDataList = new BoxidAndDataList();
-                boxidAndDataList.setBoxid(listAddress.getBoxid());
+            List<MacAndAddress> macsList = addressDao
+                    .selectMacs(specificAddress,province,city,county);
+            for (MacAndAddress listAddress : macsList) {
+                MacAndDataList macAndDataList = new MacAndDataList();
+                macAndDataList.setMac_address(listAddress.getMac_address());
                 //设置日期格式
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 //获取日期
                 String date2=df.format(new Date());
-                String [] str2=util.slipDate2(date2);
+                String [] str2=ControllerUtil.slipDate2(date2);
                 String date1=str2[0]+" 00:00:00";
-                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),"2020-07-28 00:00:00", "2020-07-28 23:30:00");
-//                list = dateNumberDao.selectTwoHour(listAddress.getBoxid(),date1,date2);
-                String[] strings;
-                strings = util.slipDate3(str2[1]);
-                List<DateAndNumber>resList=util.filterTowHour(list,strings[0]);
-                boxidAndDataList.setList(resList);
-                list_data.add(boxidAndDataList);
+//                list = dateNumberDao.selectTwoHour(listAddress.getMac_address(),"2020-07-28 00:00:00", "2020-07-28 23:59:00");
+                list = dateNumberDao.selectTwoHour(listAddress.getMac_address(),date1,date2);
+//                String[] strings;
+//                strings = ControllerUtil.slipDate3(str2[1]);
+                List<DateAndNumber>resList=ControllerUtil.filterTowHour(list,"23");
+                macAndDataList.setList(resList);
+                list_data.add(macAndDataList);
                 continue;
 
             }

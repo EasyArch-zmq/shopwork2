@@ -23,7 +23,7 @@ public class Test {
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             //获取日期
             String mytime=df.format(new Date());
-            String boxid=temp.getBoxid();
+            String boxid=temp.getMac_address();
             Integer yangan=new Integer(temp.getYangan());
             time_infoDao.insertInfo(boxid,mytime,yangan);
             return "T";

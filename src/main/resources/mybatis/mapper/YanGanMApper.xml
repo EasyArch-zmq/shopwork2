@@ -5,7 +5,7 @@
 <mapper namespace="com.easyArch.mapper.YanGanDao">
     <select id="yanGanList" resultType="com.easyArch.entity.YanGan">
        select date_format(mytime,'%H')AS time,
-        avg (yangan) As yangan from time_info where boxid in (select boxid from address_info
+        avg (yangan) As yangan from time_info where mac_address in (select mac_address from address_info
         where specificadress like #{specificadress}"%")
         and (mytime between #{date1}
         and #{date2})

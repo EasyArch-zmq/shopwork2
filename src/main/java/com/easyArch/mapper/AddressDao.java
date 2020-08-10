@@ -1,6 +1,7 @@
 package com.easyArch.mapper;
 
-import com.easyArch.entity.BoxidAndAddress;
+
+import com.easyArch.entity.MacAndAddress;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -35,6 +36,6 @@ public interface AddressDao {
      */
     List<String>specificAddress(String province,String city,String county);
 
-    List<BoxidAndAddress> selectBoxids(@Param("specificadress") String specificadress,String province,String city,String county);
+    List<MacAndAddress> selectMacs(@Param("specificadress") String specificadress, String province, String city, String county);
 
 }

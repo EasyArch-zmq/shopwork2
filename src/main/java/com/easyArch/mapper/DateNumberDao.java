@@ -21,7 +21,7 @@ public interface DateNumberDao {
      * @param date1
      * @return
      */
-    List<DateAndNumber>selectTwoHour(String boxid,String date1,String date2);
+    List<DateAndNumber>selectTwoHour(String mac_address,String date1,String date2);
 
     List<DateAndNumber>selectTwoHour1(String province ,String date1,String date2);
 

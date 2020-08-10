@@ -45,7 +45,7 @@ public class SelectDateNumber_Controller {
             System.out.println("day2:"+day2);
 
             String address = dateAndAddress.getAddress();
-            String[] str = util.slipAddress(address);
+            String[] str = ControllerUtil.slipAddress(address);
 
             System.out.println("address: "+address);
 
@@ -61,18 +61,18 @@ public class SelectDateNumber_Controller {
                             if (str.length == 1) {
                                 System.out.println(str[0]);
                                 list = dateNumberDao.selectTwoHour1(str[0], str1, str2);
-                                List<DateAndNumber>resList=util.filterTowHour(list,"23");
+                                List<DateAndNumber>resList=ControllerUtil.filterTowHour(list,"23");
                                 return JSON.toJSONString(resList);
                             }
                             if (str.length == 2) {
                                 list = dateNumberDao.selectTwoHour2(str[0],str[1], str1, str2);
-                                List<DateAndNumber>resList=util.filterTowHour(list,"23");
+                                List<DateAndNumber>resList=ControllerUtil.filterTowHour(list,"23");
                                 return JSON.toJSONString(resList);
                             }
                             if (str.length == 3) {
                                 System.out.println("xxxxxxxxxxxxxxx");
                                 list = dateNumberDao.selectTwoHour3(str[0], str[1],str[2],str1, str2);
-                                List<DateAndNumber>resList=util.filterTowHour(list,"23");
+                                List<DateAndNumber>resList=ControllerUtil.filterTowHour(list,"23");
                                 return JSON.toJSONString(resList);
                             }
 

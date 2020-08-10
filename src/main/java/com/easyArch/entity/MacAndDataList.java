@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BoxidAndDataList {
-    private String boxid;
+public class MacAndDataList {
+    private String mac_address;
     private List<DateAndNumber>list;
 }

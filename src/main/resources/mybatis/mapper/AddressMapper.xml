@@ -18,12 +18,12 @@
     </select>
 
 
-    <resultMap id="BoxidAndAddress" type="com.easyArch.entity.BoxidAndAddress">
-        <result column="boxid" property="boxid"/>
+    <resultMap id="MacListAndAddress" type="com.easyArch.entity.MacAndAddress">
+        <result column="mac_address" property="mac_address"/>
         <result column="specificadress" property="specificadress"/>
     </resultMap>
-    <select id="selectBoxids" resultType="com.easyArch.entity.BoxidAndAddress">
-       select boxid,specificadress from address_info where specificadress
+    <select id="selectMacs" resultType="com.easyArch.entity.MacAndAddress">
+       select mac_address,specificadress from address_info where specificadress
        like #{specificadress}"%" and (province=#{province}
        and city=#{city} and county=#{county})
     </select>

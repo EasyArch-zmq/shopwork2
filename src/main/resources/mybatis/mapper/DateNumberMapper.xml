@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.easyArch.mapper.DateNumberDao">
     <select id="selectAllNumber" resultType="Integer">
-       select count(mytime) as num from time_info where boxid=#{boxid}
+       select count(mytime) as num from time_info where mac_address=#{mac_address}
     </select>
 
     <!-- 范围值为两小时 -->
     <select id="selectTwoHour" resultType="com.easyArch.entity.DateAndNumber">
         select date_format(concat(date(mytime),' ',floor(hour(mytime)/2)*2),'%H')
-        as time,count(*) as num from time_info where boxid=#{boxid}
+        as time,count(*) as num from time_info where mac_address=#{mac_address}
         and (mytime between #{date1}
         and #{date2})
         group by time
@@ -18,7 +18,7 @@
     </select>
     <select id="selectTwoHour1" resultType="com.easyArch.entity.DateAndNumber">
         select date_format(concat(date(mytime),' ',floor(hour(mytime)/2)*2),'%H')
-        as time,count(*) as num from time_info where boxid in (select boxid from address_info
+        as time,count(*) as num from time_info where mac_address in (select mac_address from address_info
         where province=#{province})
         and (mytime between #{date1}
         and #{date2})

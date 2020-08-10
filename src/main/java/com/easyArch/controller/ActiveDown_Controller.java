@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 public class ActiveDown_Controller {
-    ControllerUtil util=new ControllerUtil();
     @Autowired
     AddressDao addressDao;
     @Autowired
@@ -91,17 +90,17 @@ public List<String> seleceCoAddress(@RequestBody Address address) {
             List<AddressAndNumber>list=new ArrayList<>();
             //数据之一：用户地址
             String userAddress=p_userDao.selectUserAddress(username);
-            String []str=util.slipAddress(userAddress);
+            String []str=ControllerUtil.slipAddress(userAddress);
             String province=str[0];
             String city=str[1];
             String county=str[2];
             String specificAddress=str[3];
-            //返回boxid和具体地址
-            List<BoxidAndAddress> boxidsList = addressDao
-                    .selectBoxids(specificAddress,province,city,county);
-            for(BoxidAndAddress listAddress:boxidsList){
+            //返回Mac和具体地址
+            List<MacAndAddress> MacList = addressDao
+                    .selectMacs(specificAddress,province,city,county);
+            for(MacAndAddress listAddress:MacList){
                 //盒子的对应收集到的人数
-                Integer num=dateNumberDao.selectAllNumber(listAddress.getBoxid());
+                Integer num=dateNumberDao.selectAllNumber(listAddress.getMac_address());
                 AddressAndNumber addressAndNumber=new AddressAndNumber();
                 String str1=listAddress.getSpecificadress();
                 String[] strings=str1.split(specificAddress);

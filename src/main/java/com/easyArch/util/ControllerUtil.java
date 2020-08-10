@@ -11,25 +11,25 @@ import java.util.regex.Pattern;
 import static java.util.regex.Pattern.*;
 
 public class ControllerUtil {
-    public String[] slipAddress(String userAddress) {
+    public static String[] slipAddress(String userAddress) {
         String[] str;
         str = userAddress.split(",");
         return str;
     }
 
-    public String[] slipDate(String date) {
+    public static String[] slipDate(String date) {
         String[] str;
         str = date.split("-");
         return str;
     }
 
-    public String[] slipDate2(String date) {
+    public static String[] slipDate2(String date) {
         String[] str;
         str = date.split(" ");
         return str;
     }
 
-    public String[] slipDate3(String str3) {
+    public static String[] slipDate3(String str3) {
         String[] str;
         str = str3.split(":");
         return str;
@@ -41,7 +41,7 @@ public class ControllerUtil {
      * @param time
      * @return
      */
-    public List<DateAndNumber> filterTowHour(List<DateAndNumber> list, String time) {
+    public static List<DateAndNumber> filterTowHour(List<DateAndNumber> list, String time) {
         List<DateAndNumber> list1 = new ArrayList<>();
         Integer timeT = new Integer(time);
         Integer temp = 0;
@@ -82,7 +82,7 @@ public class ControllerUtil {
         return list1;
     }
 
-    public List<YanGan>filterOneHour(List<YanGan> list,String time){
+    public static List<YanGan>filterOneHour(List<YanGan> list,String time){
         List<YanGan> list1 = new ArrayList<>();
         Integer timeT = new Integer(time);
         Integer temp = 0;
@@ -139,7 +139,7 @@ public class ControllerUtil {
      * @param info
      * @return
      */
-    public String[] getInfo(String info){
+    public static String[] getInfo(String info){
         String[]strings = new String[2];
         Matcher matcher = compile("\\d{2,}").matcher(info);
         int i = 0;
@@ -159,7 +159,7 @@ public class ControllerUtil {
      * @return
      */
     public static List<Map<String, String>> resolution(String address) {
-        String regex = "((?<province>[^省]+省|.+自治区)|上海|北京|天津|重庆)(?<city>[^市]+市|.+自治区)(?<county>[^县]+县|.+区|.+镇|.+局)?(?<town>[^区]+区|.+镇)?(?<data>.*)";
+        String regex = "((?<province>[^省]+省|.+自治区)|上海|北京|天津|重庆)(?<city>[^市]+市|.+自治区)(?<county>[^县]+县|.+区|.+镇|.+局)?(?<town>[^区]+区|.+镇|.+路)?(?<data>.*)";
         Matcher m = compile(regex).matcher(address);
         String province, city, county, town, data;
         List<Map<String, String>> table = new ArrayList<>();
@@ -182,7 +182,7 @@ public class ControllerUtil {
     }
 
     public static void main(String[] args) {
-        String[] placeList = new String[]{"广西省梧州市藤县蒙江镇18街68号二楼", "上海上海市金山区xxxxx", "浙江省台州市玉环县xxxx", "湖北省潜江市潜江经济开发区xxx", "湖北省潜江市江汉石油管理局", "湖北省天门市马湾镇xxx"};
+        String[] placeList = new String[]{"天津天津市津南区大沽南路天津职业师范大学", "广西壮族自治区梧州市藤县蒙江镇189号", "浙江省台州市玉环县xxxx", "湖北省潜江市潜江经济开发区xxx", "湖北省潜江市江汉石油管理局", "湖北省天门市马湾镇xxx"};
         for (String place : placeList) {
             System.out.println(resolution(place));
         }

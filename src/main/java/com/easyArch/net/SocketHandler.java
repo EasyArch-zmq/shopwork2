@@ -15,7 +15,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 @Component
 @Configuration
@@ -23,43 +25,35 @@ import java.util.Arrays;
 public class SocketHandler extends SimpleChannelInboundHandler<String> {
 
     private static final Logger LOGGER= LoggerFactory.getLogger(SocketHandler.class);
-    ControllerUtil util=new ControllerUtil();
     @Autowired
     Time_InfoDao timeInfoDao;
     //这里就是连数据要的dao要注入
-
-
-//    @Override
-//    protected void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
-//
-//        LOGGER.info("传入的数据是："+ControllerUtil.bytesToHexString(msg));
-//        System.out.println(ControllerUtil.bytesToHexString(msg));
-//
-//    }
 
         @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String o) {
         //这里就是要接的字符串o 你要自己解析split()一下
         String substring = o.substring(0, 12);
-        LOGGER.info("mac"+substring);
+//        LOGGER.info("mac"+substring);
         String str = o.substring(12);
         byte[] bytes = HexUtil.hexStringToBytes(str);
         String s = new String(bytes, StandardCharsets.UTF_8);
         LOGGER.info("收的数据"+substring+s);
 
-        LOGGER.info("收的数据:"+o);
-        String []strings=util.getInfo(o);
-        String[] split = o.split("\\(");
-        byte[] bytess = HexUtils.fromHexString(split[0]);
-        LOGGER.info("解析的数据："+ Arrays.toString(bytess) +"\t"+split[1]);
+//        LOGGER.info("收的数据:"+o);
+        String []strings=ControllerUtil.getInfo(s);
+//        String[] split = o.split("\\(");
+//        byte[] bytess = HexUtils.fromHexString(split[0]);
+//        LOGGER.info("解析的数据："+ Arrays.toString(bytess) +"\t"+split[1]);
 
         //设置日期格式
-//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //获取日期
-//        String mytime=df.format(new Date());
+        String mytime=df.format(new Date());
 //        String boxid=strings[0];
-//        Integer yangan=new Integer(strings[1]);
-//        timeInfoDao.insertInfo(boxid,mytime,yangan);
+        String mac_address=substring;
+        Integer yangan=new Integer(strings[1]);
+        LOGGER.info("mac: "+mac_address+"烟感值："+yangan);
+        timeInfoDao.insertInfo(mac_address,mytime,yangan);
     }
     @Override
     public void channelActive(ChannelHandlerContext ctx) {

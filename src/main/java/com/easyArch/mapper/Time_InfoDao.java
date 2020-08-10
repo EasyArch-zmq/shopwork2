@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 public interface Time_InfoDao {
     /**
      * 存入烟感数据，时间（人数）
-     * @param boxid
+     * @param mac_address
      * @param mytime
      * @param yangan
      */
-    void insertInfo(String boxid,String mytime,Integer yangan);
+    void insertInfo(String mac_address,String mytime,Integer yangan);
 }
