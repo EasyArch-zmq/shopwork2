@@ -1,22 +1,25 @@
 package com.easyArch.mapper;
 
-import com.easyArch.entity.Color;
+import com.easyArch.entity.Color1;
+import com.easyArch.entity.Color2;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 @Mapper
 @Repository
 public interface ColorDao {
+
     /**
-     * 查找范围值
+     *
+     * @param mac_address
      * @return
      */
-    Color selectColor();
+    Color1 selectColor(String mac_address);
 
     /**
      * 设置绿色和红色警报
      * @param green
      * @param red
      */
-    void updateColor(String green,String red);
+    void updateColor(String green,String red,String mac_address);
 }

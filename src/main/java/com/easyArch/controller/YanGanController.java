@@ -25,19 +25,18 @@ public class YanGanController {
                      produces = "application/json;charset=utf-8",
                      method = RequestMethod.POST)
     public String yanGan(){
-        ControllerUtil util=new ControllerUtil();
         String userDdress=SelectDefaultNumber_Controller.userDdress;
-        String[]str=util.slipAddress(userDdress);
+        String[]str=ControllerUtil.slipAddress(userDdress);
         String specificAddress=str[3];
         List<YanGan> list=null;
         //设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         //获取日期
         String date2=df.format(new Date());
         String [] str2=ControllerUtil.slipDate2(date2);
-        String date1=str2[0]+" 00:00:00";
-//        list= yanGanDao.yanGanList(str[3], date1, date2);
-        list= yanGanDao.yanGanList(specificAddress, "2020-07-28 00:00:00", "2020-07-28 23:59:59");
+        String date1=str2[0]+" 00:00:00:000";
+        list= yanGanDao.yanGanList(str[3], date1, date2);
+//        list= yanGanDao.yanGanList(specificAddress, "2020-07-28 00:00:00", "2020-07-28 23:59:59");
         String[] strings;
         strings = ControllerUtil.slipDate3(str2[1]);
         List<YanGan> listRes=ControllerUtil.filterOneHour(list,"23");

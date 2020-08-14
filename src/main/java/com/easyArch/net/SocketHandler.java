@@ -46,7 +46,7 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
 //        LOGGER.info("解析的数据："+ Arrays.toString(bytess) +"\t"+split[1]);
 
         //设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         //获取日期
         String mytime=df.format(new Date());
 //        String boxid=strings[0];

@@ -1,10 +1,7 @@
 package com.easyArch.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.easyArch.entity.MacAndDataList;
-import com.easyArch.entity.DateAndNumber;
-import com.easyArch.entity.G_User;
-import com.easyArch.entity.MacAndAddress;
+import com.easyArch.entity.*;
 import com.easyArch.mapper.AddressDao;
 import com.easyArch.mapper.DateNumberDao;
 import com.easyArch.mapper.G_UserDao;
@@ -32,38 +29,54 @@ public class SelectDefaultNumber_Controller {
             , method = RequestMethod.POST)
     public String selectDefaultNumber (@RequestBody G_User g_user) {
         if(g_user!=null){
-            ControllerUtil util = new ControllerUtil();
             List<DateAndNumber> list;
-            List<MacAndDataList>list_data=new ArrayList<>();
             String g_name=g_user.getUsername();
-            System.out.println("vvvvv"+g_name);
-            String g_address=g_userDao.selectG_UserAddress(g_name);
-            System.out.println(g_address);
-            userDdress=g_address;
-            String[] str = ControllerUtil.slipAddress(g_address);
-            String province=str[0];
-            String city=str[1];
-            String county=str[2];
-            String specificAddress=str[3];
-            List<MacAndAddress> macsList = addressDao
-                    .selectMacs(specificAddress,province,city,county);
-            for (MacAndAddress listAddress : macsList) {
-                MacAndDataList macAndDataList = new MacAndDataList();
-                macAndDataList.setMac_address(listAddress.getMac_address());
-                //设置日期格式
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                //获取日期
-                String date2=df.format(new Date());
-                String [] str2=ControllerUtil.slipDate2(date2);
-                String date1=str2[0]+" 00:00:00";
-//                list = dateNumberDao.selectTwoHour(listAddress.getMac_address(),"2020-07-28 00:00:00", "2020-07-28 23:59:00");
-                list = dateNumberDao.selectTwoHour(listAddress.getMac_address(),date1,date2);
+            String userAddress=g_userDao
+                    .selectG_UserAddress(g_name);
+            List<Construction_inDefa>list_data=new ArrayList<>();
+            List<Info_inCons>info_list=new ArrayList<>();
+            String []str=ControllerUtil.slipAddress(userAddress);
+            String city=str[0];
+            String county=str[1];
+            String town=str[2];
+            String street=str[3];
+            String specificAddress=str[4];
+            if(town.equals("*")){
+                town=null;
+            }
+
+            //返回Mac和具体地址
+            List<String> cons_List = addressDao
+                    .select_construction(specificAddress,city,county,town,street);
+            for(int i=0;i<cons_List.size();i++) {
+                Construction_inDefa construction_inDefa = new Construction_inDefa();
+                construction_inDefa.setConstruction(cons_List.get(i));
+                List<String> mac_list = addressDao
+                        .select_mac(specificAddress, city, county, town, street, cons_List.get(i));
+                for (int j = 0; j < mac_list.size(); j++) {
+                    Info_inCons info_inCons=new Info_inCons();
+                    info_inCons.setMac_address(mac_list.get(j));
+                    String tier=addressDao.selectLocation_tier(mac_list.get(j)).getTier();
+                    String location=addressDao.selectLocation_tier(mac_list.get(j)).getLocation();
+                    info_inCons.setTier(tier);
+                    info_inCons.setLocation(location);
+                    //设置日期格式
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    //获取日期
+                    String date2=df.format(new Date());
+                    String [] str2=ControllerUtil.slipDate2(date2);
+                    String date1=str2[0]+" 00:00:00";
+//                list = dateNumberDao.selectTwoHour(mac_list.get(j),"2020-07-28 00:00:00", "2020-07-28 23:59:00");
+                    list = dateNumberDao.selectTwoHour(mac_list.get(j),date1,date2);
 //                String[] strings;
 //                strings = ControllerUtil.slipDate3(str2[1]);
-                List<DateAndNumber>resList=ControllerUtil.filterTowHour(list,"23");
-                macAndDataList.setList(resList);
-                list_data.add(macAndDataList);
-                continue;
+                    List<DateAndNumber>resList=ControllerUtil.filterTowHour(list,"23");
+                    info_inCons.setList_inCons(resList);
+                    info_list.add(info_inCons);
+                }
+                construction_inDefa.setInfo_inCons_List(info_list);
+                list_data.add(construction_inDefa);
+
 
             }
             return JSON.toJSONString(list_data);

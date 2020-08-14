@@ -24,17 +24,6 @@ public class ActiveDown_Controller {
     @Autowired
     DateNumberDao dateNumberDao;
 
-    /**
-     * 返回地址下拉框数据之省
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "ProvinceAddress",method = RequestMethod.POST)
-    public List<String> selecePAddress() {
-        System.out.println("ProvinceAddress!");
-        return addressDao.province();
-    }
-
 
     /**
      * 返回地址下拉框数据之市
@@ -42,9 +31,8 @@ public class ActiveDown_Controller {
      */
     @ResponseBody
     @RequestMapping(value = "CityAddress",method = RequestMethod.POST)
-public List<String> seleceCAddress(@RequestBody Address address){
-        String Province=address.getProvince();
-        return addressDao.city(Province);
+public List<String> seleceCAddress(){
+        return addressDao.city();
         }
 
     /**
@@ -54,9 +42,8 @@ public List<String> seleceCAddress(@RequestBody Address address){
     @ResponseBody
     @RequestMapping(value = "CountyAddress",method = RequestMethod.POST)
 public List<String> seleceCoAddress(@RequestBody Address address) {
-        String Province=address.getProvince();
         String City=address.getCity();
-    return addressDao.county(Province,City);
+    return addressDao.county(City);
 
 }
     /**
@@ -66,10 +53,9 @@ public List<String> seleceCoAddress(@RequestBody Address address) {
     @ResponseBody
     @RequestMapping(value = "SpecificAddress",method = RequestMethod.POST)
     public List<String> seleceSAddress(@RequestBody Address address) {
-        String Province=address.getProvince();
         String City=address.getCity();
         String County=address.getCounty();
-        return addressDao.specificAddress(Province,City,County);
+        return addressDao.specificAddress(City,County);
     }
 
 
@@ -83,34 +69,62 @@ public List<String> seleceCoAddress(@RequestBody Address address) {
     public String selectAllNumber(@RequestBody P_User p_user){
         if(p_user!=null){
             String username=p_user.getUsername();
-            //获取范围值
-            Color color=colorDao.selectColor();
             //返回给前端整个页面需要的数据总类
             AllNumber allNumber=new AllNumber();
-            List<AddressAndNumber>list=new ArrayList<>();
+            List<Data_inCons>list_inCons=new ArrayList<>();
+
+            List<Construction_inAll>list_inAll=new ArrayList<>();
             //数据之一：用户地址
-            String userAddress=p_userDao.selectUserAddress(username);
+            String userAddress=p_userDao
+                    .selectUserAddress(username);
             String []str=ControllerUtil.slipAddress(userAddress);
-            String province=str[0];
-            String city=str[1];
-            String county=str[2];
-            String specificAddress=str[3];
-            //返回Mac和具体地址
-            List<MacAndAddress> MacList = addressDao
-                    .selectMacs(specificAddress,province,city,county);
-            for(MacAndAddress listAddress:MacList){
-                //盒子的对应收集到的人数
-                Integer num=dateNumberDao.selectAllNumber(listAddress.getMac_address());
-                AddressAndNumber addressAndNumber=new AddressAndNumber();
-                String str1=listAddress.getSpecificadress();
-                String[] strings=str1.split(specificAddress);
-                addressAndNumber.setAddress(strings[1]);
-                addressAndNumber.setNumber(num);
-                list.add(addressAndNumber);
+            String city=str[0];
+            String county=str[1];
+            String town=str[2];
+            String street=str[3];
+            String specificAddress=str[4];
+            if(town.equals("*")){
+                town=null;
             }
+            //返回Mac和具体地址
+            List<String> cons_List = addressDao
+                    .select_construction(specificAddress,city,county,town,street);
+            for(int i=0;i<cons_List.size();i++){
+
+                Construction_inAll construction_inAll=new Construction_inAll();
+                construction_inAll.setConstruction(cons_List.get(i));
+
+                List<String>mac_list=addressDao
+                        .select_mac(specificAddress,city,county,town,street,cons_List.get(i));
+
+                for (int j = 0; j <mac_list.size() ; j++) {
+                    //红绿警报范围值
+                    Color1 color1=colorDao
+                            .selectColor(mac_list.get(j));
+
+                    Location_tier locationTier=addressDao
+                            .selectLocation_tier(mac_list.get(j));
+
+                    //盒子的对应收集到的人数
+                    Integer num=dateNumberDao
+                            .selectAllNumber(mac_list.get(j));
+                    System.out.println("----------->num:"+num +"------------>mac:"+mac_list.get(j));
+                    Data_inCons data_inCons =new Data_inCons();
+
+                    data_inCons.setNumber(num);
+                    data_inCons.setLocation(locationTier.getLocation());
+                    data_inCons.setTier(locationTier.getTier());
+                    data_inCons.setColor(color1);
+                    data_inCons.setMac_address(mac_list.get(j));
+                    list_inCons.add(data_inCons);
+                }
+                construction_inAll.setList_inCons(list_inCons);
+                list_inAll.add(construction_inAll);
+            }
+
+            allNumber.setList_inAll(list_inAll);
             allNumber.setUserAddress(specificAddress);
-            allNumber.setColor(color);
-            allNumber.setList(list);
+
             return JSON.toJSONString(allNumber);
         }
         return JSON.toJSONString("f");

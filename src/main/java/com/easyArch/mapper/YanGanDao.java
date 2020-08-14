@@ -12,10 +12,10 @@ public interface YanGanDao {
 
     /**
      * 查看当天零点到目前为止的烟感数据情况
-     * @param specificadress：用户具体地址用来模糊查找boxid
+     * @param specific_address：用户具体地址用来模糊查找boxid
      * @param date1：当天的零点
      * @param date2：截取的系统时间时间
      * @return
      */
-    List<YanGan>yanGanList(String specificadress,String date1,String date2);
+    List<YanGan>yanGanList(String specific_address,String date1,String date2);
 }

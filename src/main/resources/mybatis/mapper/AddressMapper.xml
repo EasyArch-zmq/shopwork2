@@ -3,29 +3,52 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.easyArch.mapper.AddressDao">
-    <select id="province" resultType="java.lang.String">
-       select distinct province from address_info
-    </select>
     <select id="city" resultType="java.lang.String">
-       select distinct city from address_info where province=#{province}
+       select distinct city from address_info
     </select>
     <select id="county" resultType="java.lang.String">
-       select distinct county from address_info where (province=#{province} and city=#{city})
+       select distinct county from address_info where city=#{city}
     </select>
+    <select id="town" resultType="java.lang.String">
+       select distinct town from address_info where (city=#{city} and county=#{county})
+    </select>
+    <select id="street" resultType="java.lang.String">
+       select distinct street from address_info where
+       (city=#{city} and county=#{county} and town=#{town} )
+    </select>
+
     <select id="specificAddress" resultType="java.lang.String">
-       select distinct specificadress from address_info where
-       (province=#{province} and city=#{city} and county=#{county} )
+       select distinct specific_address from address_info where
+       (city=#{city} and county=#{county}
+       and town=#{town} and street=#{street})
     </select>
 
 
-    <resultMap id="MacListAndAddress" type="com.easyArch.entity.MacAndAddress">
-        <result column="mac_address" property="mac_address"/>
-        <result column="specificadress" property="specificadress"/>
-    </resultMap>
-    <select id="selectMacs" resultType="com.easyArch.entity.MacAndAddress">
-       select mac_address,specificadress from address_info where specificadress
-       like #{specificadress}"%" and (province=#{province}
-       and city=#{city} and county=#{county})
+
+    <select id="select_construction" resultType="java.lang.String">
+       select distinct construction from address_info where specific_address
+       like #{specific_address}"%"
+       and (city=#{city}
+       and county=#{county}
+       and town=#{town}
+       and street=#{street})
     </select>
+    <select id="select_mac" resultType="java.lang.String">
+       select mac_address from address_info where specific_address
+       like #{specific_address}"%"
+       and (city=#{city}
+       and county=#{county}
+       and town=#{town}
+       and street=#{street} and construction=#{construction})
+    </select>
+
+    <select id="select_tier" resultType="java.lang.String">
+        select tier from address_info where mac_address=#{mac_address}
+    </select>
+
+    <select id="selectLocation_tier" resultType="com.easyArch.entity.Location_tier">
+        select location,tier from address_info where mac_address=#{mac_address}
+    </select>
+
 
 </mapper>
