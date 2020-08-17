@@ -42,9 +42,6 @@
        and street=#{street} and construction=#{construction})
     </select>
 
-    <select id="select_tier" resultType="java.lang.String">
-        select tier from address_info where mac_address=#{mac_address}
-    </select>
 
     <select id="selectLocation_tier" resultType="com.easyArch.entity.Location_tier">
         select location,tier from address_info where mac_address=#{mac_address}

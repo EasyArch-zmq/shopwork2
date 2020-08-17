@@ -31,7 +31,7 @@ public class ActiveDown_Controller {
      */
     @ResponseBody
     @RequestMapping(value = "CityAddress",method = RequestMethod.POST)
-public List<String> seleceCAddress(){
+public List<String> selectCAddress(){
         return addressDao.city();
         }
 
@@ -41,11 +41,38 @@ public List<String> seleceCAddress(){
      */
     @ResponseBody
     @RequestMapping(value = "CountyAddress",method = RequestMethod.POST)
-public List<String> seleceCoAddress(@RequestBody Address address) {
+public List<String> selectCoAddress(@RequestBody Address address) {
         String City=address.getCity();
     return addressDao.county(City);
 
 }
+
+    /**
+     * 返回地址下拉框数据之镇
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "TownAddress",method = RequestMethod.POST)
+    public List<String> selectToAddress(@RequestBody Address address) {
+        String City=address.getCity();
+        String County=address.getCounty();
+        return addressDao.town(City,County);
+
+    }
+
+    /**
+     * 返回地址下拉框数据之镇
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "StreetAddress",method = RequestMethod.POST)
+    public List<String> selectStAddress(@RequestBody Address address) {
+        String City=address.getCity();
+        String County=address.getCounty();
+        String Town=address.getTown();
+        return addressDao.street(City,County,Town);
+
+    }
     /**
      * 返回地址下拉框数据之具体地址提示
      * @return
@@ -55,7 +82,9 @@ public List<String> seleceCoAddress(@RequestBody Address address) {
     public List<String> seleceSAddress(@RequestBody Address address) {
         String City=address.getCity();
         String County=address.getCounty();
-        return addressDao.specificAddress(City,County);
+        String Town=address.getTown();
+        String Street=address.getStreet();
+        return addressDao.specificAddress(City,County,Town,Street);
     }
 
 

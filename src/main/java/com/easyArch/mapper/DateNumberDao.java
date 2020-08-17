@@ -23,22 +23,34 @@ public interface DateNumberDao {
      */
     List<DateAndNumber>selectTwoHour(String mac_address,String date1,String date2);
 
-    List<DateAndNumber>selectTwoHour1(String province ,String date1,String date2);
+    List<DateAndNumber>selectTwoHour_Ci(String city,String date1,String date2);
 
-    List<DateAndNumber>selectTwoHour2(String province ,String city,String date1,String date2);
+    List<DateAndNumber>selectTwoHour_Co(String city,String county,String date1,String date2);
 
-    List<DateAndNumber>selectTwoHour3(String province ,String city,String county,String date1,String date2);
+    List<DateAndNumber>selectTwoHour_To(String city,String county,String town,String date1,String date2);
+
+    List<DateAndNumber>selectTwoHour_St(String city,String county,String town,String street,String date1,String date2);
+
+    List<DateAndNumber>selectTwoHour_Sp(String city,String county,String town,String street,String specific_address,String date1,String date2);
     /**
      * 每日查询
      * @param date1
      * @param date2
      * @return
      */
-    List<DateAndNumber>selectDay1(String province ,String date1,String date2);
 
-    List<DateAndNumber>selectDay2(String province ,String city,String date1,String date2);
 
-    List<DateAndNumber>selectDay3(String province ,String city,String county,String date1,String date2);
+    List<DateAndNumber>selectDay(String mac_address,String date1,String date2);
+    
+    List<DateAndNumber>selectDay_Ci(String city,String date1,String date2);
+
+    List<DateAndNumber>selectDay_Co(String city,String county,String date1,String date2);
+
+    List<DateAndNumber>selectDay_To(String city,String county,String town,String date1,String date2);
+
+    List<DateAndNumber>selectDay_St(String city,String county,String town,String street,String date1,String date2);
+
+    List<DateAndNumber>selectDay_Sp(String city,String county,String town,String street,String specific_address,String date1,String date2);
 
     /**
      * 每月查询
@@ -46,11 +58,18 @@ public interface DateNumberDao {
      * @param date2
      * @return
      */
-    List<DateAndNumber>selectMonth1(String province ,String date1,String date2);
 
-    List<DateAndNumber>selectMonth2(String province,String city ,String date1,String date2);
+    List<DateAndNumber>selectMonth(String mac_address ,String date1,String date2);
+    
+    List<DateAndNumber>selectMonth_Ci(String city ,String date1,String date2);
 
-    List<DateAndNumber>selectMonth3(String province ,String city,String county,String date1,String date2);
+    List<DateAndNumber>selectMonth_Co(String city,String county,String date1,String date2);
+
+    List<DateAndNumber>selectMonth_To(String city,String county,String town,String date1,String date2);
+
+    List<DateAndNumber>selectMonth_St(String city,String county,String town,String street,String date1,String date2);
+
+    List<DateAndNumber>selectMonth_Sp(String city,String county,String town,String street,String specific_address,String date1,String date2);
 
     /**
      *每年查询到省
@@ -58,19 +77,25 @@ public interface DateNumberDao {
      * @param date2
      * @return
      */
-    List<DateAndNumber>selectYear1(String province ,String date1,String date2);
+    List<DateAndNumber>selectYear(String mac_address,String date1,String date2);
+
+    List<DateAndNumber>selectYear_Ci(String city,String date1,String date2);
 
     /**
      * 到市
-     * @param province
+     * @param
      * @param city
      * @param date1
      * @param date2
      * @return
      */
-    List<DateAndNumber>selectYear2(String province ,String city,String date1,String date2);
+    List<DateAndNumber>selectYear_Co(String city,String county,String date1,String date2);
 
-    List<DateAndNumber>selectYear3(String province ,String city,String county,String date1,String date2);
+    List<DateAndNumber>selectYear_To(String city,String county,String town,String date1,String date2);
+
+    List<DateAndNumber>selectYear_St(String city,String county,String town,String street,String date1,String date2);
+
+    List<DateAndNumber>selectYear_Sp(String city,String county,String town,String street,String specific_address,String date1,String date2);
 
 
 }

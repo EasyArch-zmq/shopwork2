@@ -46,14 +46,17 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
 //        LOGGER.info("解析的数据："+ Arrays.toString(bytess) +"\t"+split[1]);
 
         //设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         //获取日期
-        String mytime=df.format(new Date());
+
+        String[] time_split=ControllerUtil.slipDate4(df.format(new Date()));
+        String mytime=time_split[0];
+        String hao_miao=time_split[1];
 //        String boxid=strings[0];
         String mac_address=substring;
         Integer yangan=new Integer(strings[1]);
         LOGGER.info("mac: "+mac_address+"烟感值："+yangan);
-        timeInfoDao.insertInfo(mac_address,mytime,yangan);
+        timeInfoDao.insertInfo(mac_address,mytime,hao_miao,yangan);
     }
     @Override
     public void channelActive(ChannelHandlerContext ctx) {

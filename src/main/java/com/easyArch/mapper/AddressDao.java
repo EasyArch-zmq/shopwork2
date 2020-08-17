@@ -31,20 +31,16 @@ public interface AddressDao {
     List<String>street(String city,String county,String town);
 
     /**
-     * 具体
-     * @return
-     */
-    List<String>specificAddress(String city,String county);
-
-    /**
      *
-     * @param specific_address
      * @param city
      * @param county
      * @param town
      * @param street
      * @return
      */
+    List<String>specificAddress(String city,String county,String town,String street);
+
+
     List<String> select_construction(@Param("specific_address") String specific_address, String city, String county, String town, String street);
 
     Location_tier selectLocation_tier(String mac_address);
@@ -61,6 +57,5 @@ public interface AddressDao {
      */
     List<String>select_mac(@Param("specific_address") String specific_address, String city, String county, String town, String street,String construction);
 
-    String select_tier(String mac_address);
 
 }

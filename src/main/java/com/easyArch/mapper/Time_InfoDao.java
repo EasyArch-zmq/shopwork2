@@ -10,7 +10,8 @@ public interface Time_InfoDao {
      * 存入烟感数据，时间（人数）
      * @param mac_address
      * @param mytime
+     * @param hao_miao
      * @param yangan
      */
-    void insertInfo(String mac_address,String mytime,Integer yangan);
+    void insertInfo(String mac_address,String mytime,String hao_miao,Integer yangan);
 }

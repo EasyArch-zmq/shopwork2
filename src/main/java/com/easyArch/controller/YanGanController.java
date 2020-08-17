@@ -19,7 +19,6 @@ public class YanGanController {
 
     @Autowired
     YanGanDao yanGanDao;
-    ControllerUtil util=new ControllerUtil();
     @ResponseBody
     @RequestMapping( value = "yanGan",
                      produces = "application/json;charset=utf-8",

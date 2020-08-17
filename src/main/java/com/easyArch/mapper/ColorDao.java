@@ -1,7 +1,6 @@
 package com.easyArch.mapper;
 
 import com.easyArch.entity.Color1;
-import com.easyArch.entity.Color2;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

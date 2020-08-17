@@ -1,7 +1,12 @@
 package com.easyArch.util;
 
+import com.alibaba.fastjson.JSON;
 import com.easyArch.entity.DateAndNumber;
 import com.easyArch.entity.YanGan;
+import com.easyArch.mapper.Date_TimeDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -11,6 +16,7 @@ import java.util.regex.Pattern;
 import static java.util.regex.Pattern.*;
 
 public class ControllerUtil {
+
     public static String[] slipAddress(String userAddress) {
         String[] str;
         str = userAddress.split(",");
@@ -32,6 +38,11 @@ public class ControllerUtil {
     public static String[] slipDate3(String str3) {
         String[] str;
         str = str3.split(":");
+        return str;
+    }
+    public static String[] slipDate4(String str3) {
+        String[] str;
+        str = str3.split(" :");
         return str;
     }
 
@@ -186,7 +197,7 @@ public class ControllerUtil {
         for (String place : placeList) {
             System.out.println(resolution(place));
         }
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");//设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");//设置日期格式
 
         System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
 
