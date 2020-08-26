@@ -1,4 +1,4 @@
-const BASE_URL = 'http://121.199.21.197:63391'
+const BASE_URL = 'http://121.199.21.197:63392'
 $(document).ready(() => {
     $('#g_Login').click(() => {
         let username = $('#user_name').val()
@@ -13,7 +13,7 @@ $(document).ready(() => {
                 console.log(res)
                 if(res === 'T'){
                     window.localStorage.setItem('g_username', $('#user_name').val());
-                    window.location.href = "http://121.199.21.197:63391/RiskControll" }
+                    window.location.href = "RiskControll.html" }
                 else{
                     alert("登陆失败，用户名或密码错误！")}
             }
@@ -34,7 +34,7 @@ $(document).ready(() => {
             success: function (res) {
                 if (res === 'T') {
                     window.localStorage.setItem('p_username', $('#user_name1').val());
-                    window.location.href = "http://121.199.21.197:63391/p_main"
+                    window.location.href = "p_main.html"
                 } else {
                     alert("登陆失败，用户名或密码错误！")
                 }

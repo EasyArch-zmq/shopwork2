@@ -1,11 +1,13 @@
 package com.easyArch.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.easyArch.Application;
 import com.easyArch.entity.*;
 import com.easyArch.mapper.AddressDao;
 import com.easyArch.mapper.DateNumberDao;
 import com.easyArch.mapper.G_UserDao;
 import com.easyArch.util.ControllerUtil;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +18,8 @@ import java.util.List;
 
 @RestController
 public class SelectDefaultNumber_Controller {
-    public static String userDdress;
+    private static final Logger logger=Logger.getLogger(SelectDefaultNumber_Controller.class);
+    public static String user_Address;
     @Autowired
     AddressDao addressDao;
     @Autowired
@@ -33,6 +36,8 @@ public class SelectDefaultNumber_Controller {
             String g_name=g_user.getUsername();
             String userAddress=g_userDao
                     .selectG_UserAddress(g_name);
+            SelectDefaultNumber_Controller.user_Address=userAddress;
+            System.out.println("g_userDdress:"+userAddress);
             List<Construction_inDefa>list_data=new ArrayList<>();
             List<Info_inCons>info_list=new ArrayList<>();
             String []str=ControllerUtil.slipAddress(userAddress);

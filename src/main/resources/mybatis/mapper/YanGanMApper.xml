@@ -6,7 +6,10 @@
     <select id="yanGanList" resultType="com.easyArch.entity.YanGan">
        select date_format(mytime,'%H')AS time,
         avg (yangan) As yangan from time_info where mac_address in (select mac_address from address_info
-        where specificadress like #{specificadress}"%")
+        where city=#{city} and county=#{county}
+        and town=#{town}
+        and street=#{street}
+        and (specific_address like #{specific_address}"%"))
         and (mytime between #{date1}
         and #{date2})
         group by time

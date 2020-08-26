@@ -17,5 +17,16 @@ public interface YanGanDao {
      * @param date2：截取的系统时间时间
      * @return
      */
-    List<YanGan>yanGanList(String specific_address,String date1,String date2);
+    /**
+     *
+     * @param city
+     * @param county
+     * @param town
+     * @param street
+     * @param specific_address
+     * @param date1
+     * @param date2
+     * @return
+     */
+    List<YanGan>yanGanList(String city,String county,String town,String street,String specific_address,String date1,String date2);
 }

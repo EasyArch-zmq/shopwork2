@@ -3,6 +3,7 @@ package com.easyArch.mapper;
 
 import com.easyArch.entity.Location_tier;
 
+import com.easyArch.entity.Mac_Loc;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -57,5 +58,6 @@ public interface AddressDao {
      */
     List<String>select_mac(@Param("specific_address") String specific_address, String city, String county, String town, String street,String construction);
 
+    List<Mac_Loc>select_ma_lo(String city, String county, String town, String street, @Param("specific_address") String specific_address);
 
 }

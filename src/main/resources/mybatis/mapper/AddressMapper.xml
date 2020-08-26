@@ -47,5 +47,12 @@
         select location,tier from address_info where mac_address=#{mac_address}
     </select>
 
+    <select id="select_ma_lo" resultType="com.easyArch.entity.Mac_Loc">
+        select location,mac_address from address_info where
+        (city=#{city} and county=#{county}
+        and town=#{town}
+        and street=#{street}
+        and specific_address like #{specific_address}"%")
+    </select>
 
 </mapper>

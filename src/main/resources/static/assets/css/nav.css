@@ -120,3 +120,27 @@ html, body { height: 100%; }
 #footer p.copy { float: right; color: #5f5f5f; font-size: 11px; }
 #footer p.copy a { color: #717171; text-decoration: underline; }
 #footer p.copy a:hover { text-decoration: none; }
+.sel{color: black;text-decoration: none}
+.sel:hover{text-decoration: none}
+.sela{color: black;text-decoration: none;
+}
+.sela:hover{text-decoration: none}
+
+#list{
+    /*width: 15%;*/
+    /*margin-left: 36px;*/
+    /*text-align: center;*/
+    border: none;
+    float: left;
+    /*margin-bottom: 80px;*/
+    background-color: transparent;
+}
+#change{
+   font-size: 18px;
+}
+.sela{
+    width:70px;
+    text-decoration: black;
+    background-color: transparent;
+    border: none;
+}

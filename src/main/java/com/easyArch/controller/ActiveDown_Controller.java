@@ -6,7 +6,10 @@ import com.easyArch.mapper.AddressDao;
 import com.easyArch.mapper.ColorDao;
 import com.easyArch.mapper.DateNumberDao;
 import com.easyArch.mapper.P_UserDao;
+import com.easyArch.net.SocketHandler;
 import com.easyArch.util.ControllerUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +18,7 @@ import java.util.List;
 
 @RestController
 public class ActiveDown_Controller {
+    private static final Logger LOGGER= LoggerFactory.getLogger(ActiveDown_Controller.class);
     @Autowired
     AddressDao addressDao;
     @Autowired
@@ -85,6 +89,19 @@ public List<String> selectCoAddress(@RequestBody Address address) {
         String Town=address.getTown();
         String Street=address.getStreet();
         return addressDao.specificAddress(City,County,Town,Street);
+    }
+    @ResponseBody
+    @RequestMapping(value = "Mac_Address"
+            , produces = "application/json;charset=utf-8"
+            ,method = RequestMethod.POST)
+    public String mac_Address(@RequestBody Address address) {
+        String City=address.getCity();
+        String County=address.getCounty();
+        String Town=address.getTown();
+        String Street=address.getStreet();
+        String Specific_address=address.getSpecial_address();
+        List<Mac_Loc>locList=addressDao.select_ma_lo(City,County,Town,Street,Specific_address);
+        return JSON.toJSONString(locList);
     }
 
 

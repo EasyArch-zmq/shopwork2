@@ -227,7 +227,7 @@ body{
     width: 700px;
     height: 413px;
     overflow: hidden;
-    background-image: url('../imgs/timg.jpg');
+    background-image: url('../../assets/imgs/timg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

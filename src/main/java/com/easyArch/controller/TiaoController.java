@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TiaoController {
 
-    @RequestMapping("login")
+    @RequestMapping("Login")
     public String login(){
-        System.out.println("login");
+        System.out.println("Login");
         return "peoplenumber/pulic/html/Login";
 
     }

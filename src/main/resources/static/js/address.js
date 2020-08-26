@@ -1,154 +1,205 @@
-// const BASE_URL = 'http://121.199.21.197:63391'
+// const BASE_URL = 'http://121.199.21.197:63392'
 $(document).ready(() => {
 
     $.ajax({
-        url: `${BASE_URL}` + '/ProvinceAddress',
+        url: `${BASE_URL}` + '/CityAddress',
         method: 'post',
         contentType: "application/json",
         success: function (res) {
             console.log(res[0])
             console.log(res.length)
             let pro, options;
-            for (let i = 0; i < res.length; i++) {
-                pro = $("#province");
-                options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
-            }
+            for(let i=0; i<res.length; i++)
+            {  pro =$("#city");
+                options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
             pro.append(options);
         }
     })
-    $('#province').change(function () {
-        var opt = $("#province").val();
+
+    $('#city').change(function(){
+        var opt=$("#city").val();
         console.log(opt)
         // var d=[{Province:opt}]
         $.ajax({
-            url: `${BASE_URL}` + '/CityAddress',
+            url: `${BASE_URL}` + '/CountyAddress',
             // data: d,
-            data: '{ "province": "' + opt + '"}',
+            data: '{ "city": "'+opt+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res);
                 let pro, options;
-                for (let i = 0; i < res.length; i++) {
-                    pro = $("#city");
-                    options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
-                }
+                for(let i=0; i<res.length; i++)
+                {  pro =$('#country');
+                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
                 pro.append(options);
             }
         })
     });
-    $("#city").change(function () {
-        var city = $("#city").val();
-        var pro = $("#province").val();
+    $('#country').change(function(){
+        var city=$("#city").val();
+        var pro=$("#country").val();
         $.ajax({
-            url: `${BASE_URL}` + '/CountyAddress',
-            data: '{"province":"' + pro + '","city":"' + city + '"}',
+            url: `${BASE_URL}` + '/TownAddress',
+            data:'{"city":"'+city+'","county":"'+pro+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
                 let pro, options;
-                for (let i = 0; i < res.length; i++) {
-                    pro = $("#country");
-                    options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
-                }
+                for(let i=0; i<res.length; i++)
+                {  pro =$("#town");
+                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
                 pro.append(options);
             }
         })
     });
-    $("#country").change(function () {
-        var city = $("#city").val();
-        var pro = $("#province").val();
-        var coun = $("#country").val();
+    $('#town').change(function(){
+        var city=$("#city").val();
+        var pro=$("#country").val();
+        var town=$("#town").val();
         $.ajax({
-            url: `${BASE_URL}` + '/SpecificAddress',
-            data: '{"province":"' + pro + '","city":"' + city + '","county":"' + coun + '"}',
+            url: `${BASE_URL}` + '/StreetAddress',
+            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
-                $("#address").autocomplete({
-                    source: res,
-                    messages: {
-                        // noResults:"按上下键进行选择",
-                    }
-                });
+                let pro, options;
+                for(let i=0; i<res.length; i++)
+                {  pro =$("#street");
+                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+                pro.append(options);
+            }
+        })
+    });
+    $("#street").change(function(){
+        var city=$("#city").val();
+        var pro=$("#country").val();
+        var town=$("#town").val();
+        var str=$("#street").val();
+        $.ajax({
+            url: `${BASE_URL}` + '/SpecificAddress',
+            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'"}',
+            method: 'post',
+            contentType: "application/json",
+            success: function (res) {
+                console.log(res)
+                for(var i=0;i<res.length;i++)
+                    $("#auto").append('<option label="'+res[0]+'" value="'+res[0]+'"></option>');
+            }
+        })
+    });
+
+    $('#special_address').change(function(){
+        var city=$("#city").val();
+        var pro=$("#country").val();
+        var town=$("#town").val();
+        var str=$("#street").val();
+        var spe=$("#special_address").val();
+        // alert(spe)
+        $.ajax({
+            url: `${BASE_URL}` + '/Mac_Address',
+            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'","special_address":"'+spe+'"}',
+            method: 'post',
+            contentType: "application/json",
+            success: function (res) {
+                console.log(res)
+                let pro, options;
+                for(let i=0; i<res.length; i++)
+                {  pro =$("#box");
+                    options += '<option value="' + res[i].location+res[i].mac_address+ '" >' + res[i].location+res[i].mac_address+ '</option>';}
+                pro.append(options);
             }
         })
     });
 
     $.ajax({
-        url: `${BASE_URL}` + '/ProvinceAddress',
+        url: `${BASE_URL}` + '/CityAddress',
         method: 'post',
         contentType: "application/json",
         success: function (res) {
             console.log(res[0])
             console.log(res.length)
             let pro, options;
-            for (let i = 0; i < res.length; i++) {
-                pro = $("#province1");
-                options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
-            }
+            for(let i=0; i<res.length; i++)
+            {  pro =$("#city1");
+                options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
             pro.append(options);
         }
     })
-    $('#province1').change(function () {
-        var opt = $("#province1").val();
+
+    $('#city1').change(function(){
+        var opt=$("#city1").val();
         console.log(opt)
         // var d=[{Province:opt}]
         $.ajax({
-            url: `${BASE_URL}` + '/CityAddress',
+            url: `${BASE_URL}` + '/CountyAddress',
             // data: d,
-            data: '{ "province": "' + opt + '"}',
+            data: '{ "city": "'+opt+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res);
                 let pro, options;
-                for (let i = 0; i < res.length; i++) {
-                    pro = $("#city1");
-                    options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
-                }
+                for(let i=0; i<res.length; i++)
+                {  pro =$('#country1');
+                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
                 pro.append(options);
             }
         })
     });
-    $("#city1").change(function () {
-        var city = $("#city1").val();
-        var pro = $("#province1").val();
+    $('#country1').change(function() {
+        var city=$("#city1").val();
+        var pro=$("#country1").val();
         $.ajax({
-            url: `${BASE_URL}` + '/CountyAddress',
-            data: '{"province":"' + pro + '","city":"' + city + '"}',
+            url: `${BASE_URL}` + '/TownAddress',
+            data:'{"city":"'+city+'","county":"'+pro+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
                 let pro, options;
-                for (let i = 0; i < res.length; i++) {
-                    pro = $("#country1");
-                    options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
-                }
+                for(let i=0; i<res.length; i++)
+                {  pro =$("#town1");
+                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
                 pro.append(options);
             }
         })
     });
-    $("#country1").change(function () {
-        var city = $("#city1").val();
-        var pro = $("#province1").val();
-        var coun = $("#country1").val();
+    $('#town1').change(function() {
+        var city=$("#city1").val();
+        var pro=$("#country1").val();
+        var town=$("#town1").val();
         $.ajax({
-            url: `${BASE_URL}` + '/SpecificAddress',
-            data: '{"province":"' + pro + '","city":"' + city + '","county":"' + coun + '"}',
+            url: `${BASE_URL}` + '/StreetAddress',
+            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
-                $("#address1").autocomplete({
-                    source: res,
-                    messages: {
-                        // noResults:"按上下键进行选择",
-                    }
-                });
+                let pro, options;
+                for(let i=0; i<res.length; i++)
+                {  pro =$("#street1");
+                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+                pro.append(options);
+            }
+        })
+    });
+    $("#street1").change(function(){
+        var city=$("#city1").val();
+        var pro=$("#country1").val();
+        var town=$("#town1").val();
+        var str=$("#street1").val();
+        $.ajax({
+            url: `${BASE_URL}` + '/SpecificAddress',
+            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'"}',
+            method: 'post',
+            contentType: "application/json",
+            success: function (res) {
+                console.log(res)
+                for(var i=0;i<res.length;i++)
+                    $("#auto1").append('<option label="'+res[0]+'" value="'+res[0]+'"></option>');
             }
         })
     });

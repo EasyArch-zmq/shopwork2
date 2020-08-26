@@ -768,7 +768,7 @@ body {
     width: 65%;
 }
 .light-address{
-    margin-top: 35px;
+    margin-top: 25px;
     margin-bottom: 12px;
     font-size: 17px;
     font-family: Arial, Helvetica, sans-serif;
@@ -789,4 +789,31 @@ body {
     line-height: 16px;
     margin-bottom: 12px;
 
+}
+#pselect{
+
+    width: 45%;
+    height: 50px;
+    border: none;
+    color: white;
+    font-size: 24px;
+    background-color: transparent;
+}
+#pselect::-webkit-input-placeholder{
+    color: #fec503;
+}
+#itemlist{
+    color: #fec503;
+}
+#address2{
+    font-size: 25px;
+    margin-right: 20px;
+    margin-left: 4%;
+}
+#list{
+    width: 15%;
+    margin-left: 36px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
 }

@@ -8,4 +8,5 @@ public class Address {
     private String county;
     private String town;
     private String street;
+    private String special_address;
 }

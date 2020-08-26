@@ -4,18 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <script src="../../../../static/assets/js/jquery.js"></script>
+    <script src="../static/assets/js/jquery.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Bootstrap Core CSS -->
-    <link href="../../../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../../../../static/css/five.css" rel="stylesheet">
+    <link href="../static/css/five.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.useso.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<!--    <link href="../font-awesome-4.1.0/css/font-awesome.min./css" rel="stylesheet" type="text/css">-->
+<!--    <link href="http://fonts.useso.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">-->
     <link href='http://fonts.useso.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='http://fonts.useso.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.useso.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -37,6 +37,7 @@
         <span class="navbar-header page-scroll">
             <a class="navbar-brand page-scroll" id="address1"  style="font-size: 30px">
                 天津职业技术师范大学</a>
+
         </span>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -47,7 +48,7 @@
                 <li> <a class="page-scroll">用户名：<span id="user">张三</span></a> </li>
                 <li> <a class="page-scroll" ></a> </li>
                 <li> <a class="page-scroll"></a> </li>
-                <li> <a class="page-scroll" href="http://121.199.21.197:63391/login">退出当前用户</a> </li>
+                <li> <a class="page-scroll" href="http://121.199.21.197:63392/Login">退出当前用户</a> </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -57,18 +58,25 @@
 <div id="header">
     <div class="container" style="height:100% " >
         <div style="margin-top: 120px;">
+            <div style="margin-bottom: 25px;">
+                <div class="row">
+            <span id="address2" class="form-inline" style="float:left;">sbhscjbjbj</span>
+            <select type="text" class="form-control" id="list" >
+<!--                <option>北方</option>-->
+            </select>
+                </div>
+            </div>
             <div class="row top" >
                 <div class="col-md-4 col-sm-4 text-center" id="ssx">
-
                 </div>
                 <div class="col-xs-8 col-sm-8 text-center">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
-                            <img class="plane" src="../../../../static/assets/img/plane1改.jpg" usemap="#Map">
+                            <img class="plane" id="img1" src="../static/assets/img/plane114.jpg" usemap="#Map">
 
                         </div>
                         <div class="col-md-6 col-sm-6">
-                            <img class="plane" src="../../../../static/assets/img/plane2改.jpg" >
+                            <img class="plane" src="../static/assets/img/plane214.jpg" >
                         </div>
                     </div>
                 </div>
@@ -127,5 +135,5 @@
 <!--        document.getElementById('ssx').appendChild(container);-->
 <!--    }-->
 <!--</script>-->
-</body><script src="../../../../static/js/light.js"></script>
+</body><script src="../static/js/light.js"></script>
 </html>

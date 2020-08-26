@@ -39,18 +39,31 @@ public interface DateNumberDao {
      * @return
      */
 
+    Integer selectDayAndTime(String mac_address, String date1, String date2);
 
     List<DateAndNumber>selectDay(String mac_address,String date1,String date2);
     
     List<DateAndNumber>selectDay_Ci(String city,String date1,String date2);
 
+    Integer selectDay_adCi(String city,String date1,String date2);
+
     List<DateAndNumber>selectDay_Co(String city,String county,String date1,String date2);
+
+    Integer selectDay_adCo(String city,String county,String date1,String date2);
+
 
     List<DateAndNumber>selectDay_To(String city,String county,String town,String date1,String date2);
 
+    Integer selectDay_adTo(String city,String county,String town,String date1,String date2);
+
     List<DateAndNumber>selectDay_St(String city,String county,String town,String street,String date1,String date2);
 
+    Integer selectDay_adSt(String city,String county,String town,String street,String date1,String date2);
+
+
     List<DateAndNumber>selectDay_Sp(String city,String county,String town,String street,String specific_address,String date1,String date2);
+
+    Integer selectDay_adSp(String city,String county,String town,String street,String specific_address,String date1,String date2);
 
     /**
      * 每月查询

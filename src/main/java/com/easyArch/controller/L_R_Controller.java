@@ -6,12 +6,16 @@ import com.easyArch.entity.G_User;
 import com.easyArch.mapper.G_UserDao;
 import com.easyArch.mapper.P_UserDao;
 import com.easyArch.entity.P_User;
+import com.easyArch.net.SocketHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 public class L_R_Controller {
+    private static final Logger LOGGER= LoggerFactory.getLogger(L_R_Controller.class);
 
     @Autowired
     P_UserDao p_userDao;

@@ -1,10 +1,9 @@
 const myChart = echarts.init(document.getElementById("bar"));
-const BASE_URL = 'http://121.199.21.197:63391'
+const BASE_URL = 'http://121.199.21.197:63392'
 var people=[];
 var time=[];
 var resd;
-var numtitle="1号风险防控图";
-let startVal,endVal;
+ var numtitle="10号风险防控图";
 // var list = [
 //     {
 //         num: 6,
@@ -16,23 +15,44 @@ let startVal,endVal;
 //     },
 //     {
 //         num: 9,
-//         time: "04"
+//         time: "2005-9-18"
 //     },
 //     {
 //         num: 5,
-//         time: "06"
+//         time: "2005-9-18"
 //     },
 //     {
 //         num: 12,
-//         time: "08"
+//         time: "2005-9-18"
 //     },
 //     {
 //         num: 8,
-//         time: "10"
+//         time: "2005-9-18"
+//     },    {
+//         num: 8,
+//         time: "2005-9-18"
+//     },    {
+//         num: 8,
+//         time: "2005-9-18"
+//     },    {
+//         num: 8,
+//         time: "2005-9-18"
+//     },    {
+//         num: 8,
+//         time: "2005-9-18"
+//     },    {
+//         num: 8,
+//         time: "2005-9-18"
+//     },    {
+//         num: 8,
+//         time: "2005-9-18"
+//     },    {
+//         num: 8,
+//         time: "2005-9-18"
 //     },
 //     {
 //         num: 18,
-//         time: "12"
+//         time: "2005-9-18"
 //     }]
 // for(var i=0;i<list.length;i++) {
 //     time.push(list[i].time);
@@ -41,10 +61,10 @@ let startVal,endVal;
 //     people.push(list[i].num);
 // }
 window.onload=function() {
+    $('#continuation1').hide();
     // let username = $('#username').val();
     let username =window.localStorage.getItem('g_username')
     console.log(username)
-
     // let username = "ocbbc";
     $.ajax({
         url: `${BASE_URL}` + '/selectDefaultNumber',
@@ -52,16 +72,37 @@ window.onload=function() {
         method: 'post',
         contentType: "application/json",
         success: function (res) {
+            // var url=window.document.URL;
+            // var aa=url.split("/")[7]; //id
+            // var aaa=aa.split("?")[0]; //id
             console.log(res)
             resd=res;
-            for (let i = 0; i < res[0].list.length; i++) {
-                time.push(res[0].list[i].time);
+            numtitle=resd[0].info_inCons_List[0].mac_address;
+            // alert(aaa)
+            // if(aaa==="RiskControll.html") {
+                document.getElementById('aa').innerHTML = res[0].construction+":";
+                // $("#picuter").src=res.piture_url;
+                var li = document.getElementById('cars');
+                for (let i = 0; i < res[0].info_inCons_List.length; i++) {
+                    var a = document.createElement('button');
+                    a.innerHTML = resd[0].info_inCons_List[i].location;
+                    a.className = "sela";
+                    a.id = "uk"+i;
+                    a.onclick=ak(i);
+                    if(i===0) a.style.color="#0FB9EF";
+                    $('#change').append(a)
+                    // li.append(new Option(,resd[0].info_inCons_List[i].location));
+                }
+            // }
+            for (let i  = 0; i < res[0].info_inCons_List[0].list_inCons.length; i++) {
+                time.push(res[0].info_inCons_List[0].list_inCons[i].time);
             }
-            for (let i = 0; i < res[0].list.length; i++) {
-                people.push(res[0].list[i].num);
+            console.log(time)
+            for (let i = 0; i <res[0].info_inCons_List[0].list_inCons.length; i++) {
+                people.push(res[0].info_inCons_List[0].list_inCons[i].num);
             }
+
             let option = SettingOption(time,people)
-            numtitle="一号风险防控图"
             myChart.setOption(option)
             //自动生成的按钮
             // for (var i = 0; i < res.length; i++) {
@@ -79,7 +120,7 @@ window.onload=function() {
         }
     })
     $.ajax({
-        url: `${BASE_URL}` + '/ProvinceAddress',
+        url: `${BASE_URL}` + '/CityAddress',
         method: 'post',
         contentType: "application/json",
         success: function (res) {
@@ -87,81 +128,111 @@ window.onload=function() {
             console.log(res.length)
             let pro, options;
             for(let i=0; i<res.length; i++)
-            {  pro =$("#province");
+            {  pro =$("#city");
             options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
             pro.append(options);
         }
     })
-
-    $('#province').change(function(){
-        var opt=$("#province").val();
+    $('#city').change(function(){
+        var opt=$("#city").val();
         console.log(opt)
         // var d=[{Province:opt}]
         $.ajax({
-            url: `${BASE_URL}` + '/CityAddress',
+            url: `${BASE_URL}` + '/CountyAddress',
             // data: d,
-            data: '{ "province": "'+opt+'"}',
+            data: '{ "city": "'+opt+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res);
                 let pro, options;
                 for(let i=0; i<res.length; i++)
-                {  pro =$("#city");
+                {  pro =$('#country');
                     options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
                 pro.append(options);
             }
         })
     });
-    $("#city").change(function(){
+    $('#country').change(function(){
         var city=$("#city").val();
-        var pro=$("#province").val();
+        var pro=$("#country").val();
         $.ajax({
-            url: `${BASE_URL}` + '/CountyAddress',
-            data:'{"province":"'+pro+'","city":"'+city+'"}',
+            url: `${BASE_URL}` + '/TownAddress',
+            data:'{"city":"'+city+'","county":"'+pro+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
                 let pro, options;
                 for(let i=0; i<res.length; i++)
-                {  pro =$("#country");
+                {  pro =$("#town");
                     options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
                 pro.append(options);
             }
         })
     });
-    $("#country").change(function(){
+    $('#town').change(function(){
         var city=$("#city").val();
-        var pro=$("#province").val();
-        var coun=$("#country").val();
+        var pro=$("#country").val();
+        var town=$("#town").val();
         $.ajax({
-            url: `${BASE_URL}` + '/SpecificAddress',
-            data:'{"province":"'+pro+'","city":"'+city+'","county":"'+coun+'"}',
+            url: `${BASE_URL}` + '/StreetAddress',
+            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
-                $("#address").autocomplete({
-                    source: res,
-                    width: 320,
-                    max: 4,
-                    highlight: false,
-                    multiple: true,
-                    multipleSeparator: "",
-                    scroll: true,
-                    scrollHeight: 300
-                });
+                let pro, options;
+                for(let i=0; i<res.length; i++)
+                {  pro =$("#street");
+                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+                pro.append(options);
+            }
+        })
+    });
+    $("#street").change(function(){
+        var city=$("#city").val();
+        var pro=$("#country").val();
+        var town=$("#town").val();
+        var str=$("#street").val();
+        $.ajax({
+            url: `${BASE_URL}` + '/SpecificAddress',
+            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'"}',
+            method: 'post',
+            contentType: "application/json",
+            success: function (res) {
+                console.log(res)
+                for(var i=0;i<res.length;i++)
+                    $("#auto").append('<option label="'+res[0]+'" value="'+res[0]+'"></option>');
+            }
+        })
+    });
+    $('#special_address').change(function(){
+        var city=$("#city").val();
+        var pro=$("#country").val();
+        var town=$("#town").val();
+        var str=$("#street").val();
+        var spe=$("#special_address").val();
+        // alert(spe)
+        $.ajax({
+            url: `${BASE_URL}` + '/Mac_Address',
+            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'","special_address":"'+spe+'"}',
+            method: 'post',
+            contentType: "application/json",
+            success: function (res) {
+                console.log(res)
+                let pro, options;
+                for(let i=0; i<res.length; i++)
+                {  pro =$("#box");
+                    options += '<option value="' + res[i].location+res[i].mac_address+ '" >' + res[i].location+res[i].mac_address+ '</option>';}
+                pro.append(options);
             }
         })
     });
 
 }
 
-
-
-
-
+// numtitle=resd[0].info_inCons_List[0].mac_address;
 var SettingOption = (Xdata, Ydata) => {
     return {
         // 标题
@@ -175,14 +246,16 @@ var SettingOption = (Xdata, Ydata) => {
                 type: 'cross'
             }
         },
-
-        // x轴
+                // x轴
         xAxis: {
             name:'时间',
             axisLine: {
                 lineStyle: {
                     color: '#000000'
                 }
+            },
+            axisLabel :{
+                interval:0
             },
             data: time
             // data: ['12:00','13:00',"14:00","15:00","16:00","17:00"]
@@ -200,7 +273,33 @@ var SettingOption = (Xdata, Ydata) => {
             position: 'top',
             formatter: people//在柱状图的顶部显示出某个东西和这个东西的百分比值12
         },
+        dataZoom : [
+            {
+                type: 'slider',
+                show: true,
+                start: 0,
+                end: 100,
+                handleSize: 8
+            },
+            {
+                type: 'inside',
+                start: 94,
+                end: 100
+            },
+            {
+                type: 'slider',
+                show: true,
+                yAxisIndex: 0,
+                filterMode: 'empty',
+                width: 12,
+                height: '70%',
+                handleSize: 8,
+                showDataShadow: false,
+                left: '93%'
+            }
+        ],
         // 数据
+
         series: [{
             type: 'bar',
             data: people,
@@ -223,52 +322,165 @@ var SettingOption = (Xdata, Ydata) => {
             },
         }
         ]
+
     }
 }
-
 myChart.setOption(SettingOption(1,1))
+function a(c){
+    var u=c+1;
+    numtitle=resd[0].info_inCons_List[c].mac_address;
+    time=[];
+    for (let i = 0; i <resd[0].info_inCons_List[c].list_inCons.length; i++) {
+        time.push(resd[0].info_inCons_List[c].list_inCons[i].time);
+    }
+    people=[]
+    for (let i = 0; i <resd[0].info_inCons_List[c].list_inCons.length; i++) {
+        people.push(resd[0].info_inCons_List[c].list_inCons[i].num);
+    }
+    let option = SettingOption(time,people)
+    myChart.setOption(option)
+
+}
+
+let sub=0;
+$('#fixed').click(function () {
+$('#continuation1').hide();
+$('#fixed1').show();
+    $('#continuation').css("color","#000")
+    $('#fixed').css("color","#0FB9EF")
+   sub=0;
+})
+$('#continuation').click(function () {
+    $('#continuation1').show();
+    $('#fixed1').hide();
+    $('#continuation').css("color","#0FB9EF")
+    $('#fixed').css("color","#000")
+    sub=1;
+
+})
 
 
+var year1,year2,month1,month2,day1,day2,time1,time2;
 $('#search').click(() => {
-    let startVal = $('#startDate').val().split('-')
-    let endVal = $('#endDate').val().split('-')
+    if(sub===0){
+    year1= $('#year1').val()==="0"?null:$('#year1').val();
+    month1= $('#month1').val()==="0"?null:$('#month1').val();
+    day1= $('#day1').val()==="0"?null:$('#day1').val();
+    year2= $('#year2').val()==="0"?null:$('#year2').val();
+    month2= $('#month2').val()==="0"?null:$('#month2').val();
+    day2= $('#day2').val()==="0"?null:$('#day2').val();
+    if($('#hour0').val()!=="00") if($('#hour1').val()==="00") alert("请填写结束时间！")
+    time1= $('#hour0').val()+":"+$('#min0').val()+":"+$('#second0').val();
+    time2= $('#hour1').val()+":"+$('#min1').val()+":"+$('#second1').val();
+      // alert(year1+month1+day1+year2+month2+day2+time1+time2)
+    }
+    else
+        {
+            year1= $('#year3').val()==="0"?null:$('#year3').val();
+            month1= $('#month3').val()==="0"?null:$('#month3').val();
+            day1= $('#day3').val()==="0"?null:$('#day3').val();
+            year2= $('#year4').val()==="0"?null:$('#year4').val();
+            month2= $('#month4').val()==="0"?null:$('#month4').val();
+            day2= $('#day4').val()==="0"?null:$('#day4').val();
+            if($('#hour2').val()!=="00") if($('#hour3').val()==="00") alert("请填写结束时间！")
+            time1= $('#hour2').val()+":"+$('#min2').val()+":"+$('#second2').val();
+            time2= $('#hour3').val()+":"+$('#min3').val()+":"+$('#second3').val();
+       }
     // console.log(startVal[0])
-    if(startVal[0]>endVal[0])
+    if(year1!==null)
+        if(year2===null){alert("请选择结束年份")}
+        else
+            if(month1!==null) if(month2===null){alert("请选择结束月份")}
+        else
+            if(day1!==null) if(day2===null){alert("请选择结束日")}
+    if(year1>year2)
         alert("结束时间不能再开始时间之前！")
-    if(startVal[0]===endVal[0])
-        if(startVal[1]>endVal[1])
+    if(year1===year2)
+        if(month1>month2)
             alert("结束时间不能再开始时间之前！")
         else
-        if(startVal[1]===endVal[1])
-            if(startVal[2]>endVal[2])
+        if(month1===month2)
+            if(day1>day2)
                 alert("结束时间不能再开始时间之前！")
-    var pro=$("#province").val();
     var city=$("#city").val();
-    var country=$("#country").val();
-    var address=$("#address").val();
-    let data = {
-        "year1":`${startVal[0]}`,
-        "month1":`${startVal[1]}`,
-        "day1":`${startVal[2]}`,
-        "year2":`${endVal[0]}`,
-        "month2":`${endVal[1]}`,
-        "day2":`${endVal[2]}`,
-        "address":pro+","+city+","+country+","+address,
-    }
+    var county=$("#country").val();
+    var town=$("#town").val();
+    var street=$("#street").val();
+    var special_address=$("#special_address").val()===""?"null":$("#special_address").val();
+    var box=$('#box').val();
+    // console.log("111"+special_address)
+    let data =JSON.stringify( {
+        "year1":year1,
+        "month1":month1,
+        "day1":day1,
+        "year2":year2,
+        "month2":month2,
+        "day2":day2,
+        "time1":time1,
+        "time2":time2,
+        "address":city+","+county+","+town+","+street+","+special_address,
+        // "mac_address":box===null?"none":box,
+    })
 
-    console.log(data)
+    let url;
+    // alert(box)
+    if(sub===0)
+        if(box==="null")
+        {url= `${BASE_URL}` + '/selectDateNumber_2';}
+        else {url=`${BASE_URL}` + '/selectDataNumberBox_id_2';
+        data = JSON.stringify( {
+            "year1":year1,
+            "month1":month1,
+            "day1":day1,
+            "year2":year2,
+            "month2":month2,
+            "day2":day2,
+            "time1":time1,
+            "time2":time2,
+            "address":city+","+county+","+town+","+street+","+special_address,
+                "mac_address":box
+        })
+        }
+    else if(box==="null")
+        url= `${BASE_URL}` + '/selectDateNumber_1';
+         else
+    {url= `${BASE_URL}` + '/selectDataNumberBox_id_1';
+        data = JSON.stringify({
+            "year1":year1,
+            "month1":month1,
+            "day1":day1,
+            "year2":year2,
+            "month2":month2,
+            "day2":day2,
+            "time1":time1,
+            "time2":time2,
+            "address":city+","+county+","+town+","+street+","+special_address,
+            "mac_address":box
+        })
+    }
+         // alert(url)
+    console.log(data);
     $.ajax({
-        url: `${BASE_URL}` + '/selecDataNumber',
+        url: `${BASE_URL}`+"/selectDateNumber_2",
         method: 'post',
         data:data,
-        contentType: "application/json",
+        contentType:"application/json;charset=utf-8",
         success: function (res) {
             console.log(res.length)
-            for (let i = 0; i < res.length; i++) {
-                time.push(res[i].time);
+            if(box==="null"){
+                numtitle=res.address;
             }
-            for (let i = 0; i < res.length; i++) {
-                people.push(res[i].num);
+         else{
+                numtitle=res.mac_address;
+            }
+         time=[];
+         people=[];
+            for (let i  = 0; i < res.list.length; i++) {
+                time.push(res.list[i].time);
+            }
+            console.log(time)
+            for (let i = 0; i <res.list.length; i++) {
+                people.push(res.list[i].num);
             }
             let option = SettingOption(time,people)
             myChart.setOption(option)
@@ -277,33 +489,25 @@ $('#search').click(() => {
 
 })
 
-//点击查看烟感数据
-$('#search-smoke').click(() => {
-    window.location = '/smoke'
-})
+function ak(c) {
 
-//点击活跃度范围设置弹窗
-// $("#revise").click(function(){
-//     $(".dialog").show(100)
-// })
-
-$("#keep").click(function(){
-    $('.dialog').hide();
-})
-
-
-function a(c){
-    var u=c+1;
-    numtitle=u+"号风险防控图"
-    time=[];
-    for (let i = 0; i < resd[c].list.length; i++) {
-        time.push(resd[c].list[i].time);
-    }
-    people=[]
-    for (let i = 0; i < resd[c].list.length; i++) {
-        people.push(resd [c].list[i].num);
-    }
-    let option = SettingOption(time,people)
-    myChart.setOption(option)
-
+    $('#change').on('click', '#uk'+c,function (e) {
+        // alert(c)
+        for(var i=0;i<resd[0].info_inCons_List.length;i++){
+            if(i===c)
+            {document.getElementById('uk'+c).style.color="#64b0f2";continue}
+         document.getElementById('uk'+i).style.color="black"}
+         // document.getElementById('uk0').style.color="#64b0f2"
+        numtitle=resd[0].info_inCons_List[c].mac_address;
+        time=[];
+        for (let i = 0; i <resd[0].info_inCons_List[c].list_inCons.length; i++) {
+            time.push(resd[0].info_inCons_List[c].list_inCons[i].time);
+        }
+        people=[]
+        for (let i = 0; i <resd[0].info_inCons_List[c].list_inCons.length; i++) {
+            people.push(resd[0].info_inCons_List[c].list_inCons[i].num);
+        }
+        let option = SettingOption(time,people)
+        myChart.setOption(option)
+    });
 }
