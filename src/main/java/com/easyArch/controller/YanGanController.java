@@ -34,11 +34,11 @@ public class YanGanController {
         String specificAddress=str[4];
         List<YanGan> list=null;
         //设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //获取日期
         String date2=df.format(new Date());
         String [] str2=ControllerUtil.slipDate2(date2);
-        String date1=str2[0]+" 00:00:00:000";
+        String date1=str2[0]+" 00:00:00";
         list= yanGanDao.yanGanList(city,county,town,street,specificAddress, date1, date2);
 //        list= yanGanDao.yanGanList(city,county,town,street,specificAddress, "2020-08-16 00:00:00", "2020-08-18 23:59:59");
         String[] strings;

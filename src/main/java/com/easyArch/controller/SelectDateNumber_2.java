@@ -75,9 +75,9 @@ public class SelectDateNumber_2 {
                 dateNumberAll.setTime2(myTime2);
             }
             System.out.println("address: "+address);
-            if (!year1.equals("null")&& !year2.equals("null")) {
-                if (!month1.equals("null")&& !month2.equals("null")) {
-                    if (!day1.equals("null")&& !day2.equals("null")) {
+            if (year1!=null&& year2!=null) {
+                if (month1!=null&& month2!=null) {
+                    if (day1!=null&& day2!=null) {
                         String str1 = year1 + "-" + month1 + "-" + day1;
                         String str2 = year2 + "-" + month2 + "-" + day2;
                         //查询一天里
