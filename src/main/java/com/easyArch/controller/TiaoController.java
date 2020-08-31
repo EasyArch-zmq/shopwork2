@@ -87,5 +87,17 @@ public class TiaoController {
 
     }
 
+    @RequestMapping("P_TodayAccount")
+    public String P_TodayAccount(){
+        System.out.println("P_TodayAccount");
+        return "peoplenumber/pulic/html/P_TodayAccount";
 
+    }
+
+    @RequestMapping("P_Todayliveness")
+    public String P_Todayliveness(){
+        System.out.println("P_Todayliveness");
+        return "peoplenumber/pulic/html/P_Todayliveness";
+
+    }
 }

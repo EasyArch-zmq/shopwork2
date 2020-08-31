@@ -1,4 +1,4 @@
-const BASE_URL = 'http://121.199.21.197:63392'
+const BASE_URL = 'http://121.199.21.197:63393'
 var resd=[];
 var arry1=[],arry=[];
 	$(document).ready(() => {
@@ -61,58 +61,58 @@ function boxloading(c) {
 		else
 			levelnum.innerHTML = "活跃度：" + "高" + "<br/>";
 		level.appendChild(levelnum)
-		var number = document.createElement("div");
-		number.className = "number";
-		var numberm = document.createElement("span");
-		numberm.className = "span1"
-		numberm.innerHTML = "总人数：" + arry[i].number;
-		// // numberm.innerHTML=arry[i].number;
-		number.appendChild(numberm)
-		var rtier = document.createElement("div");
-		rtier.className = "number";
-		var tier = document.createElement("span");
-		tier.className = "span1"
-		tier.innerHTML = "" +
-			"盒子层级：" + arry[i].tier;
-		// // numberm.innerHTML=arry[i].number;
-		rtier.appendChild(tier)
-		var time = document.createElement("div");
-		time.className = "time"
-		var timeg = document.createElement("span");
-		timeg.className = "span1"
-		timeg.innerHTML = "截至目前为止";
-		time.appendChild(timeg)
+		// var number = document.createElement("div");
+		// number.className = "number";
+		// var numberm = document.createElement("span");
+		// numberm.className = "span1"
+		// numberm.innerHTML = "总人数：" + arry[i].number;
+		// // // numberm.innerHTML=arry[i].number;
+		// number.appendChild(numberm)
+		// var rtier = document.createElement("div");
+		// rtier.className = "number";
+		// var tier = document.createElement("span");
+		// tier.className = "span1"
+		// tier.innerHTML = "" +
+		// 	"盒子层级：" + arry[i].tier;
+		// // // numberm.innerHTML=arry[i].number;
+		// rtier.appendChild(tier)
+		// var time = document.createElement("div");
+		// time.className = "time"
+		// var timeg = document.createElement("span");
+		// timeg.className = "span1"
+		// timeg.innerHTML = "截至目前为止";
+		// time.appendChild(timeg)
 		light_container.appendChild(level);
-		light_container.appendChild(number);
-		light_container.appendChild(rtier);
-		light_container.appendChild(time);
+		// light_container.appendChild(number);
+		// light_container.appendChild(rtier);
+		// light_container.appendChild(time);
 		container.appendChild(light_container);
 		document.getElementById('ssx').appendChild(container);
 
 	}
 }
-var list = [
-	{
-		address: "森中古城☼",
-		number:'5',
-		color:"red",
-	},
-	{
-		address: "森中古城☼",
-		number:'10',
-		color:"yellow",
-	},
-	{
-		address: "森中古城☼",
-		number:'5',
-		color:"red",
-			},
-	{
-		address: "森中古城☼",
-		number:'5',
-		color:"green",
-
-	},]
+// var list = [
+// 	{
+// 		address: "森中古城☼",
+// 		number:'5',
+// 		color:"red",
+// 	},
+// 	{
+// 		address: "森中古城☼",
+// 		number:'10',
+// 		color:"yellow",
+// 	},
+// 	{
+// 		address: "森中古城☼",
+// 		number:'5',
+// 		color:"red",
+// 			},
+// 	{
+// 		address: "森中古城☼",
+// 		number:'5',
+// 		color:"green",
+//
+// 	},]
 //下拉选择建筑
 $('#list').change(function () {
 	var myselect=$('#list').val();

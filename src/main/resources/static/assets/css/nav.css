@@ -135,7 +135,7 @@ html, body { height: 100%; }
     /*margin-bottom: 80px;*/
     background-color: transparent;
 }
-#change{
+.change{
    font-size: 18px;
 }
 .sela{
@@ -143,4 +143,6 @@ html, body { height: 100%; }
     text-decoration: black;
     background-color: transparent;
     border: none;
+    font-size: 18px;
+
 }

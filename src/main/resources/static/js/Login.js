@@ -1,4 +1,4 @@
-const BASE_URL = 'http://121.199.21.197:63392'
+const BASE_URL = 'http://121.199.21.197:63393'
 $(document).ready(() => {
     $('#g_Login').click(() => {
         let username = $('#user_name').val()

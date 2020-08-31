@@ -1,4 +1,4 @@
-const BASE_URL = 'http://121.199.21.197:63392'
+const BASE_URL = 'http://121.199.21.197:63393'
 
 //设置范围值
 function  fanwei() {
@@ -17,7 +17,7 @@ function  fanwei() {
     $.ajax({
         url: `${BASE_URL}`+"/insertColorValue",
         method:'post',
-        data:'{"red":"'+red+'","green":"'+green+'","address":"'+addressall+'","macAddress":"'+box+'"}',
+        data:'{"red":"'+red+'","green":"'+green+'","mac_address":"'+box+'"}',
         contentType:"application/json",
         success: (res) => {
             // console.log("ssssssssssokla")

@@ -1,9 +1,9 @@
 const myChart = echarts.init(document.getElementById("bar"));
-const BASE_URL = 'http://121.199.21.197:63392'
+const BASE_URL = 'http://121.199.21.197:63393'
 var people=[];
 var time=[];
 var resd;
- var numtitle="10号风险防控图";
+var numtitle="风险防控图";
 // var list = [
 //     {
 //         num: 6,
@@ -29,22 +29,22 @@ var resd;
 //         num: 8,
 //         time: "2005-9-18"
 //     },    {
-//         num: 8,
+//         num: 15,
 //         time: "2005-9-18"
 //     },    {
-//         num: 8,
+//         num: 14,
 //         time: "2005-9-18"
 //     },    {
-//         num: 8,
+//         num: 13,
 //         time: "2005-9-18"
 //     },    {
-//         num: 8,
+//         num: 12,
 //         time: "2005-9-18"
 //     },    {
-//         num: 8,
+//         num: 10,
 //         time: "2005-9-18"
 //     },    {
-//         num: 8,
+//         num: 9,
 //         time: "2005-9-18"
 //     },    {
 //         num: 8,
@@ -61,7 +61,6 @@ var resd;
 //     people.push(list[i].num);
 // }
 window.onload=function() {
-    $('#continuation1').hide();
     // let username = $('#username').val();
     let username =window.localStorage.getItem('g_username')
     console.log(username)
@@ -127,113 +126,117 @@ window.onload=function() {
             console.log(res[0])
             console.log(res.length)
             let pro, options;
-            for(let i=0; i<res.length; i++)
-            {  pro =$("#city");
-            options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+            for (let i = 0; i < res.length; i++) {
+                pro = $("#city");
+                options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
+            }
             pro.append(options);
         }
     })
-    $('#city').change(function(){
-        var opt=$("#city").val();
+    $('#city').change(function () {
+        var opt = $("#city").val();
         console.log(opt)
         // var d=[{Province:opt}]
         $.ajax({
             url: `${BASE_URL}` + '/CountyAddress',
             // data: d,
-            data: '{ "city": "'+opt+'"}',
+            data: '{ "city": "' + opt + '"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res);
                 let pro, options;
-                for(let i=0; i<res.length; i++)
-                {  pro =$('#country');
-                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+                for (let i = 0; i < res.length; i++) {
+                    pro = $('#country');
+                    options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
+                }
                 pro.append(options);
             }
         })
     });
-    $('#country').change(function(){
-        var city=$("#city").val();
-        var pro=$("#country").val();
+    $('#country').change(function () {
+        var city = $("#city").val();
+        var pro = $("#country").val();
         $.ajax({
             url: `${BASE_URL}` + '/TownAddress',
-            data:'{"city":"'+city+'","county":"'+pro+'"}',
+            data: '{"city":"' + city + '","county":"' + pro + '"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
                 let pro, options;
-                for(let i=0; i<res.length; i++)
-                {  pro =$("#town");
-                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+                for (let i = 0; i < res.length; i++) {
+                    pro = $("#town");
+                    options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
+                }
                 pro.append(options);
             }
         })
     });
-    $('#town').change(function(){
-        var city=$("#city").val();
-        var pro=$("#country").val();
-        var town=$("#town").val();
+    $('#town').change(function () {
+        var city = $("#city").val();
+        var pro = $("#country").val();
+        var town = $("#town").val();
         $.ajax({
             url: `${BASE_URL}` + '/StreetAddress',
-            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'"}',
+            data: '{"city":"' + city + '","county":"' + pro + '","town":"' + town + '"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
                 let pro, options;
-                for(let i=0; i<res.length; i++)
-                {  pro =$("#street");
-                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+                for (let i = 0; i < res.length; i++) {
+                    pro = $("#street");
+                    options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
+                }
                 pro.append(options);
             }
         })
     });
-    $("#street").change(function(){
-        var city=$("#city").val();
-        var pro=$("#country").val();
-        var town=$("#town").val();
-        var str=$("#street").val();
+    $("#street").change(function () {
+        var city = $("#city").val();
+        var pro = $("#country").val();
+        var town = $("#town").val();
+        var str = $("#street").val();
         $.ajax({
             url: `${BASE_URL}` + '/SpecificAddress',
-            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'"}',
+            data: '{"city":"' + city + '","county":"' + pro + '","town":"' + town + '","street":"' + str + '"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
-                for(var i=0;i<res.length;i++)
-                    $("#auto").append('<option label="'+res[0]+'" value="'+res[0]+'"></option>');
+                for (var i = 0; i < res.length; i++)
+                    $("#auto").append('<option label="' + res[0] + '" value="' + res[0] + '"></option>');
             }
         })
     });
-    $('#special_address').change(function(){
-        var city=$("#city").val();
-        var pro=$("#country").val();
-        var town=$("#town").val();
-        var str=$("#street").val();
-        var spe=$("#special_address").val();
+    $('#special_address').change(function () {
+        var city = $("#city").val();
+        var pro = $("#country").val();
+        var town = $("#town").val();
+        var str = $("#street").val();
+        var spe = $("#special_address").val();
         // alert(spe)
         $.ajax({
             url: `${BASE_URL}` + '/Mac_Address',
-            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'","special_address":"'+spe+'"}',
+            data: '{"city":"' + city + '","county":"' + pro + '","town":"' + town + '","street":"' + str + '","special_address":"' + spe + '"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
                 console.log(res)
                 let pro, options;
-                for(let i=0; i<res.length; i++)
-                {  pro =$("#box");
-                    options += '<option value="' + res[i].location+res[i].mac_address+ '" >' + res[i].location+res[i].mac_address+ '</option>';}
+                for (let i = 0; i < res.length; i++) {
+                    pro = $("#box");
+                    options += '<option value="' + res[i].location + res[i].mac_address + '" >' + res[i].location + res[i].mac_address + '</option>';
+                }
                 pro.append(options);
             }
         })
     });
-
 }
 
 // numtitle=resd[0].info_inCons_List[0].mac_address;
-var SettingOption = (Xdata, Ydata) => {
+function SettingOption(Xdata, Ydata) {
     return {
         // 标题
         title: {
@@ -307,15 +310,11 @@ var SettingOption = (Xdata, Ydata) => {
             itemStyle:{
                 normal: {
                     //每根柱子颜色设置
+                    // color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);}
                     color: function(params) {
-                        let colorList = [
-                            "#67d3ce",
-                            "#42d3e7",
-                            "#5ca8db",
-                            "#2394b1",
-                            "#386cad",
-                            "#4173a0",
-                        ];
+                        let colorList=[];
+                        for(let i=0;i<100;i++)
+                        {colorList.push("#67d3ce", "#42d3e7", "#66b9db","#42d3e7","#67d3ce")}
                         return colorList[params.dataIndex];
                     }
                 }
@@ -342,152 +341,9 @@ function a(c){
 
 }
 
-let sub=0;
-$('#fixed').click(function () {
-$('#continuation1').hide();
-$('#fixed1').show();
-    $('#continuation').css("color","#000")
-    $('#fixed').css("color","#0FB9EF")
-   sub=0;
-})
-$('#continuation').click(function () {
-    $('#continuation1').show();
-    $('#fixed1').hide();
-    $('#continuation').css("color","#0FB9EF")
-    $('#fixed').css("color","#000")
-    sub=1;
-
-})
 
 
-var year1,year2,month1,month2,day1,day2,time1,time2;
-$('#search').click(() => {
-    if(sub===0){
-    year1= $('#year1').val()==="0"?null:$('#year1').val();
-    month1= $('#month1').val()==="0"?null:$('#month1').val();
-    day1= $('#day1').val()==="0"?null:$('#day1').val();
-    year2= $('#year2').val()==="0"?null:$('#year2').val();
-    month2= $('#month2').val()==="0"?null:$('#month2').val();
-    day2= $('#day2').val()==="0"?null:$('#day2').val();
-    if($('#hour0').val()!=="00") if($('#hour1').val()==="00") alert("请填写结束时间！")
-    time1= $('#hour0').val()+":"+$('#min0').val()+":"+$('#second0').val();
-    time2= $('#hour1').val()+":"+$('#min1').val()+":"+$('#second1').val();
-      // alert(year1+month1+day1+year2+month2+day2+time1+time2)
-    }
-    else
-        {
-            year1= $('#year3').val()==="0"?null:$('#year3').val();
-            month1= $('#month3').val()==="0"?null:$('#month3').val();
-            day1= $('#day3').val()==="0"?null:$('#day3').val();
-            year2= $('#year4').val()==="0"?null:$('#year4').val();
-            month2= $('#month4').val()==="0"?null:$('#month4').val();
-            day2= $('#day4').val()==="0"?null:$('#day4').val();
-            if($('#hour2').val()!=="00") if($('#hour3').val()==="00") alert("请填写结束时间！")
-            time1= $('#hour2').val()+":"+$('#min2').val()+":"+$('#second2').val();
-            time2= $('#hour3').val()+":"+$('#min3').val()+":"+$('#second3').val();
-       }
-    // console.log(startVal[0])
-    if(year1!==null)
-        if(year2===null){alert("请选择结束年份")}
-        else
-            if(month1!==null) if(month2===null){alert("请选择结束月份")}
-        else
-            if(day1!==null) if(day2===null){alert("请选择结束日")}
-    if(year1>year2)
-        alert("结束时间不能再开始时间之前！")
-    if(year1===year2)
-        if(month1>month2)
-            alert("结束时间不能再开始时间之前！")
-        else
-        if(month1===month2)
-            if(day1>day2)
-                alert("结束时间不能再开始时间之前！")
-    var city=$("#city").val();
-    var county=$("#country").val();
-    var town=$("#town").val();
-    var street=$("#street").val();
-    var special_address=$("#special_address").val()===""?"null":$("#special_address").val();
-    var box=$('#box').val();
-    // console.log("111"+special_address)
-    let data =JSON.stringify( {
-        "year1":year1,
-        "month1":month1,
-        "day1":day1,
-        "year2":year2,
-        "month2":month2,
-        "day2":day2,
-        "time1":time1,
-        "time2":time2,
-        "address":city+","+county+","+town+","+street+","+special_address,
-        // "mac_address":box===null?"none":box,
-    })
 
-    let url;
-    // alert(box)
-    if(sub===0)
-        if(box==="null")
-        {url= `${BASE_URL}` + '/selectDateNumber_2';}
-        else {url=`${BASE_URL}` + '/selectDataNumberBox_id_2';
-        data = JSON.stringify( {
-            "year1":year1,
-            "month1":month1,
-            "day1":day1,
-            "year2":year2,
-            "month2":month2,
-            "day2":day2,
-            "time1":time1,
-            "time2":time2,
-            "address":city+","+county+","+town+","+street+","+special_address,
-                "mac_address":box
-        })
-        }
-    else if(box==="null")
-        url= `${BASE_URL}` + '/selectDateNumber_1';
-         else
-    {url= `${BASE_URL}` + '/selectDataNumberBox_id_1';
-        data = JSON.stringify({
-            "year1":year1,
-            "month1":month1,
-            "day1":day1,
-            "year2":year2,
-            "month2":month2,
-            "day2":day2,
-            "time1":time1,
-            "time2":time2,
-            "address":city+","+county+","+town+","+street+","+special_address,
-            "mac_address":box
-        })
-    }
-         // alert(url)
-    console.log(data);
-    $.ajax({
-        url: `${BASE_URL}`+"/selectDateNumber_2",
-        method: 'post',
-        data:data,
-        contentType:"application/json;charset=utf-8",
-        success: function (res) {
-            console.log(res.length)
-            if(box==="null"){
-                numtitle=res.address;
-            }
-         else{
-                numtitle=res.mac_address;
-            }
-         time=[];
-         people=[];
-            for (let i  = 0; i < res.list.length; i++) {
-                time.push(res.list[i].time);
-            }
-            console.log(time)
-            for (let i = 0; i <res.list.length; i++) {
-                people.push(res.list[i].num);
-            }
-            let option = SettingOption(time,people)
-            myChart.setOption(option)
-        }
-    })
-
-})
 
 function ak(c) {
 

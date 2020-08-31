@@ -58,61 +58,76 @@
     <form class="form-inline">
         <!--        <span>按时间段搜索：</span>-->
         <div class="form-group" id="fixed1">
-            <select id="year1" name="year"  class="form-control"></select>
-            <select id="month1" name="month" class="form-control"></select>
-            <select id="day1" name="day" class="form-control"></select>
-            <!--            <label class="sr-only" for="startDate"></label>-->
-<!--            <input type="date" class="form-control" placeholder="请选择开始日期" value="null" id="startDate" name="start" step="1"/>-->
-            <!--             <input type="number" max="60" min="0" placeholder="毫秒" class="form-control">-->
-            <span>———</span>
-            <div class="form-group">
-<!--                <label class="sr-only" for="startDate"></label>-->
-<!--                <input type="date" class="form-control" placeholder="请选择结束日期" id="endDate" name="end" step="1"/>-->
-<!--                <span >-->
-                <select id="year2" name="year1" class="form-control"></select>
-                <select id="month2" name="month1" class="form-control"></select>
-                <select id="day2" name="day1" class="form-control" style="margin-right: 20px;"></select>
+            <select id="ways"  class="form-control">
+                <option value="4">选择到具体时间</option>
+                <option value="3">选择到日</option>
+                <option value="2">选择到月</option>
+                <option value="1">选择到年</option>
+            </select>
+            <span id="NianYue">
+              <select id="year1" name="year"  class="form-control" style="margin-left: 20px;width:80px">
+<!--                  <option>年</option>-->
+              </select>
+               <select id="month1" name="month" class="form-control">
+<!--                   <option>月</option>-->
+               </select>
+              <span id="heng" style="margin-top:8px;float:left;">————</span>
+              <select id="year2" name="year1"  class="form-control" style="margin-left: 12px;width:80px">
+<!--                  <option>年</option>-->
+              </select>
+                   <select id="month2" name="month1" class="form-control">
+<!--                    <option>月</option>-->
+                </select>
+            </span>
+            <span id="ri" style="margin-top: 10px;">
+            <input type="date" class="form-control cal" style="margin-top: 5px;" placeholder="请选择开始日期" value="null" id="startDate" name="start" step="1"/>
+            <span>—————</span>
+            <input type="date" class="form-control cal" style="margin-top: 5px;" placeholder="请选择开始日期" value="null" id="endDate" name="start" step="1"/>
+            </span>
+            <span id="shi" style="margin-top: 10px;">
+            <input type="datetime-local" class="form-control calt" style="margin-top: 5px;" placeholder="请选择开始日期" value="null" id="starttimeDate" name="start" step="1"/>
+            <span>—————</span>
+            <input type="datetime-local" class="form-control calt" style="margin-top: 5px;" placeholder="请选择开始日期" value="null" id="endtimeDate" name="start" step="1"/>
+            </span>
+        </div>
 
-                <select id="hour0" name="year"  class="form-control"><option value=00>时</option></select>
-                <select id="min0" name="month" class="form-control"><option value=00>分</option></select>
-                <select id="second0" name="day" class="form-control"><option value=00>秒</option></select>
-
-                <select id="hour1" name="year" class="form-control" style="margin-left: 22px;"><option value=00>时</option></select>
-                <select id="min1" name="month" class="form-control"><option value=00>分</option></select>
-                <select id="second1" name="day" class="form-control"><option value=00>秒</option></select>
-<!--                <input type="time" id="stime" value="00:00:00" class="form-control" step="1"> &nbsp;——&nbsp;-->
-<!--            <input type="time" id="etime" value="00:00:00" class="form-control" step="1">-->
-                    <!--            <input type="number" max="60" min="0" placeholder="毫秒" class="form-control">-->
-             </span>
+<!--        //dierge-->
+        <div>
+            <div style="width: 100%;height: 30px;" id="continuation1">
+                <select id="ways1"  class="form-control">
+                    <option value="4">选择到具体时间</option>
+                    <option value="3">选择到日</option>
+                    <option value="2">选择到月</option>
+                    <option value="1">选择到年</option>
+                </select>
+                <span id="NianYue1">
+              <select id="year11" name="year"  class="form-control" style="margin-left: 20px;width:80px">
+<!--                  <option>年</option>-->
+              </select>
+               <select id="month11" name="month" class="form-control">
+<!--                   <option>月</option>-->
+               </select>
+              <span id="heng1" style="margin-top:8px;float:left;">————</span>
+              <select id="year21" name="year1"  class="form-control" style="margin-left: 12px;width:80px">
+<!--                  <option>年</option>-->
+              </select>
+                   <select id="month21" name="month1" class="form-control">
+<!--                    <option>月</option>-->
+                </select>
+            </span>
+                <span id="ri1" style="margin-top: 10px;">
+            <input type="date" class="form-control cal" style="margin-top: 5px;" placeholder="请选择开始日期" value="null" id="startDate1" name="start" step="1"/>
+            <span>—————</span>
+            <input type="date" class="form-control cal" style="margin-top: 5px;" placeholder="请选择开始日期" value="null" id="endDate1" name="start" step="1"/>
+            </span>
+                <span id="shi1" style="margin-top: 10px;">
+            <input type="datetime-local" class="form-control calt" style="margin-top: 5px;" placeholder="请选择开始日期" value="null" id="starttimeDate1" name="start" step="1"/>
+            <span>—————</span>
+            <input type="datetime-local" class="form-control calt" style="margin-top: 5px;" placeholder="请选择开始日期" value="null" id="endtimeDate1" name="start" step="1"/>
+            </span>
             </div>
         </div>
-        <div>
-            <div style=";" id="continuation1">
-                <!--       <span>按时间搜索 &nbsp; ：</span>-->
-                <div class="form-group">
-<!--                    <label class="sr-only" for="startDate"></label>-->
-<!--                    <input type="date" class="form-control" value="none" placeholder="请选择开始日期" id="startDate1" name="start" step="1"/>-->
-                    <select id="year3" name="year2" class="form-control"></select>
-                    <select id="month3" name="month2" class="form-control"></select>
-                    <select id="day3" name="day2" class="form-control"></select>
-                    <select id="hour2" name="year" class="form-control"><option value=00>时</option></select>
-                    <select id="min2" name="month" class="form-control"><option value=00>分</option></select>
-                    <select id="second2" name="day" class="form-control"><option value=00>秒</option></select>                </div>
-                <span>至</span>
-                <div class="form-group">
-<!--                    <label class="sr-only" for="startDate"></label>-->
-<!--                    <input type="date" class="form-control" placeholder="请选择结束日期" id="endDate1" name="end" step="1"/>-->
-                    <select id="year4" name="year3" class="form-control"></select>
-                    <select id="month4" name="month3" class="form-control"></select>
-                    <select id="day4" name="day3" class="form-control"></select>
-                    <select id="hour3" name="year" class="form-control"><option value=00>时</option></select>
-                    <select id="min3" name="month" class="form-control"><option value=00>分</option></select>
-                    <select id="second3" name="day" class="form-control"><option value=00>秒</option></select>
-                    <!--            <input type="number" max="60" min="0" placeholder="毫秒" class="form-control">-->
-
-                </div>
-            </div>
-            <p class="arrea">选择地区：</p>
+            <div class="arrea" >选择地区：</div>
             <div class="form-group ">
                 <div class="city">
                     <select name="" id="city" class="form-control" >
@@ -127,7 +142,7 @@
                     <select name="" id="street" class="form-control">
                         <option value="null">请选择</option>
                     </select>
-                    <div class="form-group">
+                    <span>
                         <input  id="special_address"
                                 list="auto"
                                 style=" margin: 5px;"
@@ -136,58 +151,28 @@
                         <datalist id="auto">
                             <option></option>
                         </datalist>
-<!--                        <div>-->
-
-<!--                            </div>-->
-                        <!--
-                             <input  id="box" autocomplete="on" style=" margin: 5px;" class="form-control"  placeholder="盒子名称">-->
-                    </div>
-
+                    </span>
+                    <select name="" id="box" class="form-control" style="float:right;">
+                        <option value="null">请选择</option>
+                    </select>
                 </div>
 
             </div>
-            <div>   <select name="" id="box" class="form-control" >
-                <option value="null">请选择</option>
-            </select></div>
             <button id="search" type="button" class="btn btn-default btn-primary" style="width: 110px;margin-top: 6px;">查询</button>
-        </div>
+    </form>    </div>
 
-    </form>
     <hr/>
-    <div id="change">
-        <span id="aa" style="float:left;font-size: 18px;margin-left: 11%;margin-bottom: 60px;">当前是：</span>
+    <div class="change" id="change">
+        <span id="aa" style="float:left;font-size: 18px;margin-left: 11%;margin-bottom: 10px;">当前是：</span>
+<!--        <span id="time" style="float:right;margin-right: 8%;">搜索的时间为：</span>-->
+
     </div>
-</div>
-<div id="bar" style="width: 100%; height: 500px;margin-top: 25px;"></div>
+<div id="bar" style="width: 100%; height: 450px;margin-top: 25px;"></div>
 
 </div>
 <!--</div>-->
 <script src="../static/js/RiskControll.js"></script>
-<script>
-    numtitle="xx区风险防控图"
-    for(let i=0; i<=3; i++)
-    {  var obj=document.getElementById('hour'+i);
-    for(let j=0;j<24;j++)
-    {if(j<10)
-        obj.options.add(new Option("0"+j,"0"+j));
-    else
-        obj.options.add(new Option(j,j));}
-    }
-    for(let i=0; i<=3; i++)
-    {  var obj=document.getElementById('min'+i);
-      var obj1=document.getElementById('second'+i);
-    for(let j=0;j<60;j++)
-    { if(j<10){
-        obj.options.add(new Option("0"+j,"0"+j));
-        obj1.options.add(new Option("0"+j,"0"+j));}
-    else{
-        obj.options.add(new Option(j,j));
-        obj.options.add(new Option(j,j));}
-    }}
-    new YMDselect('year','month','day');
-    new YMDselect('year1','month1','day1');
-    new YMDselect('year2','month2','day2');
-    new YMDselect('year3','month3','day3');
+<script src="../static/js/date.js">
 
 </script>
 </body>

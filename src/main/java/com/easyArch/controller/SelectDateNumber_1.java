@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 public class SelectDateNumber_1 {
@@ -34,6 +36,13 @@ public class SelectDateNumber_1 {
         if (dateAndAddress != null) {
             int state=0;
             List<DateAndNumber> list=new ArrayList<>();
+            String city=null;
+            String county=null;
+            String town=null;
+            String street=null;
+            String specific_address=null;
+            String mac_address=null;
+            String[] str=null;
             String year1 = dateAndAddress.getYear1();
             String month1 = dateAndAddress.getMonth1();
             String day1 = dateAndAddress.getDay1();
@@ -45,33 +54,39 @@ public class SelectDateNumber_1 {
 
             DateNumberAll dateNumberAll=new DateNumberAll();
 
+            String mac_address1=dateAndAddress.getMac_address();
             String address = dateAndAddress.getAddress();
-            String[] str = ControllerUtil.slipAddress(address);
 
-            String city=city=str[0];;
-            String county=str[1];;
-            String town=str[2];
-            String street=str[3];
-            String specific_address=str[4];
-            if(county.equals("null")&&town.equals("null")&&street.equals("null")&&specific_address.equals("null")){
-                state=1;
-                dateNumberAll.setAddress(city);
-            }else if (town.equals("null")&&street.equals("null")&&specific_address.equals("null")){
-                state=2;
-                dateNumberAll.setAddress(county);
-            }else if(street.equals("null")&&specific_address.equals("null")){
-                state=3;
-                dateNumberAll.setAddress(town);
-            }else if(specific_address.equals("null")){
-                state=4;
-                dateNumberAll.setAddress(street);
-            }else {
-                state=5;
-                dateNumberAll.setAddress(specific_address);
+            if(address!=null&&mac_address1==null){
+                str = ControllerUtil.slipAddress(address);
+                city=str[0];;
+                county=str[1];;
+                town=str[2];
+                street=str[3];
+                specific_address=str[4];
+                if(county.equals("null")&&town.equals("null")&&street.equals("null")&&specific_address.equals("null")){
+                    state=1;
+                    dateNumberAll.setAddress(city);
+                }else if (town.equals("null")&&street.equals("null")&&specific_address.equals("null")){
+                    state=2;
+                    dateNumberAll.setAddress(county);
+                }else if(street.equals("null")&&specific_address.equals("null")){
+                    state=3;
+                    dateNumberAll.setAddress(town);
+                }else if(specific_address.equals("null")){
+                    state=4;
+                    dateNumberAll.setAddress(street);
+                }else {
+                    state=5;
+                    dateNumberAll.setAddress(specific_address);
+                }
+            }else if(mac_address1!=null){
+                String REGEX_CHINESE = "[\u4e00-\u9fa5]";
+                Pattern pat = Pattern.compile(REGEX_CHINESE);
+                Matcher mat = pat.matcher(mac_address1);
+                mac_address=mat.replaceAll("");
             }
-
             System.out.println("address: "+address);
-
             if (year1!=null&& year2!=null) {
                 if (month1!=null&& month2!=null) {
                     if (day1!=null&& day2!=null) {
@@ -88,87 +103,125 @@ public class SelectDateNumber_1 {
                                 str1 = str1 + " "+myTime1;
                                 str2 = str2 + " "+myTime2;
                             }
+                            if (mac_address == null && address != null) {
+                                switch (state) {
+                                    case 1:
+                                        if (myTime1 == null && myTime2 == null) {
+                                            list = dateNumberDao.selectTwoHour_Ci(city, str1, str2);
+                                            list = ControllerUtil.filterTowHour(list, "23");
 
-                            switch (state){
-                                case 1:if (myTime1==null&&myTime2==null){
-                                    list=dateNumberDao.selectTwoHour_Ci(city, str1, str2);
-                                    list=ControllerUtil.filterTowHour(list,"23");
-
+                                        } else {
+                                            DateAndNumber andNumber = new DateAndNumber();
+                                            andNumber.setNum(dateNumberDao.selectDay_adCi(city, str1, str2));
+                                            andNumber.setTime(str1 + "至" + str2);
+                                            list.add(andNumber);
+                                        }
+                                        dateNumberAll.setList(list);
+                                        return JSON.toJSONString(dateNumberAll);
+                                    case 2:
+                                        if (myTime1 == null && myTime2 == null) {
+                                            list = dateNumberDao.selectTwoHour_Co(city, county, str1, str2);
+                                            list = ControllerUtil.filterTowHour(list, "23");
+                                        } else {
+                                            DateAndNumber andNumber = new DateAndNumber();
+                                            andNumber.setNum(dateNumberDao.selectDay_adCo(city, county, str1, str2));
+                                            andNumber.setTime(str1 + "至" + str2);
+                                            list.add(andNumber);
+                                        }
+                                        dateNumberAll.setList(list);
+                                        return JSON.toJSONString(dateNumberAll);
+                                    case 3:
+                                        if (myTime1 == null && myTime2 == null) {
+                                            list = dateNumberDao.selectTwoHour_To(city, county, town, str1, str2);
+                                            list = ControllerUtil.filterTowHour(list, "23");
+                                        } else {
+                                            DateAndNumber andNumber = new DateAndNumber();
+                                            andNumber.setNum(dateNumberDao.selectDay_adTo(city, county, town, str1, str2));
+                                            andNumber.setTime(str1 + "至" + str2);
+                                            list.add(andNumber);
+                                        }
+                                        dateNumberAll.setList(list);
+                                        return JSON.toJSONString(dateNumberAll);
+                                    case 4:
+                                        if (myTime1 == null && myTime2 == null) {
+                                            list = dateNumberDao.selectTwoHour_St(city, county, town, street, str1, str2);
+                                            list = ControllerUtil.filterTowHour(list, "23");
+                                        } else {
+                                            DateAndNumber andNumber = new DateAndNumber();
+                                            andNumber.setNum(dateNumberDao.selectDay_adSt(city, county, town, street, str1, str2));
+                                            andNumber.setTime(str1 + "至" + str2);
+                                            list.add(andNumber);
+                                        }
+                                        dateNumberAll.setList(list);
+                                        return JSON.toJSONString(dateNumberAll);
+                                    case 5:
+                                        if (myTime1 == null && myTime2 == null) {
+                                            list = dateNumberDao.selectTwoHour_Sp(city, county, town, street, specific_address, str1, str2);
+                                            list = ControllerUtil.filterTowHour(list, "23");
+                                        } else {
+                                            DateAndNumber andNumber = new DateAndNumber();
+                                            andNumber.setNum(dateNumberDao.selectDay_adSp(city, county, town, street, specific_address, str1, str2));
+                                            andNumber.setTime(str1 + "至" + str2);
+                                            list.add(andNumber);
+                                        }
+                                        dateNumberAll.setList(list);
+                                        return JSON.toJSONString(dateNumberAll);
+                                    default:
+                                        return JSON.toJSONString("f");
+                                }
+                            }else if (mac_address!=null){
+                                if(myTime1==null&&myTime2==null){
+                                    list=dateNumberDao.selectTwoHour(mac_address,str1,str2);
+                                    list= ControllerUtil.filterTowHour(list,"23");
                                 }else {
                                     DateAndNumber andNumber=new DateAndNumber();
-                                    andNumber.setNum(dateNumberDao.selectDay_adCi(city,str1,str2));
+                                    andNumber.setNum(dateNumberDao.selectDayAndTime(mac_address,str1,str2));
                                     andNumber.setTime(str1+"至"+str2);
                                     list.add(andNumber);
                                 }
-                                    dateNumberAll.setList(list);
-                                    return JSON.toJSONString(dateNumberAll);
-                                case 2:if (myTime1==null&&myTime2==null){
-                                    list=dateNumberDao.selectTwoHour_Co(city,county,str1, str2);
-                                    list=ControllerUtil.filterTowHour(list,"23");
-                                }else {
-                                    DateAndNumber andNumber=new DateAndNumber();
-                                    andNumber.setNum(dateNumberDao.selectDay_adCo(city,county,str1,str2));
-                                    andNumber.setTime(str1+"至"+str2);
-                                    list.add(andNumber);
-                                }
-                                    dateNumberAll.setList(list);
-                                    return JSON.toJSONString(dateNumberAll);
-                                case 3:if (myTime1==null&&myTime2==null){
-                                    list=dateNumberDao.selectTwoHour_To(city,county,town, str1, str2);
-                                    list=ControllerUtil.filterTowHour(list,"23");
-                                }else {
-                                    DateAndNumber andNumber = new DateAndNumber();
-                                    andNumber.setNum(dateNumberDao.selectDay_adTo(city, county, town, str1, str2));
-                                    andNumber.setTime(str1 + "至" + str2);
-                                    list.add(andNumber);
-                                }
-                                    dateNumberAll.setList(list);
-                                    return JSON.toJSONString(dateNumberAll);
-                                case 4:if (myTime1==null&&myTime2==null){
-                                    list=dateNumberDao.selectTwoHour_St(city,county,town, street,str1, str2);
-                                    list=ControllerUtil.filterTowHour(list,"23");
-                                }else {
-                                    DateAndNumber andNumber=new DateAndNumber();
-                                    andNumber.setNum(dateNumberDao.selectDay_adSt(city,county,town,street, str1, str2));
-                                    andNumber.setTime(str1+"至"+str2);
-                                    list.add(andNumber);
-                                }
-                                    dateNumberAll.setList(list);
-                                    return JSON.toJSONString(dateNumberAll);
-                                case  5:if (myTime1==null&&myTime2==null){
-                                    list=dateNumberDao.selectTwoHour_Sp(city,county,town,street,specific_address, str1, str2);
-                                    list=ControllerUtil.filterTowHour(list,"23");
-                                }else {
-                                    DateAndNumber andNumber=new DateAndNumber();
-                                    andNumber.setNum(dateNumberDao.selectDay_adSp(city,county,town,street,specific_address, str1, str2));
-                                    andNumber.setTime(str1+"至"+str2);
-                                    list.add(andNumber);
-                                }
-                                    dateNumberAll.setList(list);
-                                    return JSON.toJSONString(dateNumberAll);
-                                default:return JSON.toJSONString("f");
-
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
                             }
-
                         }
                         //按照天为单位查询多天
-                        switch (state){
-                            case 1:list = dateNumberDao.selectDay_Ci(city, str1, str2);
-                                dateNumberAll.setList(list);
-                                return JSON.toJSONString(dateNumberAll);
-                            case 2: list = dateNumberDao.selectDay_Co(city,county, str1, str2);
-                                dateNumberAll.setList(list);
-                                return JSON.toJSONString(dateNumberAll);
-                            case 3:list = dateNumberDao.selectDay_To(city,county,town, str1, str2);
-                                dateNumberAll.setList(list);
-                                return JSON.toJSONString(dateNumberAll);
-                            case 4:list = dateNumberDao.selectDay_St(city,county,town,street, str1, str2);
-                                dateNumberAll.setList(list);
-                                return JSON.toJSONString(dateNumberAll);
-                            case 5:list = dateNumberDao.selectDay_Sp(city,county,town,street,specific_address, str1, str2);
-                                dateNumberAll.setList(list);
-                                return JSON.toJSONString(dateNumberAll);
-                            default:return JSON.toJSONString("f");
+                        if (mac_address == null && address != null) {
+                            switch (state) {
+                                case 1:
+                                    list = dateNumberDao.selectDay_Ci(city, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                case 2:
+                                    list = dateNumberDao.selectDay_Co(city, county, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                case 3:
+                                    list = dateNumberDao.selectDay_To(city, county, town, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                case 4:
+                                    list = dateNumberDao.selectDay_St(city, county, town, street, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                case 5:
+                                    list = dateNumberDao.selectDay_Sp(city, county, town, street, specific_address, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                default:
+                                    return JSON.toJSONString("f");
+                            }
+                        }else if (mac_address!=null){
+                            if (myTime1==null){
+                                list=dateNumberDao.selectDay(mac_address, str1, str2);
+                            }else {
+                                str1 = str1 + " "+myTime1;
+                                str2 = str2 + " "+myTime2;
+                                DateAndNumber andNumber=new DateAndNumber();
+                                andNumber.setNum(dateNumberDao.selectDayAndTime(mac_address,str1,str2));
+                                andNumber.setTime(str1+"至"+str2);
+                                list.add(andNumber);
+                            }
+                            dateNumberAll.setList(list);
+                            return JSON.toJSONString(dateNumberAll);
                         }
                     }
                     String str1 = year1 + "-" + month1 + "-01";
@@ -176,44 +229,72 @@ public class SelectDateNumber_1 {
                     //查询一个月里的31天
                     if (str1.equals(str2)) {
                         str2 = year2 + "-" + month2 + "-31";
-                        switch (state){
-                            case 1:list = dateNumberDao.selectDay_Ci(city, str1, str2);
+                        if (mac_address == null && address != null) {
+                            switch (state) {
+                                case 1:
+                                    list = dateNumberDao.selectDay_Ci(city, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                case 2:
+                                    list = dateNumberDao.selectDay_Co(city, county, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                case 3:
+                                    list = dateNumberDao.selectDay_To(city, county, town, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                case 4:
+                                    list = dateNumberDao.selectDay_St(city, county, town, street, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                case 5:
+                                    list = dateNumberDao.selectDay_Sp(city, county, town, street, specific_address, str1, str2);
+                                    dateNumberAll.setList(list);
+                                    return JSON.toJSONString(dateNumberAll);
+                                default:
+                                    return JSON.toJSONString("f");
+                            }
+                        }else if (mac_address!=null){
+                            if (str1.equals(str2)) {
+                                str2 = year2 + "-" + month2 + "-31";
+                                list= dateNumberDao.selectDay(mac_address, str1, str2);
                                 dateNumberAll.setList(list);
                                 return JSON.toJSONString(dateNumberAll);
-                            case 2: list = dateNumberDao.selectDay_Co(city,county, str1, str2);
-                                dateNumberAll.setList(list);
-                                return JSON.toJSONString(dateNumberAll);
-                            case 3:list = dateNumberDao.selectDay_To(city,county,town, str1, str2);
-                                dateNumberAll.setList(list);
-                                return JSON.toJSONString(dateNumberAll);
-                            case 4:list = dateNumberDao.selectDay_St(city,county,town,street, str1, str2);
-                                dateNumberAll.setList(list);
-                                return JSON.toJSONString(dateNumberAll);
-                            case 5:list = dateNumberDao.selectDay_Sp(city,county,town,street,specific_address, str1, str2);
-                                dateNumberAll.setList(list);
-                                return JSON.toJSONString(dateNumberAll);
-                            default:return JSON.toJSONString("f");
+
+                            }
                         }
                     }
                     //查询以月为单位的多个月
                     str2 = year2 + "-" + month2 + "-31";
-                    switch (state){
-                        case 1:list = dateNumberDao.selectMonth_Ci(city, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        case 2:list = dateNumberDao.selectMonth_Co(city,county, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        case 3: list = dateNumberDao.selectMonth_To(city,county,town, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        case 4:dateNumberDao.selectMonth_St(city,county,town,street, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        case 5: list = dateNumberDao.selectMonth_Sp(city,county,town,street,specific_address, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        default:return JSON.toJSONString("f");
+                    if (mac_address == null && address != null) {
+                        switch (state) {
+                            case 1:
+                                list = dateNumberDao.selectMonth_Ci(city, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            case 2:
+                                list = dateNumberDao.selectMonth_Co(city, county, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            case 3:
+                                list = dateNumberDao.selectMonth_To(city, county, town, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            case 4:
+                                dateNumberDao.selectMonth_St(city, county, town, street, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            case 5:
+                                list = dateNumberDao.selectMonth_Sp(city, county, town, street, specific_address, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            default:
+                                return JSON.toJSONString("f");
+                        }
+                    }else if (mac_address!=null){
+                        list = dateNumberDao.selectMonth(mac_address, str1, str2);
+                        dateNumberAll.setList(list);
+                        return JSON.toJSONString(dateNumberAll);
                     }
 
                 }
@@ -223,46 +304,70 @@ public class SelectDateNumber_1 {
                 if (str1.equals(str2)) {
                     str1 = year1 + "-01" + "-01";
                     str2 = year2 + "-12" + "-31";
-                    switch (state){
-                        case 1: list = dateNumberDao.selectMonth_Ci(city, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        case 2:list = dateNumberDao.selectMonth_Co(city,county, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        case 3:list = dateNumberDao.selectMonth_To(city,county,town, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        case 4: list = dateNumberDao.selectMonth_St(city,county,town,street, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        case 5:list = dateNumberDao.selectMonth_Sp(city,county,town,street,specific_address, str1, str2);
-                            dateNumberAll.setList(list);
-                            return JSON.toJSONString(dateNumberAll);
-                        default:return JSON.toJSONString("f");
+                    if (mac_address == null && address != null) {
+                        switch (state) {
+                            case 1:
+                                list = dateNumberDao.selectMonth_Ci(city, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            case 2:
+                                list = dateNumberDao.selectMonth_Co(city, county, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            case 3:
+                                list = dateNumberDao.selectMonth_To(city, county, town, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            case 4:
+                                list = dateNumberDao.selectMonth_St(city, county, town, street, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            case 5:
+                                list = dateNumberDao.selectMonth_Sp(city, county, town, street, specific_address, str1, str2);
+                                dateNumberAll.setList(list);
+                                return JSON.toJSONString(dateNumberAll);
+                            default:
+                                return JSON.toJSONString("f");
+                        }
+                    }else if (mac_address!=null){
+                        list = dateNumberDao.selectMonth(mac_address, str1, str2);
+                        dateNumberAll.setList(list);
+                        return JSON.toJSONString(dateNumberAll);
                     }
 
                 }
                 //查询多年
                 str1 = year1 + "-01" + "-01";
                 str2 = year2 + "-12" + "-31";
-                switch (state){
-                    case 1:list = dateNumberDao.selectYear_Ci(city, str1, str2);
-                        dateNumberAll.setList(list);
-                        return JSON.toJSONString(dateNumberAll);
-                    case 2:list = dateNumberDao.selectYear_Co(city,county, str1, str2);
-                        dateNumberAll.setList(list);
-                        return JSON.toJSONString(dateNumberAll);
-                    case 3: list = dateNumberDao.selectYear_To(city,county,town, str1, str2);
-                        dateNumberAll.setList(list);
-                        return JSON.toJSONString(dateNumberAll);
-                    case 4:list = dateNumberDao.selectYear_St(city,county,town,street, str1, str2);
-                        dateNumberAll.setList(list);
-                        return JSON.toJSONString(dateNumberAll);
-                    case 5:list = dateNumberDao.selectYear_Sp(city,county,town,street,specific_address, str1, str2);
-                        dateNumberAll.setList(list);
-                        return JSON.toJSONString(dateNumberAll);
-                    default:JSON.toJSONString("f");
+                if (mac_address == null && address != null) {
+                    switch (state) {
+                        case 1:
+                            list = dateNumberDao.selectYear_Ci(city, str1, str2);
+                            dateNumberAll.setList(list);
+                            return JSON.toJSONString(dateNumberAll);
+                        case 2:
+                            list = dateNumberDao.selectYear_Co(city, county, str1, str2);
+                            dateNumberAll.setList(list);
+                            return JSON.toJSONString(dateNumberAll);
+                        case 3:
+                            list = dateNumberDao.selectYear_To(city, county, town, str1, str2);
+                            dateNumberAll.setList(list);
+                            return JSON.toJSONString(dateNumberAll);
+                        case 4:
+                            list = dateNumberDao.selectYear_St(city, county, town, street, str1, str2);
+                            dateNumberAll.setList(list);
+                            return JSON.toJSONString(dateNumberAll);
+                        case 5:
+                            list = dateNumberDao.selectYear_Sp(city, county, town, street, specific_address, str1, str2);
+                            dateNumberAll.setList(list);
+                            return JSON.toJSONString(dateNumberAll);
+                        default:
+                            JSON.toJSONString("f");
+                    }
+                }else if (mac_address!=null){
+                    list = dateNumberDao.selectYear(mac_address, str1, str2);
+                    dateNumberAll.setList(list);
+                    return JSON.toJSONString(dateNumberAll);
                 }
             }
         }

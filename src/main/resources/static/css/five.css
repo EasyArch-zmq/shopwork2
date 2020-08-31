@@ -17,7 +17,7 @@ body {
 }
 
 .services-icon {
-	color: #fed136;
+	color: #0FB9EF;
 }
 
 p {
@@ -42,14 +42,14 @@ a.active {
 }
 
 a {
-    color: #fed136;
+    color: #0FB9EF;
 }
 
 a:hover,
 a:focus,
 a:active,
 a.active {
-    color: #fec503;
+    color: #0FB9EF;
 }
 
 h1,
@@ -80,12 +80,12 @@ h5 {
 }
 
 .btn-primary {
-    border-color: #fed136;
+    border-color:#0FB9EF;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #fff;
-    background-color: #fed136;
+    background-color: #0FB9EF;
 }
 
 .btn-primary:hover,
@@ -93,9 +93,9 @@ h5 {
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-    border-color: #f6bf01;
+    border-color: #0FB9EF;
     color: #fff;
-    background-color: #fec503;
+    background-color: #0FB9EF;
 }
 
 .btn-primary:active,
@@ -119,19 +119,19 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: #fed136;
-    background-color: #fed136;
+    border-color:#0FB9EF;
+    background-color: #0FB9EF;
 }
 
 .btn-primary .badge {
-    color: #fed136;
+    color: #0FB9EF;
     background-color: #fff;
 }
 
 .btn-xl {
     padding: 10px 20px 5px 20px;
-    border-color: #f1c633;
-	border: 0px solid #f1c633;
+    border-color: #0FB9EF;
+	border: 0px solid #0FB9EF;
     border-radius: 10px;
     color: #e2e2e2;
 	box-shadow: -15px 30px 7px #c2c2c2;
@@ -166,12 +166,12 @@ fieldset[disabled] .btn-xl:active,
 .btn-xl.disabled.active,
 .btn-xl[disabled].active,
 fieldset[disabled] .btn-xl.active {
-    border-color: #fed136;
-    background-color: #fed136;
+    border-color: #0FB9EF;
+    background-color: #0FB9EF;
 }
 
 .btn-xl .badge {
-    color: #fed136;
+    color: #0FB9EF;
     background-color: #fff;
 }
 .btn-xl2 {
@@ -207,7 +207,7 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:active,
 .navbar-default .navbar-brand.active {
-    color: #fec503;
+    color: #0FB9EF;
     font-size: 30px;
 }
 
@@ -216,8 +216,8 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-toggle {
-    border-color: #fed136;
-    background-color: #fed136;
+    border-color: #0FB9EF;
+    background-color: #0FB9EF;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -226,7 +226,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #fed136;
+    background-color: #0FB9EF;
 }
 
 .navbar-default .nav li a {
@@ -240,19 +240,19 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
     outline: 0;
-    color: #fed136;
+    color: #0FB9EF;
 }
 
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
-    background-color: #fed136;
+    background-color: #0FB9EF;
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
     color: #fff;
-    background-color: #fec503;
+    background-color: #0FB9EF;
 }
 .line{
 	width: 80%;
@@ -262,10 +262,10 @@ fieldset[disabled] .btn-xl.active {
 	margin-bottom: 50px;
 	height: 1px;
 	background: #fff;
-	background-image: -webkit-linear-gradient(left, #f1c633, #fff, #f1c633);
-	background-image: -moz-linear-gradient(left, #f1c633, #fff, #f1c633);
-	background-image: -ms-linear-gradient(left, #f1c633, #fff, #f1c633);
-	background-image: -o-linear-gradient(left, #f1c633, #fff, #f1c633);
+	background-image: -webkit-linear-gradient(left, #0FB9EF, #fff, #0FB9EF);
+	background-image: -moz-linear-gradient(left, #0FB9EF, #fff, #0FB9EF);
+	background-image: -ms-linear-gradient(left,#0FB9EF, #fff, #0FB9EF);
+	background-image: -o-linear-gradient(left, #0FB9EF, #fff, #0FB9EF);
 	opacity: 0.5;
 }
 #portfolio .line, #team .line {
@@ -307,7 +307,7 @@ fieldset[disabled] .btn-xl.active {
 }
 
 #header {
-    text-align: center;
+    /*text-align: center;*/
     color: #fff;
     background-attachment: scroll;
     background-image: url(../assets/img/header-bg.jpg);
@@ -369,7 +369,7 @@ fieldset[disabled] .btn-xl.active {
 
 section {
     padding: 100px 0;
-	background-color: #f1c633;
+	background-color: #0FB9EF;
 	color: #666;	
 }
 
@@ -391,7 +391,7 @@ section h3.section-subheading {
 @media(min-width:768px) {
     section {
 	padding: 150px 0;
-	background-color: #f1c633;
+	background-color: #0FB9EF;
 	color: #666;
     }
 }
@@ -445,7 +445,7 @@ section h3.section-subheading {
     width: 100%;
     height: 100%;
     opacity: 0;
-    background: rgba(254,209,54,.9);
+    background: #0FB9EF;
     -webkit-transition: all ease .5s;
     -moz-transition: all ease .5s;
     transition: all ease .5s;
@@ -533,7 +533,7 @@ section h3.section-subheading {
 }
 
 section#contact {
-	background-color: #f1c633;
+	background-color: #0FB9EF;
 	text-align: center;
 }
 
@@ -559,7 +559,7 @@ section#contact .form-group textarea.form-control {
 }
 
 section#contact .form-control:focus {
-    border-color: #fed136;
+    border-color: #0FB9EF;
     box-shadow: none;
 }
 
@@ -638,7 +638,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-    background-color: #fed136;
+    background-color: #0FB9EF;
 }
 
 .btn:focus,
@@ -721,12 +721,12 @@ ul.social-buttons li a:active {
 
 ::-moz-selection {
     text-shadow: none;
-    background: #fed136;
+    background: #0FB9EF;
 }
 
 ::selection {
     text-shadow: none;
-    background: #fed136;
+    background:#0FB9EF;
 }
 
 img::selection {
@@ -738,7 +738,7 @@ img::-moz-selection {
 }
 
 body {
-    webkit-tap-highlight-color: #fed136;
+    webkit-tap-highlight-color: #0FB9EF;
 }
 .plane{
     width: 100%;
@@ -757,7 +757,7 @@ body {
     margin: 0 20px;
     text-align: center;
     width:100%;
-    height: 90%;
+    height: 77%;
     border: solid 1px #c5c5cb;
     border-radius: 20px;
     box-shadow: 0 0 10px #e0e0e7;
@@ -778,16 +778,17 @@ body {
 .img-light{
     width: 80px;
     height: 80px;
-    margin-bottom: 12px;
+    margin-bottom: 22px;
+    margin-top: 6px;
 
 }
 .span1{
     font-family: Arial, Helvetica, sans-serif;
-    margin-top: 20px;
-    font-size: 14px;
+    margin-top: 30px;
+    font-size: 16px;
     color: #9899a2;
-    line-height: 16px;
-    margin-bottom: 12px;
+    line-height: 18px;
+    margin-bottom: 14px;
 
 }
 #pselect{
@@ -800,10 +801,10 @@ body {
     background-color: transparent;
 }
 #pselect::-webkit-input-placeholder{
-    color: #fec503;
+    color: #0FB9EF;
 }
 #itemlist{
-    color: #fec503;
+    color: #0FB9EF;
 }
 #address2{
     font-size: 25px;
