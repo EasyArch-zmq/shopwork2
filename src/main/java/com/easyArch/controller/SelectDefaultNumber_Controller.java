@@ -70,7 +70,7 @@ public class SelectDefaultNumber_Controller {
                     //获取日期
                     String date2=df.format(new Date());
                     String [] str2=ControllerUtil.slipDate2(date2);
-                    String date1=str2[0]+" 00:00:00";
+                    String date1=str2[0]+" 01:00:00";
 //                list = dateNumberDao.selectTwoHour(mac_list.get(j),"2020-07-28 00:00:00", "2020-07-28 23:59:00");
                     list = dateNumberDao.selectTwoHour(mac_list.get(j),date1,date2);
 //                String[] strings;

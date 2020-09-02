@@ -34,7 +34,7 @@ public class SelectDateNumber_2 {
             , method = RequestMethod.POST)
     public String selectDateNumber(@RequestBody DateAndAddress dateAndAddress) {
         logger.info("selectDateNumber!!!!!");
-        System.out.println("selectDateNumber!!!!!");
+        System.out.println("指定时间");
         if (dateAndAddress != null) {
             List<DateAndNumber> list;
             String year1 = dateAndAddress.getYear1();
@@ -65,7 +65,8 @@ public class SelectDateNumber_2 {
             String specific_address=null;
             String address = dateAndAddress.getAddress();
             String mac_address1=dateAndAddress.getMac_address();
-            if(address!=null&&mac_address1==null){
+            if(address!=null&&mac_address1.equals("null")){
+                mac_address=null;
                 str = ControllerUtil.slipAddress(address);
                 city=str[0];;
                 county=str[1];;
@@ -88,7 +89,7 @@ public class SelectDateNumber_2 {
                     state=5;
                     dateNumberAll.setAddress(specific_address);
                 }
-            }else if(mac_address1!=null) {
+            }else if(!mac_address1.equals("null")) {
                 /**
                  * mac地址
                  */
@@ -112,8 +113,9 @@ public class SelectDateNumber_2 {
                             System.out.println("str1=str2------------------");
                             if (myTime1 == null && myTime2 == null) {
                                 System.out.println();
-                                str1 = str1 + " 00:00:00";
-                                str2 = str2 + " 23:59:29";
+                                str1 = str1 + " 01:00:00";
+                                Integer dayt=new Integer(day2)+1;
+                                str2 = year2 + "-" + month2 + "-" + dayt+ " 00:59:59";
                             } else {
                                 str1 = str1 + " " + myTime1;
                                 str2 = str2 + " " + myTime2;

@@ -14,7 +14,7 @@ public interface DateNumberDao {
      * @param mac_address
      * @return
      */
-    Integer selectAllNumber(String mac_address);
+//    Integer selectAllNumber(String mac_address);
 
     /**
      * 每两小时查询

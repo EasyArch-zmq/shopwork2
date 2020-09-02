@@ -10,7 +10,7 @@
 
     <!-- 范围值为两小时 -->
     <select id="selectTwoHour" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(concat(date(mytime),' ',floor(hour(mytime)/2)*2),'%H')
+        select date_format(concat(date(mytime),' ',floor((hour(mytime)-1)/2)*2+1),'%H')
         as time,count(*) as num from time_info where mac_address=#{mac_address}
         and (mytime between #{date1}
         and #{date2})
@@ -18,7 +18,7 @@
         order by time
     </select>
     <select id="selectTwoHour_Ci" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(concat(date(mytime),' ',floor(hour(mytime)/2)*2),'%H')
+        select date_format(concat(date(mytime),' ',floor((hour(mytime)-1)/2)*2+1),'%H')
         as time,count(*) as num from time_info where mac_address in (select mac_address from address_info
         where city=#{city})
         and (mytime between #{date1}
@@ -28,7 +28,7 @@
     </select>
 
     <select id="selectTwoHour_Co" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(concat(date(mytime),' ',floor(hour(mytime)/2)*2),'%H')
+        select date_format(concat(date(mytime),' ',floor((hour(mytime)-1)/2)*2+1),'%H')
         as time,count(*) as num from time_info where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county})
         and (mytime between #{date1}
@@ -38,7 +38,7 @@
     </select>
 
     <select id="selectTwoHour_To" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(concat(date(mytime),' ',floor(hour(mytime)/2)*2),'%H')
+        select date_format(concat(date(mytime),' ',floor((hour(mytime)-1)/2)*2+1),'%H')
         as time,count(*) as num from time_info where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county} and town=#{town})
         and (mytime between #{date1}
@@ -48,7 +48,7 @@
     </select>
 
     <select id="selectTwoHour_St" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(concat(date(mytime),' ',floor(hour(mytime)/2)*2),'%H')
+        select date_format(concat(date(mytime),' ',floor((hour(mytime)-1)/2)*2+1),'%H')
         as time,count(*) as num from time_info where mac_address in (select mac_address from address_info
         where city=#{city}
         and county=#{county}
@@ -61,7 +61,7 @@
     </select>
 
     <select id="selectTwoHour_Sp" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(concat(date(mytime),' ',floor(hour(mytime)/2)*2),'%H')
+        select date_format(concat(date(mytime),' ',floor((hour(mytime)-1)/2)*2+1),'%H')
         as time,count(*) as num from time_info where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
         and town=#{town}

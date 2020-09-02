@@ -13,7 +13,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -111,7 +113,9 @@ public List<String> selectCoAddress(@RequestBody Address address) {
      */
 
     @ResponseBody
-    @RequestMapping(value = "selectAllNumber",produces = "application/json;charset=utf-8",method = RequestMethod.POST)
+    @RequestMapping(value = "selectAllNumber"
+            ,produces = "application/json;charset=utf-8"
+            ,method = RequestMethod.POST)
     public String selectAllNumber(@RequestBody P_User p_user){
         if(p_user!=null){
             String username=p_user.getUsername();
@@ -129,9 +133,16 @@ public List<String> selectCoAddress(@RequestBody Address address) {
             String town=str[2];
             String street=str[3];
             String specificAddress=str[4];
-            if(town.equals("*")){
-                town=null;
-            }
+            //设置日期格式
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            //获取日期
+            String date2=df.format(new Date());
+            String [] str2=ControllerUtil.slipDate2(date2);
+            String date1=str2[0]+" 00:00:00";
+            String []str3=ControllerUtil.slipDate3(str2[1]);
+            Integer time_inDate=new Integer(str3[0]);
+            Integer time_inList=0;
+
             //返回Mac和具体地址
             List<String> cons_List = addressDao
                     .select_construction(specificAddress,city,county,town,street);
@@ -152,14 +163,24 @@ public List<String> selectCoAddress(@RequestBody Address address) {
                             .selectLocation_tier(mac_list.get(j));
 
                     //盒子的对应收集到的人数
-                    Integer num=dateNumberDao
-                            .selectAllNumber(mac_list.get(j));
+                    Integer num=0;
+                    List<DateAndNumber>numberList=new ArrayList<>();
+                    numberList=dateNumberDao.selectTwoHour(mac_list.get(j),date1,date2);
+                    if(numberList.size()!=0){
+                        time_inList=new Integer(numberList.get(numberList.size()-1).getTime());
+                        if (time_inDate.equals(time_inList)||time_inDate-1==time_inList){
+                            num=numberList.get(numberList.size()-1).getNum();
+                        }else {
+                            num=0;
+                        }
+                    }else {
+                        num=0;
+                    }
+//
                     System.out.println("----------->num:"+num +"------------>mac:"+mac_list.get(j));
                     Data_inCons data_inCons =new Data_inCons();
-
                     data_inCons.setNumber(num);
                     data_inCons.setLocation(locationTier.getLocation());
-                    data_inCons.setTier(locationTier.getTier());
                     data_inCons.setColor(color1);
                     data_inCons.setMac_address(mac_list.get(j));
                     list_inCons.add(data_inCons);

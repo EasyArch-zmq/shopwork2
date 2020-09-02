@@ -8,5 +8,4 @@ public class Data_inCons {
     private Integer number;
     private Color1 color;
     private String location;
-    private String tier;
 }

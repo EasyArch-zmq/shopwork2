@@ -32,7 +32,7 @@ public class SelectDateNumber_1 {
             , method = RequestMethod.POST)
     public String selectDateNumber(@RequestBody DateAndAddress dateAndAddress) {
         logger.info("selectDateNumber!!!!!");
-        System.out.println("selectDateNumber!!!!!");
+        System.out.println("selectDateNumber_1连续时间!!!!!");
         if (dateAndAddress != null) {
             int state=0;
             List<DateAndNumber> list=new ArrayList<>();
@@ -57,7 +57,8 @@ public class SelectDateNumber_1 {
             String mac_address1=dateAndAddress.getMac_address();
             String address = dateAndAddress.getAddress();
 
-            if(address!=null&&mac_address1==null){
+            if(address!=null&&mac_address1.equals("null")){
+                mac_address=null;
                 str = ControllerUtil.slipAddress(address);
                 city=str[0];;
                 county=str[1];;
@@ -80,7 +81,7 @@ public class SelectDateNumber_1 {
                     state=5;
                     dateNumberAll.setAddress(specific_address);
                 }
-            }else if(mac_address1!=null){
+            }else if(!mac_address1.equals("null")){
                 String REGEX_CHINESE = "[\u4e00-\u9fa5]";
                 Pattern pat = Pattern.compile(REGEX_CHINESE);
                 Matcher mat = pat.matcher(mac_address1);
@@ -97,8 +98,9 @@ public class SelectDateNumber_1 {
                             System.out.println("str1=str2------------------");
                             if(myTime1==null&&myTime2==null){
                                 System.out.println();
-                                str1 = str1 + " 00:00:00";
-                                str2 = str2 + " 23:59:29";
+                                str1 = str1 + " 01:00:00";
+                                Integer dayt=new Integer(day2)+1;
+                                str2 = year2 + "-" + month2 + "-" + dayt+ " 00:59:59";
                             }else {
                                 str1 = str1 + " "+myTime1;
                                 str2 = str2 + " "+myTime2;
@@ -187,23 +189,68 @@ public class SelectDateNumber_1 {
                         if (mac_address == null && address != null) {
                             switch (state) {
                                 case 1:
-                                    list = dateNumberDao.selectDay_Ci(city, str1, str2);
+                                    if (myTime1==null){
+                                        list = dateNumberDao.selectDay_Ci(city, str1, str2);
+                                    }else {
+                                        str1 = str1 + " "+myTime1;
+                                        str2 = str2 + " "+myTime2;
+                                        DateAndNumber andNumber = new DateAndNumber();
+                                        andNumber.setNum(dateNumberDao.selectDay_adCi(city, str1, str2));
+                                        andNumber.setTime(str1 + "至" + str2);
+                                        list.add(andNumber);
+                                    }
                                     dateNumberAll.setList(list);
                                     return JSON.toJSONString(dateNumberAll);
                                 case 2:
-                                    list = dateNumberDao.selectDay_Co(city, county, str1, str2);
+                                    if (myTime1==null){
+                                        list = dateNumberDao.selectDay_Co(city,county,str1, str2);
+                                    }else {
+                                        str1 = str1 + " "+myTime1;
+                                        str2 = str2 + " "+myTime2;
+                                        DateAndNumber andNumber = new DateAndNumber();
+                                        andNumber.setNum(dateNumberDao.selectDay_adCo(city,county,str1, str2));
+                                        andNumber.setTime(str1 + "至" + str2);
+                                        list.add(andNumber);
+                                    }
                                     dateNumberAll.setList(list);
                                     return JSON.toJSONString(dateNumberAll);
                                 case 3:
-                                    list = dateNumberDao.selectDay_To(city, county, town, str1, str2);
+                                    if (myTime1==null){
+                                        list = dateNumberDao.selectDay_To(city,county,town,str1, str2);
+                                    }else {
+                                        str1 = str1 + " "+myTime1;
+                                        str2 = str2 + " "+myTime2;
+                                        DateAndNumber andNumber = new DateAndNumber();
+                                        andNumber.setNum(dateNumberDao.selectDay_adTo(city,county,town,str1, str2));
+                                        andNumber.setTime(str1 + "至" + str2);
+                                        list.add(andNumber);
+                                    }
                                     dateNumberAll.setList(list);
                                     return JSON.toJSONString(dateNumberAll);
                                 case 4:
-                                    list = dateNumberDao.selectDay_St(city, county, town, street, str1, str2);
+                                    if (myTime1==null){
+                                        list = dateNumberDao.selectDay_St(city,county,town,street,str1, str2);
+                                    }else {
+                                        str1 = str1 + " "+myTime1;
+                                        str2 = str2 + " "+myTime2;
+                                        DateAndNumber andNumber = new DateAndNumber();
+                                        andNumber.setNum(dateNumberDao.selectDay_adSt(city,county,town,street,str1, str2));
+                                        andNumber.setTime(str1 + "至" + str2);
+                                        list.add(andNumber);
+                                    }
                                     dateNumberAll.setList(list);
                                     return JSON.toJSONString(dateNumberAll);
                                 case 5:
-                                    list = dateNumberDao.selectDay_Sp(city, county, town, street, specific_address, str1, str2);
+                                    if (myTime1==null){
+                                        list = dateNumberDao.selectDay_Sp(city,county,town,street,specific_address,str1, str2);
+                                    }else {
+                                        str1 = str1 + " "+myTime1;
+                                        str2 = str2 + " "+myTime2;
+                                        DateAndNumber andNumber = new DateAndNumber();
+                                        andNumber.setNum(dateNumberDao.selectDay_adSp(city,county,town,street,specific_address,str1, str2));
+                                        andNumber.setTime(str1 + "至" + str2);
+                                        list.add(andNumber);
+                                    }
                                     dateNumberAll.setList(list);
                                     return JSON.toJSONString(dateNumberAll);
                                 default:

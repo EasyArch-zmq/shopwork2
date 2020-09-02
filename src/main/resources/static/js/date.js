@@ -162,7 +162,7 @@ $('#search').click(() => {
     var street = $("#street").val();
     var special_address = $("#special_address").val() === "" ? "null" : $("#special_address").val();
     var box = $('#box').val();
-    let data = {
+    let data = JSON.stringify({
         "year1": year1,
         "month1": month1,
         "day1": day1,
@@ -171,51 +171,21 @@ $('#search').click(() => {
         "day2": day2,
         "time1": time1,
         "time2": time2,
-        "address": city + "," + county + "," + town + "," + street + "," + special_address
-    }
+        "address": city + "," + county + "," + town + "," + street + "," + special_address,
+        "mac_address":box
+    })
     // document.getElementById('time').innerHTML="搜索的时间为："+year1+"/"+month1+"/"+day1+" "+time1+"——"+
     //     year2+"/"+month2+"/"+day2+" "+time2;
     console.log(data)
     let url;
     // // alert(box)
-    if(sub===0)
-        if(box==="null")
-        {url= `${BASE_URL}` + '/selectDateNumber_2';}
-        else {url=`${BASE_URL}` + '/selectDataNumberBox_id_2';
-            data = JSON.stringify( {
-                "year1":year1,
-                "month1":month1,
-                "day1":day1,
-                "year2":year2,
-                "month2":month2,
-                "day2":day2,
-                "time1":time1,
-                "time2":time2,
-                // "address":city+","+county+","+town+","+street+","+special_address,
-                "mac_address":box
-            })
-        }
-    else if(box==="null")
-        url= `${BASE_URL}` + '/selectDateNumber_1';
-    else
-    {url= `${BASE_URL}` + '/selectDataNumberBox_id_1';
-        data = JSON.stringify({
-            "year1":year1,
-            "month1":month1,
-            "day1":day1,
-            "year2":year2,
-            "month2":month2,
-            "day2":day2,
-            "time1":time1,
-            "time2":time2,
-            // "address":city+","+county+","+town+","+street+","+special_address,
-            "mac_address":box
-        })
-    }
+    if(sub===0){
+        url= `${BASE_URL}` + '/selectDateNumber_2';
+    }else{url= `${BASE_URL}` + '/selectDateNumber_1';}
     // alert(url)
     console.log(data);
     $.ajax({
-        url: `${BASE_URL}`+"/selectDateNumber_2",
+        url: url,
         method: 'post',
         data:data,
         contentType:"application/json;charset=utf-8",

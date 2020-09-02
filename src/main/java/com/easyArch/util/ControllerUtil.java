@@ -55,13 +55,13 @@ public class ControllerUtil {
     public static List<DateAndNumber> filterTowHour(List<DateAndNumber> list, String time) {
         List<DateAndNumber> list1 = new ArrayList<>();
         Integer timeT = new Integer(time);
-        Integer temp = 0;
-        Integer i = 0;
+        Integer temp = 1;
+        Integer i = 1;
         System.out.println(list);
         for (DateAndNumber dateAndNumber : list) {
             Integer temInt = new Integer(dateAndNumber.getTime());
 //            System.out.println("当前时间是："+temInt);
-            for (i = temp; i < temInt; i += 2) {
+            for (i = temp; i < temInt; i +=2) {
                 DateAndNumber dateAndNumberTem = new DateAndNumber();
                 if (i < 10) {
                     dateAndNumberTem.setTime("0" + i);
@@ -74,10 +74,10 @@ public class ControllerUtil {
             }
             temp = temInt;
             list1.add(dateAndNumber);
-            temp += 2;
+            temp+=2;
         }
-        Integer j = 0;
-        for (j = temp; j <= timeT; j += 2) {
+        Integer j = 1;
+        for (j = temp; j <= timeT; j+=2) {
             DateAndNumber dateAndNumberTem2;
             dateAndNumberTem2 = new DateAndNumber();
             if (j < 10) {
