@@ -40,27 +40,8 @@ $(document).ready(() => {
         var city=$("#city").val();
         var pro=$("#country").val();
         $.ajax({
-            url: `${BASE_URL}` + '/TownAddress',
-            data:'{"city":"'+city+'","county":"'+pro+'"}',
-            method: 'post',
-            contentType: "application/json",
-            success: function (res) {
-                console.log(res)
-                let pro, options;
-                for(let i=0; i<res.length; i++)
-                {  pro =$("#town");
-                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
-                pro.append(options);
-            }
-        })
-    });
-    $('#town').change(function(){
-        var city=$("#city").val();
-        var pro=$("#country").val();
-        var town=$("#town").val();
-        $.ajax({
             url: `${BASE_URL}` + '/StreetAddress',
-            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'"}',
+            data:'{"city":"'+city+'","county":"'+pro+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
@@ -73,14 +54,33 @@ $(document).ready(() => {
             }
         })
     });
+    // $('#town').change(function(){
+    //     var city=$("#city").val();
+    //     var pro=$("#country").val();
+    //     var town=$("#town").val();
+    //     $.ajax({
+    //         url: `${BASE_URL}` + '/StreetAddress',
+    //         data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'"}',
+    //         method: 'post',
+    //         contentType: "application/json",
+    //         success: function (res) {
+    //             console.log(res)
+    //             let pro, options;
+    //             for(let i=0; i<res.length; i++)
+    //             {  pro =$("#street");
+    //                 options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+    //             pro.append(options);
+    //         }
+    //     })
+    // });
     $("#street").change(function(){
         var city=$("#city").val();
         var pro=$("#country").val();
-        var town=$("#town").val();
+        // var town=$("#town").val();
         var str=$("#street").val();
         $.ajax({
             url: `${BASE_URL}` + '/SpecificAddress',
-            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'"}',
+            data:'{"city":"'+city+'","county":"'+pro+'","street":"'+str+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
@@ -94,13 +94,13 @@ $(document).ready(() => {
     $('#special_address').change(function(){
         var city=$("#city").val();
         var pro=$("#country").val();
-        var town=$("#town").val();
+        // var town=$("#town").val();
         var str=$("#street").val();
         var spe=$("#special_address").val();
         // alert(spe)
         $.ajax({
             url: `${BASE_URL}` + '/Mac_Address',
-            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'","special_address":"'+spe+'"}',
+            data:'{"city":"'+city+'","county":"'+pro+'","street":"'+str+'","special_address":"'+spe+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
@@ -153,27 +153,8 @@ $(document).ready(() => {
         var city=$("#city1").val();
         var pro=$("#country1").val();
         $.ajax({
-            url: `${BASE_URL}` + '/TownAddress',
-            data:'{"city":"'+city+'","county":"'+pro+'"}',
-            method: 'post',
-            contentType: "application/json",
-            success: function (res) {
-                console.log(res)
-                let pro, options;
-                for(let i=0; i<res.length; i++)
-                {  pro =$("#town1");
-                    options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
-                pro.append(options);
-            }
-        })
-    });
-    $('#town1').change(function() {
-        var city=$("#city1").val();
-        var pro=$("#country1").val();
-        var town=$("#town1").val();
-        $.ajax({
             url: `${BASE_URL}` + '/StreetAddress',
-            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'"}',
+            data:'{"city":"'+city+'","county":"'+pro+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
@@ -186,14 +167,33 @@ $(document).ready(() => {
             }
         })
     });
+    // $('#town1').change(function() {
+    //     var city=$("#city1").val();
+    //     var pro=$("#country1").val();
+    //     var town=$("#town1").val();
+    //     $.ajax({
+    //         url: `${BASE_URL}` + '/StreetAddress',
+    //         data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'"}',
+    //         method: 'post',
+    //         contentType: "application/json",
+    //         success: function (res) {
+    //             console.log(res)
+    //             let pro, options;
+    //             for(let i=0; i<res.length; i++)
+    //             {  pro =$("#street1");
+    //                 options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
+    //             pro.append(options);
+    //         }
+    //     })
+    // });
     $("#street1").change(function(){
         var city=$("#city1").val();
         var pro=$("#country1").val();
-        var town=$("#town1").val();
+        // var town=$("#town1").val();
         var str=$("#street1").val();
         $.ajax({
             url: `${BASE_URL}` + '/SpecificAddress',
-            data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'","street":"'+str+'"}',
+            data:'{"city":"'+city+'","county":"'+pro+'","street":"'+str+'"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {

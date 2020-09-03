@@ -42,6 +42,8 @@ function boxloading(c) {
 		// light_address.innerHTML=arry[i].address;
 		light_container.appendChild(light_address)
 		var img_light = document.createElement("img");//根据不同的数据的颜色
+		img_light.className="logo";
+		// img_light.style.height="500px"
 		if (arry[i].number <= arry[i].color.green)
 			img_light.src = "../static/assets/img/green.png";
 		else if (arry[i].number <= arry[i].color.red)

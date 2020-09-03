@@ -190,6 +190,8 @@ public class SelectDateNumber_1 {
                             switch (state) {
                                 case 1:
                                     if (myTime1==null){
+                                        Integer dayt=new Integer(day2)+1;
+                                        str2 = year2 + "-" + month2 + "-" + dayt;
                                         list = dateNumberDao.selectDay_Ci(city, str1, str2);
                                     }else {
                                         str1 = str1 + " "+myTime1;

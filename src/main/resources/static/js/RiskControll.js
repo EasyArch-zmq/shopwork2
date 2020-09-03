@@ -84,7 +84,10 @@ window.onload=function() {
                 var li = document.getElementById('cars');
                 for (let i = 0; i < res[0].info_inCons_List.length; i++) {
                     var a = document.createElement('button');
-                    a.innerHTML = resd[0].info_inCons_List[i].location;
+                    if(resd[0].info_inCons_List[i].location==="雅间")
+                        a.innerHTML = "1-A";
+                    if(resd[0].info_inCons_List[i].location==="大堂")
+                        a.innerHTML = "2-A";
                     a.className = "sela";
                     a.id = "uk"+i;
                     a.onclick=ak(i);
@@ -158,28 +161,8 @@ window.onload=function() {
         var city = $("#city").val();
         var pro = $("#country").val();
         $.ajax({
-            url: `${BASE_URL}` + '/TownAddress',
-            data: '{"city":"' + city + '","county":"' + pro + '"}',
-            method: 'post',
-            contentType: "application/json",
-            success: function (res) {
-                console.log(res)
-                let pro, options;
-                for (let i = 0; i < res.length; i++) {
-                    pro = $("#town");
-                    options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
-                }
-                pro.append(options);
-            }
-        })
-    });
-    $('#town').change(function () {
-        var city = $("#city").val();
-        var pro = $("#country").val();
-        var town = $("#town").val();
-        $.ajax({
             url: `${BASE_URL}` + '/StreetAddress',
-            data: '{"city":"' + city + '","county":"' + pro + '","town":"' + town + '"}',
+            data: '{"city":"' + city + '","county":"' + pro + '"}',
             method: 'post',
             contentType: "application/json",
             success: function (res) {
@@ -193,6 +176,26 @@ window.onload=function() {
             }
         })
     });
+    // $('#town').change(function () {
+    //     var city = $("#city").val();
+    //     var pro = $("#country").val();
+    //     var town = $("#town").val();
+    //     $.ajax({
+    //         url: `${BASE_URL}` + '/StreetAddress',
+    //         data: '{"city":"' + city + '","county":"' + pro + '","town":"' + town + '"}',
+    //         method: 'post',
+    //         contentType: "application/json",
+    //         success: function (res) {
+    //             console.log(res)
+    //             let pro, options;
+    //             for (let i = 0; i < res.length; i++) {
+    //                 pro = $("#street");
+    //                 options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
+    //             }
+    //             pro.append(options);
+    //         }
+    //     })
+    // });
     $("#street").change(function () {
         var city = $("#city").val();
         var pro = $("#country").val();

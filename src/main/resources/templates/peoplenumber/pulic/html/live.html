@@ -48,7 +48,7 @@
 <div class="row">
     <div class="col-md-5 col-sm-12 ">
         <div class="area">
-            <img  class="img" src="../static/assets/img/plane1改.jpg" >
+            <img  class="img" src="../static/assets/img/second.jpg" style="height: 500px;margin-left: 11%;">
 <!--            <img class="img"  src="../../assets/img/plane2改.jpg">-->
         </div>
     </div>
@@ -63,23 +63,19 @@
             <select name="" id="country" class="form-control select">
                 <option value="null">请选择</option>
             </select>
-            <select name="" id="town" class="form-control select">
-                <option value="null">请选择</option>
-            </select>
             <select name="" id="street" class="form-control select">
                 <option value="null">请选择</option>
             </select>
-
-                <div class="form-group">
+                <div class="form-group" >
                     <input  id="special_address"
                             list="auto"
-                            style=" margin: 5px;"
+                            style="margin: 5px;width: 97%;"
                             class="form-control"
                             placeholder="详细地址">
-                    <datalist id="auto">
+                    <datalist id="auto" style="margin-left: 5px;">
                         <option></option>
                     </datalist>
-                    <select name="" id="box" class="form-control select" style="width:100%">
+                    <select name="" id="box" class="form-control select" style="width:97%">
                         <option value="null">请选择</option>
                     </select>
 <!--                    <input  id="box" autocomplete="on" style=" margin: 5px;" class="form-control"  placeholder="盒子名称">-->
@@ -89,13 +85,13 @@
     </div>
 <div class="form-group">
     <label for="red">当前盒子对应红灯的数值</label>
-    <input type="number" class="form-control" id="red" placeholder="">
+    <input type="number" class="form-control" id="red" style="width: 97%;margin: 5px" placeholder="">
 </div>
     <div class="form-group">
     <label for="green">当前盒子对应绿灯的数值</label>
-    <input type="number" class="form-control" id="green" placeholder="">
+    <input type="number" class="form-control" id="green" style="width: 97%;margin: 5px" placeholder="">
     </div>
-    <button id="search" type="button" class="btn form-control  btn-primary" style="margin-top: 20px;"
+    <button id="search" type="button" class="btn form-control  btn-primary" style="margin-top: 20px;color: white"
     onclick="fanwei()">保存当前数值</button>
 </div>
     </div>

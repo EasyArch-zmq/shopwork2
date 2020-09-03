@@ -182,6 +182,8 @@ public class SelectDateNumber_2 {
                             }
                         }
                         //按照天为单位查询多天
+                        Integer dayt=new Integer(day2)+1;
+                        str2 = year2 + "-" + month2 + "-" + dayt;
                         if (mac_address == null && address != null) {
                             switch (state) {
                                 case 1:

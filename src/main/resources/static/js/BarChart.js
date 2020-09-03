@@ -20,11 +20,14 @@ window.onload=function() {
             // var li = document.getElementById('cars');
             for (let i = 0; i < res[0].info_inCons_List.length; i++) {
                 var a = document.createElement('button');
-                a.innerHTML = resd[0].info_inCons_List[i].location;
+                if(resd[0].info_inCons_List[i].location==="雅间")
+                a.innerHTML = "1-A";
+                if(resd[0].info_inCons_List[i].location==="大堂")
+                a.innerHTML = "2-A";
                 a.className = "sela";
                 a.id = "uk"+i;
                 a.onclick=ak(i);
-                if(i===0) a.style.color="#0FB9EF";
+                if(i===0) a.style.color="#2086D7";
                 $('#change').append(a)
             }
             for (let i  = 0; i < res[0].info_inCons_List[0].list_inCons.length; i++) {
@@ -126,7 +129,7 @@ function SettingOption0() {
                     color: function(params) {
                         let colorList=[];
                         for(let i=0;i<100;i++)
-                        {colorList.push("#67d3ce", "#42d3e7", "#66b9db","#42d3e7","#67d3ce")}
+                        {colorList.push("#65d0cb", "#40cde0", "#64b5d6","#40ccdf","#67d3ce")}
                         return colorList[params.dataIndex];
                     }
                 }
@@ -144,8 +147,8 @@ function ak(c) {
         // alert(c)
         for(var i=0;i<resd[0].info_inCons_List.length;i++){
             if(i===c)
-            {document.getElementById('uk'+c).style.color="#64b0f2";continue}
-            document.getElementById('uk'+i).style.color="#000"}
+            {document.getElementById('uk'+c).style.color="#2086D7";continue}
+            document.getElementById('uk'+i).style.color="#ffffff"}
         // document.getElementById('uk0').style.color="#64b0f2"
         numtitle=resd[0].info_inCons_List[c].mac_address;
         time=[];

@@ -1,7 +1,8 @@
 .select{
-    width: 46%;
+    width: 31%;
     /*margin-bottom: 22px;*/
 }
+
 .area{
     margin-top: 180px;margin-left: 10%;
 }
@@ -9,10 +10,10 @@
 /*    height: 450px;*/
 /*    width: 100%;*/
 /*}*/
-.form-control{
-    margin-top: 16px;
-    color: black;
-}
+/*.form-control{*/
+/*    margin-top: 16px;*/
+/*    color: black;*/
+/*}*/
 #address{
     margin-top: 16px;
 }
