@@ -1,11 +1,12 @@
-const BASE_URL = 'http://121.199.21.197:63393'
+const BASE_URL = 'http://121.199.21.197:63394'
 var resd=[];
+// var aaa=["https://test2346.oss-cn-beijing.aliyuncs.com/dt.jpg"]
 var arry1=[],arry=[];
 	$(document).ready(() => {
 			// let username = window.location.href.split('?')[1].split('=')[1]
 			// let username = "makesi"
 		let username =window.localStorage.getItem('p_username')
-		document.getElementById('user').innerText=username;
+		document.getElementById('user').innerText="用户名："+username;
 		console.log(username)
 			$.ajax({
 				url:`${BASE_URL}` +"/selectAllNumber",
@@ -16,37 +17,36 @@ var arry1=[],arry=[];
 					console.log(res)
 					resd=res;
 				   document.getElementById('address1').innerHTML = res.userAddress;
-				   // document.getElementById('img1').src = res.piture_url;
-					arry1=res.list_inAll;
-					document.getElementById('address2').innerHTML=res.userAddress;
-					var sel=document.getElementById('list');
-					for(var i=0;i<arry1.length;i++) {
-						sel.options.add(new Option(arry1[i].construction,arry1[i].construction));}
+
 					boxloading(0);
 				}
 			})
 		})
 function boxloading(c) {
 	$('#ssx').empty();
+	var aaa=resd.list_inAll[0].picture_url.split(',');
 	arry=resd.list_inAll[c].list_inCons;
 	for(let i=0;i<arry.length;i++) {
 		var container = document.createElement("div");
-		container.className = "container1";
-		container.style.cssFloat = "left";
+		if(aaa.length<1)
+			container.className = "col-xs-6 col-md-6 container1";
+		else
+		container.className = "col-xs-6 col-md-6 container1";
+		// container.style.cssFloat = "left";
 		container.id = arry[i].location;
 		var light_container = document.createElement("div");
 		light_container.className = "light-container";
 		var light_address = document.createElement("div");
 		light_address.className = "light-address";
-		light_address.innerHTML = arry[i].location;
-		// light_address.innerHTML=arry[i].address;
+		light_address.innerHTML =arry[i].location;
 		light_container.appendChild(light_address)
 		var img_light = document.createElement("img");//根据不同的数据的颜色
 		img_light.className="logo";
 		// img_light.style.height="500px"
-		if (arry[i].number <= arry[i].color.green)
+		console.log("50")
+		if (arry[i].number <= 50)
 			img_light.src = "../static/assets/img/green.png";
-		else if (arry[i].number <= arry[i].color.red)
+		else if (arry[i].number <= 200)
 			img_light.src = "../static/assets/img/yellow.png";
 		else
 			img_light.src = "../static/assets/img/red.png";
@@ -56,65 +56,46 @@ function boxloading(c) {
 		level.className = "level1"
 		var levelnum = document.createElement("span");
 		levelnum.className = "span1"
-		if (arry[i].number <= arry[i].color.green)
+		if (arry[i].number <= 50)
 			levelnum.innerHTML = "活跃度：" + "低" + "<br/>";
-		else if (arry[i].number <= arry[i].color.red)
+		else if (arry[i].number <= 200)
 			levelnum.innerHTML = "活跃度：" + "中" + "<br/>";
 		else
 			levelnum.innerHTML = "活跃度：" + "高" + "<br/>";
+		if(arry.length>=2)
+		{
+			container.className = "col-xs-6 col-md-6 container2";
+			container.style.cssFloat="left";
+			light_container.className = "light-container1";
+			light_address.className = "light-address1";
+			img_light.className = "img-light1";
+			level.className = "level1";
+			levelnum.className="span2"
+				}
 		level.appendChild(levelnum)
-		// var number = document.createElement("div");
-		// number.className = "number";
-		// var numberm = document.createElement("span");
-		// numberm.className = "span1"
-		// numberm.innerHTML = "总人数：" + arry[i].number;
-		// // // numberm.innerHTML=arry[i].number;
-		// number.appendChild(numberm)
-		// var rtier = document.createElement("div");
-		// rtier.className = "number";
-		// var tier = document.createElement("span");
-		// tier.className = "span1"
-		// tier.innerHTML = "" +
-		// 	"盒子层级：" + arry[i].tier;
-		// // // numberm.innerHTML=arry[i].number;
-		// rtier.appendChild(tier)
-		// var time = document.createElement("div");
-		// time.className = "time"
-		// var timeg = document.createElement("span");
-		// timeg.className = "span1"
-		// timeg.innerHTML = "截至目前为止";
-		// time.appendChild(timeg)
 		light_container.appendChild(level);
-		// light_container.appendChild(number);
-		// light_container.appendChild(rtier);
-		// light_container.appendChild(time);
 		container.appendChild(light_container);
 		document.getElementById('ssx').appendChild(container);
+			}
+	// console.log(aaa.length)
+	var img=document.getElementById('imgstate');
+	for(var i=0;i<aaa.length;i++)
+	{
+		var k=document.createElement('div');
+		if(aaa.length>=2)
+			k.className="col-md-6 col-sm-6 col-xs-12";
+		 else k.className=" col-md-12 col-sm-12 col-xs-12";
+		var u=document.createElement('img');
+		u.src=aaa[i];
+		if (aaa.length===2)
+			u.className="plane";
+		else u.className="planeone"
+		k.append(u);
+		img.append(k);
 
 	}
+
 }
-// var list = [
-// 	{
-// 		address: "森中古城☼",
-// 		number:'5',
-// 		color:"red",
-// 	},
-// 	{
-// 		address: "森中古城☼",
-// 		number:'10',
-// 		color:"yellow",
-// 	},
-// 	{
-// 		address: "森中古城☼",
-// 		number:'5',
-// 		color:"red",
-// 			},
-// 	{
-// 		address: "森中古城☼",
-// 		number:'5',
-// 		color:"green",
-//
-// 	},]
 //下拉选择建筑
 $('#list').change(function () {
 	var myselect=$('#list').val();

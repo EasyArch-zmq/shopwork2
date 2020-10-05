@@ -24,23 +24,35 @@
 <!--//头部-->
 <nav class="box navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <!--        <div class="navbar-header page-scroll">-->
+        <!--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+        <!--                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>-->
+        <!--            </button>-->
+
+        <!--        </div>-->
+        <!--        <span class="navbar-header page-scroll">-->
+        <a class="navbar-brand page-scroll" id="address1"  style="font-size: 30px;width: 100%">
+            username
+        </a>
+        <!--        <span><a class="ph">退出登录</a></span>-->
+        <div id="dis">
+            <span><a class="ph" href="p_main.html " >主页 </a></span>
+            <span><a class="ph">/</a></span>
+            <span><a class="ph" href="P_TodayAccount.html" >人数统计图</a></span>
+            <span><a class="ph" href="P_Todayliveness.html" style="color: #2086D7">排行榜</a></span>
+            <span><a class="ph" href="http://121.199.21.197:63393/Login">退出登录</a></span>
         </div>
-        <span class="navbar-header page-scroll">
-            <a class="navbar-brand page-scroll" id="address1"  style="font-size: 30px">
-                天津职业技术师范大学</a>
+
         </span>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden"> <a href=""></a> </li>
-                <li> <a href="http://121.199.21.197:63393/p_main" class="page-scroll" >主页</a> </li>
-                <li> <a href="http://121.199.21.197:63393/P_TodayAccount" class="page-scroll" >人数统计图</a> </li>
-                <li> <a href="http://121.199.21.197:63393/P_Todayliveness" class="page-scroll" style="color:#0FB9EF;">活跃度排行榜</a> </li>
+                <li> <a href="p_main.html" class="page-scroll" ><b>主页</b></a> </li>
+                <li> <a href="P_TodayAccount.html" class="page-scroll" ><b>人数统计图</b></a> </li>
+                <li> <a href="P_Todayliveness.html" class="page-scroll" style="border-bottom: 3px #2086D7 solid;color: #2086D7"><b>活跃度排行榜</b></a> </li>
                 <li> <a class="page-scroll">用户名：<span id="user">张三</span></a> </li>
-                <li> <a class="page-scroll" ></a> </li>
-                <li> <a class="page-scroll"></a> </li>
                 <li> <a class="page-scroll" href="http://121.199.21.197:63393/Login">退出当前用户</a> </li>
             </ul>
         </div>
@@ -49,161 +61,252 @@
 <!--//body-->
 <div id="header">
     <div class="container" style="height:100% " >
-        <div style="margin-top: 120px;">
+        <div style="margin-top: 180px;">
             <h3 style="margin-bottom: 20px;text-align: center">活跃度显示排行榜</h3>
-            <h4 onclick="small()" style="margin-bottom: 15px;margin-left: 15%;">按时间时间查询</h4>
-            <div id='main' style="width:100%;height:500px;float:right;">
+            <h4 onclick="small()" style="margin-bottom: 15px;margin-left: 5%;">按时间时间查询</h4>
+            <div id='left' style="width:25%;height:500px;float:left;">
+                <input type="date" class="form-control" id="da"/>
+                <select id="start" class="form-control" style="margin-top: 30px;">
+<!--                    <option>1:00:00</option>-->
+                </select>
+                <input readonly="readonly" value="02：00：00" type="" class="form-control" id="end"  style="margin-top: 30px;"/>
+                <button onclick="search()"  style="margin-top: 30px;width: 100%;" class="btn btn-primary">按以上时间查询</button>
+            </div>
+            <div id='main' style="width:70%;height:240px;float:right;">
             </div>
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
-    var myChart = echarts.init(document.getElementById('main'));
-    var charts = { // 按顺序排列从大到小
-        cityList: ['大堂', '雅间', '雅致', '丽水', '清风'],
-        cityData: [800, 700, 600, 500, 400]
-    }
-    var top10CityList = charts.cityList
-    var top10CityData =  charts.cityData
-    var onlymine=[];
-    for(let i=0; i<top10CityData.length; i++){
-        onlymine[i]=top10CityData[top10CityData.length-1-i];
-    }
-    console.log(onlymine);  // 输出： ["你", "欢", "喜", "我"]
+    const BASE_URL = 'http://121.199.21.197:63393'
+    let username =window.localStorage.getItem('p_username')
+    var ol=[],li=[];
+    $.ajax({
+        url: `${BASE_URL}` + '/SelectDaySort',
+        data: '{ "username": "' + username + '"}',
+        method: 'post',
+        contentType: "application/json",
+        success: function (res) {
 
-    var color = ['rgba(248,195,248', 'rgba(100,255,249', 'rgba(135,183,255', 'rgba(248,195,248', 'rgba(100,255,249']
+            for(var i=0;i<res.length;i++)
+            { ol[i]=res[i].mac_address;
+            li[i]=res[i].num;}
+            // if(res.length>2){
+                $('#main').css('height',parseInt(res.length)*120)
+            // }
+            console.log(res)
+        load();}
 
-    let lineY = []
-    for (var i = 0; i < charts.cityList.length; i++) {
-        var x = i
-        if (x > color.length - 1) {
-            x = color.length - 1
-        }
-        var data = {
-            name: charts.cityList[i],
-            color: color[x] + ')',
-            value: top10CityData[i],
-            itemStyle: {
-                normal: {
-                    show: true,
-                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                        offset: 0,
-                        color: color[x] + ', 0.5)'
-                    }, {
-                        offset: 1,
-                        color: color[x] + ', 1)'
-                    }], false),
-                    barBorderRadius: 10
-                },
-                emphasis: {
-                    shadowBlur: 15,
-                    shadowColor: 'rgba(0, 0, 0, 0.1)'
-                }
+    })
+    for(var i=0;i<=23;i++)
+    {
+        var val=i+":00:00";
+        $("#start").append('<option label="'+val+'" value="'+val+'"></option>');
+    }
+   $("#start").change(function () {
+       var o=parseInt($("#start").val().split(':')[0])+2;
+       if(o===24) o="凌晨00";
+       if(o===25) o="凌晨01";
+       var l=o+":00:00"
+       $("#end").val(l);
+   })
+    var myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate();
+    if((M + '').length == 1){
+        M = '0' + (M + '');
+    }
+    //处理日是一位的情况
+    if((D + '').length == 1){
+        D = '0' + (D + '')
+    }
+    var curDay = Y + '-' + M + '-' + D;
+    console.log(curDay)
+    $('#da').val(curDay)
+
+    function search() {
+        var time=$('#start').val().split(':')[0];
+        var year=$('#da').val().split('-')[0];
+        var month=$('#da').val().split('-')[1];
+        var day=$('#da').val().split('-')[2];
+        let data = JSON.stringify({
+            "year": year,
+            "month": month,
+            "day": day,
+            "time": time,
+            "username":username
+        })
+        // alert(data)
+        $.ajax({
+            url: `${BASE_URL}` + '/SelectTowSort',
+            data: data,
+            method: 'post',
+            contentType: "application/json",
+            success: function (res) {
+             console.log(res);alert("123")
+                for(var i=0;i<res.length;i++)
+                { ol[i]=res[i].mac_address;
+                    li[i]=res[i].num;}load();
             }
-        }
-        lineY.push(data)
+        })
     }
+    function load() {
+        var myChart = echarts.init(document.getElementById('main'));
+        var charts = { // 按顺序排列从大到小
+            cityList: ol,
+            cityData: li
+        }
+        var top10CityList = charts.cityList
+        var top10CityData =  charts.cityData
+        var onlymine=[];
+        for(let i=0; i<charts.cityData.length; i++){
+            onlymine[i]=top10CityData[top10CityData.length-1-i];
+        }
+        console.log(onlymine);  // 输出： ["你", "欢", "喜", "我"]
 
-    console.log(lineY)
-    option= {
-        backgroundColor:'#B7B7B7',
-        title: {
-            show: false
-        },
-        tooltip: {
-            trigger: 'item'
-        },
-        grid: {
-            borderWidth: 0,
-            top: '5%',
-            left: '5%',
-            right: '15%',
-            bottom: '3%'
-        },
-        color: color,
-        yAxis: [{
-            type: 'category',
-            inverse: true,
-            axisTick: {
-                show: false
-            },
-            axisLine: {
-                show: false
-            },
-            axisLabel: {
-                show: false,
-                inside: false
-            },
-            data: top10CityList
-        }, {
-            type: 'category',
-            axisLine: {
-                show: false
-            },
-            axisTick: {
-                show: false
-            },
-            axisLabel: {
-                show: true,
-                inside: false,
-                textStyle: {
-                    color: '#FFF',
-                    fontSize: '14',
-                    bottom:'100',
-                    fontFamily: 'PingFangSC-Regular'
-                },
-                formatter: function (val) {
-                    return `${val}人`
-                }
-            },
-            splitArea: {
-                show: false
-            },
-            splitLine: {
-                show: false
-            },
-            data:onlymine
-        }],
-        xAxis: {
-            type: 'value',
-            axisTick: {
-                show: false
-            },
-            axisLine: {
-                show: false
-            },
-            splitLine: {
-                show: false
-            },
-            axisLabel: {
-                show: false
+        var color = ['rgba(248,195,248', 'rgba(100,255,249', 'rgba(135,183,255', 'rgba(248,195,248', 'rgba(100,255,249']
+
+        let lineY = []
+        for (var i = 0; i < top10CityList.length; i++) {
+            var x = i
+            if (x > color.length - 1) {
+                x = color.length - 1
             }
-        },
-        series: [{
-            name: '',
-            type: 'bar',
-            zlevel: 2,
-            barWidth: '25px',
-            data: lineY,
-            animationDuration: 1500,
-            label: {
-                normal: {
-                    color: '#FFF',
-                    show: true,
-                    position: [0, '-24px'],
-                    textStyle: {
-                        fontSize: 18
+            var data = {
+                name: charts.cityList[i],
+                color: color[x] + ')',
+                value: top10CityData[i],
+                itemStyle: {
+                    normal: {
+                        show: true,
+                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                            offset: 0,
+                            color: color[x] + ', 0.5)'
+                        }, {
+                            offset: 1,
+                            color: color[x] + ', 1)'
+                        }], false),
+                        barBorderRadius: 10
                     },
-                    formatter: function (a, b) {
-                        return a.name
+                    emphasis: {
+                        shadowBlur: 15,
+                        shadowColor: 'rgba(0, 0, 0, 0.1)'
                     }
                 }
             }
-        }],
-        animationEasing: 'cubicOut'
-    }
-    myChart.setOption(option);
+            lineY.push(data)
+        }
 
+        console.log(lineY)
+        option= {
+            backgroundColor:'#B7B7B7',
+            title: {
+                show: false
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            grid: {
+                borderWidth: 0,
+                top: '5%',
+                left: '5%',
+                right: '15%',
+                bottom: '3%'
+            },
+            color: color,
+            yAxis: [{
+                type: 'category',
+                inverse: true,
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false,
+                    inside: false
+                },
+                data: top10CityList
+            }, {
+                type: 'category',
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    inside: false,
+                    textStyle: {
+                        color: '#FFF',
+                        fontSize: '14',
+                        bottom:'100',
+                        fontFamily: 'PingFangSC-Regular'
+                    },
+                    formatter: function (val) {
+                        return `${val}人`
+                    }
+                },
+                splitArea: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                data:onlymine
+            }],
+            xAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: '',
+                type: 'bar',
+                zlevel: 2,
+                barWidth: '25px',
+                data: lineY,
+                animationDuration: 1500,
+                label: {
+                    normal: {
+                        color: '#FFF',
+                        show: true,
+                        position: [0, '-24px'],
+                        textStyle: {
+                            fontSize: 18
+                        },
+                        formatter: function (a, b) {
+                            return a.name
+                        }
+                    }
+                }
+            }],
+            animationEasing: 'cubicOut'
+        }
+        myChart.setOption(option);
+
+    }
+    $.ajax({
+        url:`${BASE_URL}` +"/selectAllNumber",
+        method:'post',
+        data:'{"username":"'+username+'"}',
+        contentType:"application/json",
+        success: (res) => {
+            document.getElementById('address1').innerHTML = res.userAddress;
+            document.getElementById('user').innerText=username;
+
+        }})
 </script>
 
 </body>

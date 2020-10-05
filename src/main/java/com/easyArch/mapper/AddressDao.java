@@ -29,20 +29,19 @@ public interface AddressDao {
 
     List<String>town(String city,String county);
 
-    List<String>street(String city,String county,String town);
+    List<String>street(String city,String county);
 
     /**
      *
      * @param city
      * @param county
-     * @param town
      * @param street
      * @return
      */
-    List<String>specificAddress(String city,String county,String town,String street);
+    List<String>specificAddress(String city,String county,String street);
 
 
-    List<String> select_construction(@Param("specific_address") String specific_address, String city, String county, String town, String street);
+    List<String> select_construction(@Param("specific_address") String specific_address, String city, String county,String street);
 
     Location_tier selectLocation_tier(String mac_address);
 
@@ -51,13 +50,17 @@ public interface AddressDao {
      * @param specific_address
      * @param city
      * @param county
-     * @param town
      * @param street
      * @param construction
      * @return
      */
-    List<String>select_mac(@Param("specific_address") String specific_address, String city, String county, String town, String street,String construction);
+    List<String>select_mac(@Param("specific_address") String specific_address, String city, String county,String street,String construction);
 
-    List<Mac_Loc>select_ma_lo(String city, String county, String town, String street, @Param("specific_address") String specific_address);
+    List<String>select_mac2(@Param("specific_address") String specific_address, String city, String county,String street);
 
+    List<Mac_Loc>select_ma_lo(String city, String county,String street, @Param("specific_address") String specific_address);
+
+    void insertMac_info(String specific_address,String pic_address,String location,String mac_address);
+
+    void insertAddress(String city,String county,String street,String mac_address);
 }

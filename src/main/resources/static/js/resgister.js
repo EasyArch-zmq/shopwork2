@@ -3,11 +3,12 @@ $(document).ready(() => {
     $('#g_res').click(() => {
         let username = $('#user_name1').val()
         let password = $('#user_pwd1').val()
-        var pro = $("#province").val();
+        // var pro = $("#province").val();
         var city = $("#city").val();
         var country = $("#country").val();
-        var address = $("#address").val();
-        let addressall = pro + "," + city + "," + country + "," + address;
+        var street = $("#street").val();
+        var address = $("#special_address").val();
+        let addressall =  city + "," + country + ","+street + "," + address;
         console.log(username+password)
         console.log(addressall)
         // let address = "北京市，朝阳区，来广营街道"
@@ -29,11 +30,12 @@ $(document).ready(() => {
 $('#p_res').click(() => {
     let username = $('#user_name2').val()
     let password = $('#user_pwd2').val()
-    var pro = $("#province1").val();
+    // var pro = $("#province1").val();
     var city = $("#city1").val();
     var country = $("#country1").val();
-    var address = $("#address1").val();
-    let addressall = pro + "," + city + "," + country + "," + address;
+    var address = $("#special_address1").val();
+    var street = $("#street1").val();
+    let addressall =  city + "," + country + ","+street + "," + address;
     console.log(username+password)
     console.log(addressall)
     // let address = "北京市，朝阳区，来广营街道"

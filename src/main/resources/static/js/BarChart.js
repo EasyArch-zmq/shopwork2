@@ -1,5 +1,5 @@
 const myChart = echarts.init(document.getElementById("bar"));
-const BASE_URL = 'http://121.199.21.197:63393'
+const BASE_URL = 'http://121.199.21.197:63394'
 var people=[];
 var time=[];
 var numtitle="10号风险防控图";
@@ -20,14 +20,12 @@ window.onload=function() {
             // var li = document.getElementById('cars');
             for (let i = 0; i < res[0].info_inCons_List.length; i++) {
                 var a = document.createElement('button');
-                if(resd[0].info_inCons_List[i].location==="雅间")
-                a.innerHTML = "1-A";
-                if(resd[0].info_inCons_List[i].location==="大堂")
-                a.innerHTML = "2-A";
-                a.className = "sela";
+                a.innerHTML = resd[0].info_inCons_List[i].location;
+                a.className = "sela btn  btn-sm";
                 a.id = "uk"+i;
                 a.onclick=ak(i);
                 if(i===0) a.style.color="#2086D7";
+                else a.style.color="black"
                 $('#change').append(a)
             }
             for (let i  = 0; i < res[0].info_inCons_List[0].list_inCons.length; i++) {
@@ -143,12 +141,12 @@ myChart.setOption(SettingOption0(1,1))
 
 function ak(c) {
 
-    $('#change').on('click', '#uk'+c,function (e) {
+    $('#header').on('click', '#uk'+c,function (e) {
         // alert(c)
         for(var i=0;i<resd[0].info_inCons_List.length;i++){
             if(i===c)
             {document.getElementById('uk'+c).style.color="#2086D7";continue}
-            document.getElementById('uk'+i).style.color="#ffffff"}
+            document.getElementById('uk'+i).style.color="black"}
         // document.getElementById('uk0').style.color="#64b0f2"
         numtitle=resd[0].info_inCons_List[c].mac_address;
         time=[];
