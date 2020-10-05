@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <script src="../static/assets/js/jquery.js"></script>
+    <meta name="referrer" content="no-referrer" />    <script src="../static/assets/js/jquery.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -25,13 +25,24 @@
 
 <nav class="box navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+<!--        <div class="navbar-header page-scroll">-->
+<!--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+<!--                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>-->
+<!--            </button>-->
+
+<!--        </div>-->
+<!--        <span class="navbar-header page-scroll">-->
+            <a class="navbar-brand page-scroll" id="address1"  style="font-size: 30px;width: 100%">
+                username
+            </a>
+<!--        <span><a class="ph">退出登录</a></span>-->
+        <div id="dis">
+            <span><a class="ph" href="p_main.html " style="color: #2086D7">主页 </a></span>
+            <span><a class="ph">/</a></span>
+            <span><a class="ph" href="P_TodayAccount.html">人数统计图</a></span>
+            <span><a class="ph" href="P_Todayliveness.html">排行榜</a></span>
+            <span><a class="ph" href="http://121.199.21.197:63394/Login">退出登录</a></span>
         </div>
-        <span class="navbar-header page-scroll">
-            <a class="navbar-brand page-scroll" id="address1"  style="font-size: 30px;">
-                天津职业技术师范大学</a>
 
         </span>
 
@@ -41,47 +52,46 @@
                 <li class="hidden"> <a href=""></a> </li>
                 <li> <a href="p_main.html" class="page-scroll" style="border-bottom: 3px #2086D7 solid;color: #2086D7"><b>主页</b></a> </li>
                 <li> <a href="P_TodayAccount.html" class="page-scroll" ><b>人数统计图</b></a> </li>
-<!--                <li> <a href="P_TodayAccount.html" class="page-scroll" >人数统计图</a> </li>-->
-<!--                <li> <a href="P_Todayliveness.html" class="page-scroll" >活跃度排行榜</a> </li>-->
-                <li> <a class="page-scroll">用户名：<span id="user">张三</span></a> </li>
-<!--                <li> <a class="page-scroll" ></a> </li>-->
-<!--                <li> <a class="page-scroll"></a> </li>-->
-                <li> <a class="page-scroll" href="http://121.199.21.197:63392/Login">退出当前用户</a> </li>
+                <li> <a href="P_Todayliveness.html" class="page-scroll" ><b>活跃度排行榜</b></a> </li>
+                <li> <a class="page-scroll"><b id="user">用户名：张三</b></a> </li>
+                <li> <a class="page-scroll" href="http://121.199.21.197:63394/Login"><b>退出当前用户</b></a> </li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
 </nav>
 <div id="header">
     <div class="container" style="height:100% " >
-        <div style="margin-top: 120px;">
-            <div style="margin-bottom: 25px;">
-                <div class="row">
-<!--                    <img src="../static/assets/img/green.png" class="logo"/>-->
-            <span id="address2" class="form-inline" style="float:left;">sbhscjbjbj</span>
-            <select type="text" class="form-control" id="list" >
-<!--                <option>北方</option>-->
-            </select>
-                </div>
-            </div>
+        <div class="top" >
+<!--            <div style="margin-bottom: 25px;">-->
+<!--                <div class="row">-->
+<!--&lt;!&ndash;                    <img src="../static/assets/img/green.png" class="logo"/>&ndash;&gt;-->
+<!--            <span id="address2" class="form-inline" style="float:left;">sbhscjbjbj</span>-->
+<!--            <select type="text" class="form-control" id="list" >-->
+<!--&lt;!&ndash;                <option>北方</option>&ndash;&gt;-->
+<!--            </select>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="row top" >
-                <div class="col-md-4 col-sm-4 text-center" id="ssx">
-                </div>
-                <div class="col-xs-8 col-sm-8 text-center">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <img class="plane" id="img1" style="height: 430px" src="../static/assets/img/first.jpg" usemap="#Map">
+                <div class="row col-md-4 col-sm-4 col-xs-12 text-center " >
+                    <div class="row text-center"  id="ssx">
 
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <img class="plane" src="../static/assets/img/second.jpg" >
-                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-8 col-xs-12  text-center">
+                    <div class="row " id="imgstate">
+<!--                        <div class="col-md-6 col-sm-6 col-xs-12">-->
+<!--                            <img class="plane"   src="../static/assets/img/dt.jpg" >-->
+
+<!--                        </div>-->
+<!--                        <div class="col-md-6 col-sm-6 col-xs-12">-->
+<!--                            <img class="plane" src="../static/assets/img/second.jpg" >-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
         </div>
         <!--        <div class="intro-text">-->
+        <!--            <h2>标题</h2>-->
         <!--            <h2>标题</h2>-->
         <!--            <div class="intro-lead-in">Welcome To Our Website!</div>-->
         <!--            <div class="intro-heading">We design. We HTML5.<br>-->
@@ -92,48 +102,33 @@
 </div>
 </div>
 <!--<script>-->
-<!--    for(var i=0;i<4;i++) {-->
+<!--    for(var i=0;i<3;i++) {-->
 <!--        var container = document.createElement("div");-->
-<!--        container.className = "container1";-->
-<!--        container.style.cssFloat="left"-->
+<!--        container.className = "col-xs-6 col-md-6 container2";-->
+<!--        container.style.cssFloat="left";-->
 <!--        var light_container = document.createElement("div");-->
-<!--        light_container.className = "light-container";-->
+<!--        light_container.className = "light-container1";-->
 <!--        var light_address = document.createElement("div");-->
-<!--        light_address.className = "light-address";-->
+<!--        light_address.className = "light-address1";-->
 <!--        light_address.innerHTML = "标题";-->
 <!--        // light_address.innerHTML=arry[i].address;-->
 <!--        light_container.appendChild(light_address)-->
 <!--        var img_light = document.createElement("img");//根据不同的数据的颜色-->
-<!--        img_light.src = "../../assets/img/green.png";-->
-<!--        img_light.className = "img-light";-->
+<!--        img_light.src = "../static/assets/img/yellow.png";-->
+<!--        img_light.className = "img-light1";-->
 <!--        light_container.appendChild(img_light);-->
 <!--        var level = document.createElement("div");-->
-<!--        level.className = "level";-->
+<!--        level.className = "level1";-->
 <!--        var levelnum = document.createElement("span");-->
-<!--        levelnum.className="span1"-->
-<!--        // if (arry[i].nummber<res.color.red)-->
+<!--        levelnum.className="span2"-->
 <!--        levelnum.innerHTML = "活跃度：" + "123546" + "<br/>";-->
 <!--        level.appendChild(levelnum)-->
-<!--        var number = document.createElement("div");-->
-<!--        number.className = "number";-->
-<!--        var numberm = document.createElement("span");-->
-<!--        numberm.className="span1"-->
-<!--        numberm.innerHTML = "总人数：" + "159";-->
-<!--        // // numberm.innerHTML=arry[i].number;-->
-<!--        number.appendChild(numberm)-->
-<!--        var time = document.createElement("div");-->
-<!--        time.className = "time"-->
-<!--        var timeg = document.createElement("span");-->
-<!--        timeg.className="span1"-->
-<!--        timeg.innerHTML = "截至目前为止";-->
-<!--        // timeg.style.paddingBottom="20px"-->
-<!--        time.appendChild(timeg)-->
 <!--        light_container.appendChild(level);-->
-<!--        light_container.appendChild(number);-->
-<!--        light_container.appendChild(time);-->
 <!--        container.appendChild(light_container);-->
 <!--        document.getElementById('ssx').appendChild(container);-->
 <!--    }-->
-<!--</script>--><script src="../static/js/light.js"></script>
+<!--</script>-->
+<script src="../static/js/light.js"></script>
+
 </body>
 </html>

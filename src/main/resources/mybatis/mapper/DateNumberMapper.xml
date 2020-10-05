@@ -37,22 +37,11 @@
         order by time
     </select>
 
-    <select id="selectTwoHour_To" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(concat(date(mytime),' ',floor((hour(mytime)-1)/2)*2+1),'%H')
-        as time,count(*) as num from time_info where mac_address in (select mac_address from address_info
-        where city=#{city} and county=#{county} and town=#{town})
-        and (mytime between #{date1}
-        and #{date2})
-        group by time
-        order by time
-    </select>
-
     <select id="selectTwoHour_St" resultType="com.easyArch.entity.DateAndNumber">
         select date_format(concat(date(mytime),' ',floor((hour(mytime)-1)/2)*2+1),'%H')
         as time,count(*) as num from time_info where mac_address in (select mac_address from address_info
         where city=#{city}
         and county=#{county}
-        and town=#{town}
         and street=#{street})
         and (mytime between #{date1}
         and #{date2})
@@ -64,7 +53,6 @@
         select date_format(concat(date(mytime),' ',floor((hour(mytime)-1)/2)*2+1),'%H')
         as time,count(*) as num from time_info where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
-        and town=#{town}
         and street=#{street}
         and (specific_address like #{specific_address}"%"))
         and (mytime between #{date1}
@@ -121,29 +109,12 @@
         and (mytime between #{date1}
         and #{date2})
     </select>
-    <select id="selectDay_To" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
-        time_info where mac_address in (select mac_address from address_info
-        where city=#{city} and county=#{county} and town=#{town})
-        and (mytime between #{date1}
-        and #{date2})
-        group by time
-        order by time
-    </select>
-    <select id="selectDay_adTo" resultType="Integer">
-        select count(*) as num from
-        time_info where mac_address in (select mac_address from address_info
-        where city=#{city} and county=#{county} and town=#{town})
-        and (mytime between #{date1}
-        and #{date2})
-    </select>
 
     <select id="selectDay_St" resultType="com.easyArch.entity.DateAndNumber">
         select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
         time_info where mac_address in (select mac_address from address_info
         where city=#{city}
         and county=#{county}
-        and town=#{town}
         and street=#{street})
         and (mytime between #{date1}
         and #{date2})
@@ -155,7 +126,6 @@
         time_info where mac_address in (select mac_address from address_info
         where city=#{city}
         and county=#{county}
-        and town=#{town}
         and street=#{street})
         and (mytime between #{date1}
         and #{date2})
@@ -164,7 +134,6 @@
         select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
         time_info where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
-        and town=#{town}
         and street=#{street}
         and (specific_address like #{specific_address}"%"))
         and (mytime between #{date1}
@@ -176,7 +145,6 @@
         select count(*) as num from
         time_info where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
-        and town=#{town}
         and street=#{street}
         and (specific_address like #{specific_address}"%"))
         and (mytime between #{date1}
@@ -210,22 +178,11 @@
         order by time
     </select>
 
-    <select id="selectMonth_To" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(mytime,'%Y-%m') as time,count(*) as num from
-        time_info where mac_address in (select mac_address from address_info
-        where city=#{city} and county=#{county} and town=#{town})
-        and (mytime between #{date1}
-        and #{date2})
-        group by time
-        order by time
-    </select>
-
     <select id="selectMonth_St" resultType="com.easyArch.entity.DateAndNumber">
         select date_format(mytime,'%Y-%m') as time,count(*) as num from
         time_info where mac_address in (select mac_address from address_info
         where city=#{city}
         and county=#{county}
-        and town=#{town}
         and street=#{street})
         and (mytime between #{date1}
         and #{date2})
@@ -237,7 +194,6 @@
         select date_format(mytime,'%Y-%m') as time,count(*) as num from
         time_info where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
-        and town=#{town}
         and street=#{street}
         and (specific_address like #{specific_address}"%"))
         and (mytime between #{date1}
@@ -275,22 +231,12 @@
         order by time
     </select>
 
-    <select id="selectYear_To" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(mytime,'%Y') as time,count(*) as num from
-        time_info where mac_address in (select mac_address from address_info
-        where city=#{city} and county=#{county} and town=#{town})
-        and (mytime between #{date1}
-        and #{date2})
-        group by time
-        order by time
-    </select>
 
     <select id="selectYear_St" resultType="com.easyArch.entity.DateAndNumber">
         select date_format(mytime,'%Y') as time,count(*) as num from
         time_info where mac_address in (select mac_address from address_info
         where city=#{city}
         and county=#{county}
-        and town=#{town}
         and street=#{street})
         and (mytime between #{date1}
         and #{date2})
@@ -302,7 +248,6 @@
         select date_format(mytime,'%Y') as time,count(*) as num from
         time_info where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
-        and town=#{town}
         and street=#{street}
         and (specific_address like #{specific_address}"%"))
         and (mytime between #{date1}

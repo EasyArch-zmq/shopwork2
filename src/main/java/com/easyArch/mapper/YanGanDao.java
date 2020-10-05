@@ -21,12 +21,11 @@ public interface YanGanDao {
      *
      * @param city
      * @param county
-     * @param town
      * @param street
      * @param specific_address
      * @param date1
      * @param date2
      * @return
      */
-    List<YanGan>yanGanList(String city,String county,String town,String street,String specific_address,String date1,String date2);
+    List<YanGan>yanGanList(String city,String county,String street,String specific_address,String date1,String date2);
 }

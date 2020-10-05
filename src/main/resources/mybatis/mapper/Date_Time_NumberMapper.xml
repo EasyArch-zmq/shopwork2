@@ -25,22 +25,11 @@
         order by time
     </select>
 
-    <select id="selectDay_To" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
-        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
-        where city=#{city} and county=#{county} and town=#{town})
-        and (mytime between #{date1}
-        and #{date2})
-        group by time
-        order by time
-    </select>
-
     <select id="selectDay_St" resultType="com.easyArch.entity.DateAndNumber">
         select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
         (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
         where city=#{city}
         and county=#{county}
-        and town=#{town}
         and street=#{street})
         and (mytime between #{date1}
         and #{date2})
@@ -51,7 +40,6 @@
         select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
         (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
-        and town=#{town}
         and street=#{street}
         and (specific_address like #{specific_address}"%"))
         and (mytime between #{date1}
@@ -81,22 +69,12 @@
         order by time
     </select>
 
-    <select id="selectMonth_To" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(mytime,'%Y-%m') as time,count(*) as num from
-        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
-        where city=#{city} and county=#{county} and town=#{town})
-        and (mytime between #{date1}
-        and #{date2})
-        group by time
-        order by time
-    </select>
 
     <select id="selectMonth_St" resultType="com.easyArch.entity.DateAndNumber">
         select date_format(mytime,'%Y-%m') as time,count(*) as num from
         (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
         where city=#{city}
         and county=#{county}
-        and town=#{town}
         and street=#{street})
         and (mytime between #{date1}
         and #{date2})
@@ -108,7 +86,6 @@
         select date_format(mytime,'%Y-%m') as time,count(*) as num from
         (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
-        and town=#{town}
         and street=#{street}
         and (specific_address like #{specific_address}"%"))
         and (mytime between #{date1}
@@ -138,22 +115,11 @@
         order by time
     </select>
 
-    <select id="selectYear_To" resultType="com.easyArch.entity.DateAndNumber">
-        select date_format(mytime,'%Y') as time,count(*) as num from
-        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
-        where city=#{city} and county=#{county} and town=#{town})
-        and (mytime between #{date1}
-        and #{date2})
-        group by time
-        order by time
-    </select>
-
     <select id="selectYear_St" resultType="com.easyArch.entity.DateAndNumber">
         select date_format(mytime,'%Y') as time,count(*) as num from
         (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
         where city=#{city}
         and county=#{county}
-        and town=#{town}
         and street=#{street})
         and (mytime between #{date1}
         and #{date2})
@@ -165,7 +131,6 @@
         select date_format(mytime,'%Y') as time,count(*) as num from
         (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
-        and town=#{town}
         and street=#{street}
         and (specific_address like #{specific_address}"%"))
         and (mytime between #{date1}

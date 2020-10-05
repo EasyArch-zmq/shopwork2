@@ -9,18 +9,15 @@
     <select id="county" resultType="java.lang.String">
        select distinct county from address_info where city=#{city}
     </select>
-    <select id="town" resultType="java.lang.String">
-       select distinct town from address_info where (city=#{city} and county=#{county})
-    </select>
     <select id="street" resultType="java.lang.String">
        select distinct street from address_info where
-       (city=#{city} and county=#{county} and town=#{town} )
+       (city=#{city} and county=#{county})
     </select>
 
     <select id="specificAddress" resultType="java.lang.String">
        select distinct specific_address from address_info where
        (city=#{city} and county=#{county}
-       and town=#{town} and street=#{street})
+       and street=#{street})
     </select>
 
 
@@ -30,7 +27,6 @@
        like #{specific_address}"%"
        and (city=#{city}
        and county=#{county}
-       and town=#{town}
        and street=#{street})
     </select>
     <select id="select_mac" resultType="java.lang.String">
@@ -38,10 +34,14 @@
        like #{specific_address}"%"
        and (city=#{city}
        and county=#{county}
-       and town=#{town}
        and street=#{street} and construction=#{construction})
     </select>
-
+    <select id="select_mac2" resultType="java.lang.String">
+       select mac_address from address_info where specific_address= #{specific_address}
+       and (city=#{city}
+       and county=#{county}
+       and street=#{street})
+    </select>
 
     <select id="selectLocation_tier" resultType="com.easyArch.entity.Location_tier">
         select location,tier from address_info where mac_address=#{mac_address}
@@ -50,9 +50,21 @@
     <select id="select_ma_lo" resultType="com.easyArch.entity.Mac_Loc">
         select location,mac_address from address_info where
         (city=#{city} and county=#{county}
-        and town=#{town}
         and street=#{street}
         and specific_address like #{specific_address}"%")
     </select>
+
+
+    <!--insertMac的基本信息!-->
+    <insert id="insertMac_info">
+        insert into address_info(specific_address,pic_address,location,mac_address)
+        values (#{specific_address},#{pic_address},#{location},#{mac_address})
+    </insert>
+
+    <insert id="insertAddress">
+        insert into address_info(city,county,street)
+        values (#{city},#{county},#{street})
+        where mac_address=#{mac_address}
+    </insert>
 
 </mapper>
