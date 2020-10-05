@@ -13,4 +13,9 @@
         where mac_address=#{mac_address}
     </update>
 
+    <insert id="insertColor">
+        insert into color_info(red,green)
+        values (#{red},#{green})
+    </insert>
+
 </mapper>

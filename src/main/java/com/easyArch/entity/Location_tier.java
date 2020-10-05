@@ -1,12 +1,28 @@
 package com.easyArch.entity;
 
-import lombok.Data;
 
 /**
  * 此数据放入
  */
-@Data
+
     public class Location_tier {
     private String location;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getTier() {
+        return tier;
+    }
+
+    public void setTier(String tier) {
+        this.tier = tier;
+    }
+
     private String tier;
 }

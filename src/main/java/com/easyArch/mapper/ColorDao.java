@@ -21,4 +21,6 @@ public interface ColorDao {
      * @param red
      */
     void updateColor(String green,String red,String mac_address);
+
+    void insertColor(String red,String green,String mac_address);
 }
