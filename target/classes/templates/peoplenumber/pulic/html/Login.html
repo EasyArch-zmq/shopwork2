@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/assets/css/Login.css">
+    　　<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+
+</head>
+<style>
+    .select{
+        height: 30px;
+        width: 32%;
+    }
+    .addr{
+        height: 30px;
+        width: 100%;
+        margin-top: 6px;
+    }
+
+</style>
+<body>
+
+<div class="container">
+    <div class="login_body l_clear">
+        <div class="login_form l_float">
+            <div class="login_top">
+                <img src="../static/assets/imgs/logo_z.svg" alt="" class=""><span style="font-size: 26px;margin-left: 14px;">登录</span>
+
+                <div class="login_tags b_clear">
+                    <span class="top_tag l_float active" onClick="PwdLogin()">管理员</span>
+                    <span class="top_tag r_float" onClick="QrcodeLogin()">普通用户</span>
+                </div>
+            </div>
+            <div class="login_con">
+                <div >
+                    <div>
+                        <label for="user_name">用户名</label>
+                        <input type="text" name="" id="user_name" placeholder="用户名">
+                        <img src="../static/assets/imgs/icons/user.svg">
+                    </div>
+                    <div>
+                        <label for="user_pwd">密码</label>
+                        <input type="password" name="" id="user_pwd" placeholder="密码">
+                        <img src="../static/assets/imgs/icons/lock.svg">
+                    </div>
+                    <div class="b_clear submit">
+                        <a href="http://121.199.21.197:63394/resgister" class="r_float" style="margin-left: 12px;">去注册</a>
+
+                        <button type="submit" id="g_Login">登&nbsp;&nbsp;录</button>
+                        <a href="#" class="r_float">忘记密码？</a>
+                    </div>
+                </div>
+            </div>
+            <div class="login_con hidden">
+                <div>
+                    <div>
+                        <label for="user_name1">用户名</label>
+                        <input type="text" name="" id="user_name1" placeholder="用户名">
+                        <img src="../static/assets/imgs/icons/user.svg">
+                    </div>
+                    <div>
+                        <label for="user_pwd1">密码</label>
+                        <input type="password" name="" id="user_pwd1" placeholder="密码">
+                        <img src="../static/assets/imgs/icons/lock.svg">
+                    </div>
+                    <div class="b_clear submit">
+                        <a href="http://121.199.21.197:63394/resgister" class="r_float" style="margin-left: 12px;">去注册</a>
+                        <button type="submit" id="p_Login">登&nbsp;&nbsp;录</button>
+                        <a href="" class="r_float" style="margin-left: 12px;">忘记密码？</a>
+                    </div>
+                </div>
+
+            </div>
+            <!--                    <div class="login_otherAccount">-->
+            <!--                        <span>第三方登录</span>-->
+            <!--                        <a href="http://"><img src="imgs/icons/wechat.svg" alt="微信登录"></a>-->
+            <!--                        <a href="http://"><img src="imgs/icons/weibo.svg" alt="微博登录"></a>-->
+            <!--                        <a href=""><img src="imgs/icons/qq.svg" alt="QQ登录"></a>-->
+            <!--                    </div>-->
+
+        </div>
+        <div class="login_ad l_float" id="AdImg">
+            <!--                    <a href="">查看详情</a>-->
+        </div>
+    </div>
+
+</div>
+
+<script src="../static/js/Login.js"></script>
+</body>
+</html>

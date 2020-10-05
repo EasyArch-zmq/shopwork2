@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easyArch.mapper.ColorDao">
+    <select id="selectColor" resultType="com.easyArch.entity.Color1">
+       select green,red from color_info where mac_address=#{mac_address}
+    </select>
+    <update id="updateColor">
+        update color_info
+        set green=#{green},
+        red=#{red}
+        where mac_address=#{mac_address}
+    </update>
+
+    <insert id="insertColor">
+        insert into color_info(red,green)
+        values (#{red},#{green})
+    </insert>
+
+</mapper>

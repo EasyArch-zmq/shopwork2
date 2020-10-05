@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easyArch.mapper.Time_InfoDao">
+    <insert id="insertInfo">
+        insert into time_info(mac_address,mytime,hao_miao,yangan)
+        values (#{mac_address},#{mytime},#{hao_miao},#{yangan})
+    </insert>
+
+</mapper>

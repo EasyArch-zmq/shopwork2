@@ -1,0 +1,12 @@
+2020-10-04 13:17:10.421 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-PC with PID 14611 (/home/zmq/Java_Projects/shopwork2/target/classes started by zmq in /home/zmq/Java_Projects/shopwork2)
+2020-10-04 13:17:10.425 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2020-10-04 13:17:11.635 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 63394 (http)
+2020-10-04 13:17:11.652 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2020-10-04 13:17:11.652 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2020-10-04 13:17:11.717 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2020-10-04 13:17:11.718 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1224 ms
+2020-10-04 13:17:12.644 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 63394 (http) with context path ''
+2020-10-04 13:17:12.646 INFO  com.easyArch.Application Line:59  - Started Application in 3.304 seconds (JVM running for 4.552)
+2020-10-04 13:17:12.648 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:9000
+2020-10-04 13:17:12.902 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2020-10-04 13:20:23.516 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.

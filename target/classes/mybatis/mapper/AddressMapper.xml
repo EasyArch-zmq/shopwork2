@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easyArch.mapper.AddressDao">
+    <select id="city" resultType="java.lang.String">
+       select distinct city from address_info
+    </select>
+    <select id="county" resultType="java.lang.String">
+       select distinct county from address_info where city=#{city}
+    </select>
+    <select id="street" resultType="java.lang.String">
+       select distinct street from address_info where
+       (city=#{city} and county=#{county})
+    </select>
+
+    <select id="specificAddress" resultType="java.lang.String">
+       select distinct specific_address from address_info where
+       (city=#{city} and county=#{county}
+       and street=#{street})
+    </select>
+
+
+
+    <select id="select_construction" resultType="java.lang.String">
+       select distinct construction from address_info where specific_address
+       like #{specific_address}"%"
+       and (city=#{city}
+       and county=#{county}
+       and street=#{street})
+    </select>
+    <select id="select_mac" resultType="java.lang.String">
+       select mac_address from address_info where specific_address
+       like #{specific_address}"%"
+       and (city=#{city}
+       and county=#{county}
+       and street=#{street} and construction=#{construction})
+    </select>
+    <select id="select_mac2" resultType="java.lang.String">
+       select mac_address from address_info where specific_address= #{specific_address}
+       and (city=#{city}
+       and county=#{county}
+       and street=#{street})
+    </select>
+
+    <select id="selectLocation_tier" resultType="com.easyArch.entity.Location_tier">
+        select location,tier from address_info where mac_address=#{mac_address}
+    </select>
+
+    <select id="select_ma_lo" resultType="com.easyArch.entity.Mac_Loc">
+        select location,mac_address from address_info where
+        (city=#{city} and county=#{county}
+        and street=#{street}
+        and specific_address like #{specific_address}"%")
+    </select>
+
+
+    <!--insertMac的基本信息!-->
+    <insert id="insertMac_info">
+        insert into address_info(specific_address,pic_address,location,mac_address)
+        values (#{specific_address},#{pic_address},#{location},#{mac_address})
+    </insert>
+
+    <insert id="insertAddress">
+        insert into address_info(city,county,street)
+        values (#{city},#{county},#{street})
+        where mac_address=#{mac_address}
+    </insert>
+
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easyArch.mapper.Date_TimeDao">
+
+    <!-- 范围值为天 -->
+    <select id="selectDay_Ci" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city})
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+    <select id="selectDay_Co" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city} and county=#{county})
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+    <select id="selectDay_St" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city}
+        and county=#{county}
+        and street=#{street})
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+    <select id="selectDay_Sp" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y-%m-%d') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city} and county=#{county}
+        and street=#{street}
+        and (specific_address like #{specific_address}"%"))
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+    <!-- 范围值为月 -->
+    <select id="selectMonth_Ci" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y-%m') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city})
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+    <select id="selectMonth_Co" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y-%m') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city} and county=#{county})
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+
+    <select id="selectMonth_St" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y-%m') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city}
+        and county=#{county}
+        and street=#{street})
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+    <select id="selectMonth_Sp" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y-%m') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city} and county=#{county}
+        and street=#{street}
+        and (specific_address like #{specific_address}"%"))
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+    <!-- 范围值为年 -->
+    <select id="selectYear_Ci" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city})
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+    <select id="selectYear_Co" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city} and county=#{county})
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+    <select id="selectYear_St" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city}
+        and county=#{county}
+        and street=#{street})
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+    <select id="selectYear_Sp" resultType="com.easyArch.entity.DateAndNumber">
+        select date_format(mytime,'%Y') as time,count(*) as num from
+        (select * from time_info where date_format(mytime,'%H:%i:%S')>=#{time1}and #{time2}>=date_format(mytime,'%H:%i:%S') order by mytime ASC) as temp where mac_address in (select mac_address from address_info
+        where city=#{city} and county=#{county}
+        and street=#{street}
+        and (specific_address like #{specific_address}"%"))
+        and (mytime between #{date1}
+        and #{date2})
+        group by time
+        order by time
+    </select>
+
+</mapper>
