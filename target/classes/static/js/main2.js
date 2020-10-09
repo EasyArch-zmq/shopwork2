@@ -38,6 +38,9 @@ window.onload=function(){
         // data: '{ "username": "'+username+'"}',
         method: 'post',
         contentType: "application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: function (res) {
             console.log("请求成功")
             // alert("sds")

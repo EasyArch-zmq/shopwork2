@@ -10,6 +10,9 @@ window.onload=function(){
         data: '{ "username": "'+"username"+'"}',
         type: "post",
         contentType: "application/json;charset=UTF-8",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: function (res) {
             console.log(res)
             for(var i=0;i<res.list.length;i++) {

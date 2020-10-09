@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import java.lang.annotation.ElementType;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -142,6 +143,67 @@ public class ControllerUtil {
 
         return list1;
     }
+
+    public static List<DateAndNumber> TowHourSameMacUtil(List<DateAndNumber> list, String time1,String time2) {
+        //14:42:00
+        List<DateAndNumber> list1 = new ArrayList<>();
+        String[] str2 = ControllerUtil.slipDate3(time2);
+        String[] str1 = ControllerUtil.slipDate3(time1);
+        Integer timeT2 = new Integer(str2[0]);//14
+        Integer timeT1 =new Integer(str1[0]);
+        Integer temp = timeT1;
+        Integer i;
+        System.out.println(list);
+        int n=0;
+        for (DateAndNumber dateAndNumber : list) {
+            Integer temInt = new Integer(dateAndNumber.getTime());//09
+//            System.out.println("当前时间是："+temInt);
+            for (i = temp; i < temInt; i +=2) {
+                DateAndNumber dateAndNumberTem = new DateAndNumber();
+                if(n==0){
+                    dateAndNumberTem.setTime(time1+"-"+(i+1)+":00:00");
+                }else if(i==(timeT2-1)&&(i-1)>=timeT1){
+                    dateAndNumberTem.setTime((i-1)+":00:00-"+time2);
+                } else if ((i-1)>=timeT1){
+                    dateAndNumberTem.setTime((i-1)+":00:00-"+(i+1)+":00:00");
+                }
+                dateAndNumberTem.setNum(0);
+//                System.out.println("新加数据："+dateAndNumberTem);
+                list1.add(dateAndNumberTem);
+                n++;
+            }
+            DateAndNumber dateAndNumberTem = new DateAndNumber();
+            if (n==0){
+                dateAndNumberTem.setTime(time1+"-"+(timeT1+1)+":00:00");
+            }else if(temInt==(timeT2-1)){
+                dateAndNumberTem.setTime((temInt-1)+":00:00-"+time2);
+            } else {
+                dateAndNumberTem.setTime((temInt-1)+":00:00-"+(temInt+1)+":00:00");
+            }
+            dateAndNumberTem.setNum(dateAndNumber.getNum());
+            temp = temInt;
+            list1.add(dateAndNumberTem);
+            temp+=2;
+        }
+        Integer j;
+        for (j = temp; j <= timeT2; j+=2) {
+            DateAndNumber dateAndNumberTem2;
+            dateAndNumberTem2 = new DateAndNumber();
+            if (n==0){
+                dateAndNumberTem2.setTime(time1+"-"+(timeT1+1)+":00:00");
+            }else if(j==(timeT2-1)){
+                dateAndNumberTem2.setTime((j-1)+":00:00-"+time2);
+            } else {
+                dateAndNumberTem2.setTime((j-1)+":00:00-"+(j+1)+":00:00");
+            }
+            dateAndNumberTem2.setNum(0);
+//            System.out.println("新加数据："+dateAndNumberTem2);
+            list1.add(dateAndNumberTem2);
+        }
+        return list1;
+    }
+
+
     public static List<YanGan>filterOneHour(List<YanGan> list,String time){
         List<YanGan> list1 = new ArrayList<>();
         Integer timeT = new Integer(time);

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.easyArch.entity.G_User;
 import com.easyArch.entity.P_User;
 import com.easyArch.service.LoginService;
+import com.easyArch.support.JWTUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,10 @@ public class LoginController {
     @RequestMapping(value = "p_login",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public String p_login(@RequestBody P_User p_user){
         if (p_user != null) {
-            return loginService.p_login(p_user);
+            if (loginService.p_login(p_user).equals("T")) {
+                String sign = JWTUtil.sign(p_user, 60L * 1000L * 120L);
+                return JSON.toJSONString("token:" + sign);
+            }
         }
         return JSON.toJSONString("F");
     }
@@ -42,8 +46,12 @@ public class LoginController {
     public String g_login(@RequestBody G_User g_user){
         System.out.println("xxxxx");
         if (g_user != null) {
-            return loginService.g_login(g_user);
+            if (loginService.g_login(g_user).equals("T")) {
+                String sign = JWTUtil.sign(g_user, 60L * 1000L * 120L);
+                return JSON.toJSONString("token:" + sign);
+            }
         }
+
         return JSON.toJSONString("F");
     }
 

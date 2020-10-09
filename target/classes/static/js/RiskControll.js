@@ -3,63 +3,8 @@ const BASE_URL = 'http://121.199.21.197:63394'
 var people=[];
 var time=[];
 var resd;
+var requer;
 var numtitle="风险防控图";
-// var list = [
-//     {
-//         num: 6,
-//         time: "2002-3-8"
-//     },
-//     {
-//         num: 10,
-//         time: "2005-9-18"
-//     },
-//     {
-//         num: 9,
-//         time: "2005-9-18"
-//     },
-//     {
-//         num: 5,
-//         time: "2005-9-18"
-//     },
-//     {
-//         num: 12,
-//         time: "2005-9-18"
-//     },
-//     {
-//         num: 8,
-//         time: "2005-9-18"
-//     },    {
-//         num: 15,
-//         time: "2005-9-18"
-//     },    {
-//         num: 14,
-//         time: "2005-9-18"
-//     },    {
-//         num: 13,
-//         time: "2005-9-18"
-//     },    {
-//         num: 12,
-//         time: "2005-9-18"
-//     },    {
-//         num: 10,
-//         time: "2005-9-18"
-//     },    {
-//         num: 9,
-//         time: "2005-9-18"
-//     },    {
-//         num: 8,
-//         time: "2005-9-18"
-//     },
-//     {
-//         num: 18,
-//         time: "2005-9-18"
-//     }]
-// for(var i=0;i<list.length;i++) {
-//     time.push(list[i].time);
-// }
-// for(var i=0;i<list.length;i++) {
-//     people.push(list[i].num);
-// }
 window.onload=function() {
     // let username = $('#username').val();
     let username =window.localStorage.getItem('g_username')
@@ -70,24 +15,24 @@ window.onload=function() {
         data: '{ "username": "' + username + '"}',
         method: 'post',
         contentType: "application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: function (res) {
-            // var url=window.document.URL;
-            // var aa=url.split("/")[7]; //id
-            // var aaa=aa.split("?")[0]; //id
             console.log(res)
             resd=res;
             numtitle=resd[0].info_inCons_List[0].mac_address;
-            // alert(aaa)
-            // if(aaa==="RiskControll.html") {
-                document.getElementById('aa').innerHTML = res[0].construction+":";
-                // $("#picuter").src=res.piture_url;
+                $("#change").empty();
+                var k=document.createElement('span');
+                k.innerHTML=res[0].construction+":";
+                k.className="aa";
+                k.style.marginLeft="20px"
+                $('#change').append(k)
+            // $("#picuter").src=res.piture_url;
                 var li = document.getElementById('cars');
                 for (let i = 0; i < res[0].info_inCons_List.length; i++) {
                     var a = document.createElement('button');
-                    if(resd[0].info_inCons_List[i].location==="雅间")
-                        a.innerHTML = "1-A";
-                    if(resd[0].info_inCons_List[i].location==="大堂")
-                        a.innerHTML = "2-A";
+                        a.innerHTML =resd[0].info_inCons_List[i].location;
                     a.className = "sela";
                     a.id = "uk"+i;
                     a.onclick=ak(i);
@@ -106,25 +51,16 @@ window.onload=function() {
 
             let option = SettingOption(time,people)
             myChart.setOption(option)
-            //自动生成的按钮
-            // for (var i = 0; i < res.length; i++) {
-            //     var bt =document.createElement("button");
-            //     bt.className="redbt";
-            //     bt.id="redbt"+i;
-            //     bt.style.marginTop=i*40;
-            //     bt.style.marginLeft=i*40;
-            //     // bt.onclick=a(0);
-            //     $('#uu').append(bt)
-            // }
-            // for (let i = 0; i < resd.length; i++) {
-            //     a(i)
-            // }
         }
     })
+
     $.ajax({
         url: `${BASE_URL}` + '/CityAddress',
         method: 'post',
         contentType: "application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: function (res) {
             console.log(res[0])
             console.log(res.length)
@@ -146,6 +82,9 @@ window.onload=function() {
             data: '{ "city": "' + opt + '"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res);
                 let pro, options;
@@ -165,6 +104,9 @@ window.onload=function() {
             data: '{"city":"' + city + '","county":"' + pro + '"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res)
                 let pro, options;
@@ -176,26 +118,6 @@ window.onload=function() {
             }
         })
     });
-    // $('#town').change(function () {
-    //     var city = $("#city").val();
-    //     var pro = $("#country").val();
-    //     var town = $("#town").val();
-    //     $.ajax({
-    //         url: `${BASE_URL}` + '/StreetAddress',
-    //         data: '{"city":"' + city + '","county":"' + pro + '","town":"' + town + '"}',
-    //         method: 'post',
-    //         contentType: "application/json",
-    //         success: function (res) {
-    //             console.log(res)
-    //             let pro, options;
-    //             for (let i = 0; i < res.length; i++) {
-    //                 pro = $("#street");
-    //                 options += '<option value="' + res[i] + '" >' + res[i] + '</option>';
-    //             }
-    //             pro.append(options);
-    //         }
-    //     })
-    // });
     $("#street").change(function () {
         var city = $("#city").val();
         var pro = $("#country").val();
@@ -206,10 +128,14 @@ window.onload=function() {
             data: '{"city":"' + city + '","county":"' + pro + '","town":"' + town + '","street":"' + str + '"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res)
+                $("#auto").empty();
                 for (var i = 0; i < res.length; i++)
-                    $("#auto").append('<option label="' + res[0] + '" value="' + res[0] + '"></option>');
+                    $("#auto").append('<option label="' + res[i] + '" value="' + res[i] + '"></option>');
             }
         })
     });
@@ -225,6 +151,9 @@ window.onload=function() {
             data: '{"city":"' + city + '","county":"' + pro + '","town":"' + town + '","street":"' + str + '","special_address":"' + spe + '"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res)
                 let pro, options;
@@ -366,6 +295,168 @@ function ak(c) {
         for (let i = 0; i <resd[0].info_inCons_List[c].list_inCons.length; i++) {
             people.push(resd[0].info_inCons_List[c].list_inCons[i].num);
         }
+        let option = SettingOption(time,people)
+        myChart.setOption(option)
+    });
+}
+
+
+
+
+
+
+//h1的接口请求
+function search1(){
+    var address=$("#city").val()+","+$("#country").val()+","+$("#street").val()+","+$("#special_address").val();
+    console.log(address);
+    $.ajax({
+        url: "http://121.199.21.197:63394/statistic_Color_Data",
+        data: '{ "address": "' + address+ '"}',
+        method: 'post',
+        contentType: "application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
+        success: function (res) {
+            console.log(res)
+            resd=res;
+            console.log(requer+"wohsrequer")
+            $("#change").empty();
+            var k=document.createElement('span');
+            k.innerHTML=$("#special_address").val()+":";
+            k.className="aa";
+            k.style.marginLeft="110px"
+            $('#change').append(k)
+            for (let i = 0; i < res.length; i++) {
+                var a = document.createElement('button');
+                if(res[i].color==="yellow")
+                    a.innerHTML = "中活跃度";
+                else if(res[i].color==="red")
+                    a.innerHTML="高活跃度"
+                else a.innerHTML="低活跃度"
+                a.className = "sela";
+                a.id = "buk"+i;
+                a.onclick=bk(i);
+                if(i===0) a.style.color="#0FB9EF";
+                $('#change').append(a)
+            }
+            time=[];
+            for (let i= 0; i < res[0].yellowInfoList.length; i++) {
+                time.push(res[0].yellowInfoList[i].time+"\n"+res[0].yellowInfoList[i].mac_address);
+            }
+            people=[];
+            for (let i = 0; i <res[0].yellowInfoList.length; i++) {
+                people.push(res[0].yellowInfoList[i].number);
+            }
+            console.log("是我是我"+people)
+
+            let option = SettingOption(time,people)
+            myChart.setOption(option)
+        }
+
+    })
+}
+function bk(c) {
+
+    $('#change').on('click', '#buk'+c,function (e) {
+        for(var i=0;i<resd.length;i++){
+            if(i===c)
+            {document.getElementById('buk'+c).style.color="#64b0f2";continue;}
+            document.getElementById('buk'+i).style.color="black";
+        }
+        var str;
+        if(c===0) str=resd[c].yellowInfoList;
+        if(c===1) str=resd[c].redInfoList;
+        if(c===2) str=resd[c].greenInfoList;
+        time=[];
+        for (let i= 0; i < str.length; i++) {
+            time.push(str[i].time+"\n"+str[i].mac_address);
+        }
+        people=[]
+        for (let i= 0; i <str.length; i++) {
+            people.push(str[i].number);
+        }
+        console.log(time)
+        let option = SettingOption(time,people)
+        myChart.setOption(option)
+    });
+}
+
+
+
+
+
+//h5的接口请求
+function acbd(){
+    var address=$("#city").val()+","+$("#country").val()+","+$("#street").val()+","+$("#special_address").val();
+    var time1=$('#start').val().split('T')[1];
+    var year=$('#start').val().split('T')[0].split('-')[0];
+    var month=$('#start').val().split('T')[0].split('-')[1];
+    var day=$('#start').val().split('T')[0].split('-')[2];
+    var time2=$('#end').val().split('T')[1];
+    var year1=$('#end').val().split('T')[0].split('-')[0];
+    var month1=$('#end').val().split('T')[0].split('-')[1];
+    var day1=$('#end').val().split('T')[0].split('-')[2];
+    let data = JSON.stringify({
+        "year1": year,
+        "month1": month,
+        "day1": day,
+        "year2": year1,
+        "month2": month1,
+        "day2": day1,
+        "time1": time1,
+        "time2": time2,
+        "address":address
+    })
+    $.ajax({
+        url: "http://121.199.21.197:63394/sameTime_Statistic",
+        data: data,
+        method: 'post',
+        contentType: "application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
+        success: function (res) {
+            console.log(res)
+            $("#change").empty();
+
+            time=[];
+            for (let i= 0; i < res.length; i++) {
+                time.push(res[i].mac_address);
+            }
+            people=[];
+            for (let i = 0; i <res.length; i++) {
+                people.push(res[i].num);
+            }
+            console.log("是我是我"+people)
+
+            let option = SettingOption(time,people)
+            myChart.setOption(option)
+        }
+
+    })
+}
+function bk(c) {
+
+    $('#change').on('click', '#buk'+c,function (e) {
+        for(var i=0;i<resd.length;i++){
+            if(i===c)
+            {document.getElementById('buk'+c).style.color="#64b0f2";continue;}
+            document.getElementById('buk'+i).style.color="black";
+        }
+        var str;
+        if(c===0) str=resd[c].yellowInfoList;
+        if(c===1) str=resd[c].redInfoList;
+        if(c===2) str=resd[c].greenInfoList;
+        time=[];
+        for (let i= 0; i < str.length; i++) {
+            time.push(str[i].time+"\n"+str[i].mac_address);
+        }
+        people=[]
+        for (let i= 0; i <str.length; i++) {
+            people.push(str[i].number);
+        }
+        console.log(time)
         let option = SettingOption(time,people)
         myChart.setOption(option)
     });

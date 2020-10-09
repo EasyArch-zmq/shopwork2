@@ -35,11 +35,12 @@ public class G_SameMacRankServiceImpl implements com.easyArch.service.G_SameMacR
         date1 =  address.getYear() + "-" + address.getMonth() + "-" + address.getDay() + " " + time1;
         date2 =  address.getYear() + "-" + address.getMonth() + "-" + address.getDay() + " " + time2;
         List<String> listMac = addressDao.select_mac2(specificAddress, city, county, street);
+        System.out.println(listMac.size());
         List<DateAndNumber>list;
         List<MacAndDataList>lists=new ArrayList<>();
         for (int j = 0; j < listMac.size(); j++) {
             list=dateNumberDao.selectTwoHour(listMac.get(j),date1,date2);
-            list=ControllerUtil.TowHourSortUtil(list,time2);
+            list=ControllerUtil.TowHourSameMacUtil(list,time1,time2);
             list=ControllerUtil.listTimeSort(list);
             MacAndDataList macAndDataList=new MacAndDataList();
             macAndDataList.setMac_address(listMac.get(j));

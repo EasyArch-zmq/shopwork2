@@ -189,6 +189,9 @@ $('#search').click(() => {
         method: 'post',
         data:data,
         contentType:"application/json;charset=utf-8",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: function (res) {
             console.log(res.length)
             if(box==="null"){

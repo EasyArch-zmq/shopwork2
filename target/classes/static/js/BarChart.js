@@ -12,6 +12,9 @@ window.onload=function() {
         data: '{ "username": "' + username + '"}',
         method: 'post',
         contentType: "application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: function (res) {
              console.log(res)
             resd=res;
@@ -44,6 +47,9 @@ window.onload=function() {
         method:'post',
         data:'{"username":"'+username+'"}',
         contentType:"application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: (res) => {
             document.getElementById('address1').innerHTML = res.userAddress;
             document.getElementById('user').innerText=username;

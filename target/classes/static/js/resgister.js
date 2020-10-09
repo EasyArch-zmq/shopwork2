@@ -17,6 +17,9 @@ $(document).ready(() => {
             method: 'post',
             data: '{"username":"' + username + '","password":"' + password + '","address":"' + addressall + '"}',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: (res) => {
                 console.log(res)
                 if (res==='"T"') {
@@ -44,6 +47,9 @@ $('#p_res').click(() => {
         method: 'post',
         data: '{"username":"' + username + '","password":"' + password + '","address":"' + addressall + '"}',
         contentType: "application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: (res) => {
             console.log(res)
             if (res==='"T"') {

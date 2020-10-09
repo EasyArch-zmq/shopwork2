@@ -69,7 +69,7 @@ public class G_AccountAboutColorServiceImpl implements G_AccountAboutColorServic
 
                     }
                     listYellowInfo.add(yellowInfo);
-                }else if(resList.get(i).getNum()<green){
+                }else if(resList.get(i).getNum()<green&&resList.get(i).getNum()>0){
                     GreenInfo greenInfo=new GreenInfo();
                     greenInfo.setNumber(resList.get(i).getNum());
                     greenInfo.setMac_address(listMac.get(j));
@@ -82,7 +82,7 @@ public class G_AccountAboutColorServiceImpl implements G_AccountAboutColorServic
 
                     }
                     listGreenInfo.add(greenInfo);
-                }else {
+                }else if(resList.get(i).getNum()>=red) {
                     RedInfo redInfo=new RedInfo();
                     redInfo.setNumber(resList.get(i).getNum());
                     redInfo.setMac_address(listMac.get(j));

@@ -14,4 +14,8 @@ public interface LoginService {
     public String p_login(P_User p_user);
     //管理员用户登录
     public String g_login(G_User g_user);
+
+    P_User selectBypName(String name);
+
+    G_User selectBygName(String name);
 }

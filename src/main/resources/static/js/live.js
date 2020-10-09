@@ -1,4 +1,4 @@
-const BASE_URL = 'http://121.199.21.197:63393'
+const BASE_URL = 'http://121.199.21.197:63394'
 
 //设置范围值
 function  fanwei() {
@@ -19,6 +19,9 @@ function  fanwei() {
         method:'post',
         data:'{"red":"'+red+'","green":"'+green+'","mac_address":"'+box+'"}',
         contentType:"application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: (res) => {
             // console.log("ssssssssssokla")
             alert("保存成功！")

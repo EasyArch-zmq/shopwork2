@@ -9,13 +9,19 @@ $(document).ready(() => {
             data: '{ "username": "'+username+'", "password": "'+password+'"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res)
-                if(res === 'T'){
-                    window.localStorage.setItem('g_username', $('#user_name').val());
-                    window.location.href = "RiskControll.html" }
-                else{
+                if(res === 'F'){
                     alert("登陆失败，用户名或密码错误！")}
+
+                else{
+                        window.localStorage.setItem('g_username', $('#user_name').val());
+                        window.localStorage.setItem('token', res.split(':')[1]);
+                        window.location.href = "http://121.199.21.197:63394/nav"
+                    }
             }
         })
     })
@@ -31,12 +37,19 @@ $(document).ready(() => {
             method: 'post',
             data: '{ "username": "' + username + '", "password": "' + password + '" }',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
-                if (res === 'T') {
-                    window.localStorage.setItem('p_username', $('#user_name1').val());
-                    window.location.href = "p_main.html"
-                } else {
+                console.log(res);
+                alert(res.token)
+                if (res === 'F') {
                     alert("登陆失败，用户名或密码错误！")
+
+                } else {
+                    window.localStorage.setItem('p_username', $('#user_name1').val());
+                    window.localStorage.setItem('p_token', res.split(':')[1]);
+                    window.location.href = "http://121.199.21.197:63394/p_main"
                 }
             }
         })

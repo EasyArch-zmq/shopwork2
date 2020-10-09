@@ -5,12 +5,11 @@
 <mapper namespace="com.easyArch.mapper.YanGanDao">
     <select id="yanGanList" resultType="com.easyArch.entity.YanGan">
        select date_format(mytime,'%H')AS time,
-        avg (yangan) As yangan from time_info where mac_address in (select mac_address from address_info
+        avg (yangan) As yangan from time_info where (mytime between #{date1}
+        and #{date2})and mac_address in (select mac_address from address_info
         where city=#{city} and county=#{county}
         and street=#{street}
         and (specific_address like #{specific_address}"%"))
-        and (mytime between #{date1}
-        and #{date2})
         group by time
         order by time
     </select>

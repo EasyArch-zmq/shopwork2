@@ -16,21 +16,21 @@ public class G_DataController {
     @Autowired
     private G_SameMacRankService gSameMacRankService;
     @Autowired
-    G_SameTimeAccountService gSameTimeAccountService;
+    private G_SameTimeAccountService gSameTimeAccountService;
     @Autowired
-    G_AppointTimeService gAppointTimeService;
+    private G_AppointTimeService gAppointTimeService;
     @Autowired
-    G_SuccessiveTimeService gSuccessiveTimeService;
+    private G_SuccessiveTimeService gSuccessiveTimeService;
     @Autowired
-    G_TodayAccountService g_todayAccountService;
+    private G_TodayAccountService g_todayAccountService;
     @Autowired
-    G_TimeRankService g_timeRankService;
+    private G_TimeRankService g_timeRankService;
     @Autowired
-    G_AccountAboutColorService gAccountAboutColorService;
+    private G_AccountAboutColorService gAccountAboutColorService;
     @Autowired
-    G_WeekRankService gWeekRankService;
+    private G_WeekRankService gWeekRankService;
     @Autowired
-    G_YanGanService gYanGanService;
+    private G_YanGanService gYanGanService;
 
     /**
      * 管理员用户首页默认数据
@@ -74,7 +74,7 @@ public class G_DataController {
             , method = RequestMethod.POST)
     public String  sameMac_timeRank(@RequestBody DateAndAddress address) {
         if (address != null) {
-            gSameMacRankService.getSameMac_timeRank(address);
+            return gSameMacRankService.getSameMac_timeRank(address);
         }
         return JSON.toJSONString("f");
     }

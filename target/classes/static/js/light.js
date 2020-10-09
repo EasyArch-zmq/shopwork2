@@ -13,6 +13,9 @@ var arry1=[],arry=[];
 				method:'post',
 				data:'{"username":"'+username+'"}',
 				contentType:"application/json",
+				beforeSend: function(request) {
+					request.setRequestHeader("token",window.localStorage.getItem("p_token") );
+				},
 				success: (res) => {
 					console.log(res)
 					resd=res;
@@ -43,10 +46,9 @@ function boxloading(c) {
 		var img_light = document.createElement("img");//根据不同的数据的颜色
 		img_light.className="logo";
 		// img_light.style.height="500px"
-		console.log("50")
-		if (arry[i].number <= 50)
+		if (arry[i].number <= arry[i].color.green)
 			img_light.src = "../static/assets/img/green.png";
-		else if (arry[i].number <= 200)
+		else if (arry[i].number <= arry[i].color.red)
 			img_light.src = "../static/assets/img/yellow.png";
 		else
 			img_light.src = "../static/assets/img/red.png";
@@ -56,9 +58,9 @@ function boxloading(c) {
 		level.className = "level1"
 		var levelnum = document.createElement("span");
 		levelnum.className = "span1"
-		if (arry[i].number <= 50)
+		if (arry[i].number <= arry[i].color.green)
 			levelnum.innerHTML = "活跃度：" + "低" + "<br/>";
-		else if (arry[i].number <= 200)
+		else if (arry[i].number <= arry[i].color.red)
 			levelnum.innerHTML = "活跃度：" + "中" + "<br/>";
 		else
 			levelnum.innerHTML = "活跃度：" + "高" + "<br/>";

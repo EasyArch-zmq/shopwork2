@@ -17,9 +17,9 @@ public class P_DataController {
     @Autowired
     private P_TodayAccountService p_todayAccountService;
     @Autowired
-    P_DaySortService p_daySortService;
+    private P_DaySortService p_daySortService;
     @Autowired
-    P_TowHourSortService pTowHourSortService;
+    private P_TowHourSortService pTowHourSortService;
 
     /**
      *返回用户地址，具体地址，总人数，green,red 在普通用户首页

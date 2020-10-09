@@ -1,10 +1,13 @@
-// const BASE_URL = 'http://121.199.21.197:63392'
-$(document).ready(() => {
+// const BASE_URL = 'http://121.199.21.197:63393'
+window.onload=function () {
 
     $.ajax({
         url: `${BASE_URL}` + '/CityAddress',
         method: 'post',
         contentType: "application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: function (res) {
             console.log(res[0])
             console.log(res.length)
@@ -26,6 +29,9 @@ $(document).ready(() => {
             data: '{ "city": "'+opt+'"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res);
                 let pro, options;
@@ -44,6 +50,9 @@ $(document).ready(() => {
             data:'{"city":"'+city+'","county":"'+pro+'"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res)
                 let pro, options;
@@ -54,25 +63,6 @@ $(document).ready(() => {
             }
         })
     });
-    // $('#town').change(function(){
-    //     var city=$("#city").val();
-    //     var pro=$("#country").val();
-    //     var town=$("#town").val();
-    //     $.ajax({
-    //         url: `${BASE_URL}` + '/StreetAddress',
-    //         data:'{"city":"'+city+'","county":"'+pro+'","town":"'+town+'"}',
-    //         method: 'post',
-    //         contentType: "application/json",
-    //         success: function (res) {
-    //             console.log(res)
-    //             let pro, options;
-    //             for(let i=0; i<res.length; i++)
-    //             {  pro =$("#street");
-    //                 options += '<option value="' + res[i] + '" >' + res[i]+ '</option>';}
-    //             pro.append(options);
-    //         }
-    //     })
-    // });
     $("#street").change(function(){
         var city=$("#city").val();
         var pro=$("#country").val();
@@ -83,10 +73,14 @@ $(document).ready(() => {
             data:'{"city":"'+city+'","county":"'+pro+'","street":"'+str+'"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res)
+                $("#auto").empty();
                 for(var i=0;i<res.length;i++)
-                    $("#auto").append('<option label="'+res[0]+'" value="'+res[0]+'"></option>');
+                    $("#auto").append('<option label="'+res[i]+'" value="'+res[i]+'"></option>');
             }
         })
     });
@@ -103,6 +97,9 @@ $(document).ready(() => {
             data:'{"city":"'+city+'","county":"'+pro+'","street":"'+str+'","special_address":"'+spe+'"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res)
                 let pro, options;
@@ -118,6 +115,9 @@ $(document).ready(() => {
         url: `${BASE_URL}` + '/CityAddress',
         method: 'post',
         contentType: "application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
         success: function (res) {
             console.log(res[0])
             console.log(res.length)
@@ -139,6 +139,9 @@ $(document).ready(() => {
             data: '{ "city": "'+opt+'"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res);
                 let pro, options;
@@ -157,6 +160,9 @@ $(document).ready(() => {
             data:'{"city":"'+city+'","county":"'+pro+'"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res)
                 let pro, options;
@@ -196,11 +202,14 @@ $(document).ready(() => {
             data:'{"city":"'+city+'","county":"'+pro+'","street":"'+str+'"}',
             method: 'post',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: function (res) {
                 console.log(res)
                 for(var i=0;i<res.length;i++)
-                    $("#auto1").append('<option label="'+res[0]+'" value="'+res[0]+'"></option>');
+                    $("#auto1").append('<option label="'+res[i]+'" value="'+res[i]+'"></option>');
             }
         })
     });
-})
+}

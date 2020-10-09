@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="../../../static/assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href='http://fonts.useso.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,400italic,700,600,600italic' rel='stylesheet' type='text/css'>
+    <link href="../../../static/css/five.css" rel="stylesheet">
+    <title>单盒子在一定时间的两小时排行</title>
+</head>
+<body style="background-image:none;background-color: rgb(245,245,245)">
+<!--//body-->
+    <div class="container" style="width:100%;height:100% " >
+        <div style="margin-top: 50px;">
+            <h3 style="margin-bottom: 20px;text-align: center">单盒子在一定时间的两小时排行</h3>
+            <h4 onclick="small()" style="margin-bottom: 15px;margin-left: 5%;">按时间时间查询</h4>
+            <div id='left' style="width:25%;height:500px;float:left;">
+                <div class=" input-daterange row" id="container" style="margin-left: 1%;">
+                    <form class="form-inline">
+                        <div class="arrea" >选择地区：</div>
+                        <div class="form-group ">
+                            <div class="city">
+                                <select name="" id="city" class="form-control" >
+                                    <option value="null">请选择</option>
+                                </select>
+                                <select name="" id="country" class="form-control">
+                                    <option value="null">请选择</option>
+                                </select>
+                                <!--                    <select name="" id="town" class="form-control">-->
+                                <!--                        <option value="null">请选择</option>-->
+                                <!--                    </select>-->
+                                <select name="" id="street" class="form-control">
+                                    <option value="null">请选择</option>
+                                </select>
+                                <span>
+                        <input  id="special_address"
+                                list="auto"
+                                style="margin-top: 8px;width: 95%"
+                                class="form-control"
+                                placeholder="详细地址">
+                        <datalist id="auto">
+                            <option></option>
+                        </datalist>
+                    </span>
+<!--                    <select name="" id="box" class="form-control" style="float:right;margin-top: 8px;">-->
+<!--                                    <option value="null">请选择</option>-->
+<!--                                </select>-->
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div style="margin-top: 10px;"><span >开始时间</span></div>
+                <input type="datetime-local" class="form-control" id="da" step="1"/>
+                <div style="margin-top: 10px;"><span >结束时间</span></div>
+                <input type="time" class="form-control"  id="da1" step="1"/>
+                <button onclick="search()"  style="margin-top: 30px;width: 100%;" class="btn btn-primary">按以上时间查询</button>
+            </div>
+            <div id='main' style="width:70%;height:240px;float:right;background-color: lightgrey;color: white">
+                <h2 style="vertical-align: middle;text-align: center">还未选择时间┗|｀O′|┛ 嗷~~</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    const BASE_URL = 'http://121.199.21.197:63394'
+    let username =window.localStorage.getItem('p_username')
+    var ol=[],li=[];
+    function search() {
+        console.log($('#da').val());
+        var time=$('#da').val().split('T')[1];
+        var year=$('#da').val().split('T')[0].split('-')[0];
+        var month=$('#da').val().split('T')[0].split('-')[1];
+        var day=$('#da').val().split('T')[0].split('-')[2];
+        var time2=$('#da1').val();
+        var city = $("#city").val();
+        var county = $("#country").val();
+        var street = $("#street").val();
+        var special_address = $("#special_address").val() === "" ? "null" : $("#special_address").val();
+        var address= city+","+county+","+street+","+special_address;
+        let data = JSON.stringify({
+            "year": year,
+            "month": month,
+            "day": day,
+            "time1": time,
+            "time2": time2,
+             "address":address
+        })
+        // alert(data)
+        $.ajax({
+            url: `${BASE_URL}` + '/sameMac_timeRank',
+            data: data,
+            method: 'post',
+            contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
+            success: function (res) {
+                console.log(res);
+                ol=[];li=[];
+                for(var i=0;i<res[0].list.length;i++)
+                { ol[i]=res[0].list[i].time;
+                    li[i]=res[0].list[i].num;
+                }
+                if(res[0].list.length>2){
+                        $('#main').css('height',parseInt(res[0].list.length)*120)
+                        }
+
+                    load();
+            }
+        })
+    }
+    function load() {
+        var myChart = echarts.init(document.getElementById('main'));
+        var charts = {
+            cityList: ol,
+            cityData: li
+        }
+        var top10CityList = charts.cityList
+        var top10CityData =  charts.cityData
+        var onlymine=[];
+        for(let i=0; i<charts.cityData.length; i++){
+            onlymine[i]=top10CityData[top10CityData.length-1-i];
+        }
+        console.log(onlymine);  // 输出： ["你", "欢", "喜", "我"]
+
+        var color = ['rgba(248,195,248', 'rgba(100,255,249', 'rgba(135,183,255', 'rgba(248,195,248', 'rgba(100,255,249']
+
+        let lineY = []
+        for (var i = 0; i < top10CityList.length; i++) {
+            var x = i
+            if (x > color.length - 1) {
+                x = color.length - 1
+            }
+            var data = {
+                name: charts.cityList[i],
+                color: color[x] + ')',
+                value: top10CityData[i],
+                itemStyle: {
+                    normal: {
+                        show: true,
+                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                            offset: 0,
+                            color: color[x] + ', 0.5)'
+                        }, {
+                            offset: 1,
+                            color: color[x] + ', 1)'
+                        }], false),
+                        barBorderRadius: 10
+                    },
+                    emphasis: {
+                        shadowBlur: 15,
+                        shadowColor: 'rgba(0, 0, 0, 0.1)'
+                    }
+                }
+            }
+            lineY.push(data)
+        }
+
+        console.log(lineY)
+        option= {
+            backgroundColor:'#B7B7B7',
+            title: {
+                show: false
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            grid: {
+                borderWidth: 0,
+                top: '5%',
+                left: '5%',
+                right: '15%',
+                bottom: '3%'
+            },
+            color: color,
+            yAxis: [{
+                type: 'category',
+                inverse: true,
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false,
+                    inside: false
+                },
+                data: top10CityList
+            }, {
+                type: 'category',
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: true,
+                    inside: false,
+                    textStyle: {
+                        color: '#FFF',
+                        fontSize: '14',
+                        bottom:'100',
+                        fontFamily: 'PingFangSC-Regular'
+                    },
+                    formatter: function (val) {
+                        return `${val}人`
+                    }
+                },
+                splitArea: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                data:onlymine
+            }],
+            xAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: '',
+                type: 'bar',
+                zlevel: 2,
+                barWidth: '25px',
+                data: lineY,
+                animationDuration: 1500,
+                label: {
+                    normal: {
+                        color: '#FFF',
+                        show: true,
+                        position: [0, '-24px'],
+                        textStyle: {
+                            fontSize: 18
+                        },
+                        formatter: function (a, b) {
+                            return a.name
+                        }
+                    }
+                }
+            }],
+            animationEasing: 'cubicOut'
+        }
+        myChart.setOption(option);
+
+    }
+    $.ajax({
+        url:`${BASE_URL}` +"/selectAllNumber",
+        method:'post',
+        data:'{"username":"'+username+'"}',
+        contentType:"application/json",
+        beforeSend: function(request) {
+            request.setRequestHeader("token",window.localStorage.getItem("token") );
+        },
+        success: (res) => {
+            document.getElementById('address1').innerHTML = res.userAddress;
+            document.getElementById('user').innerText=username;
+
+        }})
+</script>
+<script src="../../../static/js/address.js"></script>
+
+</body>
+</html>

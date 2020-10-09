@@ -1,4 +1,4 @@
-const BASE_URL = 'http://121.199.21.197:63393'
+const BASE_URL = 'http://121.199.21.197:63394'
 $(document).ready(() => {
     $('.signin_btn').click(() => {
         let username = $('#p_username').val()
@@ -9,6 +9,9 @@ $(document).ready(() => {
             method: 'post',
             data:'{"username":"'+username+'","password":"'+password+'","address":"'+address+'"}',
             contentType: "application/json",
+            beforeSend: function(request) {
+                request.setRequestHeader("token",window.localStorage.getItem("token") );
+            },
             success: (res) => {
                 console.log(res)
             }

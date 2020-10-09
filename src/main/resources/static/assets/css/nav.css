@@ -146,3 +146,52 @@ html, body { height: 100%; }
     font-size: 18px;
 
 }
+
+.menu ul li{
+    /*float属性定义元素在哪个方向浮动，浮动元素会生成一个块级框。如果浮动非替换元素，则要
+    指明一个明确的宽度，否则会被尽可能的压缩。*/
+    float:left;
+    position:relative;
+    list-style-type:none;
+}
+.menu ul li a, .menu ul li a:visited{
+    /*display的值，none表示不被显示；block表示显示为块级元素，元素前后
+    有换行符；inline为默认值，内联元素，前后没有换行符……*/
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    width:104px;
+    /*height:30px;*/
+    color:#000;
+    /*background:#c9c9a7;*/
+    line-height:30px;
+    /*font-size:11px;*/
+}
+.menu ul li ul{
+    display:none;}
+/*当鼠标指向第一级li时，第二级ul的动作*/
+.menu ul li:hover ul{
+    display:block;
+    position:absolute;
+    top:30px;
+    left:0;
+    width:105px;
+}
+.menu ul li:hover ul li a{
+    display:block;
+    background: #fcfbfa;
+    color:#000;
+}
+.menu ul li:hover ul li a:hover{
+    background: #f8f8f6;
+    color:#000;
+}
+.menu ul li{
+    margin-top: 10px;
+}
+.menu ul li ul li{
+    margin-top: 0px;
+}
+.aa{
+    float:left;font-size: 18px;margin-left: 11%;margin-bottom: 10px;
+}
