@@ -1,4 +1,4 @@
-const BASE_URL = 'http://121.199.21.197:63394'
+const BASE_URL = 'http://121.199.21.197:63393'
 
 //设置范围值
 function  fanwei() {

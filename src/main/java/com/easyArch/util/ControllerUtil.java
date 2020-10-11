@@ -63,29 +63,38 @@ public class ControllerUtil {
 //            System.out.println("当前时间是："+temInt);
             for (i = temp; i < temInt; i +=2) {
                 DateAndNumber dateAndNumberTem = new DateAndNumber();
-                if (i < 10) {
-                    dateAndNumberTem.setTime("0" + (i-1));
+                Integer time1=i-1;
+                if (time1 < 10) {
+                    dateAndNumberTem.setTime("0" + time1);
                 } else {
-                    i=i-1;
-                    dateAndNumberTem.setTime(i.toString());
+                    dateAndNumberTem.setTime(time1.toString());
                 }
                 dateAndNumberTem.setNum(0);
 //                System.out.println("新加数据："+dateAndNumberTem);
                 list1.add(dateAndNumberTem);
             }
             temp = temInt;
-            list1.add(dateAndNumber);
+            DateAndNumber dateAndNumberTem = new DateAndNumber();
+            dateAndNumberTem.setNum(dateAndNumber.getNum());
+            Integer time2=temInt-1;
+            if (time2 < 10) {
+                dateAndNumberTem.setTime("0" + time2);
+            } else {
+                dateAndNumberTem.setTime(time2.toString());
+            }
+
+            list1.add(dateAndNumberTem);
             temp+=2;
         }
         Integer j = 1;
         for (j = temp; j <= timeT; j+=2) {
             DateAndNumber dateAndNumberTem2;
             dateAndNumberTem2 = new DateAndNumber();
-            if (j < 10) {
-                dateAndNumberTem2.setTime("0" + (j-1));
+            Integer time3=j-1;
+            if (time3 < 10) {
+                dateAndNumberTem2.setTime("0" + time3);
             } else {
-                j=j-1;
-                dateAndNumberTem2.setTime(j.toString());
+                dateAndNumberTem2.setTime(time3.toString());
             }
             dateAndNumberTem2.setNum(0);
 //            System.out.println("新加数据："+dateAndNumberTem2);

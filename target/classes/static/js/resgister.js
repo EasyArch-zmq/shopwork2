@@ -24,7 +24,7 @@ $(document).ready(() => {
                 console.log(res)
                 if (res==='"T"') {
                     alert("注册成功！")
-                    window.location.href = "Login.html";
+                    window.location.href = "http://121.199.21.197:63393/Login";
                 } else alert("注册失败！")
             }
         })
@@ -54,7 +54,7 @@ $('#p_res').click(() => {
             console.log(res)
             if (res==='"T"') {
                 alert("注册成功！")
-                window.location.href = "Login.html";
+                window.location.href = "http://121.199.21.197:63393/Login";
             } else alert("注册失败！")
         }
     })

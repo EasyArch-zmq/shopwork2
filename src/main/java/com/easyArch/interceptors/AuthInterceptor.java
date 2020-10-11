@@ -21,7 +21,11 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         response.setCharacterEncoding("utf-8");
         String token = request.getHeader("token");
-        String str[]={"g_login","p_login","p_register","g_register"};
+        String str[]={"g_login","p_login","p_register","g_register"
+                ,"Login","RiskControll","p_main","smoke"
+                ,"week_Rank1","time_Rank1","sameMac_timeRank1"
+                ,"statistic_Color_Data1","date","sameTime_Statistic1"
+                ,"nav","live","P_TodayAccount","P_Todayliveness","area"};
         for (int i = 0; i < str.length; i++) {
             if (request.getRequestURI().contains(str[i])) {
                 return true;

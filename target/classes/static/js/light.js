@@ -1,4 +1,4 @@
-const BASE_URL = 'http://121.199.21.197:63394'
+const BASE_URL = 'http://121.199.21.197:63393'
 var resd=[];
 // var aaa=["https://test2346.oss-cn-beijing.aliyuncs.com/dt.jpg"]
 var arry1=[],arry=[];
@@ -13,9 +13,10 @@ var arry1=[],arry=[];
 				method:'post',
 				data:'{"username":"'+username+'"}',
 				contentType:"application/json",
-				beforeSend: function(request) {
-					request.setRequestHeader("token",window.localStorage.getItem("p_token") );
-				},
+				token:window.localStorage.getItem("p_token"),
+				// beforeSend: function(request) {
+				// 	request.setRequestHeader("token",window.localStorage.getItem("p_token") );
+				// },
 				success: (res) => {
 					console.log(res)
 					resd=res;

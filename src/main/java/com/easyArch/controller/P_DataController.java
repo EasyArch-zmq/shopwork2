@@ -30,7 +30,8 @@ public class P_DataController {
             ,method = RequestMethod.POST)
     public String selectAllNumber(@RequestBody P_User p_user){
         if(p_user!=null){
-            p_mainService.selectP_mainData(p_user);
+            System.out.println("selectAllNumber!");
+            return p_mainService.selectP_mainData(p_user);
         }
         return JSON.toJSONString("f");
     }
@@ -79,7 +80,7 @@ public class P_DataController {
             , method = RequestMethod.POST)
     public String selectTowSortNum(@RequestBody P_User p_user){
         if(p_user!=null){
-            pTowHourSortService.selectTowSortNum(p_user);
+            return pTowHourSortService.selectTowSortNum(p_user);
         }
         return JSON.toJSONString("f");
     }
