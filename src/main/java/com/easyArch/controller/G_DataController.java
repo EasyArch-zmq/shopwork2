@@ -31,6 +31,8 @@ public class G_DataController {
     private G_WeekRankService gWeekRankService;
     @Autowired
     private G_YanGanService gYanGanService;
+    @Autowired
+    private G_XiGuaService g_xiGuaService;
 
     /**
      * 管理员用户首页默认数据
@@ -193,5 +195,14 @@ public class G_DataController {
     public String yanGan(){
         return gYanGanService.getYanGan();
     }
+
+    @ResponseBody
+    @RequestMapping( value = "xiGua",
+            produces = "application/json;charset=utf-8",
+            method = RequestMethod.POST)
+    public String xiGua(){
+        return g_xiGuaService.getAddressList();
+    }
+
 
 }

@@ -7,11 +7,13 @@ com/easyArch/util/NetException.class
 com/easyArch/service/G_SameMacRankService.class
 com/easyArch/entity/Week_num.class
 com/easyArch/util/ControllerUtil$1.class
+com/easyArch/interceptors/AuthInterceptor.class
 com/easyArch/service/G_TimeRankService.class
 com/easyArch/service/impl/LoginServiceImpl.class
 com/easyArch/service/impl/G_AppointTimeServiceImpl.class
 com/easyArch/mapper/Date_TimeDao.class
 com/easyArch/entity/G_User.class
+com/easyArch/service/impl/G_XiGuaServiceImpl.class
 com/easyArch/service/impl/G_WeekRankServiceImpl.class
 com/easyArch/service/impl/G_SuccessiveTimeServiceImpl.class
 com/easyArch/util/OSSClientUtil.class
@@ -45,6 +47,7 @@ com/easyArch/entity/Address_Month.class
 com/easyArch/service/P_DaySortService.class
 com/easyArch/controller/ApplyAddressController.class
 com/easyArch/entity/Construction_inDefa.class
+com/easyArch/service/G_XiGuaService.class
 com/easyArch/mapper/Date_Box_TimeDao.class
 com/easyArch/util/ControllerUtil.class
 com/easyArch/entity/DateNumberAll.class
@@ -67,6 +70,7 @@ com/easyArch/entity/Color1.class
 com/easyArch/service/P_TowHourSortService.class
 com/easyArch/controller/P_DataController.class
 com/easyArch/service/impl/ColorInsertServiceImpl.class
+com/easyArch/support/JWTUtil.class
 com/easyArch/service/G_WeekRankService.class
 com/easyArch/entity/DateAndNumber.class
 com/easyArch/entity/GreenInfo.class

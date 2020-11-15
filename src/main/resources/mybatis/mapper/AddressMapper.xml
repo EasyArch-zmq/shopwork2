@@ -67,4 +67,8 @@
         where mac_address=#{mac_address}
     </insert>
 
+    <select id="selectAddress" resultType="com.easyArch.entity.Address">
+        select city,county,street,specific_address,mac_address,location from address_info
+    </select>
+
 </mapper>

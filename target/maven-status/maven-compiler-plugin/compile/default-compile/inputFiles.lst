@@ -25,6 +25,7 @@
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/service/impl/P_TodayAccountServiceImpl.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/service/impl/G_AccountAboutColorServiceImpl.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/entity/Construction_inAll.java
+/home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/service/G_XiGuaService.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/entity/DateAndAddress.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/entity/YanGan.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/service/ColorInsertService.java
@@ -67,11 +68,14 @@
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/service/P_mainService.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/controller/P_DataController.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/service/impl/G_YanGanServiceImpl.java
+/home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/support/JWTUtil.java
+/home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/interceptors/AuthInterceptor.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/controller/Test.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/controller/LoginController.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/util/OSSClientUtil.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/util/ControllerUtil.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/entity/ColorAndData.java
+/home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/service/impl/G_XiGuaServiceImpl.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/entity/Mac_Loc.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/service/impl/P_DaySortServiceImpl.java
 /home/zmq/Java_Projects/shopwork2/src/main/java/com/easyArch/entity/DateNumberAll.java

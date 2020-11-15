@@ -63,7 +63,7 @@ public class ControllerUtil {
 //            System.out.println("当前时间是："+temInt);
             for (i = temp; i < temInt; i +=2) {
                 DateAndNumber dateAndNumberTem = new DateAndNumber();
-                Integer time1=i-1;
+                Integer time1=i+1;
                 if (time1 < 10) {
                     dateAndNumberTem.setTime("0" + time1);
                 } else {
@@ -76,7 +76,7 @@ public class ControllerUtil {
             temp = temInt;
             DateAndNumber dateAndNumberTem = new DateAndNumber();
             dateAndNumberTem.setNum(dateAndNumber.getNum());
-            Integer time2=temInt-1;
+            Integer time2=temInt+1;
             if (time2 < 10) {
                 dateAndNumberTem.setTime("0" + time2);
             } else {
@@ -90,7 +90,7 @@ public class ControllerUtil {
         for (j = temp; j <= timeT; j+=2) {
             DateAndNumber dateAndNumberTem2;
             dateAndNumberTem2 = new DateAndNumber();
-            Integer time3=j-1;
+            Integer time3=j+1;
             if (time3 < 10) {
                 dateAndNumberTem2.setTime("0" + time3);
             } else {
@@ -117,9 +117,9 @@ public class ControllerUtil {
             for (i = temp; i < temInt; i +=2) {
                 DateAndNumber dateAndNumberTem = new DateAndNumber();
                 if(i==(timeT-1)){
-                    dateAndNumberTem.setTime((i-1)+":00:00-"+time);
+                    dateAndNumberTem.setTime(timeT+":00:00-"+time);
                 } else {
-                    dateAndNumberTem.setTime((i-1)+":00:00-"+(i+1)+":00:00");
+                    dateAndNumberTem.setTime((i+1)+":00:00-"+(i+2)+":00:00");
                 }
                 dateAndNumberTem.setNum(0);
 //                System.out.println("新加数据："+dateAndNumberTem);
@@ -127,9 +127,9 @@ public class ControllerUtil {
             }
             DateAndNumber dateAndNumberTem = new DateAndNumber();
             if(temInt==(timeT-1)){
-                dateAndNumberTem.setTime((temInt-1)+":00:00-"+time);
+                dateAndNumberTem.setTime(timeT+":00:00-"+time);
             } else {
-                dateAndNumberTem.setTime((temInt-1)+":00:00-"+(temInt+1)+":00:00");
+                dateAndNumberTem.setTime((temInt+1)+":00:00-"+(temInt+2)+":00:00");
             }
             dateAndNumberTem.setNum(dateAndNumber.getNum());
             temp = temInt;
@@ -141,9 +141,9 @@ public class ControllerUtil {
             DateAndNumber dateAndNumberTem2;
             dateAndNumberTem2 = new DateAndNumber();
             if(j==(timeT-1)){
-                dateAndNumberTem2.setTime((j-1)+":00:00-"+time);
+                dateAndNumberTem2.setTime(timeT+":00:00-"+time);
             } else {
-                dateAndNumberTem2.setTime((j-1)+":00:00-"+(j+1)+":00:00");
+                dateAndNumberTem2.setTime((j+1)+":00:00-"+(j+2)+":00:00");
             }
             dateAndNumberTem2.setNum(0);
 //            System.out.println("新加数据："+dateAndNumberTem2);
@@ -158,57 +158,144 @@ public class ControllerUtil {
         List<DateAndNumber> list1 = new ArrayList<>();
         String[] str2 = ControllerUtil.slipDate3(time2);
         String[] str1 = ControllerUtil.slipDate3(time1);
-        Integer timeT2 = new Integer(str2[0]);//14
-        Integer timeT1 =new Integer(str1[0]);
-        Integer temp = timeT1;
-        Integer i;
-        System.out.println(list);
+        Integer timeT2 = new Integer(str2[0]);//截止时间
+        Integer timeT1 =new Integer(str1[0]);//开始时间
+        Integer temp = timeT1;//奇数或者偶数
         int n=0;
-        for (DateAndNumber dateAndNumber : list) {
-            Integer temInt = new Integer(dateAndNumber.getTime());//09
-//            System.out.println("当前时间是："+temInt);
-            for (i = temp; i < temInt; i +=2) {
-                DateAndNumber dateAndNumberTem = new DateAndNumber();
-                if(n==0){
-                    dateAndNumberTem.setTime(time1+"-"+(i+1)+":00:00");
-                }else if(i==(timeT2-1)&&(i-1)>=timeT1){
-                    dateAndNumberTem.setTime((i-1)+":00:00-"+time2);
-                } else if ((i-1)>=timeT1){
-                    dateAndNumberTem.setTime((i-1)+":00:00-"+(i+1)+":00:00");
+        Integer j=0;
+        for ( j= 0; j < list.size(); j++) {
+            Integer temInt = new Integer(list.get(j).getTime());
+            if(j==0){
+                if(timeT1<temInt-1){
+                    if (timeT1 % 2 == 0){
+                        DateAndNumber dateAndNumberTem = new DateAndNumber();
+                        dateAndNumberTem.setTime(time1 +"-"+ (timeT1+2)+":00:00");
+                        dateAndNumberTem.setNum(0);
+                        list1.add(dateAndNumberTem);
+                        timeT1++;
+                        n++;
+                    }
+                    if (timeT1 % 2!=0){
+                        if (n==0){
+                            DateAndNumber dateAndNumberTem = new DateAndNumber();
+                            dateAndNumberTem.setTime(time1 +"-"+ (timeT1+1)+":00:00");
+                            dateAndNumberTem.setNum(0);
+                            list1.add(dateAndNumberTem);
+                            timeT1+=2;
+                            for (int i = timeT1; i <temInt; i+=2) {
+                                DateAndNumber dateAndNumberTem1 = new DateAndNumber();
+                                dateAndNumberTem1.setTime((i+1)+":00:00-" + (i+3)+":00:00");
+                                dateAndNumberTem1.setNum(0);
+                                list1.add(dateAndNumberTem1);
+                            }
+                            n++;
+                        }else {
+                            for (int i = timeT1; i <temInt; i+=2) {
+                                DateAndNumber dateAndNumberTem1 = new DateAndNumber();
+                                dateAndNumberTem1.setTime((i+1)+":00:00-" + (i+3)+":00:00");
+                                dateAndNumberTem1.setNum(0);
+                                list1.add(dateAndNumberTem1);
+                            }
+                        }
+                    }
                 }
+                else if(timeT1==temInt-1){
+                    DateAndNumber dateAndNumberTem = new DateAndNumber();
+                    dateAndNumberTem.setTime(time1 +"-"+ (timeT1+2)+":00:00");
+                    dateAndNumberTem.setNum(0);
+                    list1.add(dateAndNumberTem);
+                    n++;
+                }
+                if(n==0){
+                    //取得数据的时间
+                    DateAndNumber dateAndNumberTem = new DateAndNumber();
+                    Integer t1 = temInt + 1;
+                    dateAndNumberTem.setTime(time1 + "-" + t1 + ":00:00");
+                    dateAndNumberTem.setNum(0);
+                    list1.add(dateAndNumberTem);
+                    DateAndNumber dateAndNumberTem1 = new DateAndNumber();
+                    dateAndNumberTem1.setTime(t1 + ":00:00-" + (t1 + 2) + ":00:00");
+                    dateAndNumberTem1.setNum(list.get(j).getNum());
+                    list1.add(dateAndNumberTem1);
+                    n++;
+                    temp = temInt;
+                    temp+=2;
+                }else {
+                    //取得数据的时间
+                    DateAndNumber dateAndNumberTem = new DateAndNumber();
+                    Integer t1 = temInt + 1;
+                    dateAndNumberTem.setTime(t1 + ":00:00-" + (t1 + 2) + ":00:00");
+                    dateAndNumberTem.setNum(list.get(j).getNum());
+                    list1.add(dateAndNumberTem);
+                    temp = temInt;
+                    temp+=2;
+                }
+            }else {
+                if(j==list.size()-1&&temInt+3>timeT2){
+                    //取得数据的时间
+                    DateAndNumber dateAndNumberTem = new DateAndNumber();
+                    Integer t1 = temInt + 1;
+                    dateAndNumberTem.setTime(t1 + ":00:00-" + time2);
+                    dateAndNumberTem.setNum(list.get(j).getNum());
+                    list1.add(dateAndNumberTem);
+                    temp=temInt;
+                    temp+=2;
+                }else {
+                    for (int i = temp; i <temInt; i+=2) {
+                        DateAndNumber dateAndNumberTem = new DateAndNumber();
+                        dateAndNumberTem.setTime((i+1)+":00:00-" + (i+3)+":00:00");
+                        dateAndNumberTem.setNum(0);
+                        list1.add(dateAndNumberTem);
+                    }
+                    //取得数据的时间
+                    DateAndNumber dateAndNumberTem = new DateAndNumber();
+                    Integer t1 = temInt + 1;
+                    dateAndNumberTem.setTime(t1 + ":00:00-" + (t1 + 2) + ":00:00");
+                    dateAndNumberTem.setNum(list.get(j).getNum());
+                    list1.add(dateAndNumberTem);
+                    temp = temInt;
+                    temp+=2;
+                }
+            }
+        }
+        //处理完毕list，或者list为空
+        Integer k;
+        if (n==0&&timeT1<=timeT2-2) {
+            if (timeT1 % 2 == 0){
+                DateAndNumber dateAndNumberTem = new DateAndNumber();
+                dateAndNumberTem.setTime(time1 +"-"+ (timeT1+2)+":00:00");
                 dateAndNumberTem.setNum(0);
-//                System.out.println("新加数据："+dateAndNumberTem);
                 list1.add(dateAndNumberTem);
+                timeT1++;
+                temp=timeT1;
                 n++;
             }
-            DateAndNumber dateAndNumberTem = new DateAndNumber();
-            if (n==0){
-                dateAndNumberTem.setTime(time1+"-"+(timeT1+1)+":00:00");
-            }else if(temInt==(timeT2-1)){
-                dateAndNumberTem.setTime((temInt-1)+":00:00-"+time2);
-            } else {
-                dateAndNumberTem.setTime((temInt-1)+":00:00-"+(temInt+1)+":00:00");
+            else {
+                DateAndNumber dateAndNumberTem = new DateAndNumber();
+                dateAndNumberTem.setTime(time1 +"-"+ (timeT1+1)+":00:00");
+                dateAndNumberTem.setNum(0);
+                list1.add(dateAndNumberTem);
+                n++;
+                temp=timeT1;
             }
-            dateAndNumberTem.setNum(dateAndNumber.getNum());
-            temp = temInt;
-            list1.add(dateAndNumberTem);
-            temp+=2;
+
         }
-        Integer j;
-        for (j = temp; j <= timeT2; j+=2) {
-            DateAndNumber dateAndNumberTem2;
-            dateAndNumberTem2 = new DateAndNumber();
-            if (n==0){
-                dateAndNumberTem2.setTime(time1+"-"+(timeT1+1)+":00:00");
-            }else if(j==(timeT2-1)){
-                dateAndNumberTem2.setTime((j-1)+":00:00-"+time2);
-            } else {
-                dateAndNumberTem2.setTime((j-1)+":00:00-"+(j+1)+":00:00");
-            }
-            dateAndNumberTem2.setNum(0);
+        if(n!=0){
+            System.out.println("temp: "+temp);
+            for (k = temp; k <timeT2; k+=2) {
+                DateAndNumber dateAndNumberTem2;
+                dateAndNumberTem2 = new DateAndNumber();
+                if(k==(timeT2-1)){
+                    dateAndNumberTem2.setTime(timeT2+":00:00-"+time2);
+                } else {
+                    dateAndNumberTem2.setTime((k+1)+":00:00-"+(k+3)+":00:00");
+                }
+                dateAndNumberTem2.setNum(0);
 //            System.out.println("新加数据："+dateAndNumberTem2);
-            list1.add(dateAndNumberTem2);
+                list1.add(dateAndNumberTem2);
+            }
         }
+        System.out.println("n的值为： "+n);
         return list1;
     }
 

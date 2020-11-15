@@ -1,6 +1,7 @@
 package com.easyArch.mapper;
 
 
+import com.easyArch.entity.Address;
 import com.easyArch.entity.Location_tier;
 
 import com.easyArch.entity.Mac_Loc;
@@ -63,4 +64,7 @@ public interface AddressDao {
     void insertMac_info(String specific_address,String pic_address,String location,String mac_address);
 
     void insertAddress(String city,String county,String street,String mac_address);
+    List<Address>selectAddress();
+
+
 }
