@@ -48,7 +48,12 @@
 <script type="text/javascript">
    var lng=0,lat=0;//中心点经纬度
    var lng1=0,lat1=0;//查询点经纬度
-   var colorsArray = ["red", "#8B008B", "green", " #FFFAAA", "FF66DD", "#CCDD33", "#FFAAAA", "orange", "#FF3300", "blue","#AAA321", "#63B8FF", "#8B6508"];
+   var colorsArray = ["rgb(37,86,128)", "rgb(52,125,189)", "rgb(163,200,232)","rgb(193,217,240)",
+       "rgb(135,69,17)","rgb(201,98,21)", "rgb(246,183,136)", "rgb(250,230,210)",
+       "rgb(65,98,38)", "rgb(90,137,60)", "rgb(173,212,146)","rgb(228,240,220)",
+       "rgb(139,99,7)","rgb(197,151,6)","rgb(212,203,138)","rgb(255,243,205)",
+        "rgb(120,54,169)","rgb(162,68,160)","rgb(198,141,241)", "rgb(207,208,254)",
+       "rgb(134,135,134)","rgb(171,171,171)", "rgb(197,196,194)","rgb(246,242,242)","rgb(246,242,242)"];
    var step = 15;//每个扇形15度
     // 百度地图API功能
     function G(id) {
@@ -185,34 +190,34 @@ function on() {
         canvas.style.opacity = this._opacity;
 
         var ctx = canvas.getContext('2d');
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 3;
         ctx.fillStyle = this._color; //填充色彩
         ctx.strokeStyle = "black";//设置边颜色
-        ctx.font="16px Verdana red";
-        ctx.fillText('R' ,210,40);
-        ctx.fillText('S' ,260,40);
-        ctx.fillText('T' ,320,50);
-        ctx.fillText('U' ,380,90);
-        ctx.fillText('V' ,420,130);
-        ctx.fillText('W' ,445,180);
-        ctx.fillText('X' ,450,230);
-        ctx.fillText('A' ,430,280);
-        ctx.fillText('B' ,430,340);
-        ctx.fillText('C' ,400,380);
-        ctx.fillText('D' ,360,420);
-        ctx.fillText('E' ,320,460);
-        ctx.fillText('F' ,260,480);
-        ctx.fillText('G' ,200,480);
-        ctx.fillText('H' ,140,460);
-        ctx.fillText('I' ,100,440);
-        ctx.fillText('J' ,60,380);
-        ctx.fillText('K' ,40,340);
-        ctx.fillText('L' ,30,280);
-        ctx.fillText('M' ,30,230);
-        ctx.fillText('N' ,40,180);
-        ctx.fillText('O' ,60,130);
-        ctx.fillText('P' ,110,90);
-        ctx.fillText('Q' ,150,50);
+        ctx.font="30px Verdana red";
+        ctx.fillText('R' ,280,100);
+        ctx.fillText('S' ,380,70);
+        ctx.fillText('T' ,480,70);
+        ctx.fillText('U' ,580,90);
+        ctx.fillText('V' ,680,130);
+        ctx.fillText('W' ,730,240);
+        ctx.fillText('X' ,770,310);
+        ctx.fillText('A' ,770,400);
+        ctx.fillText('B' ,770,500);
+        ctx.fillText('C' ,770,600);
+        ctx.fillText('D' ,730,670);
+        ctx.fillText('E' ,660,740);
+        ctx.fillText('F' ,570,780);
+        ctx.fillText('G' ,480,800);
+        ctx.fillText('H' ,390,800);
+        ctx.fillText('I' ,300,780);
+        ctx.fillText('J' ,210,740);
+        ctx.fillText('K' ,120,670);
+        ctx.fillText('L' ,80,600);
+        ctx.fillText('M' ,70,500);
+        ctx.fillText('N' ,70,400);
+        ctx.fillText('O' ,90,300);
+        ctx.fillText('P' ,130,220);
+        ctx.fillText('Q' ,180,150);
         ctx.beginPath();
         ctx.translate(this._radius, this._radius);
         ctx.moveTo(0, 0);
@@ -241,10 +246,11 @@ function on() {
     //                     "#95b3db","#778899","#5F9EA0","#1fd0d0",
     //                     "#FFFF00","#808000","#F0E68C","#FFD700",
     //                     "#f1e2a4","#FFA500","#a3834f","#c28e41"];
-    for(var startAngle = 0; startAngle <= 360; startAngle +=step)
+    for(var startAngle = 0,i=23; startAngle <360; startAngle +=step,i--)
     {
-        var chooseColor = Math.ceil(Math.random() * 10) % (colorsArray.length - 1);
-        var sector = new SectorLayer(pointCenter, 250, startAngle, startAngle + step, colorsArray[chooseColor], 0.25,"jjj");
+        // var chooseColor = Math.ceil(Math.random() * 100) % (colorsArray.length - 1);
+        var chooseColor =i;
+        var sector = new SectorLayer(pointCenter, 440, startAngle, startAngle + step, colorsArray[chooseColor], 0.6,"jjj");
         map.addOverlay(sector);
     }
     function SectorLayer(center, radius, startAngle, endAngle, color, opacity,ooo) {
@@ -303,40 +309,40 @@ function on() {
        console.log(bc / ab)
        var k = bc / ab;
        if (k > 0 && k <= 0.2588) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的S区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的F区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的R区")
-           if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的G区")
+           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的T区")
+           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的G区")
+           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的S区")
+           if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的I区")
        }
        if (k > 0.2588 && k <= 0.5) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的T区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的E区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的Q区")
+           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的U区")
+           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的F区")
+           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的R区")
            if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的H区")
        }
        if (k > 0.5 && k <= 0.7071) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的U区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的D区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的P区")
-           if (lngB < lngA && latB < latA)$("#ou").text("所搜索地址在当前位置的I区")
+           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的V区")
+           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的E区")
+           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的Q区")
+           if (lngB < lngA && latB < latA)$("#ou").text("所搜索地址在当前位置的J区")
        }
        if (k > 0.7071 && k <= 0.8660) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的V区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的C区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的O区")
-           if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的J区")
-       }
-       if (k > 0.8660 && k <= 0.9659) {
            if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的W区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的B区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的N区")
+           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的D区")
+           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的P区")
            if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的K区")
        }
-       if (k > 0.9659 && k <= 1) {
+       if (k > 0.8660 && k <= 0.9659) {
            if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的X区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的A区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的M区")
+           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的C区")
+           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的O区")
            if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的L区")
+       }
+       if (k > 0.9659 && k <= 1) {
+           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的A区")
+           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的B区")
+           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的N区")
+           if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的M区")
        }
 
        function Rad(d) {
