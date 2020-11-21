@@ -65,9 +65,9 @@ public class P_TodayAccountServiceImpl implements P_TodayAccountService {
                 //设置日期格式
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 //获取日期
-                String date2=df.format(new Date());
+                String date2="2020-08-11 23:59:59";//df.format(new Date());
                 String [] str2=ControllerUtil.slipDate2(date2);
-                String date1=str2[0]+" 01:00:00";
+                String date1="2020-08-11 01:00:00";//str2[0]+" 01:00:00";
 //                list = dateNumberDao.selectTwoHour(mac_list.get(j),"2020-07-28 00:00:00", "2020-07-28 23:59:00");
                 list = dateNumberDao.selectTwoHour(mac_list.get(j),date1,date2);
 //                String[] strings;

@@ -43,7 +43,7 @@ public class P_DaySortServiceImpl implements P_DaySortService {
         //获取日期
         String date2=df.format(new Date());
         String [] str2=ControllerUtil.slipDate2(date2);
-        String date1=str2[0]+" 01:00:00";
+        String date1="2020-08-11 00:00:00";//str2[0]+" 01:00:00";
 
 //            String date2="2020-08-12 23:00:00";
 //            String [] str2=ControllerUtil.slipDate2(date2);

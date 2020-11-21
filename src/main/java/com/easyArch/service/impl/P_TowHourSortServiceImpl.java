@@ -56,23 +56,23 @@ public class P_TowHourSortServiceImpl implements P_TowHourSortService {
 
         if (day_.equals(str2[0])){
             if ((time1+1)<new Integer(strings[0])){//与当前时间比较
-                date1=day_+" "+time+":00:00";
+                date1="2020-08-11 00:00:00";//day_+" "+time+":00:00";
                 time1=time1+1;//比如3:00:00-4:59:59
-                date2=day_+" "+time1+":59:59";
+                date2="2020-08-11 23:59:59";//day_+" "+time1+":59:59";
 
             }else if ((time1+1)==new Integer(strings[0])){
-                date1=day_+" "+time+":00:00";
+                date1="2020-08-11 00:00:00";//day_+" "+time+":00:00";
                 date2=date;//就是指定时间-当前时间
             }else if (time1==new Integer(strings[0])){
-                date1=day_+" "+time+":00:00";
+                date1="2020-08-11 00:00:00";;//day_+" "+time+":00:00";
                 date2=date;//就是指定时间-当前时间
             }else {
                 return JSON.toJSONString("f");
             }
         }else {
-            date1=day_+" "+time+":00:00";
+            date1="2020-08-11 00:00:00";//day_+" "+time+":00:00";
             time1=time1+1;
-            date2=day_+" "+time1+":59:59";
+            date2="2020-08-11 23:59:59";//day_+" "+time1+":59:59";
         }
 
         for(int i=0;i<Macs.size();i++) {

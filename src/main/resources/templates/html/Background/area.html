@@ -20,41 +20,75 @@
         margin-right: 10%;
         margin-bottom: 15px;
         margin-top: 15px;}
-  #suggestId{
-      margin-right: 60px;}
-  #tbody1,#tbody1 td th tr {
-      border:1px black solid;
-      text-align: center;
-  }
+    #suggestId{
+        margin-right: 60px;}
+    #tbody1,#tbody1 td th tr {
+        border:1px black solid;
+        text-align: center;
+    }
+    #di{
+        color: #1c7cf8;
+    }
 </style>
 </head>
 <body >
 <div id="r-result" class="form-inline">请输入中心点:<input class="form-control" type="text" id="suggestId" size="20" value="百度" style="width:150px;" />
-    <span>请输入查询点:</span><input  class="form-control" type="text" id="text_" size="20" value="百度" style="width:150px;" />
-    <span id="ou" style="color: red;margin-left: 25px;">请输入中心点及查询地点</span>
+    <span onclick="show(0)" id="di">按地址查询</span>
+    /<span style="" id="qu" onclick="show(1)">按区查询</span>
+    <input  class="form-control" type="text" id="text_" size="20" value="百度" style="width:150px;" />
+    <select id="sel" class="form-control"  style="width:150px;display: none">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="G">G</option>
+        <option value="H">H</option>
+        <option value="I">I</option>
+        <option value="J">J</option>
+        <option value="K">K</option>
+        <option value="L">L</option>
+        <option value="M">M</option>
+        <option value="N">N</option>
+        <option value="O">O</option>
+        <option value="P">P</option>
+        <option value="Q">Q</option>
+        <option value="R">R</option>
+        <option value="S">S</option>
+        <option value="T">T</option>
+        <option value="U">U</option>
+        <option value="V">V</option>
+        <option value="W">W</option>
+        <option value="X">X</option>
+    </select>
+    <button class="btn btn-info" onclick="cen()">回到中心点</button>
+    <br/><p id="ou" style="color: red;margin-top: 22px;">请输入中心点及查询地点</p>
 </div>
-<div> </div>
-<sspan>附近概览：</sspan>
 <table class="table table-hover">
     <tbody id="tbody1">
     </tbody>
 </table>
-<div id="allmap" style="width: 100%;height: 100%;"></div>
+<div id="allmap" style="width: 80%;height: 100%;float:left;"></div>
+<p id="omg" style="width: 20%;float:left;"></p>
 
 <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 
 </body>
 </html>
 <script type="text/javascript">
-   var lng=0,lat=0;//中心点经纬度
-   var lng1=0,lat1=0;//查询点经纬度
-   var colorsArray = ["rgb(37,86,128)", "rgb(52,125,189)", "rgb(163,200,232)","rgb(193,217,240)",
-       "rgb(135,69,17)","rgb(201,98,21)", "rgb(246,183,136)", "rgb(250,230,210)",
-       "rgb(65,98,38)", "rgb(90,137,60)", "rgb(173,212,146)","rgb(228,240,220)",
-       "rgb(139,99,7)","rgb(197,151,6)","rgb(212,203,138)","rgb(255,243,205)",
+    var lng=0,lat=0;//中心点经纬度
+    var lng1=0,lat1=0;//查询点经纬度
+    var center;
+    var a=[],l=0;
+    var b=[],k=0;
+    var colorsArray = ["rgb(37,86,128)", "rgb(52,125,189)", "rgb(163,200,232)","rgb(193,217,240)",
+        "rgb(135,69,17)","rgb(201,98,21)", "rgb(246,183,136)", "rgb(250,230,210)",
+        "rgb(65,98,38)", "rgb(90,137,60)", "rgb(173,212,146)","rgb(228,240,220)",
+        "rgb(139,99,7)","rgb(197,151,6)","rgb(212,203,138)","rgb(255,243,205)",
         "rgb(120,54,169)","rgb(162,68,160)","rgb(198,141,241)", "rgb(207,208,254)",
-       "rgb(134,135,134)","rgb(171,171,171)", "rgb(197,196,194)","rgb(246,242,242)","rgb(246,242,242)"];
-   var step = 15;//每个扇形15度
+        "rgb(134,135,134)","rgb(171,171,171)", "rgb(197,196,194)","rgb(246,242,242)","rgb(246,242,242)"];
+    var step = 15;//每个扇形15度
     // 百度地图API功能
     function G(id) {
         return document.getElementById(id);
@@ -66,12 +100,12 @@
     map.centerAndZoom("天津",13);   // 初始化地图,设置城市和地图级别。
     map.addControl(new BMap.NavigationControl()); //添加默认缩放平移控件
     map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
-   //第一个输入框
-   var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+    //第一个输入框
+    var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
         {"input" : "suggestId"
             ,"location" : map
         });
-      ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+    ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
         var str = "";
         var _value = e.fromitem.value;
         var value = "";
@@ -94,18 +128,20 @@
         var _value = e.item.value;
         myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
         G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
-        setPlace();
+        setPlace(G("searchResultPanel").innerHTML);
     });
 
     function setPlace(){
         map.clearOverlays();    //清除地图上所有覆盖物
         function myFun(){
             var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
-            console.log('经度：'+pp.lng, '纬度：'+pp.lat);
+            // console.log('经度：'+pp.lng, '纬度：'+pp.lat);
             map.centerAndZoom(pp, 14);
-            map.addOverlay(new BMap.Marker(pp));    //添加标注
+            var mak=new BMap.Marker(pp);
+            map.addOverlay(mak);    //添加标注
             lng=pp.lng;
             lat=pp.lat;
+            center=pp;
             on();
             // all();
         }
@@ -119,7 +155,7 @@
         {"input" : "text_"
             ,"location" : map
         });
-      ac1.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+    ac1.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
         var str = "";
         var _value = e.fromitem.value;
         var value = "";
@@ -146,238 +182,267 @@
     });
 
     function setPlace1(){
-        // map.clearOverlays();    //清除地图上所有覆盖物
         function myFun(){
             var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
-            console.log('经度：'+pp.lng, '纬度：'+pp.lat);
-            map.centerAndZoom(pp, 14);
-            map.addOverlay(new BMap.Marker(pp));    //添加标注
-                // lng=pp.lng;
-                // lat=pp.lat;
+            var pa=new BMap.Marker(pp)
+            map.addOverlay(pa);    //添加标注
+            // a[l]=pa;l++;
+            // map.centerAn/dZoom(pp, 14);
+            var point2 =pp;
+            var opts2 = {
+                position : point2,    // 指定文本标注所在的地理位置
+                offset   : new BMap.Size(30, -30)    //设置文本偏移量
+            }
+            var label2 = new BMap.Label($('#text_').val(), opts2);  // 创建文本标注对象
+            label2.setStyle({
+                color : "black",
+                fontSize : "20px",
+                height : "20px",
+                lineHeight : "20px",
+                fontFamily:"微软雅黑"
+            });
+            map.addOverlay(label2);
+
+            // b[k]=label2;k++;
+            // lng=pp.lng;
+            // lat=pp.lat;
             lng1=pp.lng;
             lat1=pp.lat;
             area();
-            lng=pp.lng;
-            lat=pp.lat;
-            on();
-
-            // all();
+            // lng=pp.lng;
+            // lat=pp.lat;
+            // on();
         }
         var local = new BMap.LocalSearch(map, { //智能搜索
             onSearchComplete: myFun
         });
         local.search(myValue1);
-        // on();
+
+
     }
-function on() {
+    function cen(){
+        map.centerAndZoom(center, 14);
+    }
+    function on() {
 // alert(111)
-    // 继承百度地图覆盖物
-    map.clearOverlays();    //清除地图上所有覆盖物
+        // 继承百度地图覆盖物
+        map.clearOverlays();    //清除地图上所有覆盖物
+        map.panTo(lng, lat);
+        // alert("1")
+        SectorLayer.prototype = new BMap.Overlay();
 
-    // alert("1")
-    SectorLayer.prototype = new BMap.Overlay();
+        // 初始化
+        SectorLayer.prototype.initialize = function (map) {
+            this._map = map;
 
-    // 初始化
-    SectorLayer.prototype.initialize = function (map) {
-        this._map = map;
+            var canvas = document.createElement("canvas"); // 创建Cavans对象
+            canvas.setAttribute("width",String(this._radius*2));// 不能用canvas.style.width,会拉变形
+            canvas.setAttribute("height",String(this._radius*2));
+            canvas.style.zIndex = BMap.Overlay.getZIndex(this._center.lat);
+            canvas.style.position = "absolute";
+            canvas.style.background = "translate";
+            canvas.style.opacity = this._opacity;
 
-        var canvas = document.createElement("canvas"); // 创建Cavans对象
-        canvas.setAttribute("width",String(this._radius*2));// 不能用canvas.style.width,会拉变形
-        canvas.setAttribute("height",String(this._radius*2));
-        canvas.style.zIndex = BMap.Overlay.getZIndex(this._center.lat);
-        canvas.style.position = "absolute";
-        canvas.style.background = "translate";
-        canvas.style.opacity = this._opacity;
+            var ctx = canvas.getContext('2d');
+            ctx.lineWidth = 3;
+            ctx.fillStyle = this._color; //填充色彩
+            ctx.strokeStyle = "black";//设置边颜色
+            ctx.font="30px Verdana red";
+            ctx.fillText('R' ,280,100);
+            ctx.fillText('S' ,380,70);
+            ctx.fillText('T' ,480,70);
+            ctx.fillText('U' ,580,90);
+            ctx.fillText('V' ,680,130);
+            ctx.fillText('W' ,730,240);
+            ctx.fillText('X' ,770,310);
+            ctx.fillText('A' ,770,400);
+            ctx.fillText('B' ,770,500);
+            ctx.fillText('C' ,770,600);
+            ctx.fillText('D' ,730,670);
+            ctx.fillText('E' ,660,740);
+            ctx.fillText('F' ,570,780);
+            ctx.fillText('G' ,480,800);
+            ctx.fillText('H' ,390,800);
+            ctx.fillText('I' ,300,780);
+            ctx.fillText('J' ,210,740);
+            ctx.fillText('K' ,120,670);
+            ctx.fillText('L' ,80,600);
+            ctx.fillText('M' ,70,500);
+            ctx.fillText('N' ,70,400);
+            ctx.fillText('O' ,90,300);
+            ctx.fillText('P' ,130,220);
+            ctx.fillText('Q' ,180,150);
+            ctx.beginPath();
+            ctx.translate(this._radius, this._radius);
+            ctx.moveTo(0, 0);
+            ctx.arc(0, 0, this._radius, this._startAngle / 180 * Math.PI, this._endAngle / 180 * Math.PI);
+            ctx.fill();
+            ctx.closePath();
 
-        var ctx = canvas.getContext('2d');
-        ctx.lineWidth = 3;
-        ctx.fillStyle = this._color; //填充色彩
-        ctx.strokeStyle = "black";//设置边颜色
-        ctx.font="30px Verdana red";
-        ctx.fillText('R' ,280,100);
-        ctx.fillText('S' ,380,70);
-        ctx.fillText('T' ,480,70);
-        ctx.fillText('U' ,580,90);
-        ctx.fillText('V' ,680,130);
-        ctx.fillText('W' ,730,240);
-        ctx.fillText('X' ,770,310);
-        ctx.fillText('A' ,770,400);
-        ctx.fillText('B' ,770,500);
-        ctx.fillText('C' ,770,600);
-        ctx.fillText('D' ,730,670);
-        ctx.fillText('E' ,660,740);
-        ctx.fillText('F' ,570,780);
-        ctx.fillText('G' ,480,800);
-        ctx.fillText('H' ,390,800);
-        ctx.fillText('I' ,300,780);
-        ctx.fillText('J' ,210,740);
-        ctx.fillText('K' ,120,670);
-        ctx.fillText('L' ,80,600);
-        ctx.fillText('M' ,70,500);
-        ctx.fillText('N' ,70,400);
-        ctx.fillText('O' ,90,300);
-        ctx.fillText('P' ,130,220);
-        ctx.fillText('Q' ,180,150);
-        ctx.beginPath();
-        ctx.translate(this._radius, this._radius);
-        ctx.moveTo(0, 0);
-        ctx.arc(0, 0, this._radius, this._startAngle / 180 * Math.PI, this._endAngle / 180 * Math.PI);
-        ctx.fill();
-        ctx.closePath();
+            map.getPanes().markerPane.appendChild(canvas);
+            this._canvas = canvas;
+            return canvas;
+        }
 
-        map.getPanes().markerPane.appendChild(canvas);
-        this._canvas = canvas;
-        return canvas;
-    }
+        SectorLayer.prototype.draw = function () {
+            var map = this._map;
+            var pixel = map.pointToOverlayPixel(this._center);
+            this._canvas.style.left = pixel.x - this._radius + "px";
+            this._canvas.style.top = pixel.y - this._radius + "px";
+        }
 
-    SectorLayer.prototype.draw = function () {
-        var map = this._map;
-        var pixel = map.pointToOverlayPixel(this._center);
-        this._canvas.style.left = pixel.x - this._radius + "px";
-        this._canvas.style.top = pixel.y - this._radius + "px";
-    }
+        // 随便画了7*（360/30）个扇形，地图放到最大级别，不同半径、不同角度下的效果
+        var pointCenter = new BMap.Point(lng, lat);
 
-    // 随便画了7*（360/30）个扇形，地图放到最大级别，不同半径、不同角度下的效果
-    var pointCenter = new BMap.Point(lng, lat);
-
-    // var colorsArray = ["#FFB6C1", "#FFC0CB", "#DC143C", "#EE82EE",
-    //     "#DB7093", "#FF69B4", "#9370DB", "#6A5ACD",
-    //     "#483d8b", "#1b1bc1","#4169e1", "#6495ED",
-    //                     "#95b3db","#778899","#5F9EA0","#1fd0d0",
-    //                     "#FFFF00","#808000","#F0E68C","#FFD700",
-    //                     "#f1e2a4","#FFA500","#a3834f","#c28e41"];
-    for(var startAngle = 0,i=23; startAngle <360; startAngle +=step,i--)
-    {
-        // var chooseColor = Math.ceil(Math.random() * 100) % (colorsArray.length - 1);
-        var chooseColor =i;
-        var sector = new SectorLayer(pointCenter, 440, startAngle, startAngle + step, colorsArray[chooseColor], 0.6,"jjj");
-        map.addOverlay(sector);
-    }
-    function SectorLayer(center, radius, startAngle, endAngle, color, opacity,ooo) {
-        this._center = center;// 点
-        this._radius = radius;// 半径
-        this._color = color;  // 颜色
-        this._startAngle = startAngle;// 起始角度
-        this._endAngle = endAngle;    // 结束角度
-        this._opacity = opacity;	  // 透明度
-        // this.fillText('怎么得到你想要的?',390,100);
-    }
+        // var colorsArray = ["#FFB6C1", "#FFC0CB", "#DC143C", "#EE82EE",
+        //     "#DB7093", "#FF69B4", "#9370DB", "#6A5ACD",
+        //     "#483d8b", "#1b1bc1","#4169e1", "#6495ED",
+        //                     "#95b3db","#778899","#5F9EA0","#1fd0d0",
+        //                     "#FFFF00","#808000","#F0E68C","#FFD700",
+        //                     "#f1e2a4","#FFA500","#a3834f","#c28e41"];
+        for(var startAngle = 0,i=23; startAngle <360; startAngle +=step,i--)
+        {
+            // var chooseColor = Math.ceil(Math.random() * 100) % (colorsArray.length - 1);
+            var chooseColor =i;
+            var sector = new SectorLayer(pointCenter, 440, startAngle, startAngle + step, colorsArray[chooseColor], 0.6,"jjj");
+            map.addOverlay(sector);
+        }
+        function SectorLayer(center, radius, startAngle, endAngle, color, opacity,ooo) {
+            this._center = center;// 点
+            this._radius = radius;// 半径
+            this._color = color;  // 颜色
+            this._startAngle = startAngle;// 起始角度
+            this._endAngle = endAngle;    // 结束角度
+            this._opacity = opacity;	  // 透明度
+            // this.fillText('怎么得到你想要的?',390,100);
+        }
 
     }   // 自定义扇形覆盖物
 
-   // var localSearch = new BMap.LocalSearch(map);
-   // localSearch.enableAutoViewport(); //允许自动调节窗体大小
-   // function searchByStationName() {
-   //     map.clearOverlays(); //清空原来的标注
-   //     var keyword = document.getElementById("text_").value;
-   //     localSearch.setSearchCompleteCallback(function(searchResult) {
-   //         var poi = searchResult.getPoi(0);
-   //         map.centerAndZoom(poi.point, 13);
-   //         var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat)); // 创建标注，为要查询的地方对应的经纬度
-   //         map.addOverlay(marker);
-   //         console.log("我是搜索位置的经纬度奥"+poi.point.lng,poi.point.lat);
-   //         lng1=poi.point.lng;
-   //         lat1=poi.point.lat;
-   //         marker.addEventListener("click", function() {
-   //             this.openInfoWindow("llll");
-   //         });
-   //         // marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
-   //     });
-   //     localSearch.search(keyword);
-   //     on()
-   //     area();
-   // }
-   function area() {
-       //计算在哪个区域内
-       var lngA = lng, latA = lat;
-       var lngB = lng1, latB = lat1;
-       var lngC = lngA, latC = latB;
-       //使用方法
-       var pointA = new BMap.Point(lngA, latA);
-       var pointB = new BMap.Point(lngB, latB);
-       var pointC = new BMap.Point(lngC, latC);
-       console.log("A"+lngA+latA)
-       console.log("B"+lngB+latB)
-       console.log("C"+lngC+latC)
+    // var localSearch = new BMap.LocalSearch(map);
+    // localSearch.enableAutoViewport(); //允许自动调节窗体大小
+    // function searchByStationName() {
+    //     map.clearOverlays(); //清空原来的标注
+    //     var keyword = document.getElementById("text_").value;
+    //     localSearch.setSearchCompleteCallback(function(searchResult) {
+    //         var poi = searchResult.getPoi(0);
+    //         map.centerAndZoom(poi.point, 13);
+    //         var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat)); // 创建标注，为要查询的地方对应的经纬度
+    //         map.addOverlay(marker);
+    //         console.log("我是搜索位置的经纬度奥"+poi.point.lng,poi.point.lat);
+    //         lng1=poi.point.lng;
+    //         lat1=poi.point.lat;
+    //         marker.addEventListener("click", function() {
+    //             this.openInfoWindow("llll");
+    //         });
+    //         // marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    //     });
+    //     localSearch.search(keyword);
+    //     on()
+    //     area();
+    // }
+    function area(c) {
+        //计算在哪个区域内
+        var zhong=c;
+        // alert(c)
+        var lngA = lng, latA = lat;
+        var lngB = lng1, latB = lat1;
+        var lngC = lngA, latC = latB;
+        //使用方法
+        var pointA = new BMap.Point(lngA, latA);
+        var pointB = new BMap.Point(lngB, latB);
+        var pointC = new BMap.Point(lngC, latC);
+        console.log("A"+lngA+latA)
+        console.log("B"+lngB+latB)
+        console.log("C"+lngC+latC)
 
-       var ab = GetDistance(pointA.lat, pointA.lng, pointB.lat, pointB.lng);
-       console.log("斜边" + ab)
-       var bc = GetDistance(pointB.lat, pointB.lng, pointC.lat, pointC.lng);
-       console.log("短直边" + bc)
-       var ac = GetDistance(pointC.lat, pointC.lng, pointA.lat, pointA.lng);
-       console.log("长直边" + ac)
-       console.log(bc / ab)
-       var k = bc / ab;
-       if (k > 0 && k <= 0.2588) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的T区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的G区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的S区")
-           if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的I区")
-       }
-       if (k > 0.2588 && k <= 0.5) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的U区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的F区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的R区")
-           if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的H区")
-       }
-       if (k > 0.5 && k <= 0.7071) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的V区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的E区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的Q区")
-           if (lngB < lngA && latB < latA)$("#ou").text("所搜索地址在当前位置的J区")
-       }
-       if (k > 0.7071 && k <= 0.8660) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的W区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的D区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的P区")
-           if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的K区")
-       }
-       if (k > 0.8660 && k <= 0.9659) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的X区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的C区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的O区")
-           if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的L区")
-       }
-       if (k > 0.9659 && k <= 1) {
-           if (lngB > lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的A区")
-           if (lngB > lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的B区")
-           if (lngB < lngA && latB > latA) $("#ou").text("所搜索地址在当前位置的N区")
-           if (lngB < lngA && latB < latA) $("#ou").text("所搜索地址在当前位置的M区")
-       }
+        var ab = GetDistance(pointA.lat, pointA.lng, pointB.lat, pointB.lng);
+        // console.log("斜边" + ab)
+        var bc = GetDistance(pointB.lat, pointB.lng, pointC.lat, pointC.lng);
+        // console.log("短直边" + bc)
+        var ac = GetDistance(pointC.lat, pointC.lng, pointA.lat, pointA.lng);
+        // console.log("长直边" + ac)
+        // console.log(bc / ab)
+        var k = bc / ab;
+        if (k > 0 && k <= 0.2588) {
+            if (lngB > lngA && latB > latA) {
+                $("#ou").text("所搜索地址在当前位置的T区");return "T";}
+            if (lngB > lngA && latB < latA){
+                $("#ou").text("所搜索地址在当前位置的G区");return "G";}
+            if (lngB < lngA && latB > latA) {
+                $("#ou").text("所搜索地址在当前位置的S区");return "S";}
+            if (lngB < lngA && latB < latA) {
+                $("#ou").text("所搜索地址在当前位置的I区");return "I";}
+        }
+        if (k > 0.2588 && k <= 0.5) {
+            if (lngB > lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的U区");return "U";}
+            if (lngB > lngA && latB < latA) {$("#ou").text("所搜索地址在当前位置的F区");return "F";}
+            if (lngB < lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的R区");return "R";}
+            if (lngB < lngA && latB < latA) {$("#ou").text("所搜索地址在当前位置的H区");return "H";}
+        }
+        if (k > 0.5 && k <= 0.7071) {
+            if (lngB > lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的V区");return "V";}
+            if (lngB > lngA && latB < latA) {$("#ou").text("所搜索地址在当前位置的E区");return "E";}
+            if (lngB < lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的Q区");return "Q";}
+            if (lngB < lngA && latB < latA){$("#ou").text("所搜索地址在当前位置的J区");return "J";}
+        }
+        if (k > 0.7071 && k <= 0.8660) {
+            if (lngB > lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的W区");return "W";}
+            if (lngB > lngA && latB < latA) {$("#ou").text("所搜索地址在当前位置的D区");return "D";}
+            if (lngB < lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的P区");return "P";}
+            if (lngB < lngA && latB < latA) {$("#ou").text("所搜索地址在当前位置的K区");return "K";}
+        }
+        if (k > 0.8660 && k <= 0.9659) {
+            if (lngB > lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的X区");return "X";}
+            if (lngB > lngA && latB < latA) {$("#ou").text("所搜索地址在当前位置的C区");return "C";}
+            if (lngB < lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的O区");return "O";}
+            if (lngB < lngA && latB < latA) {$("#ou").text("所搜索地址在当前位置的L区");return "L";}
+        }
+        if (k > 0.9659 && k <= 1) {
+            if (lngB > lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的A区");return "A";}
+            if (lngB > lngA && latB < latA) {$("#ou").text("所搜索地址在当前位置的B区");return "B";}
+            if (lngB < lngA && latB > latA) {$("#ou").text("所搜索地址在当前位置的N区");return "N";}
+            if (lngB < lngA && latB < latA) {$("#ou").text("所搜索地址在当前位置的M区");return "M";}
+        }
 
-       function Rad(d) {
-           return d * Math.PI / 180.0; //经纬度转换成三角函数中度分表形式。
-       }
+        function Rad(d) {
+            return d * Math.PI / 180.0; //经纬度转换成三角函数中度分表形式。
+        }
 
-       //计算距离，参数分别为第一点的纬度，经度；第二点的纬度，经度
-       function GetDistance(lat1, lng1, lat2, lng2) {
-           var radLat1 = Rad(lat1);
-           var radLat2 = Rad(lat2);
-           var a = radLat1 - radLat2;
-           var b = Rad(lng1) - Rad(lng2);
-           var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
-           s = s * 6378.137; // 地球半径，千米;
-           s = Math.round(s * 10000) / 10000; //输出为公里
-           s = Math.round(s * 1000) / 1; //单位修改为米,取整
-           //s=s.toFixed(4);
-           // alert("111")
-           return s;
-       }
-       document.getElementById("suggestId").value=document.getElementById('text_').value;
-       // $("#suggestId").attr("disabled",true);
-       document.getElementById('text_').value="";
-       document.getElementById("text_").focus();
-       creatTable();
+        //计算距离，参数分别为第一点的纬度，经度；第二点的纬度，经度
+        function GetDistance(lat1, lng1, lat2, lng2) {
+            var radLat1 = Rad(lat1);
+            var radLat2 = Rad(lat2);
+            var a = radLat1 - radLat2;
+            var b = Rad(lng1) - Rad(lng2);
+            var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+            s = s * 6378.137; // 地球半径，千米;
+            s = Math.round(s * 10000) / 10000; //输出为公里
+            s = Math.round(s * 1000) / 1; //单位修改为米,取整
+            //s=s.toFixed(4);
+            // alert("111")
+            return s;
+        }
+        // document.getElementById("suggestId").value=document.getElementById('text_').value;
+        // $("#suggestId").attr("disabled",true);
+        // document.getElementById('text_').value="";
+        // document.getElementById("text_").focus();
+        // creatTable();
 
-   }
+    }
 
 </script>
 <script type="text/javascript">
-
+    // function cbac(addr){
+    //
+    //
+    //
+    // }
+    var sum=1;
     function creatTable(){
-        $('table tr').eq(0).remove();
-        $('table tr').eq(0).remove();
-        $('table tr').eq(0).remove();
+        // $('table tr').eq(0).remove();
+        // $('table tr').eq(0).remove();
+        // $('table tr').eq(0).remove();
         $.ajax({
             url: "http://121.199.21.197:63393/xiGua",
             // data: '{ "username": "'+username+'", "password": "'+password+'"}',
@@ -387,31 +452,182 @@ function on() {
                 request.setRequestHeader("token",window.localStorage.getItem("token") );
             },
             success: function (res) {
-
                 console.log(res);
-                for(var j=0;j<3;j++){
-                    var tableData="<tr>"
-                    if(j===0){
-                        tableData+="<td style='border: 1px black solid;width:82px'>"+"序号"+"</td>"
-                    }
-                    else if(j===1)
-                        tableData+="<td style='border: 1px black solid'>"+"地址"+"</td>";
-                    else
-                        tableData+="<td style='border: 1px black solid'>"+"Mac地址"+"</td>"
-                    for(var i=0;i<res.length;i++){
-                        if(j===0){
-                            tableData+="<td style='border: 1px black solid'>"+res[i].id+"</td>"
-                        }
-                        else if(j===1)
-                            tableData+="<td style='border: 1px black solid'>"+res[i].address+"</td>";
-                        else
-                            tableData+="<td style='border: 1px black solid'>"+res[i].mac_address+"</td>"
+                $("#sel").change(function () {
+                    sum=1;
+                    document.getElementById('omg').innerHTML="";
+                    // var div1=document.getElementById("omg").getElementsByTagName("div");
+                    // for(var i=0;i<div1.length;i++){
+                    //     div1[i].innerHTML='';
+                    var localSearch = new BMap.LocalSearch(map);
+                    localSearch.enableAutoViewport();
+                    var keyword = res[0].address;
+                    localSearch.setSearchCompleteCallback(function (searchResult) {
+                        var poi = searchResult.getPoi(0);
+                        console.log(poi.point.lng, poi.point.lat)
+                        lng1 = poi.point.lng;
+                        lat1 = poi.point.lat;
+                        var log32 = area(keyword);
+                        console.log(log32 + "0")
+                        // alert($("#sel").val()+"dddddddddd"+log32)
+                        if(log32===$("#sel").val()){IfP(res[0].address,res[0].mac_address);}
+                    });
+                    localSearch.search(keyword);
+                    var localSearch = new BMap.LocalSearch(map);
+                    localSearch.enableAutoViewport();
+                    var keyword = res[1].address;
+                    localSearch.setSearchCompleteCallback(function (searchResult) {
+                        var poi = searchResult.getPoi(0);
+                        console.log(poi.point.lng, poi.point.lat)
+                        lng1 = poi.point.lng;
+                        lat1 = poi.point.lat;
+                        var log32 = area(keyword);
+                        console.log(log32 + "0")
+                        // alert($("#sel").val()+"dddddddddd"+log32)
+                        if(log32===$("#sel").val()){IfP(res[1].address,res[1].mac_address);}
+                    });
+                    localSearch.search(keyword);var localSearch = new BMap.LocalSearch(map);
+                    localSearch.enableAutoViewport();
+                    var keyword = res[2].address;
+                    localSearch.setSearchCompleteCallback(function (searchResult) {
+                        var poi = searchResult.getPoi(0);
+                        console.log(poi.point.lng, poi.point.lat)
+                        lng1 = poi.point.lng;
+                        lat1 = poi.point.lat;
+                        var log32 = area(keyword);
+                        console.log(log32 + "0")
+                        // alert($("#sel").val()+"dddddddddd"+log32)
+                        if(log32===$("#sel").val()){IfP(res[2].address,res[2].mac_address);}
+                    });
+                    localSearch.search(keyword);
+                    var localSearch = new BMap.LocalSearch(map);
+                    localSearch.enableAutoViewport();
+                    var keyword = res[3].address;
+                    localSearch.setSearchCompleteCallback(function (searchResult) {
+                        var poi = searchResult.getPoi(0);
+                        console.log(poi.point.lng, poi.point.lat)
+                        lng1 = poi.point.lng;
+                        lat1 = poi.point.lat;
+                        var log32 = area(keyword);
+                        console.log(log32 + "0")
+                        // alert($("#sel").val()+"dddddddddd"+log32)
+                        if(log32===$("#sel").val()){IfP(res[3].address,res[3].mac_address);}
+                    });
+                    localSearch.search(keyword);var localSearch = new BMap.LocalSearch(map);
+                    localSearch.enableAutoViewport();
+                    var keyword = res[4].address;
+                    localSearch.setSearchCompleteCallback(function (searchResult) {
+                        var poi = searchResult.getPoi(0);
+                        console.log(poi.point.lng, poi.point.lat)
+                        lng1 = poi.point.lng;
+                        lat1 = poi.point.lat;
+                        var log32 = area(keyword);
+                        console.log(log32 + "0")
+                        // alert($("#sel").val()+"dddddddddd"+log32)
+                        if(log32===$("#sel").val()){IfP(res[4].address,res[4].mac_address);}
+                    });
+                    localSearch.search(keyword);
+                    var localSearch = new BMap.LocalSearch(map);
+                    localSearch.enableAutoViewport();
+                    var keyword = res[5].address;
+                    localSearch.setSearchCompleteCallback(function (searchResult) {
+                        var poi = searchResult.getPoi(0);
+                        console.log(poi.point.lng, poi.point.lat)
+                        lng1 = poi.point.lng;
+                        lat1 = poi.point.lat;
+                        var log32 = area(keyword);
+                        console.log(log32 + "0")
+                        // alert($("#sel").val()+"dddddddddd"+log32)
+                        if(log32===$("#sel").val()){IfP(res[5].address,res[5].mac_address);}
+                        box();
+                    });
+                    localSearch.search(keyword);
+
+                })
+                // 生成表格
+                // for(var j=0;j<3;j++){
+                //     var tableData="<tr>"
+                //     if(j===0){
+                //         tableData+="<td style='border: 1px black solid;width:82px'>"+"序号"+"</td>"
+                //     }
+                //     else if(j===1)
+                //         tableData+="<td style='border: 1px black solid'>"+"地址"+"</td>";
+                //     else
+                //         tableData+="<td style='border: 1px black solid'>"+"Mac地址"+"</td>"
+                //     for(var i=0;i<res.length;i++){
+                //         if(j===0){
+                //             tableData+="<td style='border: 1px black solid'>"+res[i].id+"</td>"
+                //         }
+                //         else if(j===1)
+                //             tableData+="<td style='border: 1px black solid'>"+res[i].address+"</td>";
+                //         else
+                //             tableData+="<td style='border: 1px black solid'>"+res[i].mac_address+"</td>"
+                //
+                //
+                //     }
+                //     tableData+="</tr>"
+                //     $("#tbody1").append(tableData);
+                // }
+
+                // document.getElementById('omg').remove();
+
+                // }
 
 
-                    }
-                    tableData+="</tr>"
-                    $("#tbody1").append(tableData);
-                }
             }})
     }
+    // function apa(addre){
+    //
+    // }
+    function IfP(aa,bb){
+        document.getElementById('ou').innerHTML="";
+        // document.getElementById('omg').append(aa);
+        document.getElementById('omg').append(sum+"、"+aa);
+        document.getElementById('omg').innerHTML+="<br/>";
+        document.getElementById('omg').append(bb);
+        document.getElementById('omg').innerHTML+="<br/><br/>";
+
+        sum++;
+        // var w=document.createElement('p');
+        // var div=document.createElement('div');
+        // w.innerHTML=aa;
+        // div.append(w)
+        // document.getElementById('omg').appendChild(div);
+    }
+    function show(a){
+        if(a===0)
+        {
+            $("#sel").hide();
+            $("#text_").show();
+            $('#di').css('color','blue')
+            $('#qu').css('color','black')
+            $("#ou").show();$("#omg").hide();
+        }
+        else
+        {
+            $("#sel").show();
+            $("#text_").hide();
+            $('#di').css('color','black')
+            $('#qu').css('color','blue')
+            $("#ou").hide(); $("#omg").show();
+            creatTable();
+
+            marker.remove();
+        }
+
+    }
+    function box(){
+        console.log(document.getElementById('omg').innerHTML)
+        if(document.getElementById('omg').innerHTML==="")
+            document.getElementById('omg').innerText="此区域没有";
+    }
+    // function clear(){
+    //     for(var i=0;i<a.length;i++)
+    //     {
+    //         map.removeOverlay(a[i]);
+    //         map.removeOverlay(b[i]);
+    //     }
+    //     // map.removeOverlay(label2);
+    //     // map.removeOverlay(new BMap.Marker(pp));
+    // }
 </script>
