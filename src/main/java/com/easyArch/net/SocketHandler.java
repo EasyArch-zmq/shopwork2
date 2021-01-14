@@ -3,6 +3,7 @@ package com.easyArch.net;
 import com.easyArch.mapper.Time_InfoDao;
 import com.easyArch.util.ControllerUtil;
 import com.easyArch.util.HexUtil;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -31,16 +32,28 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
 
         @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String o) {
+            LOGGER.info("----------------------------------------------------------------");
+            System.out.println("333333333333333333333333333333333333333333333333333333333333333333333333333333");
+            System.out.println("monishuju:"+o);
         //这里就是要接的字符串o 你要自己解析split()一下
-        String substring = o.substring(0, 12);
+//        String substring = o.substring(0, 12);//0~12位是mac地址
 //        LOGGER.info("mac"+substring);
-        String str = o.substring(12);
-        byte[] bytes = HexUtil.hexStringToBytes(str);
-        String s = new String(bytes, StandardCharsets.UTF_8);
-        LOGGER.info("收的数据"+substring+s);
+//        String str = o.substring(12);
+//        byte[] bytes = HexUtil.hexStringToBytes(o);
+//        String s = new String(bytes, StandardCharsets.UTF_8);
+            LOGGER.info("收的数据电话号完整:"+o);
+            //电话号协议
+            String []strings=o.toString().split("#");
+            String s_value="";
+            System.out.println(strings.length);
+            for (int i = 0; i < strings.length; i++) {
+                s_value+=strings[i];
+            }
+            LOGGER.info("收的数据电话号:"+s_value);
+//        LOGGER.info("收的数据"+substring+s);
 
 //        LOGGER.info("收的数据:"+o);
-        String []strings=ControllerUtil.getInfo(s);
+//        String []strings=ControllerUtil.getInfo(s);
 //        String[] split = o.split("\\(");
 //        byte[] bytess = HexUtils.fromHexString(split[0]);
 //        LOGGER.info("解析的数据："+ Arrays.toString(bytess) +"\t"+split[1]);
@@ -48,15 +61,16 @@ public class SocketHandler extends SimpleChannelInboundHandler<String> {
         //设置日期格式
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         //获取日期
-
         String[] time_split=ControllerUtil.slipDate4(df.format(new Date()));
         String mytime=time_split[0];
         String hao_miao=time_split[1];
 //        String boxid=strings[0];
-        String mac_address=substring;
-        Integer yangan=new Integer(strings[1]);
-        LOGGER.info("mac: "+mac_address+"烟感值："+yangan);
-        timeInfoDao.insertInfo(mac_address,mytime,hao_miao,yangan);
+//        String mac_address=substring;
+            String mac_address=s_value;
+//        Integer yangan=new Integer(strings[1]);
+
+        LOGGER.info("mac: "+mac_address+"烟感值："+0);
+        timeInfoDao.insertInfo(mac_address,mytime,hao_miao,0);
     }
     @Override
     public void channelActive(ChannelHandlerContext ctx) {

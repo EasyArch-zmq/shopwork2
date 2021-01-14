@@ -462,6 +462,9 @@ public class ControllerUtil {
     }
 
     public static void main(String[] args) {
+        String str="#ahhdhhdh223332#";
+        String []strings=str.split("#");
+        System.out.println(strings[0]+strings[1]+strings[2]);
 //        String[] placeList = new String[]{"天津市津南区渌水道天津职业师范大学", "广西壮族自治区梧州市藤县蒙江镇189号", "浙江省台州市玉环县xxxx", "湖北省潜江市潜江经济开发区xxx", "湖北省潜江市江汉石油管理局", "湖北省天门市马湾镇xxx"};
 //        for (String place : placeList) {
 //            System.out.println(resolution(place));

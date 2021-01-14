@@ -39,7 +39,7 @@ public class G_TimeRankServiceImpl implements G_TimeRankService {
         String date1 = str2[0] + " 01:00:00";
         String index=str2[1];
         List<DateAndNumber> list;
-        List<Mac_ListTimeSort>listTimeSortList=new ArrayList<>();
+        List<Mac_ListTimeSort>listTimeSortList=new ArrayList<Mac_ListTimeSort>();
 
         List<String> listMac=addressDao.select_mac2(specificAddress, city, county, street);
         for (int j = 0; j < listMac.size(); j++) {
