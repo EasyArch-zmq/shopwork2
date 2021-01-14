@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/assets/css/Login.css">
+    　　<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+</head>
+<style>
+    .select{
+        height: 30px;
+        width: 32%;
+        margin-top: 8px;
+    }
+    .addr{
+        height: 30px;
+        width: 100%;
+        /*margin-top: 6px;*/
+    }
+
+</style>
+<body>
+
+<div class="container">
+    <div class="login_body l_clear" style="margin-top: 12px;">
+        <div class="login_form l_float">
+            <div class="login_top">
+                <img src="../../static/assets/imgs/logo_z.svg" alt="" class=""><span style="font-size: 26px;margin-left: 14px;">注册</span>
+
+                <div class="login_tags b_clear">
+                    <span class="top_tag l_float active" onClick="PwdLogin()">管理员</span>
+                    <span class="top_tag r_float" onClick="QrcodeLogin()">普通用户</span>
+                </div>
+            </div>
+            <div class="login_con">
+                <div>
+                    <div>
+                        <label for="user_name1">用户名</label>
+                        <input type="text" name="" id="user_name1" placeholder="用户名">
+                        <img src="../../static/assets/imgs/icons/user.svg">
+                    </div>
+                    <div>
+                        <label for="user_pwd1">密码</label>
+                        <input type="password" name="" id="user_pwd1" placeholder="密码">
+                        <img src="../../static/assets/imgs/icons/lock.svg">
+                        <p class="tips hidden">请检查您的密码</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user_pwd1">地区</label>
+                        <div class="city form-control">
+                            <select name="" id="city" class="form-control select" >
+                                <option value="null">请选择</option>
+                            </select>
+                            <select name="" id="country" class="form-control select">
+                                <option value="null">请选择</option>
+                            </select>
+<!--                            <select name="" id="town" class="form-control select">-->
+<!--                                <option value="null">请选择</option>-->
+<!--                            </select>-->
+                            <select name="" id="street" class="form-control select">
+                                <option value="null">请选择</option>
+                            </select>
+
+                            <div class="form-group">
+                                <input  id="special_address"
+                                        list="auto"
+                                        type="text"
+                                        placeholder="详细地址"
+                                        style="margin-top: 5px;width:98%"
+                                        class="form-control addr"
+                                        >
+                                <datalist id="auto">
+                                    <option></option>
+                                </datalist>                            </div>
+                        </div>
+                    </div>
+                    <div class="b_clear submit">
+
+                        <button type="submit" id="g_res">立即注册</button>
+                        <a href="http://121.199.21.197:63393/Login" class="r_float">已有帐号？去登陆</a>
+                    </div>
+                </div>
+            </div>
+<!--            //普通用户-->
+            <div class="login_con hidden">
+                <div>
+                    <div>
+                        <label for="user_name2">用户名</label>
+                        <input type="text" name="" id="user_name2" placeholder="用户名">
+                        <img src="../../static/assets/imgs/icons/user.svg">
+                    </div>
+                    <div>
+                        <label for="user_pwd2">密码</label>
+                        <input type="password" name="" id="user_pwd2" placeholder="密码">
+                        <img src="../../static/assets/imgs/icons/lock.svg">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user_pwd1">地区</label>
+                        <div class="city form-control">
+                            <select name="" id="city1" class="form-control select" >
+                                <option value="null">请选择</option>
+                            </select>
+                            <select name="" id="country1" class="form-control select">
+                                <option value="null">请选择</option>
+                            </select>
+<!--                            <select name="" id="town1" class="form-control select">-->
+<!--                                <option value="null">请选择</option>-->
+<!--                            </select>-->
+                            <select name="" id="street1" class="form-control select">
+                                <option value="null">请选择</option>
+                            </select>
+
+                            <div class="form-group">
+                                <input  id="special_address1"
+                                        list="auto"
+                                        type="text"
+                                        placeholder="详细地址"
+                                        style="margin-top: 5px;width:98%"
+                                        class="form-control addr"
+                                >
+                                <datalist id="auto1">
+                                    <option></option>
+                                </datalist>                            </div>
+                        </div>
+                    </div>
+                    <div class="b_clear submit">
+                        <button type="submit" id="p_res">立即注册</button>
+                        <a href="http://121.199.21.197:63393/Login" class="r_float">已有帐号？去登陆</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login_ad l_float" id="AdImg" style="height: 535px">
+        </div>
+    </div>
+
+</div>
+<!--//选项卡切换-->
+<script src="../../static/js/Login.js"></script>
+<!--//地址栏-->
+<script src="../../static/js/address.js"></script>
+<!--//登录请求-->
+<script src="../../static/js/resgister.js"></script>
+</body>
+</html>

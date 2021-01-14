@@ -1,0 +1,499 @@
+2021-01-13 12:49:50.055 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 14599 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 12:49:50.061 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 12:49:50.679 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 12:49:50.681 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 12:49:50.706 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 12ms. Found 0 repository interfaces.
+2021-01-13 12:49:50.976 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e7142617] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 12:49:51.201 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 12:49:51.224 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 12:49:51.225 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 12:49:51.311 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 12:49:51.311 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1200 ms
+2021-01-13 12:49:52.308 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 12:49:52.311 INFO  com.easyArch.Application Line:59  - Started Application in 2.696 seconds (JVM running for 3.188)
+2021-01-13 12:49:52.313 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 12:49:52.363 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 12:50:29.667 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 13:00:15.615 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 15781 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 13:00:15.619 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 13:00:16.441 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 13:00:16.444 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 13:00:16.479 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 17ms. Found 0 repository interfaces.
+2021-01-13 13:00:16.865 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a7e0f3b9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 13:00:17.132 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 13:00:17.158 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 13:00:17.159 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 13:00:17.252 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 13:00:17.253 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1581 ms
+2021-01-13 13:00:18.606 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 13:00:18.610 INFO  com.easyArch.Application Line:59  - Started Application in 3.49 seconds (JVM running for 4.077)
+2021-01-13 13:00:18.612 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 13:00:18.684 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 13:00:23.895 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 13:51:27.322 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 17578 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 13:51:27.327 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 13:51:28.089 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 13:51:28.093 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 13:51:28.129 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 17ms. Found 0 repository interfaces.
+2021-01-13 13:51:28.492 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b4a70b72] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 13:51:28.741 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 13:51:28.768 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 13:51:28.769 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 13:51:28.869 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 13:51:28.870 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1492 ms
+2021-01-13 13:51:30.233 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 13:51:30.237 INFO  com.easyArch.Application Line:59  - Started Application in 3.417 seconds (JVM running for 4.03)
+2021-01-13 13:51:30.240 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 13:51:30.311 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 17:09:42.133 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 17:10:05.478 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 22519 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 17:10:05.482 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 17:10:06.104 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 17:10:06.106 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 17:10:06.129 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 11ms. Found 0 repository interfaces.
+2021-01-13 17:10:06.408 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$75fb2ab] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 17:10:06.616 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 17:10:06.640 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 17:10:06.641 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 17:10:06.712 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 17:10:06.713 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1181 ms
+2021-01-13 17:10:07.685 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 17:10:07.688 INFO  com.easyArch.Application Line:59  - Started Application in 2.613 seconds (JVM running for 3.066)
+2021-01-13 17:10:07.690 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 17:10:07.741 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 17:10:51.287 INFO  com.easyArch.net.SocketHandler Line:73  - 客户端加入连接:[id: 0x4f732ea8, L:/127.0.0.1:8000 - R:/127.0.0.1:52606]
+2021-01-13 17:14:51.299 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 17:14:54.631 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 22883 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 17:14:54.634 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 17:14:55.226 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 17:14:55.228 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 17:14:55.250 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 10ms. Found 0 repository interfaces.
+2021-01-13 17:14:55.522 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cd0f2374] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 17:14:55.737 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 17:14:55.760 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 17:14:55.761 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 17:14:55.844 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 17:14:55.845 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1175 ms
+2021-01-13 17:14:56.806 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 17:14:56.810 INFO  com.easyArch.Application Line:59  - Started Application in 2.576 seconds (JVM running for 3.053)
+2021-01-13 17:14:56.811 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 17:14:56.865 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 17:14:56.876 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x771b0055, L:/127.0.0.1:8000 - R:/127.0.0.1:40034]
+2021-01-13 17:19:14.490 INFO  com.easyArch.net.SocketHandler Line:81  - 客户端断开连接：[id: 0x771b0055, L:/127.0.0.1:8000 ! R:/127.0.0.1:40034]
+2021-01-13 17:33:11.293 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x88fc7465, L:/127.0.0.1:8000 - R:/127.0.0.1:40368]
+2021-01-13 17:35:13.532 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 17:35:15.730 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 24238 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 17:35:15.734 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 17:35:16.334 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 17:35:16.336 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 17:35:16.359 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 11ms. Found 0 repository interfaces.
+2021-01-13 17:35:16.647 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b3c82822] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 17:35:16.857 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 17:35:16.876 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 17:35:16.877 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 17:35:16.952 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 17:35:16.952 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1177 ms
+2021-01-13 17:35:17.964 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 17:35:17.967 INFO  com.easyArch.Application Line:59  - Started Application in 2.614 seconds (JVM running for 3.048)
+2021-01-13 17:35:17.968 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 17:35:18.025 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 17:36:07.830 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x54f25d4d, L:/127.0.0.1:8000 - R:/127.0.0.1:40408]
+2021-01-13 17:36:55.542 INFO  com.easyArch.net.SocketHandler Line:81  - 客户端断开连接：[id: 0x54f25d4d, L:/127.0.0.1:8000 ! R:/127.0.0.1:40408]
+2021-01-13 17:46:20.818 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 17:46:34.663 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 25230 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 17:46:34.668 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 17:46:35.287 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 17:46:35.289 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 17:46:35.315 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 14ms. Found 0 repository interfaces.
+2021-01-13 17:46:35.617 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7991092f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 17:46:35.796 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 17:46:35.815 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 17:46:35.815 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 17:46:35.886 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 17:46:35.887 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1185 ms
+2021-01-13 17:46:36.908 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 17:46:36.911 INFO  com.easyArch.Application Line:59  - Started Application in 2.611 seconds (JVM running for 3.055)
+2021-01-13 17:46:36.913 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 17:46:36.963 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 17:47:19.041 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 17:47:21.415 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 25566 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 17:47:21.419 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 17:47:22.019 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 17:47:22.022 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 17:47:22.046 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 12ms. Found 0 repository interfaces.
+2021-01-13 17:47:22.323 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$40654616] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 17:47:22.547 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 17:47:22.566 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 17:47:22.566 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 17:47:22.652 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 17:47:22.652 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1192 ms
+2021-01-13 17:47:23.619 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 17:47:23.622 INFO  com.easyArch.Application Line:59  - Started Application in 2.591 seconds (JVM running for 3.06)
+2021-01-13 17:47:23.624 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 17:47:23.674 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 17:47:32.623 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x3d0c4365, L:/127.0.0.1:8000 - R:/127.0.0.1:40596]
+2021-01-13 17:50:51.870 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 17:50:56.386 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 25968 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 17:50:56.391 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 17:50:56.955 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 17:50:56.958 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 17:50:56.983 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 13ms. Found 0 repository interfaces.
+2021-01-13 17:50:57.282 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7d1f36f9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 17:50:57.483 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 17:50:57.503 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 17:50:57.503 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 17:50:57.567 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 17:50:57.567 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1131 ms
+2021-01-13 17:50:58.534 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 17:50:58.539 INFO  com.easyArch.Application Line:59  - Started Application in 2.542 seconds (JVM running for 2.973)
+2021-01-13 17:50:58.542 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 17:50:58.607 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 17:52:17.806 INFO  com.easyArch.net.SocketHandler Line:75  - 客户端加入连接:[id: 0x921b2d85, L:/127.0.0.1:8000 - R:/127.0.0.1:40730]
+2021-01-13 17:55:02.068 INFO  com.easyArch.net.SocketHandler Line:82  - 客户端断开连接：[id: 0x921b2d85, L:/127.0.0.1:8000 ! R:/127.0.0.1:40730]
+2021-01-13 18:58:38.537 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 18:58:41.873 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 27661 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 18:58:41.876 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 18:58:42.476 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 18:58:42.479 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 18:58:42.513 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 17ms. Found 0 repository interfaces.
+2021-01-13 18:58:42.841 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a343b362] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 18:58:43.047 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 18:58:43.065 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 18:58:43.066 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 18:58:43.133 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 18:58:43.134 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1213 ms
+2021-01-13 18:58:44.171 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 18:58:44.174 INFO  com.easyArch.Application Line:59  - Started Application in 2.702 seconds (JVM running for 3.157)
+2021-01-13 18:58:44.176 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 18:58:44.229 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 18:58:56.284 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x919ea5a3, L:/127.0.0.1:8000 - R:/127.0.0.1:42200]
+2021-01-13 19:01:16.886 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 19:01:20.597 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 28002 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 19:01:20.603 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 19:01:21.230 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 19:01:21.232 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 19:01:21.258 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 12ms. Found 0 repository interfaces.
+2021-01-13 19:01:21.623 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6d8ecaeb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 19:01:21.891 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 19:01:21.913 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 19:01:21.914 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 19:01:21.998 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 19:01:21.999 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1306 ms
+2021-01-13 19:01:23.273 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 19:01:23.278 INFO  com.easyArch.Application Line:59  - Started Application in 3.173 seconds (JVM running for 4.591)
+2021-01-13 19:01:23.280 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 19:01:23.370 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 19:01:43.136 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x581a10da, L:/127.0.0.1:8000 - R:/127.0.0.1:42246]
+2021-01-13 19:06:18.022 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 19:17:24.569 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 29750 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 19:17:24.574 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 19:17:25.156 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 19:17:25.158 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 19:17:25.182 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 12ms. Found 0 repository interfaces.
+2021-01-13 19:17:25.471 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f80711cc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 19:17:25.671 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 19:17:25.690 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 19:17:25.690 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 19:17:25.756 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 19:17:25.756 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1146 ms
+2021-01-13 19:17:26.777 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 19:17:26.781 INFO  com.easyArch.Application Line:59  - Started Application in 2.58 seconds (JVM running for 3.032)
+2021-01-13 19:17:26.782 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 19:17:26.838 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 19:17:35.228 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x23890349, L:/127.0.0.1:8000 - R:/127.0.0.1:42886]
+2021-01-13 19:32:39.084 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 20:11:55.103 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 30783 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 20:11:55.106 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 20:11:55.715 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 20:11:55.717 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 20:11:55.742 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 11ms. Found 0 repository interfaces.
+2021-01-13 20:11:56.035 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$68eae0ac] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 20:11:56.246 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 20:11:56.267 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 20:11:56.267 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 20:11:56.354 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 20:11:56.355 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1210 ms
+2021-01-13 20:11:57.299 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 20:11:57.302 INFO  com.easyArch.Application Line:59  - Started Application in 2.585 seconds (JVM running for 3.047)
+2021-01-13 20:11:57.304 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 20:11:57.357 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 20:19:45.285 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 20:19:48.574 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 31389 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 20:19:48.579 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 20:19:49.260 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 20:19:49.262 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 20:19:49.290 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 13ms. Found 0 repository interfaces.
+2021-01-13 20:19:50.137 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5b0ae3a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 20:19:50.880 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 20:19:50.937 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 20:19:50.937 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 20:19:51.103 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 20:19:51.104 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2462 ms
+2021-01-13 20:19:53.989 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 20:19:53.999 INFO  com.easyArch.Application Line:59  - Started Application in 5.938 seconds (JVM running for 6.571)
+2021-01-13 20:19:54.003 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 20:19:54.191 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 20:19:55.729 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x2305aaca, L:/127.0.0.1:8000 - R:/127.0.0.1:44120]
+2021-01-13 20:21:14.304 INFO  com.easyArch.net.SocketHandler Line:81  - 客户端断开连接：[id: 0x2305aaca, L:/127.0.0.1:8000 ! R:/127.0.0.1:44120]
+2021-01-13 20:21:16.259 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x06ac6413, L:/127.0.0.1:8000 - R:/127.0.0.1:44150]
+2021-01-13 20:21:37.414 INFO  com.easyArch.net.SocketHandler Line:81  - 客户端断开连接：[id: 0x06ac6413, L:/127.0.0.1:8000 ! R:/127.0.0.1:44150]
+2021-01-13 20:21:39.362 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x7819c44e, L:/127.0.0.1:8000 - R:/127.0.0.1:44160]
+2021-01-13 20:23:56.687 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 20:23:59.938 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 32017 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 20:23:59.943 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 20:24:00.569 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 20:24:00.572 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 20:24:00.596 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 11ms. Found 0 repository interfaces.
+2021-01-13 20:24:01.260 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$600ba780] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 20:24:01.922 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 20:24:01.977 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 20:24:01.978 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 20:24:02.122 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 20:24:02.122 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2138 ms
+2021-01-13 20:24:04.947 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 20:24:04.956 INFO  com.easyArch.Application Line:59  - Started Application in 5.534 seconds (JVM running for 6.122)
+2021-01-13 20:24:04.960 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 20:24:05.118 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 20:27:04.280 INFO  com.easyArch.net.SocketHandler Line:74  - 客户端加入连接:[id: 0x121e1755, L:/127.0.0.1:8000 - R:/127.0.0.1:44244]
+2021-01-13 20:46:35.632 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 20:47:49.829 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 33274 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 20:47:49.833 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 20:47:50.607 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 20:47:50.610 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 20:47:50.644 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 17ms. Found 0 repository interfaces.
+2021-01-13 20:47:51.022 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6b2bd3fe] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 20:47:51.316 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 20:47:51.345 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 20:47:51.346 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 20:47:51.452 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 20:47:51.453 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1551 ms
+2021-01-13 20:47:52.779 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 20:47:52.783 INFO  com.easyArch.Application Line:59  - Started Application in 3.485 seconds (JVM running for 4.089)
+2021-01-13 20:47:52.785 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 20:47:52.860 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 20:48:06.275 INFO  com.easyArch.net.SocketHandler Line:75  - 客户端加入连接:[id: 0xea50de87, L:/127.0.0.1:8000 - R:/127.0.0.1:44922]
+2021-01-13 20:50:14.164 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 20:50:17.536 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 33589 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 20:50:17.542 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 20:50:18.447 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 20:50:18.451 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 20:50:18.488 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 18ms. Found 0 repository interfaces.
+2021-01-13 20:50:19.339 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$408dcbc9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 20:50:20.064 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 20:50:20.123 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 20:50:20.124 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 20:50:20.304 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 20:50:20.305 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2699 ms
+2021-01-13 20:50:50.753 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 33727 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 20:50:50.776 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 20:50:51.623 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 20:50:51.626 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 20:50:51.662 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 18ms. Found 0 repository interfaces.
+2021-01-13 20:50:52.529 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$71705320] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 20:50:53.357 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 20:50:53.422 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 20:50:53.423 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 20:50:53.618 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 20:50:53.619 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2779 ms
+2021-01-13 20:50:57.226 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 20:50:57.244 INFO  com.easyArch.Application Line:59  - Started Application in 7.162 seconds (JVM running for 7.943)
+2021-01-13 20:50:57.248 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 20:50:57.459 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 20:51:50.956 INFO  com.easyArch.net.SocketHandler Line:75  - 客户端加入连接:[id: 0x7ba33b37, L:/127.0.0.1:8000 - R:/127.0.0.1:45016]
+2021-01-13 20:53:18.912 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 20:53:22.493 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 34068 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 20:53:22.512 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 20:53:23.404 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 20:53:23.409 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 20:53:23.450 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 20ms. Found 0 repository interfaces.
+2021-01-13 20:53:24.374 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$abf3710] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 20:53:25.076 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 20:53:25.130 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 20:53:25.131 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 20:53:25.298 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 20:53:25.299 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2720 ms
+2021-01-13 20:53:28.765 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 20:53:28.783 INFO  com.easyArch.Application Line:59  - Started Application in 6.939 seconds (JVM running for 7.745)
+2021-01-13 20:53:28.789 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 20:53:29.038 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 20:53:37.188 INFO  com.easyArch.net.SocketHandler Line:75  - 客户端加入连接:[id: 0xe83f74b9, L:/127.0.0.1:8000 - R:/127.0.0.1:45074]
+2021-01-13 20:54:57.778 INFO  com.easyArch.net.SocketHandler Line:82  - 客户端断开连接：[id: 0xe83f74b9, L:/127.0.0.1:8000 ! R:/127.0.0.1:45074]
+2021-01-13 20:56:20.977 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 20:56:25.721 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 34588 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 20:56:25.726 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 20:56:26.626 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 20:56:26.641 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 20:56:26.681 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2021-01-13 20:56:27.527 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4b665dd9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 20:56:28.358 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 20:56:28.425 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 20:56:28.426 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 20:56:28.626 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 20:56:28.627 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2829 ms
+2021-01-13 20:56:32.101 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 20:56:32.114 INFO  com.easyArch.Application Line:59  - Started Application in 7.036 seconds (JVM running for 7.843)
+2021-01-13 20:56:32.117 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 20:56:32.348 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 20:56:43.841 INFO  com.easyArch.net.SocketHandler Line:75  - 客户端加入连接:[id: 0xb2eb36b9, L:/127.0.0.1:8000 - R:/127.0.0.1:45138]
+2021-01-13 20:57:51.131 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 20:57:55.601 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 34846 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 20:57:55.607 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 20:57:56.516 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 20:57:56.520 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 20:57:56.559 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2021-01-13 20:57:57.427 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b004d9f2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 20:57:58.220 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 20:57:58.272 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 20:57:58.273 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 20:57:58.461 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 20:57:58.462 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2795 ms
+2021-01-13 20:58:01.343 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 20:58:01.356 INFO  com.easyArch.Application Line:59  - Started Application in 6.444 seconds (JVM running for 7.211)
+2021-01-13 20:58:01.360 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 20:58:01.582 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 20:58:23.542 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0x42b2f57f, L:/127.0.0.1:8000 - R:/127.0.0.1:45180]
+2021-01-13 20:59:20.651 INFO  com.easyArch.net.SocketHandler Line:43  - 收的数据电话号完整:   
+2021-01-13 20:59:31.863 INFO  com.easyArch.net.SocketHandler Line:51  - 收的数据电话号:   
+2021-01-13 21:00:29.008 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0x4f6abd4b, L:/127.0.0.1:8000 - R:/127.0.0.1:45210]
+2021-01-13 21:00:29.010 INFO  com.easyArch.net.SocketHandler Line:83  - 客户端断开连接：[id: 0x42b2f57f, L:/127.0.0.1:8000 ! R:/127.0.0.1:45180]
+2021-01-13 21:00:29.028 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 21:00:32.404 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 35307 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 21:00:32.419 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 21:00:33.252 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 21:00:33.256 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 21:00:33.287 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 15ms. Found 0 repository interfaces.
+2021-01-13 21:00:34.169 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a70389ec] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 21:00:34.943 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 21:00:35.018 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 21:00:35.019 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 21:00:35.186 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 21:00:35.187 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2708 ms
+2021-01-13 21:00:38.384 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 21:00:38.399 INFO  com.easyArch.Application Line:59  - Started Application in 6.637 seconds (JVM running for 7.424)
+2021-01-13 21:00:38.403 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 21:00:38.634 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 21:01:04.902 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0x25263fd7, L:/127.0.0.1:8000 - R:/127.0.0.1:45238]
+2021-01-13 21:01:29.478 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 21:01:32.913 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 35608 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 21:01:32.919 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 21:01:33.794 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 21:01:33.798 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 21:01:33.839 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 21ms. Found 0 repository interfaces.
+2021-01-13 21:01:34.787 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$35de1991] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 21:01:35.599 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 21:01:35.655 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 21:01:35.656 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 21:01:35.828 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 21:01:35.829 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2842 ms
+2021-01-13 21:01:39.129 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 21:01:39.142 INFO  com.easyArch.Application Line:59  - Started Application in 6.909 seconds (JVM running for 7.698)
+2021-01-13 21:01:39.146 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 21:01:39.332 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 21:02:06.206 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0xa94d9439, L:/127.0.0.1:8000 - R:/127.0.0.1:45268]
+2021-01-13 21:03:49.027 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 21:03:55.970 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 35926 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 21:03:55.975 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 21:03:56.906 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 21:03:56.909 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 21:03:56.948 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2021-01-13 21:03:57.853 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$64be9294] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 21:03:58.716 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 21:03:58.771 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 21:03:58.772 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 21:03:58.969 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 21:03:58.970 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 2908 ms
+2021-01-13 21:04:02.356 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 21:04:02.375 INFO  com.easyArch.Application Line:59  - Started Application in 7.06 seconds (JVM running for 7.865)
+2021-01-13 21:04:02.380 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 21:04:02.613 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 21:04:04.651 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0xfd0f7e10, L:/127.0.0.1:8000 - R:/127.0.0.1:45312]
+2021-01-13 21:04:44.644 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 21:04:48.079 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 36241 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 21:04:48.084 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 21:04:48.967 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 21:04:48.971 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 21:04:49.007 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 18ms. Found 0 repository interfaces.
+2021-01-13 21:04:49.480 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$384573f1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 21:04:49.816 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 21:04:49.850 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 21:04:49.851 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 21:04:49.961 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 21:04:49.962 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1805 ms
+2021-01-13 21:04:51.507 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 21:04:51.512 INFO  com.easyArch.Application Line:59  - Started Application in 4.088 seconds (JVM running for 4.884)
+2021-01-13 21:04:51.514 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 21:04:51.593 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 21:04:55.360 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0xa34a822b, L:/127.0.0.1:8000 - R:/127.0.0.1:45342]
+2021-01-13 21:15:14.059 INFO  com.easyArch.net.SocketHandler Line:83  - 客户端断开连接：[id: 0xa34a822b, L:/127.0.0.1:8000 ! R:/127.0.0.1:45342]
+2021-01-13 21:15:15.321 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0xa79b923e, L:/127.0.0.1:8000 - R:/127.0.0.1:45488]
+2021-01-13 21:23:51.593 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 21:44:02.906 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 37702 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 21:44:02.910 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 21:44:03.775 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 21:44:03.778 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 21:44:03.820 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2021-01-13 21:44:04.256 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$892403eb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 21:44:04.573 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 21:44:04.597 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 21:44:04.598 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 21:44:04.686 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 21:44:04.687 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1719 ms
+2021-01-13 21:44:06.196 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 21:44:06.200 INFO  com.easyArch.Application Line:59  - Started Application in 3.935 seconds (JVM running for 4.748)
+2021-01-13 21:44:06.202 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 21:44:06.287 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 21:44:12.714 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0x81ee61e7, L:/127.0.0.1:8000 - R:/127.0.0.1:45872]
+2021-01-13 21:51:35.564 INFO  com.easyArch.net.SocketHandler Line:43  - 收的数据电话号完整:   
+2021-01-13 21:51:35.570 INFO  com.easyArch.net.SocketHandler Line:51  - 收的数据电话号:   
+2021-01-13 21:51:35.595 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 21:53:42.339 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 38178 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 21:53:42.345 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 21:53:43.166 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 21:53:43.180 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 21:53:43.215 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 17ms. Found 0 repository interfaces.
+2021-01-13 21:53:43.588 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d0c469f3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 21:53:43.866 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 21:53:43.893 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 21:53:43.894 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 21:53:43.997 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 21:53:43.998 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1598 ms
+2021-01-13 21:53:45.305 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 21:53:45.310 INFO  com.easyArch.Application Line:59  - Started Application in 3.497 seconds (JVM running for 4.077)
+2021-01-13 21:53:45.312 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 21:53:45.380 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 21:53:54.594 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0x80301103, L:/127.0.0.1:8000 - R:/127.0.0.1:46008]
+2021-01-13 21:59:04.470 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 21:59:40.171 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 38668 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 21:59:40.185 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 21:59:40.840 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 21:59:40.842 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 21:59:40.870 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 11ms. Found 0 repository interfaces.
+2021-01-13 21:59:41.229 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$193397b1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 21:59:41.505 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 21:59:41.527 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 21:59:41.528 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 21:59:41.605 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 21:59:41.606 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1375 ms
+2021-01-13 21:59:42.836 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 21:59:42.840 INFO  com.easyArch.Application Line:59  - Started Application in 3.164 seconds (JVM running for 3.729)
+2021-01-13 21:59:42.842 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 22:00:35.196 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 22:00:43.142 INFO  com.easyArch.net.SocketHandler Line:76  - 客户端加入连接:[id: 0xcf7f217a, L:/127.0.0.1:8000 - R:/127.0.0.1:46120]
+2021-01-13 22:03:27.091 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.
+2021-01-13 22:03:30.155 INFO  com.easyArch.Application Line:50  - Starting Application on zmq-OMEN-Laptop-15-en0xxx with PID 39090 (/home/zmq/javaWork/shopwork2/target/classes started by zmq in /home/zmq/javaWork/shopwork2)
+2021-01-13 22:03:30.158 INFO  com.easyArch.Application Line:675 - No active profile set, falling back to default profiles: default
+2021-01-13 22:03:30.766 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:244 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-13 22:03:30.769 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-13 22:03:30.798 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate Line:182 - Finished Spring Data repository scanning in 14ms. Found 0 repository interfaces.
+2021-01-13 22:03:31.122 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e6ab51ba] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-13 22:03:31.325 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:90  - Tomcat initialized with port(s): 9008 (http)
+2021-01-13 22:03:31.343 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2021-01-13 22:03:31.344 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-01-13 22:03:31.407 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Line:173 - Initializing Spring embedded WebApplicationContext
+2021-01-13 22:03:31.408 INFO  org.springframework.web.context.ContextLoader Line:296 - Root WebApplicationContext: initialization completed in 1207 ms
+2021-01-13 22:03:32.419 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 9008 (http) with context path ''
+2021-01-13 22:03:32.422 INFO  com.easyArch.Application Line:59  - Started Application in 2.654 seconds (JVM running for 3.11)
+2021-01-13 22:03:32.424 INFO  com.easyArch.net.Server Line:21  - init server 服务器,端口号为:8000
+2021-01-13 22:03:32.483 INFO  com.easyArch.net.Server Line:35  - 服务器启动
+2021-01-13 22:03:37.588 INFO  com.easyArch.net.SocketHandler Line:77  - 客户端加入连接:[id: 0xdbc2c918, L:/127.0.0.1:8000 - R:/127.0.0.1:46172]
+2021-01-13 22:04:33.172 INFO  com.easyArch.net.Server Line:49  - >>>>>>>>>>> WebServer destroy success.

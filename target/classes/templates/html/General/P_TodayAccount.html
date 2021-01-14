@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<!--    //echarts-->
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="../../static/assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href='http://fonts.useso.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,400italic,700,600,600italic' rel='stylesheet' type='text/css'>
+    <link href="../../static/css/five.css" rel="stylesheet">
+    <title>普通主页</title>
+    <style>
+        .sela{
+            width:80px;
+            /*height: 15px;*/
+            font-size: 20px;
+            text-decoration: white;
+            background-color: transparent;
+            border: none;
+            /*outline: none;*/
+            outline:none;
+        }
+        .sela:hover{text-decoration: none}
+
+    </style>
+</head>
+
+<!--//头部-->
+<nav class="box navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!--        <div class="navbar-header page-scroll">-->
+        <!--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+        <!--                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>-->
+        <!--            </button>-->
+
+        <!--        </div>-->
+        <!--        <span class="navbar-header page-scroll">-->
+        <a class="navbar-brand page-scroll" id="address1"  style="font-size: 30px;width: 100%">
+            username
+        </a>
+        <!--        <span><a class="ph">退出登录</a></span>-->
+        <div id="dis">
+            <span><a class="ph" href="p_main.html " >主页 </a></span>
+            <span><a class="ph">/</a></span>
+            <span><a class="ph" href="P_TodayAccount.html" style="color: #2086D7">人数统计图</a></span>
+            <span><a class="ph" href="P_Todayliveness.html">排行榜</a></span>
+            <span><a class="ph" href="http://121.199.21.197:63393/Login">退出登录</a></span>
+        </div>
+
+        </span>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden"> <a href=""></a> </li>
+                <li> <a href="p_main.html" class="page-scroll" ><b>主页</b></a> </li>
+                <li> <a href="P_TodayAccount.html" class="page-scroll" style="border-bottom: 3px #2086D7 solid;color: #2086D7"><b>人数统计图</b></a> </li>
+                <li> <a href="P_Todayliveness.html" class="page-scroll" ><b>活跃度排行榜</b></a> </li>
+                <li> <a class="page-scroll">用户名：<span id="user">张三</span></a> </li>
+                <li> <a class="page-scroll" href="http://121.199.21.197:63393/Login">退出当前用户</a> </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--//body-->
+<div id="header">
+    <div class="container" style="height:100% " >
+        <div class="top">
+            <div id="change">
+                <span id="aa" >当前是：</span>
+            </div>
+            <div id="bar" ></div>
+
+            <div style="width: 100%;height: 80px;"></div>
+        </div>
+    </div>
+</div>
+<script src="../../static/js/BarChart.js"></script>
+</body>
+</html>
