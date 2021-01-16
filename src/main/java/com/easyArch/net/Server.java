@@ -17,6 +17,7 @@ public class Server {
     private SocketChannelInitializer socketChannelInitializer;
 
 
+
     private Thread thread;
 
     public void run(int port) {
@@ -28,9 +29,9 @@ public class Server {
                 ServerBootstrap bootstrap = new ServerBootstrap();
                 bootstrap.group(boss, work)
                         .channel(NioServerSocketChannel.class)
-//                        .option(ChannelOption.SO_BACKLOG, 1024)
+                        .option(ChannelOption.SO_BACKLOG, 1024)
 //                        .option(ChannelOption.TCP_NODELAY, true)
-                        .option(ChannelOption.SO_KEEPALIVE, true)
+//                        .option(ChannelOption.SO_KEEPALIVE, true)
                         .childHandler(socketChannelInitializer);
 
                 ChannelFuture future = bootstrap.bind(port).sync();

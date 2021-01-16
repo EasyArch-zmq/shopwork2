@@ -2,6 +2,8 @@ package com.easyArch.net;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.http.HttpObjectAggregator;
@@ -12,6 +14,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.util.AsciiString;
+import io.netty.util.CharsetUtil;
 import org.apache.tomcat.util.buf.Ascii;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,10 +35,14 @@ public class SocketChannelInitializer extends ChannelInitializer<SocketChannel> 
 //        //处理器
 //        channel.pipeline().addLast("http-fileServerHandler", socketHandler);
         //channel.pipeline().addLast(new LineBasedFrameDecoder(1024));
-        channel.pipeline().addLast(new HttpServerCodec());
-        channel.pipeline().addLast(new HttpObjectAggregator(65535));
-        channel.pipeline().addLast(new ChunkedWriteHandler());
+//        channel.pipeline().addLast(new HttpServerCodec());
+//        channel.pipeline().addLast(new HttpObjectAggregator(65535));
+//        channel.pipeline().addLast(new ChunkedWriteHandler());
 ////        channel.pipeline().addLast(new HexDecode());
+//        channel.pipeline().addLast("frameDecoder", new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
+//        channel.pipeline().addLast("frameEncoder", new LengthFieldPrepender(4));
+//        channel.pipeline().addLast("decoder", new StringDecoder(CharsetUtil.UTF_8));
+//        channel.pipeline().addLast("encoder", new StringEncoder(CharsetUtil.UTF_8));
         channel.pipeline().addLast(socketHandler);
 
     }
