@@ -9,13 +9,15 @@ import com.easyArch.mapper.P_UserDao;
 import com.easyArch.mapper.SortDao;
 import com.easyArch.service.P_TowHourSortService;
 import com.easyArch.util.ControllerUtil;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+@SuppressWarnings("unchecked")
 @Service
 public class P_TowHourSortServiceImpl implements P_TowHourSortService {
     @Autowired
@@ -24,6 +26,8 @@ public class P_TowHourSortServiceImpl implements P_TowHourSortService {
     P_UserDao p_userDao;
     @Autowired
     AddressDao addressDao;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Override
     public String selectTowSortNum(P_User p_user) {
@@ -33,20 +37,32 @@ public class P_TowHourSortServiceImpl implements P_TowHourSortService {
         String month=p_user.getMonth();
         String day=p_user.getDay();
         String time=p_user.getTime();
-        String userAddress=p_userDao
-                .selectUserAddress(p_name);
+        String userAddress;
+        if (redisTemplate.opsForValue().get("@"+p_name)!=null){
+            userAddress=(String) redisTemplate.opsForValue().get("@"+p_name);
+        }else {
+            userAddress= p_userDao.selectUserAddress(p_name);
+            redisTemplate.opsForValue().set("@" + p_name, userAddress, 7, TimeUnit.DAYS);
+        }
         String []str= ControllerUtil.slipAddress(userAddress);
         String city=str[0];
         String county=str[1];
         String street=str[2];
         String specificAddress=str[3];
-
-        List<Mac_Loc>Macs=addressDao
-                .select_ma_lo(city,county,street,specificAddress);
+        List<Mac_Loc>Macs;
+        if (redisTemplate.hasKey("locMacs")){
+            Macs=redisTemplate.opsForList().range("locMacs",0,-1);
+        }else {
+            Macs = addressDao
+                    .select_ma_lo(city, county, street, specificAddress);
+            for (Mac_Loc macLoc:Macs){
+                redisTemplate.opsForList().rightPush("locMacs",macLoc);
+                redisTemplate.expire("locMacs",24, TimeUnit.HOURS);
+            }
+        }
         //设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //获取日期
-        String date=df.format(new Date());
+        DateTime now=DateTime.now();
+        String date=now.toString("yyyy-MM-dd HH:mm:ss");
         String [] str2=ControllerUtil.slipDate2(date);
         String[]strings=ControllerUtil.slipDate3(str2[1]);
         String date1=null;
@@ -85,4 +101,5 @@ public class P_TowHourSortServiceImpl implements P_TowHourSortService {
         List<Mac_Num>list1=ControllerUtil.listCustomSort(list);
         return JSON.toJSONString(list1);
     }
+
 }

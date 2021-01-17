@@ -2,9 +2,10 @@ package com.easyArch.entity;
 
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Info_inCons {
+public class Info_inCons implements Serializable {
     private String tier;
     private String mac_address;
     private String location;

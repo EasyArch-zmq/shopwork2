@@ -1,7 +1,9 @@
 package com.easyArch.entity;
 
 
-public class Data_inCons {
+import java.io.Serializable;
+
+public class Data_inCons implements Serializable {
     private String mac_address;
 
     public String getMac_address() {
@@ -20,11 +22,11 @@ public class Data_inCons {
         this.number = number;
     }
 
-    public Color1 getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(Color1 color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
@@ -37,6 +39,6 @@ public class Data_inCons {
     }
 
     private Integer number;
-    private Color1 color;
+    private Color color;
     private String location;
 }

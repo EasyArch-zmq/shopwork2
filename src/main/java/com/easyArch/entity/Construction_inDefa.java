@@ -3,10 +3,11 @@ package com.easyArch.entity;
 
 
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Construction_inDefa {
+public class Construction_inDefa implements Serializable {
     private String construction;
 
     public String getConstruction() {

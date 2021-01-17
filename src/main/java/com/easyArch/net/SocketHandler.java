@@ -49,7 +49,7 @@ public class SocketHandler extends ChannelInboundHandlerAdapter {
         DateTime now=DateTime.now();
         String date=now.toString("yyyy-MM-dd HH:mm:ss");
 
-        System.out.println("时间是："+now.toString("yyyy-MM-dd HH:mm:ss :SSS"));
+//        System.out.println("时间是："+now.toString("yyyy-MM-dd HH:mm:ss :SSS"));
         //设置日期格式
 //        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 //        //获取日期

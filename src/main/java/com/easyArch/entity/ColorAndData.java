@@ -1,8 +1,9 @@
 package com.easyArch.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ColorAndData {
+public class ColorAndData implements Serializable {
     private String color;
     private List<YellowInfo> YellowInfoList;
     private List<GreenInfo> GreenInfoList;

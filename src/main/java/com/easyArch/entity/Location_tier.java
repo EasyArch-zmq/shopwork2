@@ -1,11 +1,13 @@
 package com.easyArch.entity;
 
 
+import java.io.Serializable;
+
 /**
  * 此数据放入
  */
 
-    public class Location_tier {
+    public class Location_tier implements Serializable {
     private String location;
 
     public String getLocation() {

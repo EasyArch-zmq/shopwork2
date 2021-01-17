@@ -1,8 +1,9 @@
 package com.easyArch.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Week_withList {
+public class Week_withList implements Serializable {
     private Integer week;
     private List<Week_num>list;
 

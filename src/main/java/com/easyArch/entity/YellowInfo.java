@@ -1,6 +1,8 @@
 package com.easyArch.entity;
 
-public class YellowInfo {
+import java.io.Serializable;
+
+public class YellowInfo implements Serializable {
     private String time;
     private String mac_address;
     private Integer num;

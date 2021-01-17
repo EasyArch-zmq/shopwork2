@@ -1,7 +1,9 @@
 package com.easyArch.entity;
 
 
-public class NumberInfo {
+import java.io.Serializable;
+
+public class NumberInfo implements Serializable {
       private String specificadress;
       private Integer number;
       public String getSpecificadress() {

@@ -1,10 +1,11 @@
 package com.easyArch.entity;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class MacAndDataList {
+public class MacAndDataList implements Serializable {
     private String mac_address;
 
     public String getMac_address() {

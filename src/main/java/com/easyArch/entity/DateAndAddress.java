@@ -1,7 +1,9 @@
 package com.easyArch.entity;
 
 
-public class DateAndAddress {
+import java.io.Serializable;
+
+public class DateAndAddress implements Serializable {
     private String address;
     private String mac_address;
     private String year1;

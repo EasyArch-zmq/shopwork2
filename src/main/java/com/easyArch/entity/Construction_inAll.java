@@ -2,13 +2,14 @@ package com.easyArch.entity;
 
 
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 返回以建筑展开的数据
  */
 
-public class Construction_inAll {
+public class Construction_inAll implements Serializable {
     private String construction;
 
     public String getConstruction() {

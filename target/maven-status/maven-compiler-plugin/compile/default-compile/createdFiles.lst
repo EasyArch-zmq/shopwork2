@@ -23,6 +23,7 @@ com/easyArch/mapper/ColorDao.class
 com/easyArch/Application.class
 com/easyArch/entity/Address.class
 com/easyArch/entity/Mac_Num.class
+com/easyArch/entity/Color.class
 com/easyArch/service/G_SameTimeAccountService.class
 com/easyArch/mapper/G_UserDao.class
 com/easyArch/entity/Info_inCons.class
@@ -57,7 +58,6 @@ com/easyArch/entity/Temp.class
 com/easyArch/util/ControllerUtil$3.class
 com/easyArch/entity/YanGan.class
 com/easyArch/util/HexUtil.class
-com/easyArch/entity/Color2.class
 com/easyArch/net/HexDecode.class
 com/easyArch/service/impl/G_SameMacRankServiceImpl.class
 com/easyArch/service/impl/P_TodayAccountServiceImpl.class
@@ -66,10 +66,10 @@ com/easyArch/service/impl/P_DaySortServiceImpl.class
 com/easyArch/service/impl/P_TowHourSortServiceImpl.class
 com/easyArch/entity/Construction_inAll.class
 com/easyArch/mapper/PictureDao.class
-com/easyArch/entity/Color1.class
 com/easyArch/service/P_TowHourSortService.class
 com/easyArch/controller/P_DataController.class
 com/easyArch/service/impl/ColorInsertServiceImpl.class
+com/easyArch/ben/JavaBen.class
 com/easyArch/support/JWTUtil.class
 com/easyArch/service/G_WeekRankService.class
 com/easyArch/entity/DateAndNumber.class

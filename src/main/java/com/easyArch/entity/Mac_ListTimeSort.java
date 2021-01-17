@@ -1,8 +1,9 @@
 package com.easyArch.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Mac_ListTimeSort {
+public class Mac_ListTimeSort implements Serializable {
     private String mac_address;
     private List<DateAndNumber>list;
 

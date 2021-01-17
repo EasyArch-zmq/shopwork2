@@ -1,7 +1,9 @@
 package com.easyArch.entity;
 
 
-public class Mac_Loc {
+import java.io.Serializable;
+
+public class Mac_Loc implements Serializable {
     public String getMac_address() {
         return mac_address;
     }

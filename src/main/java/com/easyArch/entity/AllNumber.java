@@ -2,13 +2,14 @@ package com.easyArch.entity;
 
 
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 此数据作为返回前端的总数据
  */
 
-public class AllNumber {
+public class AllNumber implements Serializable {
     private String userAddress;
 
     public String getUserAddress() {

@@ -2,10 +2,11 @@ package com.easyArch.entity;
 
 
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class DateNumberAll {
+public class DateNumberAll implements Serializable {
     private String address;
     private String mac_address;
     private String time1;

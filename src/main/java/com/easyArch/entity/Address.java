@@ -1,7 +1,12 @@
 package com.easyArch.entity;
 
+/**
+ * 地理信息：市，区，街，具体地址，Mac地址
+ */
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
     private String city;
 
     public String getCity() {

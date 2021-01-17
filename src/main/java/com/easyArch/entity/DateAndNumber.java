@@ -1,7 +1,9 @@
 package com.easyArch.entity;
 
 
-public class DateAndNumber {
+import java.io.Serializable;
+
+public class DateAndNumber implements Serializable {
     public String getTime() {
         return time;
     }

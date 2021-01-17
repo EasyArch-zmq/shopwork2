@@ -8,11 +8,13 @@ import com.easyArch.mapper.AddressDao;
 import com.easyArch.mapper.DateNumberDao;
 import com.easyArch.util.ControllerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.concurrent.TimeUnit;
+@SuppressWarnings("unchecked")
 @Service
 public class G_SameMacRankServiceImpl implements com.easyArch.service.G_SameMacRankService {
 
@@ -20,6 +22,8 @@ public class G_SameMacRankServiceImpl implements com.easyArch.service.G_SameMacR
     AddressDao addressDao;
     @Autowired
     DateNumberDao dateNumberDao;
+    @Autowired
+    private RedisTemplate redisTemplate;
     @Override
     public String getSameMac_timeRank(DateAndAddress address) {
         String addressStr = address.getAddress();
@@ -34,7 +38,19 @@ public class G_SameMacRankServiceImpl implements com.easyArch.service.G_SameMacR
         String date2 ;
         date1 =  address.getYear() + "-" + address.getMonth() + "-" + address.getDay() + " " + time1;
         date2 =  address.getYear() + "-" + address.getMonth() + "-" + address.getDay() + " " + time2;
-        List<String> listMac = addressDao.select_mac2(specificAddress, city, county, street);
+        /**
+         * 通过地址查找盒子，返回符合地址条件的所有盒子
+         */
+        List<String> listMac;
+        if (redisTemplate.hasKey("listMac")){
+            listMac=redisTemplate.opsForList().range("listMac",0,-1);
+        }else {
+            listMac=addressDao.select_mac2(specificAddress, city, county, street);
+            for (String s:listMac){
+                redisTemplate.opsForList().rightPush("listMac",listMac);
+            }
+            redisTemplate.expire("listMac",24, TimeUnit.HOURS);
+        }
         System.out.println(listMac.size());
         List<DateAndNumber>list;
         List<MacAndDataList>lists=new ArrayList<>();

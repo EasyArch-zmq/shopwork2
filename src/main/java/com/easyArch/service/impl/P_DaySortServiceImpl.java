@@ -9,13 +9,17 @@ import com.easyArch.mapper.P_UserDao;
 import com.easyArch.mapper.SortDao;
 import com.easyArch.service.P_DaySortService;
 import com.easyArch.util.ControllerUtil;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+@SuppressWarnings("unchecked")
 @Service
 public class P_DaySortServiceImpl implements P_DaySortService {
     @Autowired
@@ -24,6 +28,8 @@ public class P_DaySortServiceImpl implements P_DaySortService {
     P_UserDao p_userDao;
     @Autowired
     AddressDao addressDao;
+    @Autowired
+    private RedisTemplate redisTemplate;
     @Override
     public String selectSortNum(P_User p_user) {
         List<Mac_Num> list=new ArrayList<>();
@@ -35,13 +41,21 @@ public class P_DaySortServiceImpl implements P_DaySortService {
         String county=str[1];
         String street=str[2];
         String specificAddress=str[3];
-
-        List<Mac_Loc>Macs=addressDao
-                .select_ma_lo(city,county,street,specificAddress);
+        List<Mac_Loc>Macs;
+        if (redisTemplate.hasKey("locMacs")){
+            Macs=redisTemplate.opsForList().range("locMacs",0,-1);
+        }else {
+            Macs = addressDao
+                    .select_ma_lo(city, county, street, specificAddress);
+            for (Mac_Loc macLoc:Macs){
+                redisTemplate.opsForList().rightPush("locMacs",macLoc);
+                redisTemplate.expire("locMacs",24, TimeUnit.HOURS);
+            }
+        }
         //设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //获取日期
-        String date2=df.format(new Date());
+        DateTime now=DateTime.now();
+        String date2=now.toString("yyyy-MM-dd HH:mm:ss");
+
         String [] str2=ControllerUtil.slipDate2(date2);
         String date1="2020-08-11 00:00:00";//str2[0]+" 01:00:00";
 

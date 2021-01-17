@@ -1,6 +1,8 @@
 package com.easyArch.entity;
 
-public class Mac_info {
+import java.io.Serializable;
+
+public class Mac_info implements Serializable {
     private String address;
     private String specific_address;
     private String pic_address;

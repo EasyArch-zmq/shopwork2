@@ -2,7 +2,7 @@ package com.easyArch.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.easyArch.entity.Address_Month;
-import com.easyArch.entity.Color2;
+import com.easyArch.entity.Color;
 import com.easyArch.entity.DateAndAddress;
 import com.easyArch.entity.G_User;
 import com.easyArch.service.*;
@@ -58,7 +58,7 @@ public class G_DataController {
     @RequestMapping( value = "insertColorValue",
             produces = "application/json;charset=utf-8",
             method = RequestMethod.POST)
-    public void colorInsert(@RequestBody Color2 color){
+    public void colorInsert(@RequestBody Color color){
         if (color!=null){
             service.insertColorValue(color);
         }

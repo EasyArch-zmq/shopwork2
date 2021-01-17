@@ -1,0 +1,26 @@
+
+1.redis数据库文档:
+关于普通和管理员用户表：
+   1.k=用户名====>value=user实体（用户名，密码）过期时间：一个小时
+   2.k=@用户名====>value=address String 类型 过期时间：7天
+
+关于地址及设备信息表(过期时间一个月)
+    1.k=cityList======>value=城市名List
+    2.k=countyList======>value=区县名List
+    3.k=streetList======>value=街道名List
+    4.k=SpecificList======>value=具体地址List
+    5.k=locList======>value=List<Mac_Loc>locList--->mac_address,location,address,id
+    6.k=cons_List=====>value=List<String> cons_List,内容是construction集合，24小时过期，未实现：如果有用户增加进来要设置失效
+    7.k=pics==========>value=List<String> pics图片网址，过期时间，24小时
+    8."locationTier"+Mac_address=====》locationTier实体
+    9.listMac=======通过specificAddress, city, county, street返回Mac地址
+    10.mac_list========通过specificAddress,city,county,street,construction返回Mac地址
+
+关于活跃度颜色表
+    1.k="color@"+mac_address======>返回color实体，green,red,mac_address 过期时间：7天
+
+关于时间信息表
+
+G_AppointTimeServiceImpl 和G_SuccessiveTimeServiceImpl类没动过
+
+MySQL数据库表信息

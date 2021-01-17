@@ -1,6 +1,8 @@
 package com.easyArch.entity;
 
-public class Mac_Num {
+import java.io.Serializable;
+
+public class Mac_Num implements Serializable {
     private String mac_address;
     private Integer num;
 

@@ -1,6 +1,6 @@
 package com.easyArch.mapper;
 
-import com.easyArch.entity.Color1;
+import com.easyArch.entity.Color;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +13,7 @@ public interface ColorDao {
      * @param mac_address
      * @return
      */
-    Color1 selectColor(String mac_address);
+    Color selectColor(String mac_address);
 
     /**
      * 设置绿色和红色警报

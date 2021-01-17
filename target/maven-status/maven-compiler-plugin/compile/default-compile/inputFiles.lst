@@ -35,7 +35,6 @@
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/service/impl/LoginServiceImpl.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/Application.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/G_User.java
-/home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/Color1.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/DateAndAddress.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/service/impl/G_SameTimeAccountServiceImpl.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/Location_tier.java
@@ -84,11 +83,12 @@
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/Week_num.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/DateNumberAll.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/mapper/Date_Box_TimeDao.java
+/home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/ben/JavaBen.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/net/HexDecode.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/service/impl/G_WeekRankServiceImpl.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/service/impl/ColorInsertServiceImpl.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/NumberInfo.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/YellowInfo.java
-/home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/Color2.java
+/home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/Color.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/service/impl/G_SuccessiveTimeServiceImpl.java
 /home/zmq/javaWork/shopwork2/src/main/java/com/easyArch/entity/Address.java

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+@SuppressWarnings("unchecked")
 @Service
 public class G_SuccessiveTimeServiceImpl implements G_SuccessiveTimeService {
     @Autowired

@@ -1,6 +1,8 @@
 package com.easyArch.entity;
 
-public class YanGan {
+import java.io.Serializable;
+
+public class YanGan implements Serializable {
     private Integer yanGan;
     private String time;
 

@@ -1,6 +1,11 @@
 package com.easyArch.entity;
 
-public class Address_Month {
+import java.io.Serializable;
+
+/**
+ * 年，月，地址
+ */
+public class Address_Month implements Serializable {
     public String getYear() {
         return year;
     }

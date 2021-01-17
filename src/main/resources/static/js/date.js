@@ -171,7 +171,7 @@ $('#search').click(() => {
         "day2": day2,
         "time1": time1,
         "time2": time2,
-        "address": city + "," + county + "," + town + "," + street + "," + special_address,
+        "address": city + "," + county + "," + street + "," + special_address,
         "mac_address":box
     })
     // document.getElementById('time').innerHTML="搜索的时间为："+year1+"/"+month1+"/"+day1+" "+time1+"——"+

@@ -5,11 +5,13 @@ import com.easyArch.entity.*;
 import com.easyArch.mapper.DateNumberDao;
 import com.easyArch.service.G_WeekRankService;
 import com.easyArch.util.ControllerUtil;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+@SuppressWarnings("unchecked")
 @Service
 public class G_WeekRankServiceImpl implements G_WeekRankService {
     @Autowired
@@ -25,9 +27,8 @@ public class G_WeekRankServiceImpl implements G_WeekRankService {
         String street = str[2];
         String specificAddress = str[3];
         //设置日期格式
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //获取日期
-        String date2 = df.format(new Date());
+        DateTime now=DateTime.now();
+        String date2=now.toString("yyyy-MM-dd HH:mm:ss");
         //分割“-”
         String[] str2 = ControllerUtil.slipDate(date2);
         String date1 = null;

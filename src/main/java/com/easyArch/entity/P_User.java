@@ -1,7 +1,9 @@
 package com.easyArch.entity;
 
 
-public class P_User {
+import java.io.Serializable;
+
+public class P_User implements Serializable {
     private String username;
     private String password;
     private String time;

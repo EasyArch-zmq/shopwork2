@@ -1,6 +1,8 @@
 package com.easyArch.entity;
 
-public class Week_num {
+import java.io.Serializable;
+
+public class Week_num implements Serializable {
     private String week_str;
     private Integer num;
 
