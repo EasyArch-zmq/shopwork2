@@ -57,40 +57,49 @@ public class P_TodayAccountServiceImpl implements P_TodayAccountService {
          * @cons_List
          */
         List<String> cons_List;
-        if (redisTemplate.hasKey("cons_List")){
-            cons_List=redisTemplate.opsForList().range("cons_List",0,-1);
+        if (redisTemplate.hasKey(specificAddress+city+county+street+"cons_List")){
+            cons_List=redisTemplate
+                    .opsForList().range(specificAddress+city+county+street+"cons_List",0,-1);
         }else {
             cons_List= addressDao
                     .select_construction(specificAddress,city,county,street);
             for (String s:cons_List){
-                redisTemplate.opsForList().rightPush("cons_List",s);
+                redisTemplate
+                        .opsForList().rightPush(specificAddress+city+county+street+"cons_List",s);
             }
-            redisTemplate.expire("cons_List",24,TimeUnit.HOURS);
+            redisTemplate
+                    .expire(specificAddress+city+county+street+"cons_List",24,TimeUnit.HOURS);
         }
         for(int i=0;i<cons_List.size();i++) {
             Construction_inDefa construction_inDefa = new Construction_inDefa();
             construction_inDefa.setConstruction(cons_List.get(i));
             List<String> pics;
-            if (redisTemplate.hasKey("pics")){
-                pics=redisTemplate.opsForList().range("pics",0,-1);
+            if (redisTemplate.hasKey(specificAddress+city+county+street+cons_List.get(i)+"pics")){
+                pics=redisTemplate
+                        .opsForList().range(specificAddress+city+county+street+cons_List.get(i)+"pics",0,-1);
             }else {
-                pics=pictureDao.selectPic(specificAddress,city,county,street,cons_List.get(i));
+                pics=pictureDao
+                        .selectPic(specificAddress,city,county,street,cons_List.get(i));
                 for (String s:pics){
-                    redisTemplate.opsForList().rightPush("pics",s);
+                    redisTemplate
+                            .opsForList().rightPush(specificAddress+city+county+street+cons_List.get(i)+"pics",s);
                 }
-                redisTemplate.expire("pics",24,TimeUnit.HOURS);
+                redisTemplate
+                        .expire(specificAddress+city+county+street+cons_List.get(i)+"pics",24,TimeUnit.HOURS);
             }
             construction_inDefa.setPicture_url(pics.get(0));
             List<String>mac_list;
-            if (redisTemplate.hasKey("mac_list")){
-                mac_list=redisTemplate.opsForList().range("mac_list",0,-1);
+            if (redisTemplate.hasKey(specificAddress+city+county+street+cons_List.get(i)+"mac_list")){
+                mac_list=redisTemplate.opsForList().range(specificAddress+city+county+street+cons_List.get(i)+"mac_list",0,-1);
             }else {
                 mac_list=addressDao
                         .select_mac(specificAddress,city,county,street,cons_List.get(i));
                 for (String s:mac_list){
-                    redisTemplate.opsForList().rightPush("mac_list",s);
+                    redisTemplate
+                            .opsForList().rightPush(specificAddress+city+county+street+cons_List.get(i)+"mac_list",s);
                 }
-                redisTemplate.expire("mac_list",24,TimeUnit.HOURS);
+                redisTemplate
+                        .expire(specificAddress+city+county+street+cons_List.get(i)+"mac_list",24,TimeUnit.HOURS);
             }
             for (int j = 0; j < mac_list.size(); j++) {
                 Info_inCons info_inCons=new Info_inCons();
@@ -110,12 +119,13 @@ public class P_TodayAccountServiceImpl implements P_TodayAccountService {
                 info_inCons.setTier(locationTier.getTier());
                 info_inCons.setLocation(locationTier.getLocation());
                 //设置日期格式    正式运行要放开这里
-//                DateTime now=DateTime.now();
-//                String date2=now.toString("yyyy-MM-dd HH:mm:ss");
                 //获取日期
-                String date2="2020-08-11 23:59:59";//df.format(new Date());
+                DateTime now=DateTime.now();
+                String date2=now.toString("yyyy-MM-dd HH:mm:ss");
+               // String date2="2020-08-11 23:59:59";
                 String [] str2=ControllerUtil.slipDate2(date2);
-                String date1="2020-08-11 01:00:00";//str2[0]+" 01:00:00";
+                String date1=//"2020-08-11 01:00:00";
+                              str2[0]+" 01:00:00";
 //                list = dateNumberDao.selectTwoHour(mac_list.get(j),"2020-07-28 00:00:00", "2020-07-28 23:59:00");
                 list = dateNumberDao.selectTwoHour(mac_list.get(j),date1,date2);
 //                String[] strings;

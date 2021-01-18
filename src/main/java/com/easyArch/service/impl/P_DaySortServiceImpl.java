@@ -41,15 +41,18 @@ public class P_DaySortServiceImpl implements P_DaySortService {
         String county=str[1];
         String street=str[2];
         String specificAddress=str[3];
-        List<Mac_Loc>Macs;
-        if (redisTemplate.hasKey("locMacs")){
-            Macs=redisTemplate.opsForList().range("locMacs",0,-1);
+        List<Mac_Loc>locList;
+        if (redisTemplate.hasKey(city+county+street+specificAddress+"locList")){
+            locList=redisTemplate
+                    .opsForList().range(city+county+street+specificAddress+"locList",0,-1);
         }else {
-            Macs = addressDao
+            locList = addressDao
                     .select_ma_lo(city, county, street, specificAddress);
-            for (Mac_Loc macLoc:Macs){
-                redisTemplate.opsForList().rightPush("locMacs",macLoc);
-                redisTemplate.expire("locMacs",24, TimeUnit.HOURS);
+            for (Mac_Loc macLoc:locList){
+                redisTemplate
+                        .opsForList().rightPush(city+county+street+specificAddress+"locList",macLoc);
+                redisTemplate
+                        .expire(city+county+street+specificAddress+"locList",24, TimeUnit.HOURS);
             }
         }
         //设置日期格式
@@ -57,17 +60,18 @@ public class P_DaySortServiceImpl implements P_DaySortService {
         String date2=now.toString("yyyy-MM-dd HH:mm:ss");
 
         String [] str2=ControllerUtil.slipDate2(date2);
-        String date1="2020-08-11 00:00:00";//str2[0]+" 01:00:00";
+        String date1=//"2020-08-11 00:00:00";
+                      str2[0]+" 01:00:00";
 
 //            String date2="2020-08-12 23:00:00";
 //            String [] str2=ControllerUtil.slipDate2(date2);
 //            String date1=str2[0]+" 01:00:00";
 
-        for(int i=0;i<Macs.size();i++) {
+        for(int i=0;i<locList.size();i++) {
             Mac_Num mac_num=new Mac_Num();
             //待改
-            mac_num.setMac_address(Macs.get(i).getLocation());
-            mac_num.setNum(sortDao.selectMacNumber(Macs.get(i).getMac_address(),date1,date2));
+            mac_num.setMac_address(locList.get(i).getLocation());
+            mac_num.setNum(sortDao.selectMacNumber(locList.get(i).getMac_address(),date1,date2));
             list.add(mac_num);
         }
         List<Mac_Num>list1=ControllerUtil.listCustomSort(list);

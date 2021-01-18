@@ -40,13 +40,13 @@ public class ApplyAddressServiceImpl implements ApplyAddressService {
     public List<String> selectCounty(Address address) {
         String City=address.getCity();
         List<String> countyList=null;
-        if (redisTemplate.hasKey("countyList"))
-            countyList = redisTemplate.opsForList().range("countyList", 0, -1);
+        if (redisTemplate.hasKey(City+"countyList"))
+            countyList = redisTemplate.opsForList().range(City+"countyList", 0, -1);
         else {
             countyList=addressDao.county(City);
             if (0 !=countyList.size()){
                 for (String str:countyList){
-                    redisTemplate.opsForList().rightPush("countyList",str);
+                    redisTemplate.opsForList().rightPush(City+"countyList",str);
                 }
             }
         }
@@ -58,13 +58,13 @@ public class ApplyAddressServiceImpl implements ApplyAddressService {
         String City=address.getCity();
         String County=address.getCounty();
         List<String> streetList=null;
-        if (redisTemplate.hasKey("streetList"))
-            streetList = redisTemplate.opsForList().range("streetList", 0, -1);
+        if (redisTemplate.hasKey(City+County+"streetList"))
+            streetList = redisTemplate.opsForList().range(City+County+"streetList", 0, -1);
         else {
             streetList=addressDao.street(City,County);
             if (0 !=streetList.size()){
                 for (String str:streetList){
-                    redisTemplate.opsForList().rightPush("streetList",str);
+                    redisTemplate.opsForList().rightPush(City+County+"streetList",str);
                 }
             }
         }
@@ -77,13 +77,13 @@ public class ApplyAddressServiceImpl implements ApplyAddressService {
         String County=address.getCounty();
         String Street=address.getStreet();
         List<String> SpecificList=null;
-        if (redisTemplate.hasKey("SpecificList"))
-            SpecificList = redisTemplate.opsForList().range("SpecificList", 0, -1);
+        if (redisTemplate.hasKey(City+County+Street+"SpecificList"))
+            SpecificList = redisTemplate.opsForList().range(City+County+Street+"SpecificList", 0, -1);
         else {
             SpecificList=addressDao.specificAddress(City,County,Street);
             if (0 !=SpecificList.size()){
                 for (String str:SpecificList){
-                    redisTemplate.opsForList().rightPush("SpecificList",str);
+                    redisTemplate.opsForList().rightPush(City+County+Street+"SpecificList",str);
                 }
             }
         }
@@ -97,13 +97,13 @@ public class ApplyAddressServiceImpl implements ApplyAddressService {
         String Street=address.getStreet();
         String Specific_address=address.getSpecial_address();
         List<Mac_Loc>locList=null;
-        if (redisTemplate.hasKey("locList"))
-            locList = redisTemplate.opsForList().range("locList", 0, -1);
+        if (redisTemplate.hasKey(City+County+Street+Specific_address+"locList"))
+            locList = redisTemplate.opsForList().range(City+County+Street+Specific_address+"locList", 0, -1);
         else {
             locList=addressDao.select_ma_lo(City,County,Street,Specific_address);
             if (0 !=locList.size()){
                 for (Mac_Loc loc:locList){
-                    redisTemplate.opsForList().rightPush("locList",loc);
+                    redisTemplate.opsForList().rightPush(City+County+Street+Specific_address+"locList",loc);
                 }
             }
         }

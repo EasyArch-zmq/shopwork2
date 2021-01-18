@@ -62,15 +62,15 @@ public class G_TodayAccountServiceImpl implements G_TodayAccountService {
          * @cons_List
          */
         List<String> cons_List;
-        if (redisTemplate.hasKey("cons_List")){
-            cons_List=redisTemplate.opsForList().range("cons_List",0,-1);
+        if (redisTemplate.hasKey(specificAddress+city+county+street+"cons_List")){
+            cons_List=redisTemplate.opsForList().range(specificAddress+city+county+street+"cons_List",0,-1);
         }else {
             cons_List= addressDao
                     .select_construction(specificAddress,city,county,street);
             for (String s:cons_List){
-                redisTemplate.opsForList().rightPush("cons_List",s);
+                redisTemplate.opsForList().rightPush(specificAddress+city+county+street+"cons_List",s);
             }
-            redisTemplate.expire("cons_List",24,TimeUnit.HOURS);
+            redisTemplate.expire(specificAddress+city+county+street+"cons_List",24,TimeUnit.HOURS);
         }
 
         for(int i=0;i<cons_List.size();i++) {
@@ -78,16 +78,20 @@ public class G_TodayAccountServiceImpl implements G_TodayAccountService {
             Construction_inDefa construction_inDefa = new Construction_inDefa();
             construction_inDefa.setConstruction(cons_List.get(i));
             List<String> pics;
-            if (redisTemplate.hasKey("pics")){
-                pics=redisTemplate.opsForList().range("pics",0,-1);
+            if (redisTemplate.hasKey(specificAddress+city+county+street+cons_List.get(i)+"pics")){
+                pics=redisTemplate
+                        .opsForList().range(specificAddress+city+county+street+cons_List.get(i)+"pics",0,-1);
             }else {
                 LOGGER.info("能到达这里！进入else");
-                pics=pictureDao.selectPic(specificAddress,city,county,street,cons_List.get(i));
+                pics=pictureDao
+                        .selectPic(specificAddress,city,county,street,cons_List.get(i));
                 LOGGER.info("能到达这里！调用了数据库");
                 for (String s:pics){
-                    redisTemplate.opsForList().rightPush("pics",s);
+                    redisTemplate
+                            .opsForList().rightPush(specificAddress+city+county+street+cons_List.get(i)+"pics",s);
                 }
-                redisTemplate.expire("pics",24,TimeUnit.HOURS);
+                redisTemplate
+                        .expire(specificAddress+city+county+street+cons_List.get(i)+"pics",24,TimeUnit.HOURS);
             }
             construction_inDefa.setPicture_url(pics.get(0));
             LOGGER.info("能到达这里！pics0"+pics.get(0));
@@ -96,17 +100,20 @@ public class G_TodayAccountServiceImpl implements G_TodayAccountService {
              * 通过地址查找盒子，返回符合地址条件的所有盒子
              */
             List<String>mac_list;
-            if (redisTemplate.hasKey("mac_list")){
-                mac_list=redisTemplate.opsForList().range("mac_list",0,-1);
+            if (redisTemplate.hasKey(specificAddress+city+county+street+cons_List.get(i)+"mac_list")){
+                mac_list=redisTemplate
+                        .opsForList().range(specificAddress+city+county+street+cons_List.get(i)+"mac_list",0,-1);
                 LOGGER.info("能到达这里！mac_list从缓存获取");
             }else {
                 mac_list=addressDao
                         .select_mac(specificAddress,city,county,street,cons_List.get(i));
                 LOGGER.info("能到达这里！mac_list从数据库缓存获取");
                 for (String s:mac_list){
-                    redisTemplate.opsForList().rightPush("mac_list",s);
+                    redisTemplate
+                            .opsForList().rightPush(specificAddress+city+county+street+cons_List.get(i)+"mac_list",s);
                 }
-                redisTemplate.expire("mac_list",1,TimeUnit.SECONDS);
+                redisTemplate
+                        .expire(specificAddress+city+county+street+cons_List.get(i)+"mac_list",1,TimeUnit.SECONDS);
             }
 
             for (int j = 0; j < mac_list.size(); j++) {
@@ -133,12 +140,6 @@ public class G_TodayAccountServiceImpl implements G_TodayAccountService {
 
                 String [] str2=ControllerUtil.slipDate2(date2);
                 String date1=str2[0]+" 01:00:00";
-                //获取日期
-//                    String date2="2020-08-11 23:59:00";//df.format(new Date());
-//                    String [] str2=ControllerUtil.slipDate2(date2);
-//                    String date1="2020-08-11 01:00:00";//str2[0]+" 01:00:00";
-//                list = dateNumberDao.selectTwoHour(mac_list.get(j),"2020-07-28 00:00:00", "2020-07-28 23:59:00");
-
                 list = dateNumberDao.selectTwoHour(mac_list.get(j),date1,date2);
 //                String[] strings;
 //                strings = ControllerUtil.slipDate3(str2[1]);

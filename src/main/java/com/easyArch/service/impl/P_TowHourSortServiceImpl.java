@@ -49,15 +49,18 @@ public class P_TowHourSortServiceImpl implements P_TowHourSortService {
         String county=str[1];
         String street=str[2];
         String specificAddress=str[3];
-        List<Mac_Loc>Macs;
-        if (redisTemplate.hasKey("locMacs")){
-            Macs=redisTemplate.opsForList().range("locMacs",0,-1);
+        List<Mac_Loc>locList;
+        if (redisTemplate.hasKey(city+county+street+specificAddress+"locList")){
+            locList=redisTemplate
+                    .opsForList().range(city+county+street+specificAddress+"locList",0,-1);
         }else {
-            Macs = addressDao
+            locList = addressDao
                     .select_ma_lo(city, county, street, specificAddress);
-            for (Mac_Loc macLoc:Macs){
-                redisTemplate.opsForList().rightPush("locMacs",macLoc);
-                redisTemplate.expire("locMacs",24, TimeUnit.HOURS);
+            for (Mac_Loc macLoc:locList){
+                redisTemplate
+                        .opsForList().rightPush(city+county+street+specificAddress+"locList",macLoc);
+                redisTemplate
+                        .expire(city+county+street+specificAddress+"locList",24, TimeUnit.HOURS);
             }
         }
         //设置日期格式
@@ -72,30 +75,36 @@ public class P_TowHourSortServiceImpl implements P_TowHourSortService {
 
         if (day_.equals(str2[0])){
             if ((time1+1)<new Integer(strings[0])){//与当前时间比较
-                date1="2020-08-11 00:00:00";//day_+" "+time+":00:00";
+                date1=//"2020-08-11 00:00:00";
+                        day_+" "+time+":00:00";
                 time1=time1+1;//比如3:00:00-4:59:59
-                date2="2020-08-11 23:59:59";//day_+" "+time1+":59:59";
+                date2=//"2020-08-11 23:59:59";
+                        day_+" "+time1+":59:59";
 
             }else if ((time1+1)==new Integer(strings[0])){
-                date1="2020-08-11 00:00:00";//day_+" "+time+":00:00";
+                date1=//"2020-08-11 00:00:00";
+                        day_+" "+time+":00:00";
                 date2=date;//就是指定时间-当前时间
             }else if (time1==new Integer(strings[0])){
-                date1="2020-08-11 00:00:00";;//day_+" "+time+":00:00";
+                date1=//"2020-08-11 00:00:00";
+                        day_+" "+time+":00:00";
                 date2=date;//就是指定时间-当前时间
             }else {
                 return JSON.toJSONString("f");
             }
         }else {
-            date1="2020-08-11 00:00:00";//day_+" "+time+":00:00";
+            date1=//"2020-08-11 00:00:00";
+                        day_+" "+time+":00:00";
             time1=time1+1;
-            date2="2020-08-11 23:59:59";//day_+" "+time1+":59:59";
+            date2=//"2020-08-11 23:59:59";
+                        day_+" "+time1+":59:59";
         }
 
-        for(int i=0;i<Macs.size();i++) {
+        for(int i=0;i<locList.size();i++) {
             Mac_Num mac_num=new Mac_Num();
             //待改
-            mac_num.setMac_address(Macs.get(i).getLocation());
-            mac_num.setNum(sortDao.selectMacNumber(Macs.get(i).getMac_address(),date1,date2));
+            mac_num.setMac_address(locList.get(i).getLocation());
+            mac_num.setNum(sortDao.selectMacNumber(locList.get(i).getMac_address(),date1,date2));
             list.add(mac_num);
         }
         List<Mac_Num>list1=ControllerUtil.listCustomSort(list);

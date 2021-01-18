@@ -56,14 +56,14 @@ public class G_AccountAboutColorServiceImpl implements G_AccountAboutColorServic
          * 通过地址查找盒子，返回符合地址条件的所有盒子
          */
         List<String> listMac;
-        if (redisTemplate.hasKey("listMac")){
-            listMac=redisTemplate.opsForList().range("listMac",0,-1);
+        if (redisTemplate.hasKey(specificAddress+city+county+street+"listMac")){
+            listMac=redisTemplate.opsForList().range(specificAddress+city+county+street+"listMac",0,-1);
         }else {
             listMac=addressDao.select_mac2(specificAddress, city, county, street);
             for (String s:listMac){
-                redisTemplate.opsForList().rightPush("listMac",listMac);
+                redisTemplate.opsForList().rightPush(specificAddress+city+county+street+"listMac",listMac);
             }
-            redisTemplate.expire("listMac",24, TimeUnit.HOURS);
+            redisTemplate.expire(specificAddress+city+county+street+"listMac",24, TimeUnit.HOURS);
         }
         for (int j = 0; j < listMac.size(); j++) {
             list = dateNumberDao.selectTwoHour(listMac.get(j),date1,date2);

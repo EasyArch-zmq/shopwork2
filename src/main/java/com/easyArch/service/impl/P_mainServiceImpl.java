@@ -70,11 +70,9 @@ public class P_mainServiceImpl implements P_mainService {
         DateTime now=DateTime.now();
         String date2=now.toString("yyyy-MM-dd HH:mm:ss");
         String [] str2=date2.split(" ");
-        String date1="2020-08-11 00:00:00";//str2[0]+" 00:00:00";
-//            获取日期
-//            String date2="2020-08-11 23:59:00";//df.format(new Date());
-//            String [] str2=ControllerUtil.slipDate2(date2);
-//            String date1="2020-08-11 01:00:00";//str2[0]+" 01:00:00";
+        String date1=//"2020-08-11 00:00:00";
+                     str2[0]+" 00:00:00";
+
         String []str3=ControllerUtil.slipDate3(str2[1]);
         Integer time_inDate=new Integer(str3[0]);
         Integer time_inList=0;
@@ -83,42 +81,52 @@ public class P_mainServiceImpl implements P_mainService {
          * @cons_List
          */
         List<String> cons_List;
-        if (redisTemplate.hasKey("cons_List")){
-            cons_List=redisTemplate.opsForList().range("cons_List",0,-1);
+        if (redisTemplate.hasKey(specificAddress+city+county+street+"cons_List")){
+            cons_List=redisTemplate
+                    .opsForList().range(specificAddress+city+county+street+"cons_List",0,-1);
         }else {
             cons_List= addressDao
                     .select_construction(specificAddress,city,county,street);
             for (String s:cons_List){
-                redisTemplate.opsForList().rightPush("cons_List",s);
+                redisTemplate
+                        .opsForList().rightPush(specificAddress+city+county+street+"cons_List",s);
             }
-            redisTemplate.expire("cons_List",24,TimeUnit.HOURS);
+            redisTemplate
+                    .expire(specificAddress+city+county+street+"cons_List",24,TimeUnit.HOURS);
         }
         for(int i=0;i<cons_List.size();i++){
             construction_inAll.setConstruction(cons_List.get(i));
             List<String> pics;
-            if (redisTemplate.hasKey("pics")){
-                pics=redisTemplate.opsForList().range("pics",0,-1);
+            if (redisTemplate.hasKey(specificAddress+city+county+street+cons_List.get(i)+"pics")){
+                pics=redisTemplate
+                        .opsForList().range(specificAddress+city+county+street+cons_List.get(i)+"pics",0,-1);
             }else {
-                pics=pictureDao.selectPic(specificAddress,city,county,street,cons_List.get(i));
+                pics=pictureDao
+                        .selectPic(specificAddress,city,county,street,cons_List.get(i));
                 for (String s:pics){
-                    redisTemplate.opsForList().rightPush("pics",s);
+                    redisTemplate
+                            .opsForList().rightPush(specificAddress+city+county+street+cons_List.get(i)+"pics",s);
                 }
-                redisTemplate.expire("pics",24,TimeUnit.HOURS);
+                redisTemplate
+                        .expire(specificAddress+city+county+street+cons_List.get(i)+"pics",24,TimeUnit.HOURS);
             }
             construction_inAll.setPicture_url(pics.get(0));
             /**
              * 通过地址查找盒子，返回符合地址条件的所有盒子
              */
             List<String>mac_list;
-            if (redisTemplate.hasKey("mac_list")){
-                mac_list=redisTemplate.opsForList().range("mac_list",0,-1);
+            if (redisTemplate.hasKey(specificAddress+city+county+street+cons_List.get(i)+"mac_list")){
+                mac_list=redisTemplate
+                        .opsForList().range(specificAddress+city+county+street+cons_List.get(i)+"mac_list",0,-1);
             }else {
                 mac_list=addressDao
                         .select_mac(specificAddress,city,county,street,cons_List.get(i));
                 for (String s:mac_list){
-                    redisTemplate.opsForList().rightPush("mac_list",s);
+                    redisTemplate
+                            .opsForList().rightPush(specificAddress+city+county+street+cons_List.get(i)+"mac_list",s);
                 }
-                redisTemplate.expire("mac_list",24,TimeUnit.HOURS);
+                redisTemplate
+                        .expire(specificAddress+city+county+street+cons_List.get(i)+"mac_list",24,TimeUnit.HOURS);
             }
 
             for (int j = 0; j <mac_list.size() ; j++) {
