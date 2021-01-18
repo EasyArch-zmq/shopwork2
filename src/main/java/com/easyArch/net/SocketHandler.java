@@ -48,17 +48,6 @@ public class SocketHandler extends ChannelInboundHandlerAdapter {
         System.out.println("数据是：  "+s_value);
         DateTime now=DateTime.now();
         String date=now.toString("yyyy-MM-dd HH:mm:ss");
-
-//        System.out.println("时间是："+now.toString("yyyy-MM-dd HH:mm:ss :SSS"));
-        //设置日期格式
-//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-//        //获取日期
-//        String[] time_split=date.split(" :");
-//        for (int t = 0; t < time_split.length; t++) {
-//            System.out.println("::::::::   "+time_split[t]);
-//        }
-//        String mytime=time_split[0];
-//        String hao_miao=time_split[1];
 //        String boxid=strings[0];
         String mac_address=s_value;
 //        Integer yangan=new Integer(strings[1]);
